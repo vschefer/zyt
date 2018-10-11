@@ -1,0 +1,17 @@
+.todo-list{
+    padding:0;
+}
+.todo{
+    list-style: none;
+     display: grid;
+    grid-template-columns:0.5fr 4fr 1fr;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+}
+.visit-todo{
+    background-image: url('../../../assets/images/search.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1rem;
+    height: 1rem;;
+}

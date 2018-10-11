@@ -1,0 +1,20 @@
+.user{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+.user-avatar{
+    padding: 0.2rem;
+}
+.avatar{
+    border-radius: 180px;
+    height: 5rem;
+    width: 5rem;
+    background-size: contain;
+    flex: 2;
+    background-repeat: no-repeat;
+}
+.user-name{
+    flex:2;
+}

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin:0;
+}
+
+app-working-time{
+    background-color: #2B2D42;
+    color: #fff;
+    height: 100vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+}
+app-plan{
+    background-color: #8D99AE;
+    height: 100vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+}
+app-todo-list{
+    background-color: #F8F32B;
+    height: 100vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+}
+app-todo-detail{
+    background-color: #F7F7F7;
+    height: 100vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+}
+app-dashboard{
+    background-color: #474747;
+    height: 100vh;
+    color: #fff;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+}
