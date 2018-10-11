@@ -1,0 +1,33 @@
+<div class="time-form">
+  <h3>Arbeitszeit erfassen</h3>
+  <!-- <mat-form-field>
+    <mat-label>Job</mat-label>
+    <input matInput >
+  </mat-form-field> -->
+  <mat-form-field>
+    <mat-select placeholder="Job">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Aktivität">
+      <mat-option value="Programmierung Frontend">Programmierung Frontend</mat-option>
+      <mat-option value="Programmierung Backend">Programmierung Backend</mat-option>
+      <mat-option value="Grafik">Grafik</mat-option>
+      <mat-option value="Administration">Administration</mat-option>
+      <mat-option value="Online Marketing">Online Marketing</mat-option>
+      <mat-option value="Lesezeit">Lesezeit</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput type="number" placeholder="Input">
+  </mat-form-field>
+
+  <button type="submit">Speichern</button>
+</div>

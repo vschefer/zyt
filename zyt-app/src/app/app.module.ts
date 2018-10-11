@@ -11,6 +11,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavigationComponent } from './dashboard/navigation/navigation.component';
 import { CommonModule } from '@angular/common';
 import { PlanComponent } from './plan/plan.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,11 +27,26 @@ import { PlanComponent } from './plan/plan.component';
     TimeComponent,
     DashboardComponent,
     NavigationComponent,
-    PlanComponent
+    PlanComponent,
+    TimeFormComponent,
+   
+
+  ],
+  entryComponents: [
+    TimeFormComponent
   ],
   imports: [
     BrowserModule,
-    CommonModule
+    BrowserAnimationsModule,
+    CommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
