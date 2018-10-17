@@ -17,6 +17,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AdminComponent } from './admin/admin.component';
+import {RouterModule} from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { SideBarService } from './todo/todo-detail/todo-detail.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +35,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     NavigationComponent,
     PlanComponent,
     TimeFormComponent,
+    AdminComponent,
+    LoginComponent,
+    HomeComponent
    
 
   ],
@@ -46,9 +55,25 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: LoginComponent
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
+      }
+    ]),
+    HttpClientModule,
+  
   ],
-  providers: [],
+  providers: [SideBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

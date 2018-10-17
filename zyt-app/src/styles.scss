@@ -23,7 +23,7 @@ app-todo-list{
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
-app-todo-detail{
+app-todo-detail.is-open{
     background-color: #F7F7F7;
     height: 100vh;
     flex: 2;
@@ -61,7 +61,13 @@ button{
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
 }
-mat-dialog-container{
+mat-dialog-container.mat-dialog-container{
     background-color: #F7F7F7;
-    padding: 1rem;
+    padding: 2rem;
+    min-width: 25rem;
+}
+app-login{
+    width: 100%;
+    height: 100vh;
+    background: rebeccapurple;
 }

@@ -1,0 +1,21 @@
+<div class="login-content">
+<div class="logobar">
+    <img src="/src/assets/images/logo-white.png">
+</div>
+    <div class="login-area">
+            <h1>LOGIN</h1>
+            <form (submit)="loginUser($event)">
+               <mat-form-field>
+                   <mat-label>User</mat-label>
+                   <input matInput type="text">
+                 </mat-form-field>
+                 <mat-form-field>
+                     <mat-label>Password</mat-label>
+                     <input matInput type="password">
+                   </mat-form-field>
+                <button  (click)="onLogin()">senden</button>
+            </form>
+    </div>
+ 
+</div> 
+
