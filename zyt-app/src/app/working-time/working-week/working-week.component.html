@@ -1,0 +1,13 @@
+<h3>Diese Woche</h3>
+<p>{{monday}} - {{sunday}}</p>
+<div>
+    <canvas
+        baseChart
+        [chartType]="'pie'"
+        [datasets]="chartData"
+        
+        [options]="chartOptions"
+        [legend]="false"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>

@@ -23,6 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SideBarService } from './todo/todo-detail/todo-detail.service';
+import { ChartsModule } from 'ng2-charts';
+import { WorkingMonthComponent } from './working-time/working-month/working-month.component';
+import { WorkingWeekComponent } from '../app/working-time/working-week/working-week.component';
+import { UserEditComponent } from './dashboard/user-edit/user-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +41,19 @@ import { SideBarService } from './todo/todo-detail/todo-detail.service';
     TimeFormComponent,
     AdminComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WorkingMonthComponent,
+    WorkingWeekComponent,
+    UserEditComponent
    
 
   ],
   entryComponents: [
-    TimeFormComponent
+    TimeFormComponent,
+    UserEditComponent
+  ],
+  exports: [
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +67,7 @@ import { SideBarService } from './todo/todo-detail/todo-detail.service';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ChartsModule,
     RouterModule.forRoot([
       {
         path: '',

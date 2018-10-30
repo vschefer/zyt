@@ -1,0 +1,12 @@
+<h3>Diesen Monat</h3>
+<div>
+    <canvas
+        baseChart
+        [chartType]="'pie'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>

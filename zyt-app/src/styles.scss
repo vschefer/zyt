@@ -60,11 +60,14 @@ button{
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 mat-dialog-container.mat-dialog-container{
     background-color: #F7F7F7;
     padding: 2rem;
     min-width: 25rem;
+    max-height: 80vh;
 }
 app-login{
     width: 100%;
