@@ -3,12 +3,13 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    padding: 1rem;
 }
-.user-avatar{
+.user-avatar-wrapper{
     padding: 0.2rem;
 }
-.avatar{
-    border-radius: 180px;
+.user-avatar{
+    border-radius: 50%;
     height: 5rem;
     width: 5rem;
     background-size: contain;
