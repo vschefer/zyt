@@ -14,7 +14,7 @@ import { PlanComponent } from './plan/plan.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatSnackBar, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AdminComponent } from './admin/admin.component';
@@ -27,6 +27,15 @@ import { ChartsModule } from 'ng2-charts';
 import { WorkingMonthComponent } from './working-time/working-month/working-month.component';
 import { WorkingWeekComponent } from '../app/working-time/working-week/working-week.component';
 import { UserEditComponent } from './dashboard/user-edit/user-edit.component';
+import {ProjectComponent } from './project/project.component'
+import { ProjectOverviewComponent } from './project/project-overview/project-overview.component';
+import { UserComponent } from './user/user.component'
+import { AddResourceComponent } from './add-resource/add-resource.component'
+import { AllRessourceComponent } from './all-ressource/all-resource.component'
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,13 +53,20 @@ import { UserEditComponent } from './dashboard/user-edit/user-edit.component';
     HomeComponent,
     WorkingMonthComponent,
     WorkingWeekComponent,
-    UserEditComponent
+    UserEditComponent,
+    ProjectComponent,
+    ProjectOverviewComponent,
+    UserComponent,
+    AddResourceComponent,
+    AllRessourceComponent
+ 
+  
    
 
   ],
   entryComponents: [
     TimeFormComponent,
-    UserEditComponent
+    UserEditComponent,
   ],
   exports: [
     UserEditComponent
@@ -68,6 +84,7 @@ import { UserEditComponent } from './dashboard/user-edit/user-edit.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ChartsModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -80,12 +97,28 @@ import { UserEditComponent } from './dashboard/user-edit/user-edit.component';
       {
         path: 'admin',
         component: AdminComponent
+      },
+      {
+        path: 'project',
+        component: ProjectComponent
+      },
+      {
+        path: 'users',
+        component: UserComponent
+      },
+      {
+        path: 'ressouce',
+        component: AddResourceComponent
+      },
+      {
+        path: 'ressource/all',
+        component: AllRessourceComponent
       }
     ]),
     HttpClientModule,
   
   ],
-  providers: [SideBarService],
+  providers: [SideBarService, AddResourceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

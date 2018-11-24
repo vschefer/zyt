@@ -2,37 +2,48 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body{
     margin:0;
+    color: white;
+}
+body.open{
+    .wrapper{
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 app-working-time{
     background-color: #2B2D42;
-    color: #fff;
+    background-color: #D3FAD6;
+    // color: #fff;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-plan{
     background-color: #8D99AE;
+    background-color: #A8B7AB;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-todo-list{
     background-color: #F8F32B;
+    background-color: #F3DE8A;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-todo-detail.is-open{
     background-color: #F7F7F7;
+    background-color: #EB9486;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-dashboard{
     background-color: #474747;
+    background-color: #93B6BF;
     height: 100vh;
-    color: #fff;
+    // color: #fff;
     flex: 2;
     
     display: grid;
@@ -59,7 +70,9 @@ button{
     height: 100vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
     justify-content: center;
 }
@@ -73,4 +86,23 @@ app-login{
     width: 100%;
     height: 100vh;
     background: rebeccapurple;
+}
+app-project{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+app-project-overview{
+    grid-row: 1 / 3;
+    grid-column: 1 / span 2;
+    background-color: #F3DE8A;
+}
+
+app-user{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+app-add-resouce{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #A8B7AB;
 }
