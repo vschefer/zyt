@@ -1,0 +1,38 @@
+.all__ressource-header{
+    width: 100vw;
+    height: 5vh;
+    background-color: #8D99AE;
+    display: grid;
+    grid-template-columns: 10% 80%; 
+}
+.all__ressource-wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  
+
+}
+
+.all__ressource{
+    height: 95vh;
+
+    &.mon{
+        background-color: #A8B7AB;
+        background-color: #D3FAD6;
+    }
+    &.di{
+        background-color: #A8B7AB;
+    }
+    &.mi{
+        background-color: #F3DE8A;
+    }
+    &.do{
+        background-color: #EB9486;
+    }
+    &.fr{
+        background-color: #93B6BF;
+    }
+}
+.res {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    background-color: darkcyan;
+}
