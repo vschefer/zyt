@@ -10,7 +10,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Aktivität">
+    <mat-select placeholder="Position">
       <mat-option value="Programmierung Frontend">Programmierung Frontend</mat-option>
       <mat-option value="Programmierung Backend">Programmierung Backend</mat-option>
       <mat-option value="Grafik">Grafik</mat-option>
@@ -28,6 +28,8 @@
   <mat-form-field>
     <input matInput type="number" placeholder="Input">
   </mat-form-field>
-
-  <button type="submit" [mat-dialog-close]>Speichern</button>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Aktivität">
+  </mat-form-field>
+  <button type="submit" [mat-dialog-close] >Speichern</button>
 </div>
