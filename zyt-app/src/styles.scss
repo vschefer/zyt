@@ -1,58 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Anton|Viga|Allerta');
+$questrial :'Questrial', sans-serif;
+$viga: 'Viga', sans-serif;
+$rubik: 'Allerta', sans-serif;
 body{
     margin:0;
     color: white;
+    font-family: $questrial;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+h1,h2,h3{
+    font-family: $rubik;
+    font-weight: normal;
 }
 body.open{
-    .wrapper{
-        grid-template-columns: repeat(5, 1fr);
-    }
+    app-working-time,app-plan,app-todo-list,app-todo-detail{
+        height: 98vh;
+    } 
 }
 
 app-working-time{
-    background-color: #2B2D42;
-    background-color: #D3FAD6;
-    // color: #fff;
+    background-color: #EDBF85;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-plan{
-    background-color: #8D99AE;
     background-color: #A8B7AB;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-todo-list{
-    background-color: #F8F32B;
     background-color: #F3DE8A;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-todo-detail.is-open{
-    background-color: #F7F7F7;
     background-color: #EB9486;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
 app-dashboard{
-    background-color: #474747;
     background-color: #93B6BF;
     height: 100vh;
-    // color: #fff;
-    flex: 2;
+    position: fixed;
+    right: 0;
+    top:0;
+    width: 300px;
     
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-
-  grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(100px, auto);
 }
 app-time{
-   
     position: relative;
 }
 
@@ -85,7 +91,6 @@ mat-dialog-container.mat-dialog-container{
 app-login{
     width: 100%;
     height: 100vh;
-    background: rebeccapurple;
 }
 app-project{
     display: grid;

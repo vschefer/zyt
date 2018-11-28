@@ -1,4 +1,11 @@
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(3, 33.33%);
+    width: calc(100vw - 300px);
+    
+    &.open{
+        grid-template-columns: repeat(4, 33.33%);
+        overflow: scroll;
+        overflow-y: hidden;
+    } 
 }

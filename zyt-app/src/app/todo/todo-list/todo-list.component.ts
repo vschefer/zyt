@@ -10,16 +10,21 @@ import {SideBarService} from '../todo-detail/todo-detail.service'
 })
 export class TodoListComponent implements OnInit {
   windowWidth = document.body.clientWidth;
-  spalte = this.windowWidth / 4;
-  constructor(private sideBarService: SideBarService) {}
+  spalte = this.windowWidth
+  constructor(private sideBarService: SideBarService) {
+    
+  }
 
   tog(){
     this.sideBarService.toggle();
-    document.querySelector('body').classList.toggle('open')
-    
+    let wrapper = document.querySelector('.wrapper') as HTMLElement;
+    let body = document.querySelector('body')
+    wrapper.classList.toggle('open')
+    body.classList.toggle('open')
     if(document.querySelector('.open')){
-      document.body.style.width = this.spalte * 5 + 'px';
-      document.body.style.overflowX = 'scroll';
+     wrapper.style.width = this.spalte -300 + 'px';
+      wrapper.style.overflowX = 'scroll';
+      console.log(this.spalte * 4 + 'px')
     }else{
       document.body.style.width = '100vw'
       document.body.style.overflowX = 'hidden'
