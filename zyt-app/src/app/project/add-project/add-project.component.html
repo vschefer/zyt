@@ -1,0 +1,104 @@
+<div class="wrapper add-project">
+  <div class="project-form__page">
+    <h2>Projekt hinzufügen</h2>
+    
+    <mat-form-field>
+      <label for="name">Projektname</label>
+      <input matInput type="text" name="name" ngDefaultControl [(ngModel)]="name" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">Projectame invalid</span>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <label for="capitain">Projektleiter</label>
+
+      <mat-select  name="capitain" ngDefaultControl [(ngModel)]="capitain" multiple>
+        <mat-option value="Programmierung Frontend">Programmierung Frontend</mat-option>
+        <mat-option value="Programmierung Backend">Programmierung Backend</mat-option>
+        <mat-option value="Grafik">Grafik</mat-option>
+        <mat-option value="Administration">Administration</mat-option>
+        <mat-option value="Online Marketing">Online Marketing</mat-option>
+        <mat-option value="Lesezeit">Lesezeit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="user">User</label>
+      <mat-select  name="user" ngDefaultControl [(ngModel)]="user" multiple>
+        <mat-option  *ngFor="let user of users" value="user._id">{{user.surname}} {{user.first_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <label for="start">Startdatum</label>
+      <input matInput [matDatepicker]="start"  name="start" ngDefaultControl [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+      <mat-datepicker #start></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="end">Deadline</label>
+      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+      <mat-datepicker #end></mat-datepicker>
+    </mat-form-field>
+    
+  </div>
+
+  <div class="project-form__page offer">
+    <h3>Offerierte Stunden</h3>
+
+    <mat-form-field>
+      <label for="prject-management">Projektorganisation</label>
+      <input matInput type="number" name="prject-management" ngDefaultControl [(ngModel)]="prject-management">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="konzept">Konzept</label>
+      <input matInput type="number" name="konzept" ngDefaultControl [(ngModel)]="konzept">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="grafik">Grafik</label>
+      <input matInput type="number" name="grafik" ngDefaultControl [(ngModel)]="grafik">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="frontend">Programmierung Frontend</label>
+      <input matInput type="number" name="frontend" ngDefaultControl [(ngModel)]="frontend">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="backend">Programmierung Backend</label>
+      <input matInput type="number" name="backend" ngDefaultControl [(ngModel)]="backend">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="socialmedia">Social Media</label>
+      <input matInput type="number" name="socialmedia" ngDefaultControl [(ngModel)]="socialmedia">
+    </mat-form-field>
+
+  </div>
+  
+  <div class="project-form__page">
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description">
+      </textarea>
+    </mat-form-field>
+    
+    <button class="save" (click)="onSave()" >Speichern</button>
+    
+  </div>
+   
+</div>
+
+<div class="control">
+  <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>
+  <button class="next" (click)="getNextPage()"><div class="arrow"></div></button>
+</div>
+
+<app-dashboard></app-dashboard>

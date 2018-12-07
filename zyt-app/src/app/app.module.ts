@@ -14,7 +14,7 @@ import { PlanComponent } from './plan/plan.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatSnackBar, MatSnackBarModule } from '@angular/material';
+import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatSnackBar, MatSnackBarModule, MatRadioButton, MatRadioModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AdminComponent } from './admin/admin.component';
@@ -32,6 +32,12 @@ import { ProjectOverviewComponent } from './project/project-overview/project-ove
 import { UserComponent } from './user/user.component'
 import { AddResourceComponent } from './add-resource/add-resource.component'
 import { AllRessourceComponent } from './all-ressource/all-resource.component'
+import { ServerService } from './server.service';
+import { AddProjectComponent } from './project/add-project/add-project.component';
+import { HttpModule } from '@angular/http';
+import { AddUserComponent } from './user/add-user/add-user.component'
+import { DateFormatPipe } from './pipes/format-date.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -58,7 +64,13 @@ import { AllRessourceComponent } from './all-ressource/all-resource.component'
     ProjectOverviewComponent,
     UserComponent,
     AddResourceComponent,
-    AllRessourceComponent
+    AllRessourceComponent,
+    AddProjectComponent,
+    AddUserComponent,
+    DateFormatPipe,
+    
+
+  
  
   
    
@@ -85,6 +97,9 @@ import { AllRessourceComponent } from './all-ressource/all-resource.component'
     MatNativeDateModule,
     ChartsModule,
     MatSnackBarModule,
+    MatRadioModule,
+    HttpModule,
+    OrderModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -103,8 +118,16 @@ import { AllRessourceComponent } from './all-ressource/all-resource.component'
         component: ProjectComponent
       },
       {
+        path: 'project/add',
+        component: AddProjectComponent
+      },
+      {
         path: 'users',
         component: UserComponent
+      },
+      {
+        path: 'users/add',
+        component: AddUserComponent
       },
       {
         path: 'ressouce',
@@ -118,7 +141,7 @@ import { AllRessourceComponent } from './all-ressource/all-resource.component'
     HttpClientModule,
   
   ],
-  providers: [SideBarService, AddResourceComponent],
+  providers: [SideBarService, AddResourceComponent, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

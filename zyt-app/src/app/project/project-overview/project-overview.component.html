@@ -1,20 +1,12 @@
-<div class="project">
-    <h2>Fussballstadion Ja</h2>
-    <p>Release Date: 22.12.2019 </p>
-    <button class="project__show-detail">show detail</button>
+<div class="wrapper" id="wrapper" #wrapper>
+    <div class="project" *ngFor="let project of data">
+        <h2>{{project.name}}</h2>
+        <p>{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
+    </div>
+    
 </div>
-<div class="project">
-    <h2>Fussballstadion Ja</h2>
-    <p>Release Date: 22.12.2019 </p>
-    <button class="project__show-detail">show detail</button>
-</div>
-<div class="project">
-    <h2>Fussballstadion Ja</h2>
-    <p>Release Date: 22.12.2019 </p>
-    <button class="project__show-detail">show detail</button>
-</div>
-<div class="project">
-    <h2>Fussballstadion Ja</h2>
-    <p>Release Date: 22.12.2019 </p>
-    <button class="project__show-detail">show detail</button>
+
+<div class="control">
+    <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>
+    <button class="next" (click)="getNextProject()"><div class="arrow"></div></button>
 </div>
