@@ -1,10 +1,20 @@
-<div class="users">
-    <div class="user">
-        Max Muster
-    </div>
-    <div class="user">
-        Peter Mustermann
-    </div>
-</div>
+<div class="wrapper">
+    <div class="user" *ngFor="let user of data | orderBy: 'archived' : false"  [style.background]="user.admin ? '#EDBF85': 'transparent'" [style.opacity]="user.archived ? '0.5': '1'">
+      <div class="user__container">
+            <h2>{{user.first_name}} {{user.surname}}</h2>
+            <p>{{user.email}}</p>
 
+            <button *ngIf="!user.archived" class="button --warning">deactivate</button>
+            <button *ngIf="user.archived" class="button --valid">activate</button>
+
+      </div>
+                
+
+    </div>
+    
+</div>
+<div class="control">
+        <button class="upside transparent" (click)="pageUp()"><div class="arrow --prev"></div></button>
+        <button class="down" (click)="pageDown()"><div class="arrow"></div></button>
+    </div>
 <app-dashboard></app-dashboard>
