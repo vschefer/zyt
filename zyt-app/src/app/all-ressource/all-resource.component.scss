@@ -8,15 +8,16 @@
 .all__ressource-wrapper{
     display: grid;
     grid-template-columns: repeat(5, 1fr);  
-
+    
 }
 
 .all__ressource{
     height: 95vh;
-
+    transition: all 0.5s;
+    position: relative;
+    display: flex;
     &.mon{
-        background-color: #A8B7AB;
-        background-color: #D3FAD6;
+        background-color: #EDBF85;
     }
     &.di{
         background-color: #A8B7AB;
@@ -30,9 +31,66 @@
     &.fr{
         background-color: #93B6BF;
     }
+
+    h2{
+        writing-mode: vertical-rl;
+        margin: 0.3rem;
+        width: auto;
+    }
+}
+.ressource__container {
+    margin-left: 1rem;
+    margin-right: 3rem;
+    width: 100%;
 }
 .res {
     padding: 1rem;
     margin: 1rem 0.5rem;
     background-color: darkcyan;
+}
+.add {
+    background: transparent;
+    background-image: url('../../assets/images/plus.svg');
+    width: 1.5rem;
+    height: 1.5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    margin: 0.5rem;
+    }
+.shrink{
+    width: 5vw;
+    
+    .res{
+        opacity: 0;
+    }
+    .add {
+        background: transparent;
+        background-image: url('../../assets/images/plus.svg');
+        width: 1.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        }
+}
+
+.grow{
+    transition: all 0.5s;
+    width: 80vw;
+    .res{
+        opacity: 1;
+    }
+
+    .add {
+        background: transparent;
+        background-image: url('../../assets/images/minus.svg');
+        width: 1.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        }
 }
