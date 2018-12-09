@@ -22,9 +22,7 @@ export class TodoListComponent implements OnInit {
     wrapper.classList.toggle('open')
     body.classList.toggle('open')
     if(document.querySelector('.open')){
-     wrapper.style.width = this.spalte -300 + 'px';
       wrapper.style.overflowX = 'scroll';
-      console.log(this.spalte * 4 + 'px')
     }else{
       document.body.style.width = '100vw'
       document.body.style.overflowX = 'hidden'

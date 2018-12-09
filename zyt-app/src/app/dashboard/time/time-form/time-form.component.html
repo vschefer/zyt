@@ -5,8 +5,8 @@
     <input matInput >
   </mat-form-field> -->
   <mat-form-field>
-    <mat-select placeholder="Job">
-      <mat-option value="option">Option</mat-option>
+    <mat-select placeholder="Job" [(ngModel)]="selectedJob">
+      <mat-option value="{{p._id}}" *ngFor="let p of projects">{{p.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
@@ -20,16 +20,16 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   
   <mat-form-field>
-    <input matInput type="number" placeholder="Input">
+    <input matInput type="number" placeholder="Input" [(ngModel)]="time">
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Aktivität">
+    <input matInput type="text" placeholder="Aktivität" [(ngModel)]="activity">
   </mat-form-field>
-  <button type="submit" [mat-dialog-close] >Speichern</button>
+  <button type="submit" [mat-dialog-close] (click)="postExpense()" >Speichern</button>
 </div>

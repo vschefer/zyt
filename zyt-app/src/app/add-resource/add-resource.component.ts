@@ -7,7 +7,13 @@ import { ServerService } from '../server.service';
   templateUrl: './add-resource.component.html',
   styleUrls: ['./add-resource.component.scss']
 })
-export class AddResourceComponent implements OnInit {
+export class AddResourceComponent  implements OnInit {
+projects:Object
+specificProject: any
+selectedOption: any;
+selectedUser:any;
+objectKeys = Object.keys;
+
 
   constructor(public snackBar: MatSnackBar, private serverService: ServerService) { }
 message = "Resource wurde hinzugefügt";
