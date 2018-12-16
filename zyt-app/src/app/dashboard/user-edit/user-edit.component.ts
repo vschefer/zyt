@@ -1,57 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ServerService } from '../../server.service';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  public avatars = [{
-    name: 'Hase',
-    id: 1,
-    url: '../../../assets/images/avatar/rabbit-avatar.jpg',
-    choose: false
-  },{
-    name: 'Bär',
-    id: 2,
-    url: '../../../assets/images/avatar/baer-avatar.jpg',
-    choose: false
-  },{
-    name: 'Biber',
-    id: 3,
-    url:'../../../assets/images/avatar/biber-avatar.jpg',
-    choose: false
-  },{
-    name: 'Eule',
-    id: 4,
-    url: '../../../assets/images/avatar/eule-avatar.jpg',
-    choose: true
-  }, {
-    name: 'Fuchs',
-    id: 5,
-    url: '../../../assets/images/avatar/fuchs-avatar.jpg',
-    choose: false,
-  },{
-    name: 'Koala',
-    id: 6,
-    url: '../../../assets/images/avatar/koala-avatar.jpg',
-    choose: false,
-  },{
-    name: 'Luchs',
-    id: 7,
-    url: '../../../assets/images/avatar/luchs-avatar.jpg',
-    choose: false
-  },{
-    name: 'Wolf',
-    id: 8,
-    url:'../../../assets/images/avatar/wolf-avatar.jpg',
-    choose: false
-  }]
-  constructor() {
-    console.log(this.avatars[0].url)
-   }
+
+  constructor(private serverService: ServerService) {}
+
+  avatars:Array<Object>;
+
+  getAvatars() {
+    this.serverService.getAll('//localhost:9000/api/avatars').subscribe((response) => {
+      this.avatars = response.json();
+      console.log(this.avatars);
+      },
+      (error) => console.log(error)
+    )
+  }
+
+  changeAvatar(avatarID) {
+    const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
+    this.serverService.put('//localhost:9000/api/users/' + userID, {avatar: avatarID}).subscribe((response) => {
+      console.log(response);
+      },
+      (error) => console.log(error)
+    )
+  }
 
   ngOnInit() {
+    this.getAvatars();
   }
 
 }
