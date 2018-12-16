@@ -24,16 +24,17 @@ export class ProjectOverviewComponent implements OnInit {
     
     
   }
-  
+  toArray(answers: object) {
+    return Object.keys(answers).map(key => answers[key])
+  }
   
   getProject(){
     this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
     (response)=> {
       this.data = response.json();
     },
-    (error) => console.log(error)
+    (error) => console.log(error) 
   )
-  
 }
 
 getNextProject(){
