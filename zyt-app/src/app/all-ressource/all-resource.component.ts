@@ -1,20 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import {WorkingWeekComponent} from '../working-time/working-week/working-week.component'
+import { ServerService } from '../server.service';
 @Component({
   selector: 'app-all-ressource',
   templateUrl: './all-resource.component.html',
   styleUrls: ['./all-resource.component.scss']
 })
 export class AllRessourceComponent extends WorkingWeekComponent implements OnInit {
-  
-  constructor() {
+  ressource: Object
+  constructor(private serverService: ServerService) {
     super()
     this.monday
     this.friday
     this.getWeek()
+
     
   }
-  
+  getRessource(){
+    this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
+    (response)=> {
+      this.ressource = response.json();
+      console.log(this.ressource)
+    },
+    (error) => console.log(error)
+  )
+}
   showDay(event){
     console.log(this)
     let button = event.path[0]
@@ -61,6 +71,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   ngOnInit() {
     // this.showDay()
     this.toDay()
+    this.getRessource()
     
   }
   

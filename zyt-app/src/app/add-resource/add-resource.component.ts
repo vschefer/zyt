@@ -13,15 +13,17 @@ specificProject: any
 selectedOption: any;
 selectedUser:any;
 objectKeys = Object.keys;
-
+ressource: Object
+time
 
   constructor(public snackBar: MatSnackBar, private serverService: ServerService) { }
 message = "Resource wurde hinzugefügt";
 action = "Ok";
 data:Object;
 users:Array<String>;
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
+
+  openSnackBar() {
+    this.snackBar.open(this.message, this.action, {
       duration: 2000,
     });
   }
@@ -40,7 +42,11 @@ users:Array<String>;
       let project = response.json();
 
       project.assigned_users.forEach((user) => {
-        users.push(user.first_name);
+        users.push({
+          "first_name": user.first_name,
+          "surname": user.surname,
+          "_id": user._id
+        });
       });
 
       this.users = users;
@@ -50,6 +56,25 @@ users:Array<String>;
     )
 
   }
+
+  onSave(){
+    let nextButton = document.querySelector('.next')
+    let prevButton = document.querySelector('.prev')
+    let wrapper = document.querySelector('.wrapper')
+    
+    
+    this.ressource={
+      project: this.selectedOption,
+      user: this.selectedUser,
+      recorded_time: this.time
+      
+    }
+    
+  //   this.serverService.add(this.ressource, 'http://localhost:9000/api/projects').subscribe(
+  //   (response)=> console.log(response),
+  // )
+    this.openSnackBar()
+  } 
 
   ngOnInit() {
     this.getProjects();

@@ -11,19 +11,13 @@
     <div class="all__ressource mon">
         <h2>Monday</h2> <button class="add" (click)="showDay($event)"></button>
 <div class="ressource__container">
-        <div class="res">
-                <strong>HSR - Webstie</strong><br>
+        <div class="res" *ngFor="let res of ressource" >
+                <strong>{{res.project.briefing.title}}</strong><br>
                 <span>Max Muster</span><br>
-                <span>4h</span>
+                <span>{{res.total_time_expected}}</span>
+                <span>{{res.start | dateFormat}}</span>
             </div>
-            <div class="res">
-                    <span>HSR - Webstie</span>
-                    <span>4h</span>
-                </div>
-                <div class="res">
-                        <span>HSR - Webstie</span>
-                        <span>4h</span>
-                    </div>
+           
 </div>
       
     </div>
