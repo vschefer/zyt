@@ -38,7 +38,9 @@ import { HttpModule } from '@angular/http';
 import { AddUserComponent } from './user/add-user/add-user.component'
 import { DateFormatPipe } from './pipes/format-date.pipe';
 import { OrderModule } from 'ngx-order-pipe';
+//import { IndexKeyPipe } from './pipes/index-key.pipe';
 
+import { AuthGuard } from './_guards';
 
 
 
@@ -68,12 +70,13 @@ import { OrderModule } from 'ngx-order-pipe';
     AddProjectComponent,
     AddUserComponent,
     DateFormatPipe,
-    
+    //IndexKeyPipe
 
-  
- 
-  
-   
+
+
+
+
+
 
   ],
   entryComponents: [
@@ -102,48 +105,53 @@ import { OrderModule } from 'ngx-order-pipe';
     OrderModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: LoginComponent
-      },
-      {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'project',
-        component: ProjectComponent
+        component: ProjectComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'project/add',
-        component: AddProjectComponent
+        component: AddProjectComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'users',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'users/add',
-        component: AddUserComponent
+        component: AddUserComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'ressouce',
-        component: AddResourceComponent
+        component: AddResourceComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'ressource/all',
-        component: AllRessourceComponent
+        component: AllRessourceComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path: 'todo',
-        component: TodoListComponent
-      }
+        path: 'login',
+        component: LoginComponent
+      },
+      { path: '**', redirectTo: 'home' }
     ]),
     HttpClientModule,
-  
+
   ],
   providers: [SideBarService, AddResourceComponent, ServerService],
   bootstrap: [AppComponent]

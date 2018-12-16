@@ -4,18 +4,18 @@
 </div>
     <div class="login-area">
             <h1>LOGIN</h1>
-            <form (submit)="loginUser($event)">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                <mat-form-field>
-                   <mat-label>User</mat-label>
-                   <input matInput type="text">
+                   <mat-label for="email">E mail</mat-label>
+                   <input class="login-text" formControlName="email" matInput type="text">
                  </mat-form-field>
                  <mat-form-field>
-                     <mat-label>Password</mat-label>
-                     <input matInput type="password">
+                     <mat-label for="password">Password</mat-label>
+                     <input class="login-text" matInput type="password" formControlName="password">
                    </mat-form-field>
-                <button  (click)="onLogin()">senden</button>
+                <button [disabled]="loading" class="btn btn-primary">Login</button>
             </form>
+          <div *ngIf="error" class="error">{{error}}</div>
     </div>
- 
-</div> 
 
+</div>

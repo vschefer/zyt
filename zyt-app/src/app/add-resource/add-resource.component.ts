@@ -34,7 +34,7 @@ users:Array<String>;
       (error) => console.log(error)
     )
   }
-  bleh(id) {
+  getProject(id) {
     console.log(id);
     this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
       let users = [];
