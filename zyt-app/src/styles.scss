@@ -17,17 +17,18 @@ h1,h2,h3{
     font-weight: normal;
     width: 100%;
 }
-body.open{
-    app-working-time,app-plan,app-todo-list,app-todo-detail{
-        height: 98vh;
-    } 
-}
+// body.open{
+//     app-working-time,app-plan,app-todo-list,app-todo-detail{
+//         height: 98vh;
+//     } 
+// }
 
 app-working-time{
     background-color: #EDBF85;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
+    width: calc(100vw - 300px)
 }
 app-plan{
     background-color: #A8B7AB;
@@ -38,8 +39,6 @@ app-plan{
 app-todo-list{
     background-color: #F3DE8A;
     height: 100vh;
-    flex: 2;
-    padding: 0 1rem 0 1rem;
 }
 app-todo-detail.is-open{
     background-color: #EB9486;
@@ -262,4 +261,8 @@ input:valid + .input-error-message{
     bottom: 0;
     left:45%;
     transform: rotate(90deg);
+}
+
+.cdk-global-overlay-wrapper{
+    display: flex;
 }

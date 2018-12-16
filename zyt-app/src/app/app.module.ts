@@ -38,7 +38,6 @@ import { HttpModule } from '@angular/http';
 import { AddUserComponent } from './user/add-user/add-user.component'
 import { DateFormatPipe } from './pipes/format-date.pipe';
 import { OrderModule } from 'ngx-order-pipe';
-import { IndexKeyPipe } from './pipes/index-key.pipe';
 
 
 
@@ -69,7 +68,6 @@ import { IndexKeyPipe } from './pipes/index-key.pipe';
     AddProjectComponent,
     AddUserComponent,
     DateFormatPipe,
-    IndexKeyPipe
     
 
   
@@ -138,6 +136,10 @@ import { IndexKeyPipe } from './pipes/index-key.pipe';
       {
         path: 'ressource/all',
         component: AllRessourceComponent
+      },
+      {
+        path: 'todo',
+        component: TodoListComponent
       }
     ]),
     HttpClientModule,
