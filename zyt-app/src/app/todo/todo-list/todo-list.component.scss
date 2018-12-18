@@ -3,7 +3,7 @@
 }
 .todo{
     list-style: none;
-     display: grid;
+    display: grid;
     grid-template-columns:0.5fr 4fr 1fr;
     grid-gap: 10px;
     grid-auto-rows: minmax(10px, auto);
@@ -47,7 +47,7 @@
     &.done{
         background-color: #EB9486;
     }
-
+    
     h2{
         writing-mode: vertical-rl;
         margin: 0.3rem;
@@ -75,7 +75,7 @@
     position: absolute;
     bottom: 0;
     margin: 0.5rem;
-    }
+}
 .shrink{
     width: 5vw;
     
@@ -90,7 +90,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
-        }
+    }
 }
 
 .grow{
@@ -99,7 +99,7 @@
     .res{
         opacity: 1;
     }
-
+    
     .add {
         background: transparent;
         background-image: url('../../../assets/images/minus.svg');
@@ -108,5 +108,5 @@
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
-        }
+    }
 }

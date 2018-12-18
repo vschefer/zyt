@@ -15,11 +15,12 @@
     <div class="all__todo start shrink">
       <h2>Erstellt</h2> <button class="add" (click)="showDay($event)"></button>
       <div class="todo__container">
-        <div class="res"  *ngFor="let p of positions">
-         
-            <strong>{{p}}</strong><br>
-            <span>Max Muster</span><br>
-       
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 0">
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -30,13 +31,13 @@
       <button class="add" (click)="showDay($event)"></button>
       <div class="todo__container">
         
-        <div class="res" (click)="openDialog()">
-          <span>HSR - Webstie</span>
-          <span>4h</span>
-        </div>
-        <div class="res">
-          <span>HSR - Webstie</span>
-          <span>4h</span>
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 1">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -44,10 +45,13 @@
       <h2>Ready for test</h2>
       <button class="add" (click)="showDay($event)"></button>
       <div class="todo__container">
-        <div class="res">
-          <strong>HSR - Webstie</strong><br>
-          <span>Max Muster</span><br>
-          <span>4h</span>
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 2">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
         </div>
         
       </div>
@@ -56,26 +60,20 @@
       <h2>Done</h2>
       <button class="add" (click)="showDay($event)"></button>
       <div class="todo__container">
-        <div class="res">
-          <strong>HSR - Webstie</strong><br>
-          <span>Max Muster</span><br>
-          <span>4h</span>
-        </div>
-        <div class="res">
-          <span>HSR - Webstie</span>
-          <span>4h</span>
-        </div>
-        <div class="res">
-          <span>HSR - Webstie</span>
-          <span>4h</span>
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 3">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
 </div> 
-  
-  <app-dashboard></app-dashboard>
-  
-  
-  
-  
+
+<app-dashboard></app-dashboard>
+
+
+
