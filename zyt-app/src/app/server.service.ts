@@ -27,7 +27,7 @@ export class ServerService {
     put(servers: any, url: string){
         this.headers = new Headers();
         this.auth()
-        return  this.http.post(url, servers,{headers: this.headers});
+        return  this.http.put(url, servers,{headers: this.headers});
     }
     
 }
