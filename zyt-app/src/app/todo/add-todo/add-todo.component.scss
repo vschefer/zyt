@@ -1,0 +1,14 @@
+.add-todo {
+    width: 60%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+mat-form-field{
+    width: 100%;
+}
+
+.error-message.hidden{
+    display: none;
+}

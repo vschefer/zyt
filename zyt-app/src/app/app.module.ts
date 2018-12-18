@@ -45,6 +45,7 @@ import { UpdateProjectComponent } from './project/update-project/update-project.
 import { UpdateProjectService } from './project/project-overview/project-overview.service';
 import { UpdateButtonComponent } from './project/project-overview/update-button/update-button.component';
 import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
+import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 
 
 
@@ -77,7 +78,8 @@ import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update
     UpdateProjectComponent,
     UpdateButtonComponent,
     TodoDetailComponent,
-    UpdateButtonTodoComponent
+    UpdateButtonTodoComponent,
+    AddTodoComponent
 
   ],
   entryComponents: [
@@ -150,6 +152,10 @@ import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update
       {
         path: 'todo',
         component: TodoListComponent,
+      },
+      {
+        path: 'todo/add',
+        component: AddTodoComponent,
       },
       {
         path: 'login',
