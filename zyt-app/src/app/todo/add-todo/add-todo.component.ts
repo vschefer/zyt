@@ -88,7 +88,7 @@ onSave(){
     let nextButton = document.querySelector('.next')
     let prevButton = document.querySelector('.prev')
     let wrapper = document.querySelector('.wrapper')
-    this.status = "0"
+    this.status = 0
     
     this.todo={
         status: this.status,
@@ -97,7 +97,7 @@ onSave(){
             title: this.title,
             description: this.description
         },
-        assigned_users: [this.u]
+        assigned_users: [this.u._id]
     }
     console.log(typeof this.status )
     this.serverService.add(this.todo, 'http://localhost:9000/api/todos').subscribe(
