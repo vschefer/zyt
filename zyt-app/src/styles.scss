@@ -295,3 +295,13 @@ mat-form-field{
         color: white;
     }
 }
+app-update-project{
+    display: flex;
+    flex-direction: column;
+    // background: gray;
+    color: gray;
+
+    mat-form-field span {
+        color: gray;
+    }
+}
