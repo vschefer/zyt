@@ -11,7 +11,7 @@
         <div *ngIf="selectedJob">
             <mat-form-field>
                 
-                <mat-select placeholder="Users" [(value)]="selectedUser" multiple (selectionChange)="getUser(selectedUser)">
+                <mat-select placeholder="Users" [(value)]="selectedUser" (selectionChange)="getUser(selectedUser)">
                     <mat-option *ngFor="let user of proj" [value]="user._id">{{ user.first_name }} {{user.surname}}</mat-option>
                 </mat-select>
             </mat-form-field>

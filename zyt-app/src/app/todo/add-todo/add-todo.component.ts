@@ -20,6 +20,7 @@ export class AddTodoComponent  implements OnInit {
     status: string
     u: Object
     projectID
+    id
     
     
     
@@ -45,13 +46,11 @@ export class AddTodoComponent  implements OnInit {
 }
 
 bleh(id) {
-    console.log(id)
     this.projectID = id
     this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
     let proj = [];
     
     let project = response.json();
-    console.log(project.todos)
     project.assigned_users.forEach((user) => {
         proj.push({
             "archived": user.archived,
@@ -64,8 +63,6 @@ bleh(id) {
     
     
     this.proj = proj;
-    console.log(proj)
-    console.log(this.proj);
 },
 (error) => console.log(error)
 )
@@ -73,11 +70,11 @@ bleh(id) {
 }
 
 getUser(id) {
-    console.log(id)
     this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
     let proj = [];
     
     this.u = response.json();
+    this.id = this.u._id
   },
   (error) => console.log(error)
   )
@@ -88,18 +85,16 @@ onSave(){
     let nextButton = document.querySelector('.next')
     let prevButton = document.querySelector('.prev')
     let wrapper = document.querySelector('.wrapper')
-    this.status = 0
     
     this.todo={
-        status: this.status,
+        status: 0,
         project: this.projectID,
         briefing:{
             title: this.title,
             description: this.description
         },
-        assigned_users: [this.u._id]
+        assigned_users: [this.id]
     }
-    console.log(typeof this.status )
     this.serverService.add(this.todo, 'http://localhost:9000/api/todos').subscribe(
     (response)=> console.log(response),
 )
@@ -112,9 +107,7 @@ checkValid(){
     
     
     for(let i = 0; i < input.length; i++){
-        console.log(input[i])
         if(input[i].classList.contains('ng-invalid')){
-            console.log(input[i])
             invalid = true;
         }
     }
