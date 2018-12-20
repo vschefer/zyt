@@ -1,0 +1,20 @@
+
+<h2>{{project.name}}</h2>
+<p>Briefing</p>
+<mat-form-field >
+  <input matInput type="text" name="name" ngDefaultControl [(ngModel)]="title" placeholder="{{project.briefing.title}}">
+  <span id="nameError" class="input-error-message" aria-live="polite">Projectame invalid</span>
+</mat-form-field>
+<mat-form-field >
+  <input matInput type="text" name="name" ngDefaultControl [(ngModel)]="description" placeholder="{{project.briefing.description}}">
+  <span id="nameError" class="input-error-message" aria-live="polite">Projectame invalid</span>
+</mat-form-field>
+
+<mat-form-field>
+  <label for="user">User</label>
+  <mat-select class="bla" name="user" ngDefaultControl [(ngModel)]="toAssigned" multiple  (selectionChange)="assigned(toAssigned)">
+    <mat-option class="select-user" *ngFor="let user of users" value="{{user._id}}">{{user.surname}} {{user.first_name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button (click)="updateProject()">Speichern</button>

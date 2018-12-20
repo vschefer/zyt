@@ -4,19 +4,23 @@
     import { UpdateProjectComponent } from '../update-project/update-project.component';
     @Injectable()
     export class UpdateProjectService {
+        id
     constructor(public dialog: MatDialog){
-
+        
     }
  
-    
-        openDialog(id): void {
-            const dialogRef = this.dialog.open(UpdateProjectComponent, {
-           
-            });
-            dialogRef.afterClosed().subscribe(result => {
-                console.log('The dialog was closed');
+    openDialog(projectId): void {
+       console.log(projectId)
           
-              });
-            }
+        const dialogRef = this.dialog.open(UpdateProjectComponent, {
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+      
+          });
+     
+        }
+    
+
     
     }

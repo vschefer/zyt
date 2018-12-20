@@ -2,30 +2,26 @@
     <div class="project" *ngFor="let project of data">
         <h2>{{project.name}}</h2>
         <p>{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
-
+        
         <div class="project__briefing">
             <h3>{{project.briefing.title}}</h3>
-
+            
             <p>{{project.briefing.description}}</p>
             <p>{{project.assigned_users[1]}}</p>
         </div>
-        <!-- <div *ngFor="let h of hallo">
-            <p>Hallo</p>
-                <p>{{h.surname}}</p>
-            </div> -->
-            <div *ngFor="let m of toArray(project.project_managers)">
-                    <h4>Kapitään</h4>
-                        {{m.first_name}} {{m.surname}}
-                </div>
-            <div *ngFor="let u of toArray(project.assigned_users)">
-                <h4>Users</h4>
-                    {{u.first_name}} {{u.surname}}
-            </div>
-            
-            <button (click)="openDialog(project._id)">Update</button>
+        <div *ngFor="let m of toArray(project.project_managers)">
+            <h4>Kapitään</h4>
+            {{m.first_name}} {{m.surname}}
+        </div>
+        <div *ngFor="let u of toArray(project.assigned_users)">
+            <h4>Users</h4>
+            {{u.first_name}} {{u.surname}}
+        </div>
+        
+        <app-update-button [parentData]="project._id" ></app-update-button>
     </div>
-  
- 
+    
+    
     
 </div>
 

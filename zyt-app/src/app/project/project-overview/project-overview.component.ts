@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
-
+import {UpdateProjectService } from './project-overview.service'
+import {MatDialog} from '@angular/material';
+import { UpdateProjectComponent } from '../update-project/update-project.component';
 @Component({
   selector: 'app-project-overview',
   templateUrl: './project-overview.component.html',
-  styleUrls: ['./project-overview.component.scss']
+  styleUrls: ['./project-overview.component.scss'],
+  inputs: ['parentData'],
 })
 
 export class ProjectOverviewComponent implements OnInit {
@@ -20,7 +23,11 @@ export class ProjectOverviewComponent implements OnInit {
   left: number = 0
   right:number = 0
   count:number = 0
-  constructor(private serverService: ServerService) { 
+  id
+  
+  
+  constructor(private serverService: ServerService, public dialog: MatDialog) { 
+    
     
     
   }
@@ -46,7 +53,7 @@ getNextProject(){
   let project = document.querySelector('.project').clientWidth
   this.left += project;
   this.count += 1;
-
+  
   if(this.count <= (projectCount -1)){
     wrapper.setAttribute("style","transform: translate("+ -(this.left) + "px)" );
     if(this.count == (projectCount -1)){
