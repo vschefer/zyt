@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
-
+import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
 
 @Component({
   selector: 'app-add-project',
@@ -14,16 +14,23 @@ export class AddProjectComponent  implements OnInit {
   title:string
   description:string
   capitain:string
-  startDate:any
-  endDate:any
+  start:any
+  deadline:any
   servers:Object
   users:Object
   assigned_users: Object
   right: number = 0
   count:number = 0
+  u: Object
+  user: Object
+  select: Array<String>
+  us:Object;
+  userList:Array<String>;
+  posList:Array<String>;
+  total = 0
   
-  
-  constructor(private serverService: ServerService, public snackBar: MatSnackBar) { 
+  myForm: FormGroup
+  constructor(private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) { 
     
   }
   message = this.name + 'wurde hinzugefügt';
@@ -41,31 +48,83 @@ export class AddProjectComponent  implements OnInit {
     (error) => console.log(error)
   )
 }
+getManager(id) {
+  console.log(id)
+  this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
+  let proj = [];
+  
+  this.u = response.json();
+},
+(error) => console.log(error)
+)
+
+}
+getUser(id) {
+  console.log(this.select)
+  let userList = [];
+  console.log(id)
+  this.select.forEach((user)=>{
+    this.serverService.getAll('http://localhost:9000/api/users/' + user).subscribe((response) => { 
+    this.us = response.json();
+    userList.push(
+      this.us
+    );
+    
+    
+  },
+  (error) => console.log(error)
+)
+})
+
+
+this.userList = userList
+console.log(this.userList)
+}
 
 onSave(){
   let nextButton = document.querySelector('.next')
   let prevButton = document.querySelector('.prev')
   let wrapper = document.querySelector('.wrapper')
+  let posList = [];
+  this.postitionForm.controls[0].value
+  this.postitionForm.controls.forEach((pos)=>{
+    posList.push(
+      pos.value
+    );
+  })
+  posList.forEach((number) =>{
+    let n = number.total_time_offered
+    this.total += n
+  })
+  this.posList = posList
   
   
-  this.servers={
+  this.servers= {
+    project_managers: [
+      this.u
+    ],
+    positions: this.posList,
+    assigned_users: this.userList,
     name: this.name,
-    briefing:{
+    briefing: {
       title: this.title,
       description: this.description
     },
+    start: this.start,
+    deadline: this.deadline,
+    total_time_offered: this.total
   }
   
   this.serverService.add(this.servers, 'http://localhost:9000/api/projects').subscribe(
   (response)=> console.log(response),
 )
-  this.openSnackBar()
-  wrapper.setAttribute("style", "transform: translate( 0px)" );
+this.openSnackBar()
+wrapper.setAttribute("style", "transform: translate( 0px)" );
 
-  prevButton.classList.add('hidden')
-  if(nextButton.classList.contains('hidden')){
-    nextButton.classList.remove('hidden')
-  }
+prevButton.classList.add('hidden')
+if(nextButton.classList.contains('hidden')){
+  nextButton.classList.remove('hidden')
+}
 }  
 
 
@@ -129,10 +188,31 @@ getPreviosPage(){
     nextButton.classList.remove('hidden')
   }
 }
-
+get postitionForm (){
+  return this.myForm.get('positions') as FormArray
+}
 ngOnInit() {
   this.getUsers()
   
+  this.myForm = this.fb.group({
+    positions: this.fb.array([this.fb.group({
+      name: '',
+      total_time_offered: '',
+    })
+  ])
+})
+}
+
+addPosition(){
+  const pos = this.fb.group({
+    name: '',
+    total_time_offered: ''
+  })
+  this.postitionForm.push(pos)
+  console.log()
+}
+deletePostition(i){
+  this.postitionForm.removeAt(i)
 }
 
 }
