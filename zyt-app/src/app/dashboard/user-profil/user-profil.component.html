@@ -1,14 +1,12 @@
 <div class="user">
     <div class="user-avatar-wrapper">
-            <div class="user-avatar" style="background-image: url('../../../assets/images/avatar/baer-avatar.jpg')">
-            </div>
+        <div *ngIf="avatar" class="user-avatar" [ngStyle]="{'background-image': 'url(' + avatar + ')'}"></div>
     </div>
-   
+
     <div class="user-name">
-        <strong>Max Mustermann</strong>
-        <p>Programmierung Frontend</p>
+        <strong>{{first_name}} {{surname}}</strong>
     </div>
- 
+
 
 </div>
 <button (click)="openDialog()">Ändere deinen avatar</button>
