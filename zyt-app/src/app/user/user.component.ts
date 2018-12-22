@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import {MatDialog} from '@angular/material';
 import { ServerService } from '../server.service';
-import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component'
+import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -13,7 +16,8 @@ export class UserComponent implements OnInit {
 
   count:number = 0
   currentUser:Array<Object>
-  constructor(private serverService: ServerService) { 
+  id:String
+  constructor(private serverService: ServerService, public dialog: MatDialog) { 
   }
 
   getUsers(){
@@ -98,16 +102,30 @@ let windowHeight = window.innerHeight
       (error) => console.log(error)
     )
   }
-  editUser(userID) {
-    this.serverService.getAll('http://localhost:9000/api/users/' + userID).subscribe(
-      (response)=> {
-        this.currentUser = Array.of(response.json());
-        console.log(this.currentUser);
-      },
-      (error) => console.log(error)
-    )
-
-    console.log(`edit user clicked: ${userID}`);
+  editUser(id): void {
+    
+    this.id = id
+    console.log(this.id)
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
+      data: {
+        id: this.id
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+    
+    
+    
+    // this.serverService.getAll('http://localhost:9000/api/users/' + userID).subscribe(
+    //   (response)=> {
+    //     this.currentUser = Array.of(response.json());
+    //     console.log(this.currentUser);
+    //   },
+    //   (error) => console.log(error)
+    // )
+    // 
+    // console.log(`edit user clicked: ${userID}`);
   }
   ngOnInit() {
     this.getUsers()
