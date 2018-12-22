@@ -22,7 +22,7 @@ export class UserEditComponent implements OnInit {
 
   changeAvatar(avatarID) {
     const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
-    this.serverService.put('//localhost:9000/api/users/' + userID, {avatar: avatarID}).subscribe((response) => {
+    this.serverService.put({avatar: avatarID}, '//localhost:9000/api/users/' + userID).subscribe((response) => {
       console.log(response);
       },
       (error) => console.log(error)
