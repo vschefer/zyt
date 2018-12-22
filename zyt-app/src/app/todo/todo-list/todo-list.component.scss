@@ -3,7 +3,7 @@
 }
 .todo{
     list-style: none;
-     display: grid;
+    display: grid;
     grid-template-columns:0.5fr 4fr 1fr;
     grid-gap: 10px;
     grid-auto-rows: minmax(10px, auto);
@@ -14,4 +14,100 @@
     background-repeat: no-repeat;
     width: 1rem;
     height: 1rem;;
+}
+
+.wrapper{
+    background: #F3DE8A;
+    height: 100vh;
+}
+
+
+
+
+.all__todo-wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  
+    
+}
+
+.all__todo{
+    height: 100vh;
+    transition: all 0.5s;
+    position: relative;
+    display: flex;
+    &.start{
+        background-color: #EDBF85;
+    }
+    &.work{
+        background-color: #A8B7AB;
+    }
+    &.test{
+        background-color: #F3DE8A;
+    }
+    &.done{
+        background-color: #EB9486;
+    }
+    
+    h2{
+        writing-mode: vertical-rl;
+        margin: 0.3rem;
+        width: auto;
+    }
+}
+.todo__container {
+    margin-left: 1rem;
+    margin-right: 3rem;
+    width: 100%;
+}
+.res {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    background-color: gray;
+    position: relative;
+}
+.add {
+    background: transparent;
+    background-image: url('../../../assets/images/plus.svg');
+    width: 1.5rem;
+    height: 1.5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    margin: 0.5rem;
+}
+.shrink{
+    width: 5vw;
+    
+    .res{
+        opacity: 0;
+    }
+    .add {
+        background: transparent;
+        background-image: url('../../../assets/images/plus.svg');
+        width: 1.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
+
+.grow{
+    transition: all 0.5s;
+    width: calc(80vw - 300px);
+    .res{
+        opacity: 1;
+    }
+    
+    .add {
+        background: transparent;
+        background-image: url('../../../assets/images/minus.svg');
+        width: 1.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
 }

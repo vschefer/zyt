@@ -5,84 +5,86 @@
     <div clas="all__ressource-header-time">
         {{monday}} - {{friday}}
     </div>
-    
+    {{firstDay + 4}}
 </div>
 <div class="all__ressource-wrapper">
     <div class="all__ressource mon">
         <h2>Monday</h2> <button class="add" (click)="showDay($event)"></button>
-<div class="ressource__container">
-        <div class="res">
-                <strong>HSR - Webstie</strong><br>
-                <span>Max Muster</span><br>
-                <span>4h</span>
-            </div>
-            <div class="res">
-                    <span>HSR - Webstie</span>
-                    <span>4h</span>
-                </div>
-                <div class="res">
-                        <span>HSR - Webstie</span>
-                        <span>4h</span>
-                    </div>
-</div>
-      
+        <div class="ressource__container" >
+                <div *ngFor="let res of weekRes">
+                        <div *ngFor="let d of res.days; let i = index">
+                            <div  class="res" *ngIf="firstDay === res.days[i]">
+                                <strong>{{res.project.briefing.title}}</strong><br>
+                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.start | dateFormat}}</span>
+                            </div>
+                        </div>
+                    </div> 
+        </div>
+        
     </div>
     <div class="all__ressource di">
         <h2>Thuesday</h2> 
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
             
-                    <div class="res">
-                            <span>HSR - Webstie</span>
-                            <span>4h</span>
-                        </div>
-                        <div class="res">
-                                <span>HSR - Webstie</span>
-                                <span>4h</span>
+                <div *ngFor="let res of weekRes">
+                        <div *ngFor="let d of res.days; let i = index">
+                            <div  class="res" *ngIf="firstDay + 1 === res.days[i]">
+                                <strong>{{res.project.briefing.title}}</strong><br>
+                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.start | dateFormat}}</span>
                             </div>
+                        </div>
+                    </div> 
+            
         </div>
     </div>
     <div class="all__ressource mi">
         <h2>Wednesday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div class="res">
-                        <strong>HSR - Webstie</strong><br>
-                        <span>Max Muster</span><br>
-                        <span>4h</span>
-                    </div>
-                    
+                <div *ngFor="let res of weekRes">
+                        <div *ngFor="let d of res.days; let i = index">
+                            <div  class="res" *ngIf="firstDay + 2 === res.days[i]">
+                                <strong>{{res.project.briefing.title}}</strong><br>
+                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.start | dateFormat}}</span>
+                            </div>
+                        </div>
+                    </div> 
+            
         </div>
     </div>
     <div class="all__ressource do">
         <h2>Thursday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div class="res">
-                        <strong>HSR - Webstie</strong><br>
-                        <span>Max Muster</span><br>
-                        <span>4h</span>
-                    </div>
-                    <div class="res">
-                            <span>HSR - Webstie</span>
-                            <span>4h</span>
-                        </div>
-                        <div class="res">
-                                <span>HSR - Webstie</span>
-                                <span>4h</span>
+                <div *ngFor="let res of weekRes">
+                        <div *ngFor="let d of res.days; let i = index">
+                            <div  class="res" *ngIf="firstDay + 3 === res.days[i]">
+                                <strong>{{res.project.briefing.title}}</strong><br>
+                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.start | dateFormat}}</span>
                             </div>
+                        </div>
+                    </div> 
         </div>
     </div>
     <div class="all__ressource fr">
         <h2>Friday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div class="res">
-                        <strong>HSR - Webstie</strong><br>
-                        <span>Max Muster</span><br>
-                        <span>4h</span>
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay + 4 === res.days[i]">
+                        <strong>{{res.project.briefing.title}}</strong><br>
+                        <span>{{res.total_time_expected}}</span><br>
+                        <span>{{res.start | dateFormat}}</span>
                     </div>
-               
+                </div>
+            </div> 
+            
         </div>
     </div>
 </div>

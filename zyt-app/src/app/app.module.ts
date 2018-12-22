@@ -41,7 +41,11 @@ import { OrderModule } from 'ngx-order-pipe';
 //import { IndexKeyPipe } from './pipes/index-key.pipe';
 
 import { AuthGuard } from './_guards';
-
+import { UpdateProjectComponent } from './project/update-project/update-project.component';
+import { UpdateProjectService } from './project/project-overview/project-overview.service';
+import { UpdateButtonComponent } from './project/project-overview/update-button/update-button.component';
+import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
+import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 
 
 @NgModule({
@@ -70,18 +74,18 @@ import { AuthGuard } from './_guards';
     AddProjectComponent,
     AddUserComponent,
     DateFormatPipe,
-    //IndexKeyPipe
-
-
-
-
-
-
+    UpdateProjectComponent,
+    UpdateButtonComponent,
+    TodoDetailComponent,
+    UpdateButtonTodoComponent,
+    AddTodoComponent
 
   ],
   entryComponents: [
     TimeFormComponent,
     UserEditComponent,
+    UpdateProjectComponent,
+    TodoDetailComponent
   ],
   exports: [
     UserEditComponent
@@ -145,6 +149,14 @@ import { AuthGuard } from './_guards';
         canActivate: [AuthGuard]
       },
       {
+        path: 'todo',
+        component: TodoListComponent,
+      },
+      {
+        path: 'todo/add',
+        component: AddTodoComponent,
+      },
+      {
         path: 'login',
         component: LoginComponent
       },
@@ -153,7 +165,7 @@ import { AuthGuard } from './_guards';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService],
+  providers: [SideBarService, AddResourceComponent, ServerService, UpdateProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

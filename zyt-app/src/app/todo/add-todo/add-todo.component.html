@@ -1,0 +1,37 @@
+<div class="wrapper">
+    
+    <div class="add-todo">
+        <mat-form-field>
+            <mat-select placeholder="Job" [(value)]="selectedJob" (selectionChange)="bleh(selectedJob)">
+                <mat-option value="{{p._id}}" *ngFor="let p of data">{{p.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        
+        <div *ngIf="selectedJob">
+            <mat-form-field>
+                
+                <mat-select placeholder="Users" [(value)]="selectedUser" (selectionChange)="getUser(selectedUser)">
+                    <mat-option *ngFor="let user of proj" [value]="user._id">{{ user.first_name }} {{user.surname}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <div *ngIf="selectedUser">
+                    <mat-form-field>
+                            <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title"  [(value)]="title" required>
+                        </mat-form-field>
+                        
+                        <mat-form-field>
+                            <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description">
+                            </textarea>
+                        </mat-form-field>
+            </div>
+      
+            <button (click)="checkValid()">Todo hinzufügen</button>
+            <span class="error-message hidden">Bitte fülle alle Felder aus</span>
+        </div>
+        
+    </div>
+    </div>
+
+    <app-dashboard></app-dashboard>

@@ -1,15 +1,79 @@
+<div class="wrapper">
+  <div class="all__todo-wrapper">
+    <div class="all__todo proj grow">
+      <h2>Welches Projekt</h2> <button class="add" (click)="showDay($event)"></button>
+      <div class="todo__container">
+        <mat-form-field>
+          <mat-select placeholder="Job" [(value)]="selectedJob" (selectionChange)="bleh(selectedJob)">
+            <mat-option value="{{p._id}}" *ngFor="let p of data">{{p.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+      </div>
+      
+    </div>
+    <div class="all__todo start shrink">
+      <h2>Erstellt</h2> <button class="add" (click)="showDay($event)"></button>
+      <div class="todo__container">
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 0">
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+        </div>
 
-<div class="list">
-  <h2>ToDo's</h2>
+      </div>
+    </div>
+    
+    
+    <div class="all__todo work shrink">
+      <h2>In Arbeit</h2> 
+      <button class="add" (click)="showDay($event)"></button>
+      <div class="todo__container">
+        
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 1">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="all__todo test shrink">
+      <h2>Ready for test</h2>
+      <button class="add" (click)="showDay($event)"></button>
+      <div class="todo__container">
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 2">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="all__todo done shrink">
+      <h2>Done</h2>
+      <button class="add" (click)="showDay($event)"></button>
+      <div class="todo__container">
+        <div  *ngFor="let p of proj">
+          <div  class="res" *ngIf="p.status == 3">
+            
+            <span>{{p.briefing.title}}</span><br>
+            <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 
-  <ul class="todo-list">
-    <li class="todo">
-        <input type="checkbox">
-        <label>Programmiere die Angular Zyt App</label>
-        <button class="visit-todo" (click)="tog()"></button>
-    </li>  
-  </ul>
-</div>
+<app-dashboard></app-dashboard>
 
 
 

@@ -1,47 +1,45 @@
 <div class="add-ressource">
-
-    <h1>
-            Ressourcen Hinzufügen
-    </h1>
-    <a href="ressource/all">Show All</a>
-    <form>
+  
+  <h1>
+    Ressourcen Hinzufügen
+  </h1>
+  <a href="ressource/all">Show All</a>
+  <form>
+    <mat-form-field>
+      <mat-select placeholder="Job" (selectionChange)="getProject(selectedProjectID)" [(value)]="selectedProjectID" [(ngModel)]="proj">
+        <mat-option *ngFor="let project of data" value="{{project._id}}">{{project.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div *ngIf="selectedProjectID">
+      
       <mat-form-field>
-        <mat-select placeholder="Job" (selectionChange)="getProject(selectedProjectID)" [(value)]="selectedProjectID">
-          <mat-option *ngFor="let project of data" value="{{project._id}}">{{project.name}}</mat-option>
+        
+        <!-- <mat-select placeholder="Product ID"  (change)="showProductDetails(selectedUser)" [(value)]="selectedUser" >
+          <mat-option *ngFor="let product of products" [value]="product.id"> {{ product.name }} </mat-option>
+        </mat-select> -->
+        
+        <mat-select placeholder="Users" [(value)]="selectedUser" multiple>
+          <mat-option *ngFor="let user of users" [value]="user._id">{{ user.first_name }} {{user.surname}}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <div *ngIf="selectedProjectID">
-
-        <mat-form-field>
-
-          <!-- <mat-select placeholder="Product ID"  (change)="showProductDetails(selectedUser)" [(value)]="selectedUser" >
-            <mat-option *ngFor="let product of products" [value]="product.id"> {{ product.name }} </mat-option>
-          </mat-select> -->
-
-          <mat-select placeholder="Users" [(value)]="selectedUser">
-            <mat-option *ngFor="let user of users" [value]="user._id">{{ user }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-
-      <mat-form-field>
-        <input matInput [matDatepicker]="pickerStart" placeholder="Choose Start Date">
-        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-        <mat-datepicker #pickerStart></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-            <input matInput [matDatepicker]="pickerEnd" placeholder="Choose End Date">
-            <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-            <mat-datepicker #pickerEnd></mat-datepicker>
-          </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Hour per Day">
-      </mat-form-field>
-
-      <button type="submit" (click)="openSnackBar('Resource wurde hinzugefügt', 'Ok')">Speichern</button>
-    </form>
+    </div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerStart" placeholder="Choose Start Date">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerEnd" placeholder="Choose End Date">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Hour per Day" (ngModel)="time">
+    </mat-form-field>
+    
+    <button type="submit" (click)="onSave()">Speichern</button>
+  </form>
 </div>
 
 <app-dashboard></app-dashboard>
