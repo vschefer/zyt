@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
   down: number = 0
 
   count:number = 0
+  currentUser:Array<Object>
   constructor(private serverService: ServerService) { 
   }
 
@@ -80,6 +81,33 @@ let windowHeight = window.innerHeight
     
 
 
+  }
+  deactivateUser(userID) {
+    this.serverService.put({archived: true}, 'http://localhost:9000/api/users/' + userID).subscribe(
+      (response)=> {
+        this.getUsers();
+      },
+      (error) => console.log(error)
+    )
+  }
+  activateUser(userID) {
+    this.serverService.put({archived: false}, 'http://localhost:9000/api/users/' + userID).subscribe(
+      (response)=> {
+        this.getUsers();
+      },
+      (error) => console.log(error)
+    )
+  }
+  editUser(userID) {
+    this.serverService.getAll('http://localhost:9000/api/users/' + userID).subscribe(
+      (response)=> {
+        this.currentUser = Array.of(response.json());
+        console.log(this.currentUser);
+      },
+      (error) => console.log(error)
+    )
+
+    console.log(`edit user clicked: ${userID}`);
   }
   ngOnInit() {
     this.getUsers()
