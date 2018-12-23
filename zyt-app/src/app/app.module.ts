@@ -143,7 +143,7 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
         canActivate: [AuthGuard]
       },
       {
-        path: 'ressouce',
+        path: 'ressource',
         component: AddResourceComponent,
         canActivate: [AuthGuard]
       },
