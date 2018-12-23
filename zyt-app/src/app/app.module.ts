@@ -154,11 +154,13 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
       },
       {
         path: 'todo',
-        component: TodoListComponent,
+        component: TodoListComponent,,
+        canActivate: [AuthGuard]
       },
       {
         path: 'todo/add',
-        component: AddTodoComponent,
+        component: AddTodoComponent,,
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',
