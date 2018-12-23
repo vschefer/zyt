@@ -12,7 +12,7 @@ export class NavigationComponent implements OnInit {
 
   constructor() { }
 
-  isAdmin() {
+  admin() {
     const helper = new JwtHelperService();
     const token = JSON.parse(localStorage.getItem('currentUser')).token;
     const decodedToken = helper.decodeToken(token);
@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isAdmin();
+    this.admin();
   }
 
 }
