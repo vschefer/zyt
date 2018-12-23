@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
+  isAdmin: Boolean;
+
   constructor() { }
 
+  isAdmin() {
+    const helper = new JwtHelperService();
+    const token = JSON.parse(localStorage.getItem('currentUser')).token;
+    const decodedToken = helper.decodeToken(token);
+    
+    this.isAdmin = decodedToken.admin;
+  }
+
   ngOnInit() {
+    this.isAdmin();
   }
 
 }
