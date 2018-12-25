@@ -1,28 +1,56 @@
 <div class="wrapper" id="wrapper" #wrapper>
     <div class="project" *ngFor="let project of data">
-        <h2>{{project.name}}</h2>
-        <p>{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
-        
-        <div class="project__briefing">
-            <h3>{{project.briefing.title}}</h3>
+        <div class="overflow-wrapper">
+            <h2>{{project.name}}</h2>
+            <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
             
-            <p>{{project.briefing.description}}</p>
-            <p>{{project.assigned_users[1]}}</p>
+            <section class="project__briefing">
+                <h3>Briefing</h3>
+                <strong>{{project.briefing.title}}</strong>
+                <p>{{project.briefing.description}}</p>
+            </section>
+            
+            <hr *ngIf="project.positions != ''">
+            <h3 *ngIf="project.positions != ''">Positionen</h3>
+            <section *ngFor="let u of toArray(project.positions)" class="positions">
+                <div class="progress-bar__wrapper">
+                    <p>  {{u.name}} </p>
+                    <div class="progress-bar" style="width: 100%">
+                        <div class="progress-bar__progressing"  
+                        [ngStyle]="{width: u.total_time_offered*100/project.total_time_offered + '%'}"></div>
+                    </div>
+                    <span>{{u.total_time_offered*100/project.total_time_offered}}%</span>
+                    <div  *ngFor="let e of toArray(project.expenses)">
+                        
+                        <div *ngIf="u._id == e.position">
+                            {{e.recorded_time}} 
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <hr>
+            <h3>Am Projekt beteiligt</h3>
+            <section class="container">
+                <div class="users__wrapper">
+                    <div class="manager">
+                        <h4>Kapitään</h4>
+                        <div *ngFor="let m of toArray(project.project_managers)">
+                            {{m.first_name}} {{m.surname}}
+                        </div>
+                    </div>
+                    <div class="users">
+                        <h4>Users</h4>
+                        <p *ngFor="let u of toArray(project.assigned_users)">
+                            {{u.first_name}} {{u.surname}}
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <app-update-button [parentData]="project._id" ></app-update-button>
         </div>
-        <div *ngFor="let m of toArray(project.project_managers)">
-            <h4>Kapitään</h4>
-            {{m.first_name}} {{m.surname}}
-        </div>
-        <div *ngFor="let u of toArray(project.assigned_users)">
-            <h4>Users</h4>
-            {{u.first_name}} {{u.surname}}
-        </div>
-        
-        <app-update-button [parentData]="project._id" ></app-update-button>
     </div>
-    
-    
-    
 </div>
 
 <div class="control">
