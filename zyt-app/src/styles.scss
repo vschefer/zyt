@@ -25,10 +25,10 @@ h1,h2,h3{
 
 app-working-time{
     background-color: #EDBF85;
-    height: 100vh;
+
     flex: 2;
     padding: 0 1rem 0 1rem;
-    width: calc(100vw - 300px)
+
 }
 app-plan{
     background-color: #A8B7AB;
@@ -159,6 +159,7 @@ app-add-resouce{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: #A8B7AB;
+    height: 100vh;
 }
 
 .wrapper{

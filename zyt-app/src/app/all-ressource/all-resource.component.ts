@@ -54,7 +54,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
       this.ressource.forEach(element => { 
         
         if(moment(element.start).isBetween(this.mo.toISOString().slice(0, 10), this.fr.toISOString().slice(0, 10)) 
-        || moment(element.stop).isBetween(this.mo.toISOString().slice(0, 10), this.fr.toISOString().slice(0, 10))){
+        ||element.stop >= this.fr.toISOString().slice(0, 10) || element.stop <= this.fr.toISOString().slice(0, 10)){
           let  startDate = moment(element.start);
           let    endDate = moment(element.stop);
           let s = []
@@ -75,7 +75,6 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
         }
       });
       this.weekRes = weekRes
-      
     },
     (error) => console.log(error)
   )

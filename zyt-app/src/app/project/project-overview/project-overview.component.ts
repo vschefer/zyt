@@ -12,7 +12,7 @@ import { UpdateProjectComponent } from '../update-project/update-project.compone
 })
 
 export class ProjectOverviewComponent implements OnInit {
-  data:Object
+  data
   name:string
   title:string
   description:string
@@ -24,13 +24,12 @@ export class ProjectOverviewComponent implements OnInit {
   right:number = 0
   count:number = 0
   id
+  expenses
+  pos:Array<String>;
+  expens:Array<String>;
   
-  
-  constructor(private serverService: ServerService, public dialog: MatDialog) { 
-    
-    
-    
-  }
+  constructor(private serverService: ServerService, public dialog: MatDialog) { }
+
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])
   }

@@ -1,11 +1,29 @@
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     width: calc(100vw - 300px);
-    
-    &.open{
-        grid-template-columns: repeat(4, 33.33%);
-        overflow: scroll;
-        overflow-y: hidden;
-    } 
+    background: #EDBF85;
+    grid-gap: 2rem;
+    height: 100vh;
+
+}
+.ressource{
+    padding: 0 1rem 0 1rem;
+
+    .ressource__item{
+        background: gray;
+        width: auto;
+        padding: 1rem;
+        margin: 0.5rem;
+
+        p{
+            margin: 0;
+            margin-top: 0.1rem;
+        }
+    }
+}
+.ressource__wrapper{
+    display: flex;
+    flex-direction: column;
 }

@@ -15,6 +15,9 @@ export class TimeFormComponent implements OnInit {
   date
   time: number
   expense: Object
+  specificProject
+  selectedPosition
+  selectedJob
   // activity: string
   constructor( private serverService: ServerService, public snackBar: MatSnackBar) { 
     this.getProject()
@@ -40,17 +43,32 @@ openSnackBar() {
     duration: 5000,
   });
 }
+getThisProject(id) {
+  console.log(id);
+  this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
+  
+  this.specificProject = response.json();
+console.log(this.specificProject)
+},
+(error) => console.log(error)
+)
 
+}
+toArray(answers: object) {
+  return Object.keys(answers).map(key => answers[key])
+}
 
 
 postExpense(){
+  console.log(this.selectedPosition)
   this.expense={
-    user: '5c0b00a46ed46412859f29a5',
     recorded_time: this.time,
     comment: this.activity,
-    affected_date: this.date
+    affected_date: this.date,
+    project: this.selectedJob,
+    position: this.selectedPosition
   }
-  
+  console.log(this.expense)
   this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe(
   (response)=> console.log(response),
 )

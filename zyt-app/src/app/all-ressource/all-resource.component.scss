@@ -4,6 +4,11 @@
     background-color: #8D99AE;
     display: grid;
     grid-template-columns: 10% 80%; 
+
+    div{
+        display: flex;
+        align-items: center;
+    }
 }
 .all__ressource-wrapper{
     display: grid;
@@ -46,7 +51,7 @@
 .res {
     padding: 1rem;
     margin: 1rem 0.5rem;
-    background-color: darkcyan;
+    background-color: gray;
 }
 .add {
     background: transparent;
