@@ -28,15 +28,16 @@ export class AddProjectComponent  implements OnInit {
   userList:Array<String>;
   posList:Array<String>;
   total = 0
-  
+  selectedUser
   myForm: FormGroup
   constructor(private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) { 
     
   }
-  message = this.name + 'wurde hinzugefügt';
-  action = 'Ok';
+  
   openSnackBar() {
-    this.snackBar.open(this.message, this.action, {
+    let message = this.name + 'wurde hinzugefügt';
+    let action = 'Ok';
+    this.snackBar.open(message,action, {
       duration: 5000,
     });
   }
@@ -49,7 +50,6 @@ export class AddProjectComponent  implements OnInit {
   )
 }
 getManager(id) {
-  console.log(id)
   this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
   let proj = [];
   
@@ -60,9 +60,7 @@ getManager(id) {
 
 }
 getUser(id) {
-  console.log(this.select)
   let userList = [];
-  console.log(id)
   this.select.forEach((user)=>{
     this.serverService.getAll('http://localhost:9000/api/users/' + user).subscribe((response) => { 
     this.us = response.json();
@@ -75,10 +73,7 @@ getUser(id) {
   (error) => console.log(error)
 )
 })
-
-
 this.userList = userList
-console.log(this.userList)
 }
 
 onSave(){
@@ -98,13 +93,12 @@ onSave(){
   })
   this.posList = posList
   
-  
   this.servers= {
     project_managers: [
-      this.u
+      this.capitain
     ],
     positions: this.posList,
-    assigned_users: this.userList,
+    assigned_users: this.select,
     name: this.name,
     briefing: {
       title: this.title,
@@ -209,7 +203,6 @@ addPosition(){
     total_time_offered: ''
   })
   this.postitionForm.push(pos)
-  console.log()
 }
 deletePostition(i){
   this.postitionForm.removeAt(i)
