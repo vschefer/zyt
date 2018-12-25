@@ -5,18 +5,14 @@
     <input matInput >
   </mat-form-field> -->
   <mat-form-field>
-    <mat-select placeholder="Job" [(ngModel)]="selectedJob">
+    <mat-select placeholder="Job" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
       <mat-option value="{{p._id}}" *ngFor="let p of projects">{{p.name}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Position">
-      <mat-option value="Programmierung Frontend">Programmierung Frontend</mat-option>
-      <mat-option value="Programmierung Backend">Programmierung Backend</mat-option>
-      <mat-option value="Grafik">Grafik</mat-option>
-      <mat-option value="Administration">Administration</mat-option>
-      <mat-option value="Online Marketing">Online Marketing</mat-option>
-      <mat-option value="Lesezeit">Lesezeit</mat-option>
+
+  <mat-form-field *ngIf="selectedJob">
+    <mat-select placeholder="Position" [(value)]="selectedPosition">
+      <mat-option  value="{{postition._id}}" *ngFor="let postition of toArray(specificProject.positions)">{{postition.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
