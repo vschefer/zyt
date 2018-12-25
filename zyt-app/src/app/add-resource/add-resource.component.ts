@@ -36,7 +36,6 @@ export class AddResourceComponent  implements OnInit {
 )
 }
 getProject(id) {
-  console.log(id);
   this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
   let users = [];
   
@@ -51,24 +50,25 @@ getProject(id) {
   });
   
   this.users = users;
-  console.log(this.users);
   this.project = project
 },
 (error) => console.log(error)
 )
 
 }
+getTime(e){
+  this.time = e.target.value
+}
 
 onSave(){
   let nextButton = document.querySelector('.next')
   let prevButton = document.querySelector('.prev')
   let wrapper = document.querySelector('.wrapper')
-  console.log(this.proj)
   
   this.ressource={
     project: this.proj,
-    user: this.selectedUser,
-    recorded_time: this.time
+    assigned_user: this.selectedUser.toString(),
+    total_time_expected: this.time
     
   }
   
