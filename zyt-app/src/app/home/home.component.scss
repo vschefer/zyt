@@ -1,9 +1,10 @@
+@import '../styles/colors.scss';
 .wrapper{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     width: calc(100vw - 300px);
-    background: #EDBF85;
+    background: $fuchsia;
     grid-gap: 2rem;
     height: 100vh;
 
