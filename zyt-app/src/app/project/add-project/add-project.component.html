@@ -13,14 +13,14 @@
     <mat-form-field>
       <label for="capitain">Projektleiter</label>
       
-      <mat-select  name="capitain" ngDefaultControl  [(value)]="capitain" (selectionChange)="getManager(capitain)">
+      <mat-select  name="capitain" ngDefaultControl [(ngModel)]="capitain"  [(value)]="capitain" (selectionChange)="getManager(capitain)">
         <mat-option  *ngFor="let user of users" value="{{user._id}}">{{user.surname}} {{user.first_name}}</mat-option>
       </mat-select>
     </mat-form-field>
     
     <mat-form-field>
       <label for="user">User</label>
-      <mat-select  name="user" ngDefaultControl [(ngModel)]="select" [(value)]="user" multiple (selectionChange)="getUser(user)">
+      <mat-select  name="user" ngDefaultControl [(ngModel)]="select" [(value)]="selectedUser" multiple (selectionChange)="getUser(user)">
         <mat-option  *ngFor="let user of users" value="{{user._id}}">{{user.surname}} {{user.first_name}}</mat-option>
       </mat-select>
     </mat-form-field>

@@ -24,10 +24,10 @@ export class ServerService {
         this.auth();
         return  this.http.get(url,{headers: this.headers});
     }
-    put(servers: any, url: string){
-        this.headers = new Headers();
-        this.auth()
-        return  this.http.put(url, servers,{headers: this.headers});
-    }
 
+    put(url:string, data:object) {
+        this.headers = new Headers();
+        this.auth();
+        return  this.http.put(url, data, {headers: this.headers});
+    }
 }

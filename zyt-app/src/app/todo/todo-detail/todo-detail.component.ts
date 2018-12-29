@@ -17,28 +17,26 @@ export class TodoDetailComponent extends UpdateButtonTodoComponent implements On
   todo: Object
   briefing:Array<String>;
   selectStatus
-  update: Object
+  update
   state
   constructor(
-    private serverService: ServerService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<TodoDetailComponent>
-  ) { 
-    super(dialog)
-    console.log(this.data.id)
-  }
-  
-  bleh() {
-    console.log(this.data)
-    this.serverService.getAll('http://localhost:9000/api/todos/' + this.data.id).subscribe((response) => {
+    private serverService: ServerService,
+    public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, 
+    private mdDialogRef: MatDialogRef<TodoDetailComponent>) { 
+      super(dialog)
+    }
     
-    this.todo = response.json();
-    
-    console.log(this.todo);
-  },
-  (error) => console.log(error)
-)
+    bleh() {
+      this.serverService.getAll('http://localhost:9000/api/todos/' + this.data.id).subscribe((response) => {
+      this.todo = response.json();
+      
+    },
+    (error) => console.log(error)
+  )
 }
 
 updateState(){
+  
   
   let nextButton = document.querySelector('.next')
   let prevButton = document.querySelector('.prev')
@@ -50,7 +48,7 @@ updateState(){
     
   }
   
-  this.serverService.put(this.update, 'http://localhost:9000/api/todos/' + this.data.id).subscribe(
+  this.serverService.put('http://localhost:9000/api/todos/' + this.data.id, this.update).subscribe(
   (response)=> console.log(response),
 )
 
