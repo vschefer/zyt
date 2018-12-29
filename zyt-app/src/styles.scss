@@ -4,6 +4,16 @@
 $questrial :'Questrial', sans-serif;
 $viga: 'Viga', sans-serif;
 $rubik: 'Allerta', sans-serif;
+
+// $blue: #455C7B;
+// $violett: #685C79;
+// $bordaux: #AC6C82;
+// $fuchsia: #DA727E;
+// $yellow: #FFBC67;
+// $warning: #DB2955;
+@import '../src/app/styles/colors.scss';
+
+
 body{
     margin:0;
     color: white;
@@ -17,15 +27,8 @@ h1,h2,h3{
     font-weight: normal;
     width: 100%;
 }
-// body.open{
-//     app-working-time,app-plan,app-todo-list,app-todo-detail{
-//         height: 98vh;
-//     } 
-// }
 
 app-working-time{
-    background-color: #EDBF85;
-
     flex: 2;
     padding: 0 1rem 0 1rem;
 
@@ -37,31 +40,17 @@ app-plan{
     padding: 0 1rem 0 1rem;
 }
 app-todo-list{
-    background-color: #F3DE8A;
     height: 100vh;
 }
-// app-todo-detail.is-open{
-//     background-color: #EB9486;
-//     height: 100vh;
-//     flex: 2;
-//     padding: 0 1rem 0 1rem;
-// }
 app-user{
     grid-row: 1 / 3;
     grid-column: 1 / span 2;
     height: 100vh;
     width: calc(100vw - 300px);
-    background-color: #A8B7AB;
-
-    .wrapper{
-        position: absolute;
-         grid-template-columns: 50% 50%;
-         transition: transform 0.5s ease-out;
-     }
-
+    background-color: $bordeux;
 }
 app-dashboard{
-    background-color: #93B6BF;
+    background-color: $blue;
     height: 100vh;
     position: fixed;
     z-index: 2;
@@ -80,7 +69,6 @@ app-time{
 button{
     padding: 0.5rem 1rem;
     height: 3rem;
-    background: #F8F32B;
     border: none;
     font-weight: bold;
     text-transform: uppercase;
@@ -116,49 +104,18 @@ app-project-overview{
     grid-column: 1 / span 2;
     height: 100vh;
     width: calc(100vw - 300px);
-    background-color: #A8B7AB;
+    background-color: $bordeux;
+}
 
-    .wrapper{
-       position: absolute;
-        grid-template-columns: repeat(100, calc(100vw - 300px));
-        transition: transform 0.5s ease-out;
-    }
-    .project{
-        // background-color: #EB9486;
-        height: 98vh;
-        flex: 2;
-        padding: 0 1rem 0 1rem;
-        max-width: 100%;
-    }
-}
-app-add-project{
-    .wrapper{
-        position: absolute;
-         grid-template-columns: repeat(100, calc(100vw - 300px));
-         transition: transform 0.5s ease-out;
-     }
-     .project-form__page{
-         // background-color: #EB9486;
-         height: 98vh;
-         flex: 2;
-         padding: 0 1rem 0 1rem;
-         max-width: 100%;
-     }
-}
 app-user{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     position: relative;
-
-    .control{
-        position: absolute;
-        bottom: 0;
-    }
 }
 app-add-resouce{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: #A8B7AB;
+    background-color: $bordeux;
     height: 100vh;
 }
 
@@ -166,12 +123,6 @@ app-add-resouce{
     display: grid;
     grid-template-columns: repeat(3, 33.33%);
     width: calc(100vw - 300px);
-    
-    &.open{
-        grid-template-columns: repeat(4, 33.33%);
-        overflow: scroll;
-        overflow-y: hidden;
-    } 
 }
 
 input{
@@ -182,7 +133,7 @@ input.ng-touched:invalid + .input-error-message{
     display: block;
     position: absolute;
     bottom: 0.5rem;
-    color: red;
+    color: $warning;
 
 }
 
@@ -276,19 +227,10 @@ app-detail-todo-button{
     button{
         height: 100%;
         cursor: pointer;
+        background: transparent;
+        color: white;
     }
    
-}
-app-add-todo{
-    .wrapper{
-        background: cadetblue;
-        height: 100vh;
-        display: flex;
-        width: 60%;
-        justify-content: center;
-        width: calc(100vw - 300px);
-    }
-    
 }
 
 mat-form-field{
@@ -299,10 +241,10 @@ mat-form-field{
 app-update-project{
     display: flex;
     flex-direction: column;
-    // background: gray;
     color: gray;
 
     mat-form-field span {
         color: gray;
     }
 }
+// @import '../src/app/user/user.component.scss';
