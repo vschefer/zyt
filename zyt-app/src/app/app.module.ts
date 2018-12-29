@@ -38,7 +38,7 @@ import { HttpModule } from '@angular/http';
 import { AddUserComponent } from './user/add-user/add-user.component'
 import { DateFormatPipe } from './pipes/format-date.pipe';
 import { OrderModule } from 'ngx-order-pipe';
-//import { IndexKeyPipe } from './pipes/index-key.pipe';
+import {MatButtonModule} from '@angular/material/button'
 
 import { AuthGuard } from './_guards';
 import { UpdateProjectComponent } from './project/update-project/update-project.component';
@@ -107,6 +107,7 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
     MatRadioModule,
     HttpModule,
     OrderModule,
+    MatButtonModule,
     RouterModule.forRoot([
       {
         path: 'home',
