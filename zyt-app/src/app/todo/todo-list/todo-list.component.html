@@ -17,7 +17,7 @@
       <div class="todo__container">
         <div  *ngFor="let p of proj">
           <div  class="res" *ngIf="p.status == 0">
-            <span>{{p.briefing.title}}</span><br>
+            <p>{{p.briefing.title}}</p><br>
             <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
           </div>
         </div>
@@ -34,7 +34,7 @@
         <div  *ngFor="let p of proj">
           <div  class="res" *ngIf="p.status == 1">
             
-            <span>{{p.briefing.title}}</span><br>
+            <p>{{p.briefing.title}}</p><br>
             <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
           </div>
           
@@ -48,7 +48,7 @@
         <div  *ngFor="let p of proj">
           <div  class="res" *ngIf="p.status == 2">
             
-            <span>{{p.briefing.title}}</span><br>
+            <p>{{p.briefing.title}}</p><br>
             <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
           </div>
           
@@ -63,7 +63,7 @@
         <div  *ngFor="let p of proj">
           <div  class="res" *ngIf="p.status == 3">
             
-            <span>{{p.briefing.title}}</span><br>
+            <p>{{p.briefing.title}}</p><br>
             <app-detail-todo-button [parentData]="p._id" ></app-detail-todo-button>
           </div>
           

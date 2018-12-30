@@ -1,19 +1,17 @@
 <div class="wrapper" id="wrapper">
   <app-working-time></app-working-time>
-
+  
   <div class="ressource">
     <h2>Ressourcen von heute</h2>
     <div class="ressource__wrapper">
-        <div class="ressource__item" *ngFor="let res of weekRes; let i = index"> 
-           
-      <strong> {{res.project.name}}</strong>
-      <p>{{res.total_time_expected}} h</p>
-          </div>
+      <div class="ressource__item" *ngFor="let res of weekRes"> 
+        
+        <strong> {{res.project.name}}</strong>
+        <p>{{res.total_time_expected}} h</p>
+      </div>
     </div>
-   
+    
   </div>
-
-
-
+  
 </div>
 <app-dashboard></app-dashboard>

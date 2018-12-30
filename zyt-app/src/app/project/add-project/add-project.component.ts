@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
   styleUrls: ['./add-project.component.scss']
 })
 export class AddProjectComponent  implements OnInit {
-  name:string
+  name:string = ''
   title:string
   description:string
   capitain:string
@@ -113,6 +113,7 @@ onSave(){
   (response)=> console.log(response),
 )
 this.openSnackBar()
+this.name = ''
 wrapper.setAttribute("style", "transform: translate( 0px)" );
 
 prevButton.classList.add('hidden')
