@@ -78,7 +78,8 @@ updateProject(){
     },
     assigned_users: this.assignedUser
   }
-  this.serverService.add(this.updatedProject, 'http://localhost:9000/api/projects' + this.id).subscribe(
+  console.log(this.updatedProject)
+  this.serverService.put('http://localhost:9000/api/projects/' + this.id, this.updatedProject).subscribe(
   (response)=> console.log(response),
 )
 }
