@@ -1,3 +1,6 @@
-<form style="max-width: 25rem; height: 20rem;" class="user-edit">
-    <img (click)="changeAvatar(avatar._id)" class="choose-avatar" *ngFor="let avatar of avatars" src={{avatar.url}}>
+<form style="max-width: 25rem; height: 20rem;" class="avatar-edit">
+    <div class="avatar-edit__img-wrap" *ngFor="let avatar of avatars">
+      <img tabindex="-1" (click)="changeAvatar(avatar._id)" class="avatar-edit__img" src={{avatar.url}}>
+    </div>
+    <button class="avatar-edit__button" [mat-dialog-close]>Bestätigen</button>
 </form>
