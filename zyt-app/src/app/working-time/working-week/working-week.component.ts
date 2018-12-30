@@ -14,11 +14,13 @@ export class WorkingWeekComponent implements OnInit {
   expenses: any;
   worked: Number;
   chartData: any;
+  toWork: Number;
   constructor() {
     this.getWeek()
   }
   
   loadExpenses() {
+    this.toWork = 30;
     ServerService.getAllStatic('//localhost:9000/api/expenses/week').subscribe(
       (response)=> {
         const result = response.json();
@@ -29,11 +31,12 @@ export class WorkingWeekComponent implements OnInit {
             totalWorkTime += expense.recorded_time;
           });
           this.worked = totalWorkTime;
+          
           this.chartData = [
             {
               data: [
                 this.worked,
-                30,
+                this.toWork - this.worked <= 0 ? 0 : this.toWork - this.worked,
               ],
             },
           ];
