@@ -66,13 +66,67 @@ app-time{
     position: relative;
 }
 
-button{
+button + button {
+  margin-left: .25em;
+}
+
+button {
     padding: 0.5rem 1rem;
     height: 3rem;
     border: none;
     font-weight: bold;
     text-transform: uppercase;
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
 }
+button:hover,
+button:focus {
+  background-color: #ffffff;
+}
+
+.navigation {
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+    &__item {}
+    &__link {
+        @extend button;
+        color: black;
+        text-decoration: none;
+        background-color: rgb(221, 221, 221);
+        display: block;
+        height: auto;
+        padding: 1rem 1rem;
+        margin-bottom: 1px;
+        position: relative;
+        &::before {
+          content: "";
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 25px 0 25px 0;
+          border-color: transparent rgb(255, 255, 255) transparent transparent;
+          position: absolute;
+          top: 50%;
+          right: 100%;
+          margin-top: -25px;
+          transition: border-width .25s;
+        }
+        &:hover,
+        &:focus,
+        &--active {
+          background-color: #ffffff;
+          
+          &::before {
+            border-width: 25px 20px 25px 0;
+          }
+        }
+    }
+}
+
+
+
 .cdk-global-overlay-wrapper{
     position: absolute;
     top:0;

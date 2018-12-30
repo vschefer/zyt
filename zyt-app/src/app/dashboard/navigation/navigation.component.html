@@ -1,17 +1,19 @@
-<ul>
-    <li>
-        <a routerLink="/home" routerLinkActive="active">Dashboard</a>
+<nav class="navigation">
+  <ul class="navigation__list">
+    <li class="navigation__item">
+      <a class="navigation__link" routerLink="/home" routerLinkActive="navigation__link--active">Dashboard</a>
     </li>
-    <li>
-        <a routerLink="/project" routerLinkActive="active">Projekte</a>
-    </li>
-    <li *ngIf="isAdmin">
-        <a routerLink="/users" routerLinkActive="active">User</a>
+    <li class="navigation__item">
+      <a class="navigation__link" routerLink="/project" routerLinkActive="navigation__link--active">Projekte</a>
     </li>
     <li *ngIf="isAdmin">
-        <a routerLink="/ressource" routerLinkActive="active">Ressourcen hinzufügen</a>
+      <a class="navigation__link" routerLink="/users" routerLinkActive="navigation__link--active">User</a>
     </li>
-    <li>
-        <a routerLink="/todo" routerLinkActive="active">todos</a>
+    <li *ngIf="isAdmin">
+      <a class="navigation__link" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
     </li>
-</ul>
+    <li class="navigation__item">
+      <a class="navigation__link" routerLink="/todo" routerLinkActive="navigation__link--active">todos</a>
+    </li>
+  </ul>
+</nav>
