@@ -39,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
       this.updatedUser[key].value === undefined ? delete this.updatedUser[key] : this.updatedUser[key] = this.updatedUser[key].value;
     });
     
-    this.serverService.put(this.updatedUser, 'http://localhost:9000/api/users/' + this.id).subscribe((response)=> console.log(response));
+    this.serverService.put('http://localhost:9000/api/users/' + this.id, this.updatedUser).subscribe((response)=> console.log(response));
   }
 
   ngOnInit() {

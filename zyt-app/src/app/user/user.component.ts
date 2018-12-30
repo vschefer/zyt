@@ -87,7 +87,7 @@ let windowHeight = window.innerHeight
 
   }
   deactivateUser(userID) {
-    this.serverService.put({archived: true}, 'http://localhost:9000/api/users/' + userID).subscribe(
+    this.serverService.put('http://localhost:9000/api/users/' + userID, {archived: true}).subscribe(
       (response)=> {
         this.getUsers();
       },
@@ -95,7 +95,7 @@ let windowHeight = window.innerHeight
     )
   }
   activateUser(userID) {
-    this.serverService.put({archived: false}, 'http://localhost:9000/api/users/' + userID).subscribe(
+    this.serverService.put('http://localhost:9000/api/users/' + userID, {archived: false}).subscribe(
       (response)=> {
         this.getUsers();
       },

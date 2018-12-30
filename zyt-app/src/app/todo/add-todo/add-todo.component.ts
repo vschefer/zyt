@@ -18,7 +18,7 @@ export class AddTodoComponent  implements OnInit {
     description:string
     selectedUser
     status: string
-    u: Object
+    u: any
     projectID
     id
     

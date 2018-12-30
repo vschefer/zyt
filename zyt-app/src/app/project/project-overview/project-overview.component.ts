@@ -24,12 +24,9 @@ export class ProjectOverviewComponent implements OnInit {
   right:number = 0
   count:number = 0
   id
-  expenses
-  pos:Array<String>;
-  expens:Array<String>;
   
   constructor(private serverService: ServerService, public dialog: MatDialog) { }
-
+  
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])
   }
@@ -38,6 +35,15 @@ export class ProjectOverviewComponent implements OnInit {
     this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
     (response)=> {
       this.data = response.json();
+      let msgTotal
+      this.data.forEach(element => {
+        element.positions.forEach(e => {
+          msgTotal = e.expenses.reduce(function(prev, cur) {
+            return prev + cur.recorded_time;
+          }, 0);
+          e.total = msgTotal
+        });
+      });
     },
     (error) => console.log(error) 
   )

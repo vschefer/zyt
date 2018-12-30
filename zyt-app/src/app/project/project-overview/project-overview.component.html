@@ -17,15 +17,10 @@
                     <p>  {{u.name}} </p>
                     <div class="progress-bar" style="width: 100%">
                         <div class="progress-bar__progressing"  
-                        [ngStyle]="{width: u.total_time_offered*100/project.total_time_offered + '%'}"></div>
+                        [ngStyle]="{width: u.total*100/u.total_time_offered + '%'}"></div>
                     </div>
-                    <span>{{u.total_time_offered*100/project.total_time_offered}}%</span>
-                    <div  *ngFor="let e of toArray(project.expenses)">
-                        
-                        <div *ngIf="u._id == e.position">
-                            {{e.recorded_time}} 
-                        </div>
-                    </div>
+                    <span>{{u.total*100/u.total_time_offered | number : '1.2-2'}}%</span>
+             
                 </div>
             </section>
             

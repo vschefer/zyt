@@ -1,33 +1,33 @@
 <div class="add-user__wrapper">
-
-    <form>
-        <div clas="form-bindings">
-                <mat-form-field>
-                        <label for="first_name">Name</label>
-                      <input matInput type="text" name="first_name" ngDefaultControl [(ngModel)]="first_name" required>
-                      <span id="nameError" class="input-error-message" aria-live="polite">Name invalid</span>
-                    </mat-form-field>
-                    <mat-form-field>
-                            <label for="surname">Nachname</label>
-                          <input matInput type="text" name="surname" ngDefaultControl [(ngModel)]="surname" required>
-                          <span id="nameError" class="input-error-message" aria-live="polite">Surname invalid</span>
-                        </mat-form-field>
-        </div>
-           
-                    <mat-form-field>
-                            <label for="email">E-Mail</label>
-                          <input matInput type="text" name="email" ngDefaultControl [(ngModel)]="email" required>
-                          <span id="nameError" class="input-error-message" aria-live="polite">E-Mail invalid</span>
-                        </mat-form-field>
-                        
-                        <div class="avatarList">
-                            <div class="avatar"  *ngFor="let avatar of images">
-                                   
-                                    <img src="{{avatar.url}}" id="{{avatar.id}}" [(ngModel)]="images.id"  (click)="chooseAvatar(images.id)">
-                            </div>
-                            
-                        </div>
-<button (click)="onSave()">Save</button>
-    </form>
+  
+  <form>
+    <div clas="form-bindings">
+      <mat-form-field>
+        <label for="first_name">Name</label>
+        <input matInput type="text" name="first_name" ngDefaultControl [(ngModel)]="first_name" required>
+        <span id="nameError" class="input-error-message" aria-live="polite">Name invalid</span>
+      </mat-form-field>
+      <mat-form-field>
+        <label for="surname">Nachname</label>
+        <input matInput type="text" name="surname" ngDefaultControl [(ngModel)]="surname" required>
+        <span id="nameError" class="input-error-message" aria-live="polite">Surname invalid</span>
+      </mat-form-field>
+    </div>
+    
+    <mat-form-field>
+      <label for="email">E-Mail</label>
+      <input matInput type="text" name="email" ngDefaultControl [(ngModel)]="email" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">E-Mail invalid</span>
+    </mat-form-field>
+    
+    <div class="avatarList">
+      <div class="avatar"  *ngFor="let avatar of images">
+        
+        <img src="{{avatar.url}}" id="{{avatar.id}}" [(ngModel)]="images.id"  (click)="chooseAvatar(images.id)">
+      </div>
+      
+    </div>
+    <button mat-button (click)="onSave()">Save</button>
+  </form>
 </div>
 <app-dashboard></app-dashboard>

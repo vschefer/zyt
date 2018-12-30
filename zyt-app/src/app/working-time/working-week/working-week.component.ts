@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as Charts from 'chart.js'
+import * as Charts from 'chart.js';
+import { ServerService } from '../../server.service';
+
 @Component({
   selector: 'app-working-week',
   templateUrl: './working-week.component.html',
@@ -9,20 +11,54 @@ export class WorkingWeekComponent implements OnInit {
   monday : string;
   sunday : string;
   friday : string;
+  expenses: any;
+  worked: number;
+  chartData: any;
+  toWork: number;
   constructor() {
     this.getWeek()
-    
+  }
+  
+  loadExpenses() {
+    this.toWork = 30;
+    ServerService.getAllStatic('//localhost:9000/api/expenses/week').subscribe(
+      (response)=> {
+        const result = response.json();
+        let totalWorkTime = 0;
+        result.then(res => {
+          console.log(1, res);
+          res.forEach(expense => {
+            totalWorkTime += expense.recorded_time;
+          });
+          this.worked = totalWorkTime;
+          
+          if (this.toWork - this.worked <= 0) {
+            this.toWork = 0;
+          } else {
+            this.toWork = this.toWork - this.worked;
+          }
+          this.chartData = [
+            {
+              data: [
+                this.worked,
+                this.toWork,
+              ],
+            },
+          ];
+          console.log(this.chartData);
+        });
+      },
+      (error) => console.log(error) 
+    )
   }
   chartOptions = {
     responsive: true
   };
   
-  chartData = [
-    { data: [10.5, 30,]},
-    
+  chartLabels = [
+    'worked',
+    'left',
   ];
-  
-  chartLabels = ['+', '-',];
   
   onChartClick(event) {
     console.log(event);
@@ -45,6 +81,7 @@ export class WorkingWeekComponent implements OnInit {
     this.friday =fri.toLocaleDateString('de-DE', options)
   }
   ngOnInit() {
+    this.loadExpenses();
   }
   
 }
