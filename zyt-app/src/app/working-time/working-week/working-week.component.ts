@@ -12,9 +12,9 @@ export class WorkingWeekComponent implements OnInit {
   sunday : string;
   friday : string;
   expenses: any;
-  worked: Number;
+  worked: number;
   chartData: any;
-  toWork: Number;
+  toWork: number;
   constructor() {
     this.getWeek()
   }
@@ -32,11 +32,16 @@ export class WorkingWeekComponent implements OnInit {
           });
           this.worked = totalWorkTime;
           
+          if (this.toWork - this.worked <= 0) {
+            this.toWork = 0;
+          } else {
+            this.toWork = this.toWork - this.worked;
+          }
           this.chartData = [
             {
               data: [
                 this.worked,
-                this.toWork - this.worked <= 0 ? 0 : this.toWork - this.worked,
+                this.toWork,
               ],
             },
           ];
