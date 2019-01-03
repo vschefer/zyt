@@ -69,16 +69,17 @@ getUsers(){
 )
 }
 updateProject(){
-  console.log(this.toAssigned)
-  this.updatedProject={
-    
-    briefing:{
-      title: this.briefingTitle,
-      description: this.briefingDescription
+  console.log(0, this.toAssigned);
+  
+  this.updatedProject = {
+    name: this.name || this.project.name,
+    briefing: {
+      title: this.title || this.project.briefing.title,
+      description: this.description || this.project.briefing.description
     },
-    assigned_users: this.assignedUser
+    assigned_users: this.toAssigned || this.project.assigned_users.map(usr => usr._id)
   }
-  console.log(this.updatedProject)
+  
   this.serverService.put('http://localhost:9000/api/projects/' + this.id, this.updatedProject).subscribe(
   (response)=> console.log(response),
 )
