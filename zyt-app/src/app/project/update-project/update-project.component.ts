@@ -13,8 +13,11 @@ import { User } from '../../_models';
 
 export class UpdateProjectComponent extends UpdateButtonComponent implements OnInit {
   public id: Object
-  project: Object
+  project: any
   users
+  name: String
+  title: String
+  description: String
   updatedProject: Object
   briefingTitle: string
   briefingDescription: string
