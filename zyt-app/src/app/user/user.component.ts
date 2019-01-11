@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import {MatDialog} from '@angular/material';
 import { ServerService } from '../server.service';
-import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component'
+import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -12,7 +15,9 @@ export class UserComponent implements OnInit {
   down: number = 0
 
   count:number = 0
-  constructor(private serverService: ServerService) { 
+  currentUser:Array<Object>
+  id:String
+  constructor(private serverService: ServerService, public dialog: MatDialog) { 
   }
 
   getUsers(){
@@ -80,6 +85,47 @@ let windowHeight = window.innerHeight
     
 
 
+  }
+  deactivateUser(userID) {
+    this.serverService.put({archived: true}, 'http://localhost:9000/api/users/' + userID).subscribe(
+      (response)=> {
+        this.getUsers();
+      },
+      (error) => console.log(error)
+    )
+  }
+  activateUser(userID) {
+    this.serverService.put({archived: false}, 'http://localhost:9000/api/users/' + userID).subscribe(
+      (response)=> {
+        this.getUsers();
+      },
+      (error) => console.log(error)
+    )
+  }
+  editUser(id): void {
+    
+    this.id = id
+    console.log(this.id)
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
+      data: {
+        id: this.id
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+    
+    
+    
+    // this.serverService.getAll('http://localhost:9000/api/users/' + userID).subscribe(
+    //   (response)=> {
+    //     this.currentUser = Array.of(response.json());
+    //     console.log(this.currentUser);
+    //   },
+    //   (error) => console.log(error)
+    // )
+    // 
+    // console.log(`edit user clicked: ${userID}`);
   }
   ngOnInit() {
     this.getUsers()

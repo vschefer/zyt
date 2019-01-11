@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { ServerService } from '../../server.service';
 import {MatDialog} from '@angular/material';
+import { AuthenticationService } from '../../_services';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user-profil',
   templateUrl: './user-profil.component.html',
   styleUrls: ['./user-profil.component.scss']
 })
 export class UserProfilComponent implements OnInit {
-  constructor(public dialog: MatDialog, private serverService: ServerService) { }
+  constructor(public dialog: MatDialog, private serverService: ServerService, private router: Router, private authenticationService: AuthenticationService) { }
   me:any;
   avatar:string;
   first_name:string;
@@ -41,6 +43,11 @@ export class UserProfilComponent implements OnInit {
       },
       (error) => console.log(error)
     )
+  }
+  
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {

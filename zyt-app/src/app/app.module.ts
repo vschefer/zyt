@@ -14,7 +14,7 @@ import { PlanComponent } from './plan/plan.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatSnackBar, MatSnackBarModule, MatRadioButton, MatRadioModule } from '@angular/material';
+import { MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatSnackBar, MatSnackBarModule, MatRadioButton, MatRadioModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AdminComponent } from './admin/admin.component';
@@ -46,6 +46,7 @@ import { UpdateProjectService } from './project/project-overview/project-overvie
 import { UpdateButtonComponent } from './project/project-overview/update-button/update-button.component';
 import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 
 @NgModule({
@@ -78,14 +79,16 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
     UpdateButtonComponent,
     TodoDetailComponent,
     UpdateButtonTodoComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    UpdateUserComponent
 
   ],
   entryComponents: [
     TimeFormComponent,
     UserEditComponent,
     UpdateProjectComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    UpdateUserComponent
   ],
   exports: [
     UserEditComponent
@@ -99,6 +102,7 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatCheckboxModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -140,7 +144,7 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
         canActivate: [AuthGuard]
       },
       {
-        path: 'ressouce',
+        path: 'ressource',
         component: AddResourceComponent,
         canActivate: [AuthGuard]
       },
@@ -152,10 +156,12 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
       {
         path: 'todo',
         component: TodoListComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'todo/add',
         component: AddTodoComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',
