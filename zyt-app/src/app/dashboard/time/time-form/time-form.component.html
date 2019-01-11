@@ -11,8 +11,8 @@
   </mat-form-field>
 
   <mat-form-field *ngIf="selectedJob">
-    <mat-select placeholder="Position" [(value)]="selectedPosition">
-      <mat-option  value="{{postition._id}}" *ngFor="let postition of toArray(specificProject.positions)">{{postition.name}}</mat-option>
+    <mat-select placeholder="Position" [(value)]="selectedPosition" [(ngModel)]="selectedPosition">
+      <mat-option   *ngFor="let postition of toArray(specificProject.positions)" value="{{postition._id}}">{{postition?.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
