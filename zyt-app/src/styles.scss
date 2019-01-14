@@ -278,11 +278,13 @@ app-detail-todo-button{
     top: 0;
     right: 0;
     height: 100%;
+    width: 50%;
     button{
         height: 100%;
         cursor: pointer;
         background: transparent;
         color: white;
+        word-wrap: break-word;
     }
    
 }
