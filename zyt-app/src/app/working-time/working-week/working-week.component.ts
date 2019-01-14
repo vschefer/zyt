@@ -75,6 +75,12 @@ export class WorkingWeekComponent implements OnInit {
     let sun = new Date(curr.setDate(last))
     let fri = new Date(curr.setDate(end))
     
+    const currentYear = new Date();
+
+    if (mon.getFullYear() < currentYear.getFullYear()) {
+        sun.setFullYear(currentYear.getFullYear());
+    }
+    
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     this.monday = mon.toLocaleDateString('de-DE', options)
     this.sunday =sun.toLocaleDateString('de-DE', options)
