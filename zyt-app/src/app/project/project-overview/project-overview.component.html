@@ -1,4 +1,4 @@
-<div class="wrapper" id="wrapper" #wrapper>
+<div *ngIf="data" class="wrapper" id="wrapper" #wrapper>
     <div class="project" *ngFor="let project of data">
         <div class="overflow-wrapper">
             <h2>{{project.name}}</h2>
@@ -6,7 +6,7 @@
             
             <section class="project__briefing">
                 <h3>Briefing</h3>
-                <strong>{{project.briefing.title}}</strong>
+                <strong>{{project?.briefing.title}}</strong>
                 <p>{{project.briefing.description}}</p>
             </section>
             
