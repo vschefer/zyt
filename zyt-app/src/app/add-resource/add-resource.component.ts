@@ -17,6 +17,8 @@ export class AddResourceComponent  implements OnInit {
   time
   project
   proj
+  startDate
+  endDate
   constructor(public snackBar: MatSnackBar, private serverService: ServerService) { }
   message = "Resource wurde hinzugefügt";
   action = "Ok";
@@ -68,7 +70,9 @@ onSave(){
   this.ressource={
     project: this.proj,
     assigned_user: this.selectedUser.toString(),
-    total_time_expected: this.time
+    total_time_expected: this.time,
+    start: this.startDate,
+    stop: this.endDate
     
   }
   

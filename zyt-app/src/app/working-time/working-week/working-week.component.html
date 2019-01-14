@@ -2,12 +2,13 @@
 <p>{{monday}} - {{sunday}}</p>
 <div class="working-week__container">
     <canvas
+        *ngIf="worked"
         baseChart
         [chartType]="'pie'"
         [datasets]="chartData"
-        
+        [labels]="chartLabels"
         [options]="chartOptions"
         [legend]="false"
         (chartClick)="onChartClick($event)">
     </canvas>
-  </div>
+</div>

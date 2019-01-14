@@ -1,7 +1,8 @@
+@import '../styles/colors.scss';
 .all__ressource-header{
     width: 100vw;
     height: 5vh;
-    background-color: #8D99AE;
+    background-color: darken($blue, 20);
     display: grid;
     grid-template-columns: 10% 80%; 
 
@@ -22,19 +23,19 @@
     position: relative;
     display: flex;
     &.mon{
-        background-color: #EDBF85;
+        background-color: $yellow;
     }
     &.di{
-        background-color: #A8B7AB;
+        background-color: $fuchsia;
     }
     &.mi{
-        background-color: #F3DE8A;
+        background-color: $bordeux;
     }
     &.do{
-        background-color: #EB9486;
+        background-color: $violett;
     }
     &.fr{
-        background-color: #93B6BF;
+        background-color: $blue;
     }
 
     h2{

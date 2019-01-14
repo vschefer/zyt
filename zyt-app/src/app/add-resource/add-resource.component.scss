@@ -1,10 +1,17 @@
+@import '../styles/colors.scss';
 .add-ressource{
     grid-column: 1 / span 2;  
     
-    form{
+    .ressouce-form{
         display: flex;
         flex-direction: column;
         margin: 1rem;
         width: 80%;
+    }
+
+    button{
+        color: white;
+        background:  darken($bordeux,20);
+        cursor: pointer;
     }
 }

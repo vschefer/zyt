@@ -1,3 +1,4 @@
+@import '../../styles/colors.scss';
 .todo-list{
     padding:0;
 }
@@ -35,17 +36,64 @@
     transition: all 0.5s;
     position: relative;
     display: flex;
+    &.proj{
+        background-color: $yellow;
+    }
     &.start{
-        background-color: #EDBF85;
+      
+        background-color: $fuchsia;
+
+        .res{
+            background: darken($fuchsia, 20);
+            app-detail-todo-button{
+                background: darken($fuchsia, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
     }
     &.work{
-        background-color: #A8B7AB;
+  
+        background-color: $bordeux;
+        .res{
+            background: darken($bordeux, 20);
+            app-detail-todo-button{
+                background: darken($bordeux, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
     }
     &.test{
-        background-color: #F3DE8A;
+        background-color: darken($bordeux,8);
+           .res{
+            background: darken($bordeux, 22);
+            app-detail-todo-button{
+                background: darken($bordeux, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
     }
     &.done{
-        background-color: #EB9486;
+        display: flex;
+        background-color: $violett;
+        .res{
+            background: darken($violett, 20);
+            app-detail-todo-button{
+                background: darken($violett, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
     }
     
     h2{
@@ -62,7 +110,6 @@
 .res {
     padding: 1rem;
     margin: 1rem 0.5rem;
-    background-color: gray;
     position: relative;
 }
 .add {
@@ -82,6 +129,7 @@
     
     .res{
         opacity: 0;
+        display: none;
     }
     .add {
         background: transparent;
@@ -99,6 +147,7 @@
     width: calc(80vw - 300px);
     .res{
         opacity: 1;
+        display: flex;
     }
     
     .add {

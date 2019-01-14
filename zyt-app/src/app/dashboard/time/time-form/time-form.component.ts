@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../../../server.service'
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar, MatInputModule, MatSelectModule} from '@angular/material';
 
 @Component({
   selector: 'app-time-form',
