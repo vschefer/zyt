@@ -54,23 +54,24 @@
 .progress-bar{
     height: 1rem;
     background: seashell;
+    width: 90%;
+    margin: 0 auto;
 }
 .progress-bar__progressing{
     height: 1rem;
     background: $violett;
 }
-.positions{
-    
-    p{
-        padding-right: 2rem;
-    }
-}
+
 .progress-bar__wrapper{
     width: 100%;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-column-gap: 0.5rem;
 
+    p{
+        hyphens: auto;
+    }
 
     span{
         margin-left: 0.5rem;

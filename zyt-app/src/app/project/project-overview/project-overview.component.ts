@@ -47,6 +47,7 @@ export class ProjectOverviewComponent implements OnInit {
     },
     (error) => console.log(error) 
   )
+  this.checkProgressbar()
 }
 
 getNextProject(){
@@ -92,10 +93,30 @@ getPreviosPage(){
     nextButton.classList.remove('hidden')
   }
 }
-
+checkProgressbar(){
+  
+  setTimeout(function () {
+    let progressBars = document.querySelectorAll('.progress-bar__progressing');
+    let arr = []
+    for(let i = 0; i < progressBars.length; i++){
+      arr.push(progressBars[i])
+    }
+    
+    arr.forEach(progressBar => {
+      let progress = progressBar.style.width
+      let progressNumber = progress.replace('%','');
+      if(progressNumber >= 100){
+        progressBar.style.backgroundColor = '#e45061';
+        progressBar.style.width =  '100%';
+      }
+    });
+  }, 2000);
+  
+  
+}
 
 ngOnInit() {
-  this.getProject()
+  this.getProject()  
 }
 
 }
