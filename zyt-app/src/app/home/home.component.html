@@ -3,13 +3,17 @@
   
   <div class="ressource">
     <h2>Ressourcen von heute</h2>
-    <div class="ressource__wrapper">
+
+    <div *ngIf="weekRes; else noRessource" class="ressource__wrapper">
       <div class="ressource__item" *ngFor="let res of weekRes"> 
         
         <strong> {{res.project.name}}</strong>
         <p>{{res.total_time_expected}} h</p>
       </div>
     </div>
+    <ng-template #noRessource>
+      <p>Noch keine Ressoucen erfasst. Bitte melde dich bei deinem Projektleiter</p>
+    </ng-template>
     
   </div>
   
