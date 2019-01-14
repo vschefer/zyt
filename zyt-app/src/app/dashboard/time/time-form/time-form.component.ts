@@ -56,13 +56,18 @@ toArray(answers: object) {
 
 
 postExpense(){
+  console.log(this.selectedPosition);
+  const month = this.date.getUTCMonth() + 1; //months from 1-12
+  const day = this.date.getUTCDate() + 2;
+  const year = this.date.getUTCFullYear();
   this.expense={
-    recorded_time: this.time.toString(),
+    recorded_time: this.time,
     comment: this.activity,
-    affected_date: this.date,
+    affected_date: `${year}-${month}-${day}`,
     project: this.selectedJob,
     position: this.selectedPosition
   }
+  console.log(this.expense)
   this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe(
   (response)=> console.log(response),
 )
