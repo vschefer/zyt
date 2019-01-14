@@ -4,28 +4,34 @@
     <mat-label>Job</mat-label>
     <input matInput >
   </mat-form-field> -->
+  <label>Projekt</label>
   <mat-form-field>
-    <mat-select placeholder="Job" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
+    <mat-select [(placeholder)]="selectedJob" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
       <mat-option value="{{p._id}}" *ngFor="let p of projects">{{p.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field *ngIf="selectedJob && specificProject">
-    <mat-select placeholder="Position" [(value)]="selectedPosition">
-      <mat-option  value="{{postition._id}}" *ngFor="let postition of toArray(specificProject.positions)">{{postition.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <ng-template [ngIf]="selectedJob && specificProject">
+    
+    <label>Position</label>
+    <mat-form-field floatLabel="never">
+      <mat-select [(placeholder)]="selectedPositionName" [(value)]="selectedPosition" (selectionChange)="getPositionName(selectedPosition)">
+        <mat-option value="{{position._id}}" *ngFor="let position of toArray(specificProject.positions)">{{position.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-template>
+  
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+    <input matInput [matDatepicker]="picker" placeholder="Datum" [(ngModel)]="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   
   <mat-form-field>
-    <input matInput type="number" placeholder="Input" [(ngModel)]="time">
+    <input matInput type="number" placeholder="Zeitaufwand" [(ngModel)]="time">
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Aktivität" [(ngModel)]="activity">
+    <input matInput type="text" placeholder="Kommentar" [(ngModel)]="activity">
   </mat-form-field>
   <button type="submit" [mat-dialog-close] (click)="postExpense()" >Speichern</button>
 </div>
