@@ -19,9 +19,13 @@
         </li>
       </ul>
     </li>
-    
     <li *ngIf="isAdmin">
-      <a class="navigation__link" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
+      <a class="navigation__link" routerLink="/ressource/all" routerLinkActive="navigation__link--active">Alle Ressourcen anzeigen</a>
+      <ul class="navigation__sub">
+        <li *ngIf="isAdmin">
+          <a class="navigation__link" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
+        </li>
+      </ul>
     </li>
     <li class="navigation__item">
       <a class="navigation__link" routerLink="/todo" routerLinkActive="navigation__link--active">todos</a>
@@ -31,6 +35,5 @@
         </li>
       </ul>
     </li>
-    
   </ul>
 </nav>
