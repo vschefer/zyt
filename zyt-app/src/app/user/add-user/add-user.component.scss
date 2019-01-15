@@ -24,9 +24,16 @@ form{
 }
 .avatar{
     margin: 0.5rem;
+    cursor: pointer;
     img{
         width: 5rem;
         height: 5rem;
-
+        &:hover,
+        &:focus,
+        &:active {
+            transform: scale(1.1);
+        }
     }
+
+ 
 }

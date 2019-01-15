@@ -15,49 +15,10 @@ surname: string
 email: string
 avatar: Object
 avatars: Object
-avatarId: number
+avatarId
 avatarUrl:string
-public images = [{
-    name: 'Hase',
-    id: 1,
-    url: '../../../assets/images/avatar/rabbit-avatar.jpg',
-    choose: false
-  },{
-    name: 'Bär',
-    id: 2,
-    url: '../../../assets/images/avatar/baer-avatar.jpg',
-    choose: false
-  },{
-    name: 'Biber',
-    id: 3,
-    url:'../../../assets/images/avatar/biber-avatar.jpg',
-    choose: false
-  },{
-    name: 'Eule',
-    id: 4,
-    url: '../../../assets/images/avatar/eule-avatar.jpg',
-    choose: true
-  }, {
-    name: 'Fuchs',
-    id: 5,
-    url: '../../../assets/images/avatar/fuchs-avatar.jpg',
-    choose: false,
-  },{
-    name: 'Koala',
-    id: 6,
-    url: '../../../assets/images/avatar/koala-avatar.jpg',
-    choose: false,
-  },{
-    name: 'Luchs',
-    id: 7,
-    url: '../../../assets/images/avatar/luchs-avatar.jpg',
-    choose: false
-  },{
-    name: 'Wolf',
-    id: 8,
-    url:'../../../assets/images/avatar/wolf-avatar.jpg',
-    choose: false
-  }]
+password
+
 
   constructor(private serverService: ServerService, public snackBar: MatSnackBar) { }
 
@@ -70,9 +31,10 @@ public images = [{
     }
 
 chooseAvatar(avatarId){
-    avatarId= this.avatarId
-    console.log(this.avatarId)
-    console.log(this.avatarUrl)
+  console.log(this)
+  console.log(avatarId)
+    this.avatarId = avatarId
+
 }
     
   onSave(){
@@ -86,12 +48,10 @@ chooseAvatar(avatarId){
       first_name: this.first_name,
       surname: this.surname,
       email: this.email,
-      'avatar': {
-        id: this.chooseAvatar(this.avatarId),
-        url: this.avatarUrl
-      }
+      avatar:this.avatarId,
+      password: this.password,
     }
-    console.log(this.first_name)
+    console.log(this.user)
     
     
        
@@ -111,6 +71,7 @@ getAvatars(){
     this.serverService.getAll('http://localhost:9000/api/avatars').subscribe(
         (response)=> {
           this.avatars = response.json();
+          console.log(this.avatars)
         },
         (error) => console.log(error)
       )

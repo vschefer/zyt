@@ -1,6 +1,5 @@
 <div class="add-user__wrapper">
   
-  <form>
     <div clas="form-bindings">
       <mat-form-field>
         <label for="first_name">Name</label>
@@ -19,15 +18,18 @@
       <input matInput type="text" name="email" ngDefaultControl [(ngModel)]="email" required>
       <span id="nameError" class="input-error-message" aria-live="polite">E-Mail invalid</span>
     </mat-form-field>
+    <mat-form-field>
+      <label for="password">Passwort</label>
+      <input matInput type="text" name="pasword" ngDefaultControl [(ngModel)]="password" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">password invalid</span>
+    </mat-form-field>
     
     <div class="avatarList">
-      <div class="avatar"  *ngFor="let avatar of images">
-        
-        <img src="{{avatar.url}}" id="{{avatar.id}}" [(ngModel)]="images.id"  (click)="chooseAvatar(images.id)">
+      <div class="avatar"  *ngFor="let avatar of avatars">
+        <img src="{{avatar.url}}"  name="avatar._id" ngDefaultControl [(ngModel)]="avatar._id"  (click)="chooseAvatar(avatar._id)">
       </div>
       
     </div>
     <button mat-button (click)="onSave()">Save</button>
-  </form>
 </div>
 <app-dashboard></app-dashboard>
