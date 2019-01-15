@@ -28,7 +28,7 @@
   </mat-form-field>
   
   <mat-form-field>
-    <input matInput type="number" placeholder="Zeitaufwand" [(ngModel)]="time">
+    <input matInput type="number" placeholder="Zeitaufwand" (input)="onTimeChange($event.target.value)" [(ngModel)]="time">
   </mat-form-field>
   <mat-form-field>
     <input matInput type="text" placeholder="Kommentar" [(ngModel)]="activity">

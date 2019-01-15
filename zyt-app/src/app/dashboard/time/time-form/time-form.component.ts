@@ -19,6 +19,8 @@ export class TimeFormComponent implements OnInit {
   selectedPosition
   selectedPositionName
   selectedJob
+  message
+  action
   constructor( private serverService: ServerService, public snackBar: MatSnackBar) { 
     this.getProject()
   }
@@ -35,8 +37,7 @@ export class TimeFormComponent implements OnInit {
   ) 
 }
 
-message = this.time + 'wurde für das Project ' + this.selecedJob + ' hinzugefügt';
-action = 'Ok';
+
 openSnackBar() {
   this.snackBar.open(this.message, this.action, {
     duration: 5000,
@@ -63,6 +64,9 @@ getPositionName(id) {
   debugger;
 }
 
+onTimeChange(val) {
+  this.time = val;
+}
 
 postExpense(){
   console.log(this.selectedPosition);
@@ -82,6 +86,8 @@ postExpense(){
   this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe(
   (response)=> console.log(response),
 )
+this.message = this.time + 'h wurde für das Project ' + this.specificProject.name + ' hinzugefügt';
+this.action = 'Ok';
   this.openSnackBar()
 
 }
