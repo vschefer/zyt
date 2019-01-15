@@ -5,6 +5,11 @@
     </li>
     <li class="navigation__item">
       <a class="navigation__link" routerLink="/project" routerLinkActive="navigation__link--active">Projekte</a>
+      <ul class="navigation__sub">
+        <li *ngIf="isAdmin">
+          <a class="navigation__link" routerLink="/project/add" routerLinkActive="navigation__link--active">Projekt hinzufügen</a>
+        </li>
+      </ul>
     </li>
     <li *ngIf="isAdmin">
       <a class="navigation__link" routerLink="/users" routerLinkActive="navigation__link--active">User</a>
