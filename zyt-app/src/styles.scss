@@ -103,8 +103,22 @@ button {
         &:hover,
         &:focus,
         &--active {
+          background-color: $fuchsia;
+        }
+    }
+    &__sub {
+      list-style: none;
+      padding: 0 0 0 0;
+      
+      a {
+        text-transform: uppercase;
+        padding-left: 2rem;
+        font-weight: normal;
+        
+        &.navigation__link--active {
           background-color: $bordeux;
         }
+      }
     }
 }
 
