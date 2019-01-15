@@ -78,48 +78,11 @@ button {
     height: 3rem;
     border: none;
     font-weight: bold;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     cursor: pointer;
 }
 .mat-datepicker-toggle-default-icon {
   fill: #000;
-}
-
-.navigation {
-    &__list {
-        list-style: none;
-        padding: 0;
-    }
-    &__item {}
-    &__link {
-        @extend button;
-        color: white;
-        text-decoration: none;
-        display: block;
-        height: auto;
-        padding: 1rem 1rem;
-        margin-bottom: 1px;
-        position: relative;
-        &:hover,
-        &:focus,
-        &--active {
-          background-color: $fuchsia;
-        }
-    }
-    &__sub {
-      list-style: none;
-      padding: 0 0 0 0;
-      
-      a {
-        text-transform: uppercase;
-        padding-left: 2rem;
-        font-weight: normal;
-        
-        &.navigation__link--active {
-          background-color: $bordeux;
-        }
-      }
-    }
 }
 
 

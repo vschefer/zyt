@@ -1,37 +1,37 @@
 <nav class="navigation">
   <ul class="navigation__list">
     <li class="navigation__item">
-      <a class="navigation__link" routerLink="/home" routerLinkActive="navigation__link--active">Dashboard</a>
+      <a class="navigation__link navigation__link--hover after navigation__link--level1" routerLink="/home" routerLinkActive="navigation__link--active">Dashboard</a>
     </li>
     <li class="navigation__item">
-      <a class="navigation__link" routerLink="/project" routerLinkActive="navigation__link--active">Projekte</a>
+      <a class="navigation__link navigation__link--hover after navigation__link--level2" routerLink="/project" routerLinkActive="navigation__link--active">Projekte</a>
       <ul *ngIf="isAdmin" class="navigation__sub">
         <li class="navigation__item-sub">
-          <a class="navigation__link" routerLink="/project/add" routerLinkActive="navigation__link--active">Projekt hinzufügen</a>
+          <a class="navigation__link navigation__link--hover after navigation__link--level2" routerLink="/project/add" routerLinkActive="navigation__link--active">Projekt hinzufügen</a>
         </li>
       </ul>
     </li>
     <li *ngIf="isAdmin" class="navigation__item">
-      <a class="navigation__link" routerLink="/users" routerLinkActive="navigation__link--active">User</a>
+      <a class="navigation__link navigation__link--hover after navigation__link--level3" routerLink="/users" routerLinkActive="navigation__link--active">User</a>
       <ul class="navigation__sub">
         <li class="navigation__item-sub">
-          <a class="navigation__link" routerLink="/users/add" routerLinkActive="navigation__link--active">User hinzufügen</a>
+          <a class="navigation__link navigation__link--hover after navigation__link--level3" routerLink="/users/add" routerLinkActive="navigation__link--active">User hinzufügen</a>
         </li>
       </ul>
     </li>
     <li class="navigation__item">
-      <a class="navigation__link" routerLink="/ressource/all" routerLinkActive="navigation__link--active">Alle Ressourcen anzeigen</a>
+      <a class="navigation__link navigation__link--hover after navigation__link--level4" routerLink="/ressource/all" routerLinkActive="navigation__link--active">Alle Ressourcen anzeigen</a>
       <ul *ngIf="isAdmin" class="navigation__sub">
         <li class="navigation__item-sub">
-          <a class="navigation__link" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
+          <a class="navigation__link navigation__link--hover after navigation__link--level4" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
         </li>
       </ul>
     </li>
     <li class="navigation__item">
-      <a class="navigation__link" routerLink="/todo" routerLinkActive="navigation__link--active">todos</a>
+      <a class="navigation__link navigation__link--hover after navigation__link--level5" routerLink="/todo" routerLinkActive="navigation__link--active">todos</a>
       <ul class="navigation__sub">
         <li class="navigation__item-sub">
-          <a class="navigation__link" routerLink="/todo/add" routerLinkActive="navigation__link--active">Todo hinzufügen</a>
+          <a class="navigation__link navigation__link--hover after navigation__link--level5" routerLink="/todo/add" routerLinkActive="navigation__link--active">Todo hinzufügen</a>
         </li>
       </ul>
     </li>

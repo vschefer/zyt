@@ -1,0 +1,127 @@
+@import '../../styles/colors.scss';
+.navigation__item {
+    width: 80%;
+    margin: 0 auto;
+}
+
+a,a:visited,a:hover,a:active{
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    position:relative;
+    transition:0.5s color ease;
+    text-decoration:none;
+    color:#fff;
+}
+
+a:hover,
+.navigation__link--active{
+    color: #fff;
+}
+
+a.after:after,
+a.navigation__link--active::before,
+a.navigation__link--active::after{
+    content: "";
+    transition:0.5s all ease;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    position:absolute;
+}
+
+.navigation__link--active{
+    top:-0.25em;
+}
+
+a.after:after{
+    height:5px;
+    height:0.2rem;
+    width:0;
+    bottom:-0.25em;
+    
+    
+}
+.navigation__link--level5::after {
+    background: lighten($blue,20);  
+}
+.navigation__link--level4::after {
+    background: lighten($violett,20);  
+}
+.navigation__link--level3::after {
+    background: $bordeux;  
+}
+.navigation__link--level2::after {
+    background: $fuchsia;  
+}
+.navigation__link--level1::after {
+    background: $yellow;  
+}
+a.navigation__link--active:before,
+a.navigation__link--active:after {
+    width: 100%;
+}
+
+a.navigation__link--hover:before,
+a.navigation__link--hover:after{
+    left:50%;
+    -webkit-transform:translateX(-50%);
+    transform:translateX(-50%);
+}
+
+
+a.after:hover:after,
+a.navigation__link--active:before,
+a.navigation__link--active:after{
+    width:100%;
+}
+
+.navigation__item {
+    position: relative;
+    margin-bottom: 1rem;
+    
+}
+
+.navigation__sub {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.7s ease-in-out 0s;
+}
+.navigation__item-showSub {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.navigation__item:hover > .navigation__sub {
+    max-height: 3rem;
+    transition: all 0.7s ease-in-out 0s;
+}
+.navigation__item-sub {
+    margin-top: 1rem;
+}
+.navigation {
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+    &__link {
+        color: white;
+        text-decoration: none;
+        display: block;
+        height: auto;
+        padding: 0.5rem 0.5rem;
+        margin-bottom: 1px;
+        position: relative;
+        
+    }
+    &__sub {
+        list-style: none;
+        padding: 0 0 0 0;
+        
+        a {
+            padding-left: 2rem;
+            font-weight: normal;
+            
+        }
+    }
+}
