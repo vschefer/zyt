@@ -5,24 +5,24 @@
     </li>
     <li class="navigation__item">
       <a class="navigation__link" routerLink="/project" routerLinkActive="navigation__link--active">Projekte</a>
-      <ul class="navigation__sub">
-        <li *ngIf="isAdmin">
+      <ul *ngIf="isAdmin" class="navigation__sub">
+        <li class="navigation__item-sub">
           <a class="navigation__link" routerLink="/project/add" routerLinkActive="navigation__link--active">Projekt hinzufügen</a>
         </li>
       </ul>
     </li>
-    <li *ngIf="isAdmin">
+    <li *ngIf="isAdmin" class="navigation__item">
       <a class="navigation__link" routerLink="/users" routerLinkActive="navigation__link--active">User</a>
       <ul class="navigation__sub">
-        <li *ngIf="isAdmin">
+        <li *ngIf="isAdmin"  class="navigation__item-sub">
           <a class="navigation__link" routerLink="/users/add" routerLinkActive="navigation__link--active">User hinzufügen</a>
         </li>
       </ul>
     </li>
-    <li *ngIf="isAdmin">
+    <li class="navigation__item">
       <a class="navigation__link" routerLink="/ressource/all" routerLinkActive="navigation__link--active">Alle Ressourcen anzeigen</a>
-      <ul class="navigation__sub">
-        <li *ngIf="isAdmin">
+      <ul *ngIf="isAdmin" class="navigation__sub">
+        <li class="navigation__item-sub">
           <a class="navigation__link" routerLink="/ressource" routerLinkActive="navigation__link--active">Ressourcen hinzufügen</a>
         </li>
       </ul>
@@ -30,7 +30,7 @@
     <li class="navigation__item">
       <a class="navigation__link" routerLink="/todo" routerLinkActive="navigation__link--active">todos</a>
       <ul class="navigation__sub">
-        <li *ngIf="isAdmin">
+        <li *ngIf="isAdmin" class="navigation__item-sub">
           <a class="navigation__link" routerLink="/todo/add" routerLinkActive="navigation__link--active">Todo hinzufügen</a>
         </li>
       </ul>
