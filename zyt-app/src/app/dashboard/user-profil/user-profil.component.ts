@@ -15,14 +15,24 @@ export class UserProfilComponent implements OnInit {
   avatar:string;
   first_name:string;
   surname:string;
+  interval: any;
   openDialog(): void {
+      let inter: any;
       const dialogRef = this.dialog.open(UserEditComponent, {
-
+        
       });
+      inter = setInterval(() => {
+        this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
+          this.me = response.json();
+          this.avatar = this.me.avatar.url;
+          },
+          (error) => console.log(error)
+        );
+      }, 1000);
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-
+        clearInterval(inter);
       });
     }
 
