@@ -17,6 +17,7 @@ export class TimeFormComponent implements OnInit {
   expense: Object
   specificProject
   selectedPosition
+  selectedPositionName
   selectedJob
   constructor( private serverService: ServerService, public snackBar: MatSnackBar) { 
     this.getProject()
