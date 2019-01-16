@@ -1,12 +1,12 @@
 <div class="wrapper">
-    <div class="user" *ngFor="let user of data | orderBy: 'archived' : false"  [style.background]="user.admin ? '#FFBC67': 'transparent'" [style.opacity]="user.archived ? '0.5': '1'">
+    <div [class]="user.admin ? 'user user--admin' : 'user user--employee'" *ngFor="let user of data | orderBy: 'archived' : false"  [style.background]="user.admin ? '#FFBC67': 'transparent'" [style.opacity]="user.archived ? '0.5': '1'">
       <div class="user__container">
             <h2>{{user.first_name}} {{user.surname}}</h2>
             <p>{{user.email}}</p>
 
             <div class="user__actions">
-                <button *ngIf="!user.archived" (click)="deactivateUser(user._id)" class="button button--warning">deactivate</button>
-                <button *ngIf="user.archived" (click)="activateUser(user._id)" class="button button--good">activate</button>
+                <button *ngIf="!user.archived" (click)="deactivateUser(user._id)" class="button button--edit">deactivate</button>
+                <button *ngIf="user.archived" (click)="activateUser(user._id)" class="button button--edit">activate</button>
                 <button (click)="editUser(user._id)" class="button button--edit">Edit</button>
             </div>
       </div>

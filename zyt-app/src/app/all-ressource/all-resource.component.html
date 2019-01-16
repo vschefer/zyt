@@ -1,6 +1,6 @@
 <div class="all__ressource-header">
     <div class="all__ressource-header-back">
-        <a href="/ressource">Go Back</a>
+        <a class="button button--back" routerLink="/">Zum Dashboard</a>
     </div>
     <div clas="all__ressource-header-time">
         {{monday}} - {{friday}}
@@ -14,7 +14,7 @@
                         <div *ngFor="let d of res.days; let i = index">
                             <div  class="res" *ngIf="firstDay === res.days[i]">
                                 <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>                             
+                                <span>{{res.total_time_expected}}h</span><br>                             
                             </div>
                         </div>
                     </div> 
@@ -30,7 +30,7 @@
                         <div *ngFor="let d of res.days; let i = index">
                             <div  class="res" *ngIf="firstDay + 1 === res.days[i]">
                                 <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.total_time_expected}}h</span><br>
                             </div>
                         </div>
                     </div> 
@@ -45,7 +45,7 @@
                         <div *ngFor="let d of res.days; let i = index">
                             <div  class="res" *ngIf="firstDay + 2 === res.days[i]">
                                 <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.total_time_expected}}h</span><br>
                             </div>
                         </div>
                     </div> 
@@ -60,7 +60,7 @@
                         <div *ngFor="let d of res.days; let i = index">
                             <div  class="res" *ngIf="firstDay + 3 === res.days[i]">
                                 <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.total_time_expected}}h</span><br>
                             </div>
                         </div>
                     </div> 
@@ -74,7 +74,7 @@
                         <div *ngFor="let d of res.days; let i = index">
                             <div  class="res" *ngIf="firstDay + 4 === res.days[i]">
                                 <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
+                                <span>{{res.total_time_expected}}h</span><br>
                             </div>
                         </div>
                     </div> 

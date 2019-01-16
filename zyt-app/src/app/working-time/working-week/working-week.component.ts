@@ -43,6 +43,7 @@ export class WorkingWeekComponent implements OnInit {
                 this.worked,
                 this.toWork,
               ],
+              backgroundColor: ['#000', '#ff0'],
             },
           ];
           console.log(this.chartData);
@@ -51,6 +52,14 @@ export class WorkingWeekComponent implements OnInit {
       (error) => console.log(error) 
     )
   }
+  colors = [
+    {
+      backgroundColor: [
+        '#455C7B',
+        '#FFBC67',
+      ]
+    }
+  ]
   chartOptions = {
     responsive: true
   };

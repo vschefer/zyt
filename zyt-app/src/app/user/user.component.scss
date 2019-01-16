@@ -37,3 +37,36 @@
     position: absolute;
     bottom: 0;
 }
+
+.upside,
+.down {
+  bottom: 15px;
+}
+.upside {
+  right: 50%;
+  margin-right: 40px;
+  left: auto;
+}
+.down {
+  left: 50%;
+  margin-left: 40px;
+}
+
+// .button {
+//   color: white;
+//   background-color: $fuchsia;
+//   font-size: 14px;
+//   transition: all .2s;
+//   letter-spacing: .05em;
+// }
+// .button:hover,
+// .button:focus {
+//   background-color: darken($fuchsia, 3%);
+// }
+.button--edit {
+  background-color: darken($bordeux, 20);
+  color: white;
+}
+.user--admin .button--edit {
+  background-color: darken($yellow, 20);
+}

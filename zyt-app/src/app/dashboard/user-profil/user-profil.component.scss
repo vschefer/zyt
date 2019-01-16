@@ -1,22 +1,51 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variable.scss';
 .user{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    padding: 1rem;
+  display: flex;
+  padding: 0 30px;
+  align-items: center;
+  /* margin-top: 1rem; */
+  background-color: rgba(0, 0, 0, 0.13);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .user-avatar-wrapper{
-    padding: 0.2rem;
+    padding: 0;
 }
 .user-avatar{
-    border-radius: 50%;
-    height: 5rem;
-    width: 5rem;
-    background-size: contain;
-    flex: 2;
-    background-repeat: no-repeat;
-    cursor: pointer;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  background-size: contain;
+  flex: 2;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 .user-name{
-    flex:2;
+  padding: 0 0 0 30px;
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+.button-logout {
+  background-color: #707070;
+  color: white;
+  width: 100%;
+  background-image: url(/assets/icons/logout.svg);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  font-size: 1rem;
+  background-position: right 30px center;
+  padding: 1rem;
+  height: auto;
+}
+
+.button-logout__text {
+  opacity: 0;
+  transition: all .25s;
+}
+
+.button-logout:hover .button-logout__text,
+.button-logout:focus .button-logout__text {
+  opacity: 1;
 }

@@ -19,7 +19,7 @@
 .project-form__page{
     height: 100vh;
     background-color: $bordeux;
-    padding: 0 2.5rem;
+    padding: 1rem 2.5rem;
     
     
     mat-form-field{
@@ -37,6 +37,11 @@
         width: 30%;
         margin: 0 2.5% 0 2.5%;
     }
+}
+
+.button--delete-pos {
+  background-color: darken($bordeux, 20);
+  color: white;
 }
 .add-position{
     position: absolute;
