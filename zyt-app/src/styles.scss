@@ -80,6 +80,19 @@ button {
     font-weight: bold;
     // text-transform: uppercase;
     cursor: pointer;
+    display: inline-block;
+}
+
+.colored-button {
+  color: white;
+  background-color: $fuchsia;
+  font-size: 14px;
+  letter-spacing: .05em;
+  transition: all .2s;
+}
+.colored-button:hover,
+.colored-button:focus {
+  background-color: darken($fuchsia, 3%);
 }
 .mat-datepicker-toggle-default-icon {
   fill: #000;
@@ -263,4 +276,5 @@ app-update-project{
         color: gray;
     }
 }
+
 // @import '../src/app/user/user.component.scss';

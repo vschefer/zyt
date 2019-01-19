@@ -61,7 +61,6 @@ getPositionName(id) {
   this.selectedPositionName = this.specificProject.positions.filter((pos) => {
   	return pos._id === id;
   })[0].name;
-  debugger;
 }
 
 onTimeChange(val) {
@@ -81,7 +80,6 @@ postExpense(){
     project: this.specificProject._id,
     position: this.selectedPosition
   }
-  debugger;
   console.log(this.expense)
   this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe(
   (response)=> console.log(response),
