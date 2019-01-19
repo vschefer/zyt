@@ -83,11 +83,3 @@ Das **Backend** wurde selbst entwickelt. Merkmale:
    4. **Konsistenz** nach der Bearbeitung von Dokumenten gewährleistet, indem ```populate()``` eingesetzt wird.
    5. Einsatz **Environment-Variables** für mögliche Konfigurationsanpassungen für Port, jwt Private-Key, Default, Development, Production und Tests.
    6. **Vollständige API-Dokumentation** jedes Endpoints inkl. diverser Request und Response-Beispielen: https://documenter.getpostman.com/view/5816654/RznCqzWF
-
-## Abschliessend
-
-Solltest du Fragen zum Projekt haben, kannst du dich gerne jederzeit melden.
-
-Viele Grüsse
-
-Vanessa Schefer, Michael Fischer
