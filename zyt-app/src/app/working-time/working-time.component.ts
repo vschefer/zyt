@@ -8,17 +8,8 @@ import * as Charts from 'chart.js'
 export class WorkingTimeComponent implements OnInit {
 
   constructor() { }
-  chartOptions = {
-    responsive: true
-  };
 
-  chartData = [
-    { data: [330, 600,], label: 'Account A' },
- 
-  ];
-  onChartClick(event) {
-    console.log(event);
-  }
+
   ngOnInit() {
   }
 
