@@ -107,6 +107,12 @@
     margin-left: 1rem;
     margin-right: 3rem;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mat-form-field {
+    width: 80%;
 }
 .res {
     padding: 1rem;
