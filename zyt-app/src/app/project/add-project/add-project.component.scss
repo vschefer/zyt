@@ -2,18 +2,18 @@
 @import '../../styles/variable.scss';
 .wrapper{
     position: absolute;
-     grid-template-columns: repeat(100, calc(100vw - 300px));
-     transition: transform 0.5s ease-out;
-     @media (max-width: $medium) { 
+    grid-template-columns: repeat(100, calc(100vw - 300px));
+    transition: transform 0.5s ease-out;
+    @media (max-width: $medium) { 
         grid-template-columns: repeat(100, 100vw);
     }
- }
- .project-form__page{
-     height: 98vh;
-     flex: 2;
-     padding: 0 1rem 0 1rem;
-     max-width: 100%;
- }
+}
+.project-form__page{
+    height: 98vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+    max-width: 100%;
+}
 
 .add-project{
     
@@ -44,13 +44,13 @@
 }
 
 .button--delete-pos {
-  background-color: darken($bordeux, 20);
-  color: white;
+    background-color: darken($bordeux, 20);
+    color: white;
 }
 .add-position{
     position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
+    top: 2rem;
+    right: 2rem;
     transform: translate(-50%);
     border-radius: 90px;
     width: 3.5rem;
@@ -74,7 +74,6 @@
     background-color: #EB9486;
 }
 .positions__wrapper{
-    display: flex;
     flex-direction: column;
     height: 75vh;
     flex-direction: column;
@@ -84,7 +83,7 @@
 .position{
     display: flex;
     align-items: center;
-    padding: 3rem 0 3rem 0;
+    padding: 1rem 0 1rem 0;
 }
 .formfield__binding{
     display: flex;
@@ -96,3 +95,7 @@
     align-items: center;
 }
 
+.button--save{
+    color: white;
+    background-color: darken($bordeux, 20);
+}

@@ -21,8 +21,11 @@ export class TimeFormComponent implements OnInit {
   selectedJob
   message
   action
+  today: Date = new Date()
+  
   constructor( private serverService: ServerService, public snackBar: MatSnackBar) { 
     this.getProject()
+    console.log(this.today)
   }
   
   ngOnInit() {

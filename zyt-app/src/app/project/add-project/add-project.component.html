@@ -13,28 +13,32 @@
     <mat-form-field>
       <label for="capitain">Projektleiter</label>
       
-      <mat-select  name="capitain" ngDefaultControl [(ngModel)]="capitain"  [(value)]="capitain" (selectionChange)="getManager(capitain)">
+      <mat-select  name="capitain" ngDefaultControl [(ngModel)]="capitain"  [(value)]="capitain" (selectionChange)="getManager(capitain)" required>
         <mat-option  *ngFor="let user of users" value="{{user._id}}">{{user.surname}} {{user.first_name}}</mat-option>
+        <span id="nameError" class="input-error-message" aria-live="polite">Kapitään is invalid</span>
       </mat-select>
     </mat-form-field>
     
     <mat-form-field>
       <label for="user">User</label>
-      <mat-select  name="user" ngDefaultControl [(ngModel)]="select" [(value)]="selectedUser" multiple (selectionChange)="getUser(user)">
+      <mat-select  name="user" ngDefaultControl [(ngModel)]="select" [(value)]="selectedUser" multiple (selectionChange)="getUser(user)" required>
         <mat-option  *ngFor="let user of users" value="{{user._id}}">{{user.surname}} {{user.first_name}}</mat-option>
+        <span id="nameError" class="input-error-message" aria-live="polite">Add Users</span>
       </mat-select>
     </mat-form-field>
     
     <mat-form-field>
       <label for="start">Startdatum</label>
-      <input matInput [matDatepicker]="start"  name="start" ngDefaultControl [(ngModel)]="startDate">
+      <input matInput [matDatepicker]="start"  name="start" ngDefaultControl [(ngModel)]="startDate" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">Startdatum is invalid</span>
       <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
       <mat-datepicker #start></mat-datepicker>
     </mat-form-field>
     
     <mat-form-field>
       <label for="end">Deadline</label>
-      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate">
+      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">Deadline is invalid</span>
       <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
       <mat-datepicker #end></mat-datepicker>
     </mat-form-field>
@@ -50,10 +54,10 @@
         <div *ngFor="let pos of postitionForm.controls; let i=index" [formGroupName]="i" class="position">
           
           <mat-form-field>
-            <input matInput type="text" formControlName="name" placeholder="position">
+            <input matInput type="text" formControlName="name" placeholder="position" required>
           </mat-form-field>
           <mat-form-field> 
-            <input matInput type="number" formControlName="total_time_offered" >
+            <input matInput type="number" placeholder="Buget in Stunden" formControlName="total_time_offered" required>
           </mat-form-field>
           <button (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
         </div>
@@ -66,15 +70,17 @@
   <div class="project-form__page">
       <h2>füge das Briefing hinzu</h2>
     <mat-form-field>
-      <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title">
+      <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title" required>
+      <span id="nameError" class="input-error-message" aria-live="polite">Briefingtitel is invalid</span>
     </mat-form-field>
     
     <mat-form-field>
-      <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description">
+      <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description" required>
       </textarea>
+      <span id="nameError" class="input-error-message" aria-live="polite">Briefing invalid</span>
     </mat-form-field>
     
-    <button mat-button class="save" (click)="onSave()" >Speichern</button>
+    <button  class="button button--save" (click)="onSave()" routerLink="/">Speichern</button>
     
   </div>
   

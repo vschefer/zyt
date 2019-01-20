@@ -1,12 +1,7 @@
 <div class="time-form">
-  <h3>Arbeitszeit erfassen</h3>
-  <!-- <mat-form-field>
-    <mat-label>Job</mat-label>
-    <input matInput >
-  </mat-form-field> -->
-  <label>Projekt</label>
+  <h1>Arbeitszeit erfassen</h1>
   <mat-form-field>
-    <mat-select [(placeholder)]="selectedJob" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
+    <mat-select placeholder="Job" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
       <mat-option value="{{p._id}}" *ngFor="let p of projects">{{p.name}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -22,7 +17,7 @@
   </ng-template>
   
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Datum" [(ngModel)]="date">
+    <input matInput [matDatepicker]="picker" placeholder="Datum" [(ngModel)]="today">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
