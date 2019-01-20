@@ -1,6 +1,8 @@
+@import '../../styles/colors.scss';
 .avatar-edit {
   display: flex;
   flex-wrap: wrap;
+  max-width: 25rem;
 }
 .avatar-edit__img {
     cursor: pointer;
@@ -9,16 +11,12 @@
 }
 
 .avatar-edit__img-wrap {
-  width: 25%;
-  box-sizing: border-box;
-  padding: 0 .5rem;
-  margin-bottom: -3rem;
+  margin: 0.5rem;
 }
 
 .avatar-edit__img {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 4rem;
+  height: 4rem;
 }
 .avatar-edit__img:hover,
 .avatar-edit__img:focus {
@@ -26,4 +24,27 @@
 }
 .avatar-edit__button {
   width: 100%;
+}
+
+.user__avatar {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -.5rem;
+  margin-right: -.5rem;
+}
+.user__password {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.error__message{
+  color: $fuchsia;
 }

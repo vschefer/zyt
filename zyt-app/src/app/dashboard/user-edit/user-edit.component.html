@@ -1,6 +1,20 @@
-<form style="max-width: 25rem; height: 20rem;" class="avatar-edit">
+<form class="avatar-edit">
+  <div class="user__avatar">
     <div class="avatar-edit__img-wrap" *ngFor="let avatar of avatars">
       <img tabindex="-1" (click)="changeAvatar(avatar._id)" class="avatar-edit__img" src={{avatar.url}}>
     </div>
-    <button class="avatar-edit__button" [mat-dialog-close]>Bestätigen</button>
+  </div>
+  
+  <div class="user__password">
+    <mat-form-field >
+      <input matInput type="text" name="password" ngDefaultControl [(ngModel)]="password" placeholder="Ändere dein Passwort">
+    </mat-form-field>
+    <div *ngIf="password">
+      <mat-form-field >
+        <input matInput type="text" name="passwordRepeat" ngDefaultControl [(ngModel)]="passwordRepeat" placeholder="Wiederhole dein Passwort">
+      </mat-form-field>
+      <span class="error__message" *ngIf="password != passwordRepeat">Passwörter stimmen nicht überrein</span>    
+    </div>
+  </div>
+  <button class="avatar-edit__button" [mat-dialog-close] (click)="changePassword()">Bestätigen</button>
 </form>
