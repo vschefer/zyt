@@ -3,9 +3,8 @@
   <h1>
     Ressourcen Hinzufügen
   </h1>
-  <a href="ressource/all">Show All</a>
   <div class="ressouce-form">
-    <mat-form-field>
+    <mat-form-field class="white">
       <mat-select placeholder="Job" (selectionChange)="getProject(selectedProjectID)" [(value)]="selectedProjectID" [(ngModel)]="proj" name="select-job">
         <mat-option *ngFor="let project of data" value="{{project._id}}">{{project.name}}</mat-option>
       </mat-select>
@@ -13,7 +12,7 @@
     
     <div *ngIf="selectedProjectID">
       
-      <mat-form-field>
+      <mat-form-field class="white">
         <mat-select placeholder="Users" [(value)]="selectedUser" [(ngModel)]="selectedUser" name="selected-User" multiple>
           <mat-option *ngFor="let user of users" [value]="user._id">{{ user.first_name }} {{user.surname}}</mat-option>
         </mat-select>
@@ -21,25 +20,25 @@
       
     </div>
     
-    <mat-form-field>
+    <mat-form-field class="white">
         <label for="start">Startdatum</label>
         <input matInput [matDatepicker]="start"  name="start" ngDefaultControl [(ngModel)]="startDate">
         <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
         <mat-datepicker #start></mat-datepicker>
       </mat-form-field>
       
-      <mat-form-field>
+      <mat-form-field class="white">
         <label for="end">Deadline</label>
         <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate">
         <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
         <mat-datepicker #end></mat-datepicker>
       </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="white">
       <input matInput type="number" placeholder="Hour per Day" [(ngModel)]="time" [(value)]="time" (input)="getTime($event)">
     </mat-form-field>
 
     
-    <button mat-button type="submit" (click)="onSave()">Speichern</button>
+    <button class="colored-button" type="submit" (click)="onSave()">Speichern</button>
   </div>
 </div>
 

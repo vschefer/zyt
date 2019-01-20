@@ -1,84 +1,83 @@
 <div class="all__ressource-header">
     <div class="all__ressource-header-back">
-        <a href="/ressource">Go Back</a>
+        <a class="button button--back" routerLink="/">Zum Dashboard</a>
     </div>
-    <div clas="all__ressource-header-time">
+    <h1 class="sr-only">Alle Ressourcen</h1>
+    <div class="all__ressource-header-time">
         {{monday}} - {{friday}}
     </div>
 </div>
-<div class="all__ressource-wrapper">
-    <div class="all__ressource mon">
+<main class="all__ressource-wrapper">
+    <section class="all__ressource mon">
         <h2>Monday</h2> <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container" >
-                <div *ngFor="let res of weekRes">
-                        <div *ngFor="let d of res.days; let i = index">
-                            <div  class="res" *ngIf="firstDay === res.days[i]">
-                                <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>                             
-                            </div>
-                        </div>
-                    </div> 
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay === res.days[i]">
+                        <strong>{{res.project.name}}</strong><br>
+                        <span>{{res.total_time_expected}}h</span><br>                             
+                    </div>
+                </div>
+            </div> 
         </div>
-        
-    </div>
-    <div class="all__ressource di">
+    </section>
+    <section class="all__ressource di">
         <h2>Thuesday</h2> 
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
             
-                   <div *ngFor="let res of weekRes">
-                        <div *ngFor="let d of res.days; let i = index">
-                            <div  class="res" *ngIf="firstDay + 1 === res.days[i]">
-                                <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
-                            </div>
-                        </div>
-                    </div> 
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay + 1 === res.days[i]">
+                        <strong>{{res.project.name}}</strong><br>
+                        <span>{{res.total_time_expected}}h</span><br>
+                    </div>
+                </div>
+            </div> 
             
         </div>
-    </div>
-    <div class="all__ressource mi">
+    </section>
+    <section class="all__ressource mi">
         <h2>Wednesday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div *ngFor="let res of weekRes">
-                        <div *ngFor="let d of res.days; let i = index">
-                            <div  class="res" *ngIf="firstDay + 2 === res.days[i]">
-                                <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
-                            </div>
-                        </div>
-                    </div> 
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay + 2 === res.days[i]">
+                        <strong>{{res.project.name}}</strong><br>
+                        <span>{{res.total_time_expected}}h</span><br>
+                    </div>
+                </div>
+            </div> 
             
         </div>
-    </div>
-    <div class="all__ressource do">
+    </section>
+    <section class="all__ressource do">
         <h2>Thursday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div *ngFor="let res of weekRes">
-                        <div *ngFor="let d of res.days; let i = index">
-                            <div  class="res" *ngIf="firstDay + 3 === res.days[i]">
-                                <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
-                            </div>
-                        </div>
-                    </div> 
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay + 3 === res.days[i]">
+                        <strong>{{res.project.name}}</strong><br>
+                        <span>{{res.total_time_expected}}h</span><br>
+                    </div>
+                </div>
+            </div> 
         </div>
-    </div>
-    <div class="all__ressource fr">
+    </section>
+    <section class="all__ressource fr">
         <h2>Friday</h2>
         <button class="add" (click)="showDay($event)"></button>
         <div class="ressource__container">
-                <div *ngFor="let res of weekRes">
-                        <div *ngFor="let d of res.days; let i = index">
-                            <div  class="res" *ngIf="firstDay + 4 === res.days[i]">
-                                <strong>{{res.project.name}}</strong><br>
-                                <span>{{res.total_time_expected}}</span><br>
-                            </div>
-                        </div>
-                    </div> 
-            
+            <div *ngFor="let res of weekRes">
+                <div *ngFor="let d of res.days; let i = index">
+                    <div  class="res" *ngIf="firstDay + 4 === res.days[i]">
+                        <strong>{{res.project.name}}</strong><br>
+                        <span>{{res.total_time_expected}}h</span><br>
+                    </div>
+                </div>
+            </div> 
         </div>
-    </div>
-</div>
+    </section>
+</main>

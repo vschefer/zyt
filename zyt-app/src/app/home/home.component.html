@@ -1,17 +1,22 @@
-<div class="wrapper" id="wrapper">
+<main class="wrapper" id="wrapper">
+  <h1 class="sr-only">Übersichtsseite</h1>
   <app-working-time></app-working-time>
   
   <div class="ressource">
     <h2>Ressourcen von heute</h2>
-    <div class="ressource__wrapper">
+
+    <div *ngIf="weekRes" class="ressource__wrapper">
       <div class="ressource__item" *ngFor="let res of weekRes"> 
         
         <strong> {{res.project.name}}</strong>
-        <p>{{res.total_time_expected}} h</p>
+        <p>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</p>
       </div>
+    </div>
+    <div *ngIf="weekRes?.length === 0">
+      <p>Noch keine Ressoucen erfasst. Bitte melde dich bei deinem Projektleiter</p>
     </div>
     
   </div>
   
-</div>
+</main>
 <app-dashboard></app-dashboard>

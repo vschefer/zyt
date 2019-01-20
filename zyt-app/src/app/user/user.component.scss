@@ -3,15 +3,31 @@
     position: absolute;
      grid-template-columns: 50% 50%;
      transition: transform 0.5s ease-out;
+     background: $bordeux;
  }
 .user{
     height: 50vh;
+    border-bottom: 3px solid white;
+
+    p {
+        word-break: break-all;
+        width: 100%;
+        text-align: center;
+    
+    }
+}
+
+.user:nth-child(odd){
+    border-right: 3px solid white;
 }
 .user__container{
     padding: 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: center;
 
     h2{
         width: auto;
@@ -24,4 +40,37 @@
 .control{
     position: absolute;
     bottom: 0;
+}
+
+.upside,
+.down {
+  bottom: 15px;
+}
+.upside {
+  right: 50%;
+  margin-right: 40px;
+  left: auto;
+}
+.down {
+  left: 50%;
+  margin-left: 40px;
+}
+
+// .button {
+//   color: white;
+//   background-color: $fuchsia;
+//   font-size: 14px;
+//   transition: all .2s;
+//   letter-spacing: .05em;
+// }
+// .button:hover,
+// .button:focus {
+//   background-color: darken($fuchsia, 3%);
+// }
+.button--edit {
+  background-color: darken($bordeux, 20);
+  color: white;
+}
+.user--admin .button--edit {
+  background-color: darken($yellow, 20);
 }

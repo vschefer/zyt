@@ -43,6 +43,7 @@ export class WorkingWeekComponent implements OnInit {
                 this.worked,
                 this.toWork,
               ],
+              backgroundColor: ['#000', '#ff0'],
             },
           ];
           console.log(this.chartData);
@@ -51,6 +52,14 @@ export class WorkingWeekComponent implements OnInit {
       (error) => console.log(error) 
     )
   }
+  colors = [
+    {
+      backgroundColor: [
+        '#455C7B',
+        '#FFBC67',
+      ]
+    }
+  ]
   chartOptions = {
     responsive: true
   };
@@ -74,6 +83,12 @@ export class WorkingWeekComponent implements OnInit {
     let mon = new Date(curr.setDate(first))
     let sun = new Date(curr.setDate(last))
     let fri = new Date(curr.setDate(end))
+    
+    const currentYear = new Date();
+
+    if (mon.getFullYear() < currentYear.getFullYear()) {
+        sun.setFullYear(currentYear.getFullYear());
+    }
     
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     this.monday = mon.toLocaleDateString('de-DE', options)
