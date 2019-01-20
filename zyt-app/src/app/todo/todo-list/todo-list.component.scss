@@ -117,7 +117,8 @@
     background: transparent;
     background-image: url('../../../assets/images/plus.svg');
     width: 1.5rem;
-    height: 1.5rem;
+    height: 100vh;
+    transform: rotate(-180deg);
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -135,8 +136,6 @@
     .add {
         background: transparent;
         background-image: url('../../../assets/images/plus.svg');
-        width: 1.5rem;
-        height: 1.5rem;
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
@@ -154,8 +153,6 @@
     .add {
         background: transparent;
         background-image: url('../../../assets/images/minus.svg');
-        width: 1.5rem;
-        height: 1.5rem;
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
@@ -180,6 +177,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    height: 1.5rem;
    }
    .todo__container{
        margin: 0;
