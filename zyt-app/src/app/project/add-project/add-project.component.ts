@@ -158,6 +158,7 @@ export class AddProjectComponent  implements OnInit {
       if(prevButton.classList.contains('hidden')){
         prevButton.classList.remove('hidden')
       }
+      nextButton.classList.remove('readyForClick');
     }
   }
 
@@ -184,7 +185,7 @@ export class AddProjectComponent  implements OnInit {
   get postitionForm (){
     return this.myForm.get('positions') as FormArray
   }
-  
+
   ngOnInit() {
     this.getUsers()
     
@@ -207,4 +208,10 @@ export class AddProjectComponent  implements OnInit {
   deletePostition(i){
     this.postitionForm.removeAt(i)
   }
+
+  checkFormForButton(){
+    let nextButton = document.querySelector('.next')
+    nextButton.classList.add('readyForClick');
+  }
 }
+

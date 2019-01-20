@@ -37,7 +37,7 @@
     
     <mat-form-field>
       <label for="end">Deadline</label>
-      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate" required>
+      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate" required (change)="checkFormForButton()">
       <span id="nameError" class="input-error-message" aria-live="polite">Deadline is invalid</span>
       <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
       <mat-datepicker #end></mat-datepicker>
@@ -57,7 +57,7 @@
             <input matInput type="text" formControlName="name" placeholder="position" required>
           </mat-form-field>
           <mat-form-field> 
-            <input matInput type="number" placeholder="Buget in Stunden" formControlName="total_time_offered" required>
+            <input matInput type="number" placeholder="Buget in Stunden" formControlName="total_time_offered" required (change)="checkFormForButton()">
           </mat-form-field>
           <button (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
         </div>
@@ -77,7 +77,6 @@
     <mat-form-field>
       <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description" required>
       </textarea>
-      <span id="nameError" class="input-error-message" aria-live="polite">Briefing invalid</span>
     </mat-form-field>
     
     <button  class="button button--save" (click)="onSave()" routerLink="/">Speichern</button>

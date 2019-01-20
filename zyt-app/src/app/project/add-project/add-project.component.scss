@@ -24,6 +24,7 @@
     height: 100vh;
     background-color: $bordeux;
     padding: 1rem 2.5rem;
+    padding-right: 5rem;
     
     
     mat-form-field{
@@ -99,3 +100,29 @@
     color: white;
     background-color: darken($bordeux, 20);
 }
+.next {
+    right: 320px;
+    transform: scale(1.4) rotate(180deg);
+}
+.prev {
+    transform: scale(1.4);
+}
+@keyframes arrow {
+    0% {
+        transform: translateX(0)  scale(1.4) rotate(180deg);
+    }
+    50% {
+        transform: translateX(20px)  scale(1.4) rotate(180deg);
+    }
+    100% {
+        transform: translateX(0px)  scale(1.4) rotate(180deg);
+    }
+}
+.next.readyForClick{
+    animation: arrow 2s infinite;
+    
+    &:hover{
+        animation-play-state: paused;
+    }
+}
+
