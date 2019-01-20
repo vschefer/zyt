@@ -22,8 +22,6 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     this.monday
     this.friday
     this.getWeek()
-    console.log(this.now)
-    
   }
   getWeek(){
     let curr = new Date;
@@ -36,7 +34,6 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     let sun = new Date(curr.setDate(last))
     let fri = new Date(curr.setDate(end))
     this.mo = mon
-    console.log(this.firstDay)
     this.lastDay = end
     this.fr = fri
     this.startDay = this.mo.toISOString().slice(0, 10)
@@ -81,10 +78,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
 }
 
 showDay(event){
-  console.log(this)
   let button = event.path[0]
-  
-  
   let weekDays = document.querySelectorAll('.all__ressource')
   let growDay = event.path[1]
   let myArray = Array.from(weekDays)

@@ -44,7 +44,6 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.data.id;
-    console.log(this.id);
     this.getUser();
   }
 

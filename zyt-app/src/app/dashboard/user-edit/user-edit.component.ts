@@ -20,7 +20,6 @@ export class UserEditComponent implements OnInit {
   getAvatars() {
     this.serverService.getAll('//localhost:9000/api/avatars').subscribe((response) => {
       this.avatars = response.json();
-      console.log(this.avatars);
       },
       (error) => console.log(error)
     )

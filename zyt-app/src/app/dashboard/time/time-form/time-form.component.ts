@@ -25,7 +25,6 @@ export class TimeFormComponent implements OnInit {
   
   constructor( private serverService: ServerService, public snackBar: MatSnackBar) { 
     this.getProject()
-    console.log(this.today)
   }
   
   ngOnInit() {
@@ -71,7 +70,6 @@ onTimeChange(val) {
 }
 
 postExpense(){
-  console.log(this.selectedPosition);
   const month = this.date.getUTCMonth() + 1; //months from 1-12
   const day = this.date.getUTCDate() + 2;
   const year = this.date.getUTCFullYear();
@@ -83,7 +81,6 @@ postExpense(){
     project: this.specificProject._id,
     position: this.selectedPosition
   }
-  console.log(this.expense)
   this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe(
   (response)=> console.log(response),
 )

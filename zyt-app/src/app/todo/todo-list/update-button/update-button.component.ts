@@ -12,25 +12,15 @@ export class UpdateButtonTodoComponent implements OnInit{
   public projId
   @Input() parentData
   
-  constructor(public dialog: MatDialog) { 
-    
-  }
-  
+  constructor(public dialog: MatDialog) { }
   
   openDialog(id): void {
     this.id = id
-    console.log(this.id)
     const dialogRef = this.dialog.open(TodoDetailComponent, {
       data: {
         id: this.id,
       }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      
-    });
-    
-    
+    }); 
   }
   ngOnInit() {
     

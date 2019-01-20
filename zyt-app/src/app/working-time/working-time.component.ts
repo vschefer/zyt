@@ -16,9 +16,6 @@ export class WorkingTimeComponent implements OnInit {
     { data: [330, 600,], label: 'Account A' },
  
   ];
-
-  // chartLabels = ['January', 'February', 'Mars', 'April'];
-
   onChartClick(event) {
     console.log(event);
   }

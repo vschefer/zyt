@@ -40,7 +40,6 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
     let sun = new Date(curr.setDate(last))
     let fri = new Date(curr.setDate(end))
     this.mo = mon
-    console.log(this.firstDay)
     this.lastDay = end
     this.fr = fri
     this.startDay = this.mo.toISOString().slice(0, 10)
@@ -86,7 +85,6 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
         }
       });
       this.weekRes = weekRes
-      console.log(weekRes)
     },
     (error) => console.log(error)
   )

@@ -9,9 +9,7 @@
         
     }
  
-    openDialog(projectId): void {
-       console.log(projectId)
-          
+    openDialog(projectId): void {   
         const dialogRef = this.dialog.open(UpdateProjectComponent, {
         });
         dialogRef.afterClosed().subscribe(result => {

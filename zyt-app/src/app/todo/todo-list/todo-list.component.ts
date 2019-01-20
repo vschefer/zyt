@@ -40,12 +40,10 @@ toArray(answers: object) {
 }
 
 bleh(id) {
-  console.log(id)
   this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
   let proj = [];
   
   let project = response.json();
-  console.log(project.todos)
   project.todos.forEach((user) => {
     proj.push({
       "status": user.status,
@@ -64,33 +62,16 @@ bleh(id) {
       ],
     });
   });
-  
-  
   this.proj = proj;
-  console.log(this.proj);
 },
 (error) => console.log(error)
 )
 
 }
-// openDialog(id): void {
-//     const dialogRef = this.dialog.open(TodoDetailComponent, {
-//       data: {
-//         id: this.id,
-//       }
-//     });
 
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log('The dialog was closed');
-
-//     });
-//   }
 showDay(event){
   let selected = document.querySelectorAll('.all__todo m')
-  console.log(selected)
   let button = event.path[0]
-  
-  
   let weekDays = document.querySelectorAll('.all__todo')
   let growDay = event.path[1]
   let myArray = Array.from(weekDays)

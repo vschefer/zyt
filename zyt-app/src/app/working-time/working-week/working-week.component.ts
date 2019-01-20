@@ -26,7 +26,6 @@ export class WorkingWeekComponent implements OnInit {
         const result = response.json();
         let totalWorkTime = 0;
         result.then(res => {
-          console.log(1, res);
           res.forEach(expense => {
             totalWorkTime += expense.recorded_time;
           });
@@ -46,7 +45,6 @@ export class WorkingWeekComponent implements OnInit {
               backgroundColor: ['#000', '#ff0'],
             },
           ];
-          console.log(this.chartData);
         });
       },
       (error) => console.log(error) 
