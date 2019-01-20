@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -30,7 +31,7 @@ export class AddProjectComponent  implements OnInit {
   total = 0
   selectedUser
   myForm: FormGroup
-  constructor(private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) { 
+  constructor(private router: Router, private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) { 
     
   }
   
@@ -112,7 +113,8 @@ onSave(){
   this.serverService.add(this.servers, 'http://localhost:9000/api/projects').subscribe(
   (response)=> console.log(response),
 )
-this.openSnackBar()
+this.openSnackBar();
+this.router.navigate(['/']);
 this.name = ''
 wrapper.setAttribute("style", "transform: translate( 0px)" );
 
