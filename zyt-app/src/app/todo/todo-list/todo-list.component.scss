@@ -182,7 +182,8 @@
    .todo__container{
        margin: 0;
        margin-top: 3rem;
-       overflow-y: auto;
+       height: 90vh;
+       overflow-x: auto;
    }
 
    .shrink {

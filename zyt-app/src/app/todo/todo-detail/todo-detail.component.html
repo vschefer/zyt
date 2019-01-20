@@ -1,9 +1,9 @@
 
-<div class="test">
-    <h3>{{todo?.briefing?.title}}</h3>
-    
-    <p>{{todo?.briefing?.description}}
-    </p>
+<div class="todo__detail">
+    <div class="todo__detail-content">
+        <h3>{{todo?.briefing?.title}}</h3>
+        <p>{{todo?.briefing?.description}}</p>
+    </div>
     
     <mat-select placeholder="Update Status" [(ngModel)]="selectStatus">
         <mat-option value="0" >Erstellt</mat-option>
@@ -11,7 +11,7 @@
         <mat-option value="2" >Ready for Test</mat-option>
         <mat-option value="3" >Geschlossen</mat-option>
     </mat-select> 
-    <button (click)="updateState()">Update Todo</button>
+    <button class="button button--update" (click)="updateState()">Update Todo</button>
 </div>
 
 

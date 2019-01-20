@@ -1,15 +1,13 @@
-// :host {
-//     box-sizing: border-box;
-//     display: none;
-//     position: relative;
-//     right: 0;
-//     top: 0;
-//     width: 300px;
-//     height: 100%;
-//     padding: 20px 10px;
-//     background: #ccc;
-//   }
-  
-//   :host.is-open {
-//     display: block;
-//   }
+@import '../../styles/colors.scss';
+.todo__detail-content{
+    margin-bottom: 3rem;
+}
+
+.button--update {
+    margin-top: 3rem;
+    background-color: $fuchsia;
+    width: 100%;
+}
+.mat-dialog-container.mat-dialog-container{
+    color: white;
+}
