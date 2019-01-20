@@ -20,3 +20,8 @@ mat-form-field{
 .error-message.hidden{
     display: none;
 }
+
+.button--add-todo {
+  background-color: darken(#5f9ea0, 20);
+  color: white;
+}

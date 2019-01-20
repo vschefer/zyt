@@ -1,6 +1,7 @@
+<button class="button-logout" (click)="logout()"><span class="button-logout__text">Logout</span></button>
 <div class="user">
     <div class="user-avatar-wrapper">
-        <div *ngIf="avatar" class="user-avatar" [ngStyle]="{'background-image': 'url(' + avatar + ')'}"></div>
+        <div title="Avatar ändern" (click)="openDialog()"*ngIf="avatar" class="user-avatar" [ngStyle]="{'background-image': 'url(' + avatar + ')'}"></div>
     </div>
 
     <div class="user-name">
@@ -9,4 +10,3 @@
 
 
 </div>
-<button (click)="openDialog()">Ändere deinen avatar</button> <button (click)="logout()">Logout</button> 

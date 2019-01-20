@@ -14,8 +14,8 @@ export class AddProjectComponent  implements OnInit {
   title:string
   description:string
   capitain:string
-  start:any
-  deadline:any
+  startDate:any
+  endDate:any
   servers:Object
   users:Object
   assigned_users: Object
@@ -104,11 +104,11 @@ onSave(){
       title: this.title,
       description: this.description
     },
-    start: this.start,
-    deadline: this.deadline,
+    start: this.startDate,
+    deadline: this.endDate,
     total_time_offered: this.total
   }
-  
+  console.log(this.servers)
   this.serverService.add(this.servers, 'http://localhost:9000/api/projects').subscribe(
   (response)=> console.log(response),
 )

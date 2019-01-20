@@ -1,38 +1,38 @@
 <h2>{{user?.surname}}</h2>
 
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <div>
+  <div class="user-input">
     <mat-checkbox [checked]="user?.admin" value="user?.admin" name="admin" [(ngModel)]="admin"> 
       <label>Admin</label> 
     </mat-checkbox>
   </div>
 
-  <div>
+  <div class="user-input">
     <mat-checkbox [checked]="user?.archived" value="user?.archived" name="archived" [(ngModel)]="archived"> 
       <label>Deactivated</label>
     </mat-checkbox>
   </div>
 
-  <div>
+  <div class="user-input user-input--first-name">
     <mat-form-field>
       <input matInput type="text" name="first_name" ngDefaultControl [(ngModel)]="first_name" placeholder="First name" value="{{user?.first_name}}">
       <span id="nameError" class="input-error-message" aria-live="polite">First invalid</span>
     </mat-form-field>
   </div>
 
-  <div>
+  <div class="user-input">
     <mat-form-field>
       <input matInput type="text" name="surname" ngDefaultControl [(ngModel)]="surname" placeholder="Surname" value="{{user?.surname}}">
       <span id="nameError" class="input-error-message" aria-live="polite">Surname invalid</span>
     </mat-form-field>
   </div>
 
-  <div>
+  <div class="user-input">
     <mat-form-field>
       <input matInput type="email" name="email" ngDefaultControl [(ngModel)]="email" placeholder="E mail" value="{{user?.email}}">
       <span id="nameError" class="input-error-message" aria-live="polite">E mail invalid</span>
     </mat-form-field>
   </div>
 
-  <button type="submit">Speichern</button>
+  <button class="button button--save-user" type="submit">Speichern</button>
 </form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../server.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-resouce',
   templateUrl: './add-resource.component.html',
@@ -19,7 +20,7 @@ export class AddResourceComponent  implements OnInit {
   proj
   startDate
   endDate
-  constructor(public snackBar: MatSnackBar, private serverService: ServerService) { }
+  constructor(private router: Router, public snackBar: MatSnackBar, private serverService: ServerService) { }
   message = "Resource wurde hinzugefügt";
   action = "Ok";
   data:Object;
@@ -79,7 +80,8 @@ onSave(){
   this.serverService.add(this.ressource, 'http://localhost:9000/api/ressources').subscribe(
   (response)=> console.log(response),
 )
-this.openSnackBar()
+this.openSnackBar();
+this.router.navigate(['/']);
 } 
 
 ngOnInit() {

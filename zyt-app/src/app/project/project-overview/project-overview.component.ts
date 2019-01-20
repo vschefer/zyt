@@ -47,6 +47,7 @@ export class ProjectOverviewComponent implements OnInit {
     },
     (error) => console.log(error) 
   )
+  this.checkProgressbar()
 }
 
 getNextProject(){
@@ -92,10 +93,58 @@ getPreviosPage(){
     nextButton.classList.remove('hidden')
   }
 }
+checkProgressbar(){
+  
+  setTimeout(function () {
+    let progressBars = document.querySelectorAll('.progress-bar__progressing');
+    let arr = []
+    for(let i = 0; i < progressBars.length; i++){
+      arr.push(progressBars[i])
+    }
+    
+    arr.forEach(progressBar => {
+      let progress = progressBar.style.width
+      let progressNumber = progress.replace('%','');
+      if(progressNumber >= 100){
+        progressBar.style.backgroundColor = '#e45061';
+        progressBar.style.width =  '100%';
+      }
+    });
+  }, 2000);
+  
+  
+}
 
+toggleAccordion (e){
+  let toggleButton = e.target
+  let thisProjectContent = e.target.nextSibling
+  let projectContents = document.querySelectorAll('.project__content');
+
+  for(let i = 0; i < projectContents.length; i++){
+    if(projectContents[i].classList.contains('open__content')){
+      if(!thisProjectContent){
+        projectContents[i].classList.remove('open__content');
+        projectContents[i].classList.add('close__content');
+      }
+    }
+    if(thisProjectContent == projectContents[i]){
+      if(thisProjectContent.classList.contains('open__content')){
+        thisProjectContent.classList.remove('open__content');
+        thisProjectContent.classList.add('close__content');
+        toggleButton.classList.add('closed')
+        toggleButton.classList.remove('open')
+      }else {
+        thisProjectContent.classList.add('open__content');
+        thisProjectContent.classList.remove('close__content'); 
+        toggleButton.classList.add('open')
+        toggleButton.classList.remove('closed')
+      }
+    }
+  } 
+}
 
 ngOnInit() {
-  this.getProject()
+  this.getProject()  
 }
 
 }
