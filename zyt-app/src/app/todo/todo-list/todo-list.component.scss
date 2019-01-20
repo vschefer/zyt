@@ -107,11 +107,13 @@
     margin-left: 1rem;
     margin-right: 3rem;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-.mat-form-field {
+.proj .todo__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.proj .mat-form-field {
     width: 80%;
 }
 .res {
