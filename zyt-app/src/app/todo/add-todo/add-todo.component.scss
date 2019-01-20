@@ -1,5 +1,6 @@
+@import '../../styles/colors.scss';
 .wrapper{
-    background: cadetblue;
+    background: $bordeux;
     height: 100vh;
     display: flex;
     width: 60%;
@@ -22,6 +23,6 @@ mat-form-field{
 }
 
 .button--add-todo {
-  background-color: darken(#5f9ea0, 20);
+  background-color: $blue;
   color: white;
 }
