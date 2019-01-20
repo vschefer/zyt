@@ -115,6 +115,34 @@ checkProgressbar(){
   
 }
 
+toggleAccordion (e){
+  let toggleButton = e.target
+  let thisProjectContent = e.target.nextSibling
+  let projectContents = document.querySelectorAll('.project__content');
+
+  for(let i = 0; i < projectContents.length; i++){
+    if(projectContents[i].classList.contains('open__content')){
+      if(!thisProjectContent){
+        projectContents[i].classList.remove('open__content');
+        projectContents[i].classList.add('close__content');
+      }
+    }
+    if(thisProjectContent == projectContents[i]){
+      if(thisProjectContent.classList.contains('open__content')){
+        thisProjectContent.classList.remove('open__content');
+        thisProjectContent.classList.add('close__content');
+        toggleButton.classList.add('closed')
+        toggleButton.classList.remove('open')
+      }else {
+        thisProjectContent.classList.add('open__content');
+        thisProjectContent.classList.remove('close__content'); 
+        toggleButton.classList.add('open')
+        toggleButton.classList.remove('closed')
+      }
+    }
+  } 
+}
+
 ngOnInit() {
   this.getProject()  
 }

@@ -3,6 +3,7 @@
     position: absolute;
      grid-template-columns: 50% 50%;
      transition: transform 0.5s ease-out;
+     background: $bordeux;
  }
 .user{
     height: 50vh;
@@ -24,6 +25,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: center;
 
     h2{
         width: auto;

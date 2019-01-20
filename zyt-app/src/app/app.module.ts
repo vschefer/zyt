@@ -47,6 +47,7 @@ import { UpdateButtonComponent } from './project/project-overview/update-button/
 import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { MobileNavComponent } from './toggleMobileNav/toggle-nav.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
     TodoDetailComponent,
     UpdateButtonTodoComponent,
     AddTodoComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    MobileNavComponent,
 
   ],
   entryComponents: [

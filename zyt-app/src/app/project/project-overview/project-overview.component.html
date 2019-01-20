@@ -1,32 +1,44 @@
-<div *ngIf="data" class="wrapper" id="wrapper" #wrapper>
-    <div class="project" *ngFor="let project of data">
+<h1 class="sr-only">Projektübersicht</h1>
+<main *ngIf="data" class="wrapper" id="wrapper" #wrapper>
+    <section class="project" *ngFor="let project of data">
         <div class="overflow-wrapper">
             <h2>{{project.name}}</h2>
             <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
             
-            <section class="project__briefing">
+            <div class="project__briefing">
                 <h3>Briefing</h3>
-                <strong>{{project?.briefing.title}}</strong>
-                <p>{{project.briefing.description}}</p>
-            </section>
+              <div class="showelement" (click)="toggleAccordion($event)">+</div>
+                <div class="project__content briefing__content close__content">
+                        <strong>{{project?.briefing.title}}</strong>
+                        <p>{{project.briefing.description}}</p>
+                </div>
+            </div>
             
             <hr *ngIf="project.positions != ''">
+            <div class="project__positions">
             <h3 *ngIf="project.positions != ''">Positionen</h3>
-            <section *ngFor="let u of toArray(project.positions)" class="positions">
-                <div class="progress-bar__wrapper">
-                    <p>  {{u.name}} </p>
-                    <div class="progress-bar" style="width: 100%">
-                        <div class="progress-bar__progressing"  
-                        [ngStyle]="{width: u.total*100/u.total_time_offered + '%'}"></div>
-                    </div>
-                    <span>{{u.total*100/u.total_time_offered | number : '1.2-2'}}%</span>
-             
-                </div>
-            </section>
+          <div class="showelement" (click)="toggleAccordion($event)">+</div>
+            <div class="project__content positions__content close__content">
+                    <div *ngFor="let u of toArray(project.positions)" class="positions">
+                            <div class="progress-bar__wrapper">
+                                <p>  {{u.name}} </p>
+                                <div class="progress-bar" style="width: 100%">
+                                    <div class="progress-bar__progressing"  
+                                    [ngStyle]="{width: u.total*100/u.total_time_offered + '%'}"></div>
+                                </div>
+                                <span>{{u.total*100/u.total_time_offered | number : '1.2-2'}}%</span>
+                         
+                            </div>
+                        </div>
+            </div>
+        </div>
+      
             
             <hr>
+            <div class="project__users">
             <h3>Am Projekt beteiligt</h3>
-            <section class="container">
+            <div class="showelement" (click)="toggleAccordion($event)">+</div>
+            <div class="project__content users__content close__content">
                 <div class="users__wrapper">
                     <div class="manager">
                         <h4>Kapitään</h4>
@@ -41,12 +53,13 @@
                         </p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
             
             <app-update-button [parentData]="project._id" ></app-update-button>
         </div>
-    </div>
-</div>
+    </section>
+</main>
 
 <div class="control">
     <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>

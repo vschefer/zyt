@@ -1,9 +1,9 @@
-<div class="wrapper add-project">
-  
+<main>
+<form class="wrapper add-project">
   <div class="project-form__page">
     
-    <h2>Projekt hinzufügen</h2>
-    
+    <h1>Projekt hinzufügen</h1>
+      <h2>Projektinformationen</h2>
     <mat-form-field>
       <label for="name">Projektname</label>
       <input matInput type="text" name="name" ngDefaultControl [(ngModel)]="name" required>
@@ -64,7 +64,7 @@
   </div>
   
   <div class="project-form__page">
-    
+      <h2>füge das Briefing hinzu</h2>
     <mat-form-field>
       <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title">
     </mat-form-field>
@@ -78,12 +78,13 @@
     
   </div>
   
-</div>
+</form>
 
 
 <div class="control">
-  <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>
-  <button class="next" (click)="getNextPage()"><div class="arrow"></div></button>
+  <button class="prev hidden" (click)="getPreviosPage()" aria-label="slidebutton to previos Project"><div class="arrow --prev"></div></button>
+  <button class="next" (click)="getNextPage()" aria-label="slidebutton to next Project"><div class="arrow" ></div></button>
 </div>
+</main>
 
 <app-dashboard></app-dashboard>

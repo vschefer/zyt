@@ -1,10 +1,11 @@
 @import '../styles/colors.scss';
+@import '../styles/variable.scss';
 .all__ressource-header{
     width: 100vw;
     height: 5vh;
     background-color: darken($blue, 20);
     display: grid;
-    grid-template-columns: auto 100%; 
+    grid-template-columns: auto auto 100%; 
 
     div{
         display: flex;
@@ -46,6 +47,10 @@
         writing-mode: vertical-rl;
         margin: 0.3rem;
         width: auto;
+
+        @media (max-width: $medium) { 
+            font-size: 1rem;
+        }
     }
 }
 .ressource__container {
@@ -130,3 +135,10 @@
   line-height: 46px;
   width: 100%;
 }
+
+.all__ressource-header-time {
+    @media (max-width: $medium) { 
+        font-size: 0.8rem;
+    }
+}
+

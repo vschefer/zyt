@@ -1,4 +1,5 @@
-<div class="wrapper" id="wrapper">
+<main class="wrapper" id="wrapper">
+  <h1 class="sr-only">Übersichtsseite</h1>
   <app-working-time></app-working-time>
   
   <div class="ressource">
@@ -11,11 +12,11 @@
         <p>{{res.total_time_expected}} h</p>
       </div>
     </div>
-    <ng-template #noRessource>
+    <div *ngIf="weekRes?.length === 0">
       <p>Noch keine Ressoucen erfasst. Bitte melde dich bei deinem Projektleiter</p>
-    </ng-template>
+    </div>
     
   </div>
   
-</div>
+</main>
 <app-dashboard></app-dashboard>

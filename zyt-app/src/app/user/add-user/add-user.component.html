@@ -1,7 +1,11 @@
 
-  
-<div class="add-user__wrapper">
-    <div clas="form-bindings">
+
+<main class="add-user__wrapper">
+  <h1>Füge einen User hinzu</h1>
+  <form>
+
+
+    <div class="form-bindings">
       <mat-form-field>
         <label for="first_name">Name</label>
         <input matInput type="text" name="first_name" ngDefaultControl [(ngModel)]="first_name" required>
@@ -32,5 +36,7 @@
       
     </div>
     <button class="button button--add-user" (click)="onSave()">Save</button>
-</div>
+  </form>
+</main>
+
 <app-dashboard></app-dashboard>
