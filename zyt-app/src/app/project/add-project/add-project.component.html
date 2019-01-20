@@ -37,7 +37,7 @@
     
     <mat-form-field>
       <label for="end">Deadline</label>
-      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate" required (change)="checkFormForButton()">
+      <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate" required (ngModelChange)="checkFormForButton()">
       <span id="nameError" class="input-error-message" aria-live="polite">Deadline is invalid</span>
       <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
       <mat-datepicker #end></mat-datepicker>
