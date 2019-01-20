@@ -4,15 +4,15 @@
 
 **Links zu den Repositories**:
 
-- Backend: <https://github.com/doptrois/zyt-server> (branch: ```develop```)
-- Frontend: <https://github.com/vschefer/zyt> (branch: ```develop```)
+- Backend: <https://github.com/doptrois/zyt-server> (branch: ```master```)
+- Frontend: <https://github.com/vschefer/zyt> (branch: ```master```)
 
 **Link zum Live-Server**: nicht vorhanden.
 
 **Namen der Branches**:
 
-- Backend: ```develop```
-- Frontend: ```develop```
+- Backend: ```master```
+- Frontend: ```master```
 
 ## Setup-Anleitung
 
@@ -20,7 +20,7 @@
 
 1. Repository klonen: https://github.com/doptrois/zyt-server.git
 2. ```cd zyt-server/```
-3. ```git checkout develop```
+3. ```git checkout master```
 4. ```npm i```
    *Hinweis: Auf Version 11.6.0 läuft die Applikation, sollte es zu Fehlermeldungen kommen, könnte es an der lokalen Version liegen.*
 5. MongoDB lokal installieren (wir nutzen, Version 4.0.5)
@@ -39,7 +39,7 @@
 
 1. Repository klonen: https://github.com/vschefer/zyt.git
 2. ```cd zyt/zyt-app/```
-3. ```git checkout develop```
+3. ```git checkout master```
 4. ```npm i```
    *Hinweis: Auf Version 11.6.0 läuft die Applikation, sollte es zu Fehlermeldungen kommen, könnte es an der lokalen Version liegen.*
 5. ```ng serve```
