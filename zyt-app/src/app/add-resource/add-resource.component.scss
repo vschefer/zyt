@@ -1,12 +1,17 @@
 @import '../styles/colors.scss';
+@import '../styles/variable.scss';
 .add-ressource{
     grid-column: 1 / span 2;  
-    
+    width: calc(100vw - 300px);
     .ressouce-form{
         display: flex;
         flex-direction: column;
         margin: 1rem;
-        width: 80%;
+        // @media (max-width: $medium) { 
+        //         width: 100vw;
+        //         z-index: 10;
+            
+        // }
     }
 
     button,
