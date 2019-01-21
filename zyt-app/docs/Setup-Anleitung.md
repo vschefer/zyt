@@ -68,7 +68,7 @@ Diese sind:
    2. Startdatum und Deadline
    3. Zeitaufwandstatus
 3. Kalender/Ressourcenplanung: Übersicht der zu erledigenden Aufgaben, der aktuellen Woche.
-4. ...
+4. Tickets : Anzeige der zugewiesenen Tickets unterteilt in Projekten
 
 Das **Backend** wurde selbst entwickelt. Merkmale:
 
