@@ -17,21 +17,21 @@
             </mat-form-field>
             
             <div *ngIf="selectedUser">
-                    <mat-form-field>
-                            <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title"  [(value)]="title" required>
-                        </mat-form-field>
-                        
-                        <mat-form-field>
-                            <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description">
-                            </textarea>
-                        </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Briefing-titel" name="titel" ngDefaultControl [(ngModel)]="title"  [(value)]="title" required>
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description">
+                    </textarea>
+                </mat-form-field>
             </div>
-      
+            
             <button class="button button--add-todo"(click)="checkValid()">Todo hinzufügen</button>
             <span class="error-message hidden">Bitte fülle alle Felder aus</span>
         </div>
         
     </div>
-    </div>
+</div>
 
-    <app-dashboard></app-dashboard>
+<app-dashboard></app-dashboard>

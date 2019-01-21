@@ -47,22 +47,22 @@ form{
 }
 
 .button--add-user {
-  background-color: darken($yellow, 20);
-  color: white;
+    background-color: darken($yellow, 20);
+    color: white;
 }
 
 .add-user__wrapper {
-  padding: 1rem;
-  box-sizing: border-box;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .form-bindings {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-
+    
     mat-form-field {
-       min-width: 15rem;
-       margin-right: 2rem;
+        min-width: 15rem;
+        margin-right: 2rem;
     }
 }

@@ -6,7 +6,6 @@ import { TimeComponent } from './dashboard/time/time.component';
 import { UserProfilComponent } from './dashboard/user-profil/user-profil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavigationComponent } from './dashboard/navigation/navigation.component';
-import { PlanComponent } from './plan/plan.component';
 import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -59,7 +58,6 @@ import { AuthGuard } from './_guards';
     TimeComponent,
     DashboardComponent,
     NavigationComponent,
-    PlanComponent,
     TimeFormComponent,
     LoginComponent,
     HomeComponent,

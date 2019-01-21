@@ -61,7 +61,7 @@ toArray(answers: object) {
 
 getPositionName(id) {
   this.selectedPositionName = this.specificProject.positions.filter((pos) => {
-  	return pos._id === id;
+    return pos._id === id;
   })[0].name;
 }
 
@@ -86,7 +86,7 @@ postExpense(){
 )
 this.message = this.time + 'h wurde für das Project ' + this.specificProject.name + ' hinzugefügt';
 this.action = 'Ok';
-  this.openSnackBar()
+this.openSnackBar()
 
 }
 

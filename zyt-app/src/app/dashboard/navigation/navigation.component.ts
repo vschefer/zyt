@@ -7,11 +7,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
+  
   isAdmin: Boolean;
-
+  
   constructor() { }
-
+  
   admin() {
     const helper = new JwtHelperService();
     const token = JSON.parse(localStorage.getItem('currentUser')).token;
@@ -19,15 +19,15 @@ export class NavigationComponent implements OnInit {
     
     this.isAdmin = decodedToken.admin;
   }
-
-  openSubNav(e){
-  let element = e.target
-  let elementClass = e.srcElement.classList[0]
-  this.closeSubNav(elementClass)
-  element.classList.add('navigation__open-subnav')
   
-
-
+  openSubNav(e){
+    let element = e.target
+    let elementClass = e.srcElement.classList[0]
+    this.closeSubNav(elementClass)
+    element.classList.add('navigation__open-subnav')
+    
+    
+    
   }
   closeSubNav(elem){
     let allButtons = document.querySelectorAll('.'+elem)
@@ -38,9 +38,9 @@ export class NavigationComponent implements OnInit {
       }
     });
   }
-
+  
   ngOnInit() {
     this.admin();
   }
-
+  
 }

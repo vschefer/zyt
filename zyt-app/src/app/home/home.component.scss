@@ -7,17 +7,17 @@
     background: $fuchsia;
     grid-gap: 2rem;
     height: 100vh;
-
+    
 }
 .ressource{
     padding: 0 2.5rem;
-
+    
     .ressource__item{
         background: darken($fuchsia, 20);
         max-width: 20rem;
         padding: 1rem;
         margin: 0.5rem 0;
-
+        
         p{
             margin: 0;
             margin-top: 0.1rem;
@@ -29,5 +29,5 @@
     flex-direction: column;
 }
 app-working-time {
-  padding: 1rem 2.5rem;
+    padding: 1rem 2.5rem;
 }

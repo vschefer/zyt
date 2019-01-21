@@ -1,21 +1,21 @@
 <div class="login-content">
-<div class="logobar">
-    <img src="/src/assets/images/logo-white.png">
-</div>
-    <div class="login-area">
-            <h1>LOGIN</h1>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-               <mat-form-field>
-                   <mat-label for="email">E mail</mat-label>
-                   <input class="login-text" formControlName="email" matInput type="text">
-                 </mat-form-field>
-                 <mat-form-field>
-                     <mat-label for="password">Password</mat-label>
-                     <input class="login-text" matInput type="password" formControlName="password">
-                   </mat-form-field>
-                <button [disabled]="loading" class="button button--login">Login</button>
-            </form>
-          <div *ngIf="error" class="error">{{error}}</div>
+    <div class="logobar">
+        <img src="/src/assets/images/logo-white.png">
     </div>
-
+    <div class="login-area">
+        <h1>LOGIN</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label for="email">E mail</mat-label>
+                <input class="login-text" formControlName="email" matInput type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="password">Password</mat-label>
+                <input class="login-text" matInput type="password" formControlName="password">
+            </mat-form-field>
+            <button [disabled]="loading" class="button button--login">Login</button>
+        </form>
+        <div *ngIf="error" class="error">{{error}}</div>
+    </div>
+    
 </div>

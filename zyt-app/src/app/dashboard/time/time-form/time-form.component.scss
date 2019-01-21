@@ -1,13 +1,13 @@
 @import '../../../styles/colors.scss';
 .time-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
 .example-container > * {
-    width: 100%;
-  }
-  
+  width: 100%;
+}
+
 .button--save-expense {
   background-color: $yellow;
   color: white;

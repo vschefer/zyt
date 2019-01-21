@@ -8,7 +8,7 @@ import {WorkingWeekComponent} from '../working-time/working-week/working-week.co
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends WorkingWeekComponent implements OnInit {
-
+  
   ressource
   now = moment().format('YYYY-MM-DD');
   mo
@@ -24,7 +24,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
     this.friday
     this.getWeek()
   }
-
+  
   ngOnInit() {
     this.getWeek()
     this.getRessource()
@@ -49,7 +49,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
     this.sunday =sun.toLocaleDateString('de-DE', options)
     this.friday =fri.toLocaleDateString('de-DE', options)
   }
-
+  
   getRessource(){
     this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
     (response)=> {
@@ -76,7 +76,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
           })
           element.days = s
           
-         
+          
           element.days.forEach(e => {
             if(e == this.now){
               weekRes.push(element)

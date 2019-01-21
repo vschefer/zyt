@@ -7,19 +7,19 @@ import { TimeFormComponent } from './time-form/time-form.component';
   styleUrls: ['./time.component.scss']
 })
 export class TimeComponent implements OnInit {
-
+  
   constructor(public dialog: MatDialog) { }
-openDialog(): void {
+  openDialog(): void {
     const dialogRef = this.dialog.open(TimeFormComponent, {
-   
+      
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      
     });
   }
   ngOnInit() {
   }
-
+  
 }

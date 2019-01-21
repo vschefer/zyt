@@ -15,7 +15,7 @@ export class UpdateUserComponent implements OnInit {
   public id: Object;
   user: Object;
   updatedUser: Object;
-
+  
   constructor(
     private serverService: ServerService,
     private matCheckboxModule: MatCheckboxModule,
@@ -23,28 +23,28 @@ export class UpdateUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: { id: Object },
     private mdDialogRef: MatDialogRef<UpdateUserComponent>
   ) {}
-
+  
   getUser() {
     this.serverService.getAll('http://localhost:9000/api/users/' + this.id).subscribe((response) => {
-      let user = response.json();
-      this.user = user;
-    }, (error) => console.log(error)  );
-  }
-  
-  onSubmit(f: NgForm) {
-    this.updatedUser = Object.assign({}, f.form.controls);
-    
-    // Object cleanup for post
-    Object.keys(this.updatedUser).forEach((key) => {
-      this.updatedUser[key].value === undefined ? delete this.updatedUser[key] : this.updatedUser[key] = this.updatedUser[key].value;
-    });
-    
-    this.serverService.put('http://localhost:9000/api/users/' + this.id, this.updatedUser).subscribe((response)=> console.log(response));
-  }
+    let user = response.json();
+    this.user = user;
+  }, (error) => console.log(error)  );
+}
 
-  ngOnInit() {
-    this.id = this.data.id;
-    this.getUser();
-  }
+onSubmit(f: NgForm) {
+  this.updatedUser = Object.assign({}, f.form.controls);
+  
+  // Object cleanup for post
+  Object.keys(this.updatedUser).forEach((key) => {
+    this.updatedUser[key].value === undefined ? delete this.updatedUser[key] : this.updatedUser[key] = this.updatedUser[key].value;
+  });
+  
+  this.serverService.put('http://localhost:9000/api/users/' + this.id, this.updatedUser).subscribe((response)=> console.log(response));
+}
+
+ngOnInit() {
+  this.id = this.data.id;
+  this.getUser();
+}
 
 }

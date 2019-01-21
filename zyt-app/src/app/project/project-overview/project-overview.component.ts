@@ -119,7 +119,7 @@ toggleAccordion (e){
   let toggleButton = e.target
   let thisProjectContent = e.target.nextSibling
   let projectContents = document.querySelectorAll('.project__content');
-
+  
   for(let i = 0; i < projectContents.length; i++){
     if(projectContents[i].classList.contains('open__content')){
       if(!thisProjectContent){

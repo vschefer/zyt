@@ -75,11 +75,11 @@ getUser(id) {
     
     this.u = response.json();
     this.id = this.u._id
-  },
-  (error) => console.log(error)
-  )
-  
-  }
+},
+(error) => console.log(error)
+)
+
+}
 
 onSave(){
     let nextButton = document.querySelector('.next')

@@ -8,11 +8,11 @@ import {UpdateProjectComponent} from '../../update-project/update-project.compon
 })
 
 export class UpdateButtonComponent implements OnInit{
-public id
-@Input() parentData
-
+  public id
+  @Input() parentData
+  
   constructor(public dialog: MatDialog) {  }
-
+  
   openDialog(id): void {
     this.id = id
     const dialogRef = this.dialog.open(UpdateProjectComponent, {
@@ -21,12 +21,10 @@ public id
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
+      console.log('The dialog was closed');
+      
+    });
+  }
   
-      });
-    }
-
-    ngOnInit() {}
-
-
+  ngOnInit() {} 
 }

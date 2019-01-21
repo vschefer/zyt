@@ -45,7 +45,6 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   (error) => console.log(error)
 )
 
-
 }
 
 assigned(id){

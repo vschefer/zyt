@@ -17,52 +17,52 @@ export class UserProfilComponent implements OnInit {
   surname:string;
   interval: any;
   openDialog(): void {
-      let inter: any;
-      const dialogRef = this.dialog.open(UserEditComponent, {
-        
-      });
-      inter = setInterval(() => {
-        this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
-          this.me = response.json();
-          this.avatar = this.me.avatar.url;
-          },
-          (error) => console.log(error)
-        );
-      }, 1000);
-
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        clearInterval(inter);
-      });
-    }
-
-  getAvatar() {
-    this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
+    let inter: any;
+    const dialogRef = this.dialog.open(UserEditComponent, {
+      
+    });
+    inter = setInterval(() => {
+      this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
       this.me = response.json();
       this.avatar = this.me.avatar.url;
-      },
-      (error) => console.log(error)
-    )
-  }
+    },
+    (error) => console.log(error)
+  );
+}, 1000);
 
-  getUserName() {
-    this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
-      this.me = response.json();
-      this.first_name = this.me.first_name;
-      this.surname = this.me.surname;
-      },
-      (error) => console.log(error)
-    )
-  }
-  
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
+dialogRef.afterClosed().subscribe(result => {
+  console.log('The dialog was closed');
+  clearInterval(inter);
+});
+}
 
-  ngOnInit() {
-    this.getAvatar();
-    this.getUserName()
-  }
+getAvatar() {
+  this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
+  this.me = response.json();
+  this.avatar = this.me.avatar.url;
+},
+(error) => console.log(error)
+)
+}
+
+getUserName() {
+  this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
+  this.me = response.json();
+  this.first_name = this.me.first_name;
+  this.surname = this.me.surname;
+},
+(error) => console.log(error)
+)
+}
+
+logout() {
+  this.authenticationService.logout();
+  this.router.navigate(['/login']);
+}
+
+ngOnInit() {
+  this.getAvatar();
+  this.getUserName()
+}
 
 }

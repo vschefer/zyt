@@ -2,23 +2,23 @@
 @import '../../styles/variable.scss';
 .wrapper{
     position: absolute;
-     grid-template-columns: repeat(100, calc(100vw - 300px));
-     transition: transform 0.5s ease-out;
-     height: 100vh;
-     background: $bordeux;
- }
- .project{
-     height: 100vh;
-     flex: 2;
-     padding: 0 1rem 0 1rem;
-     max-width: 100%;
-     display: flex;
-     flex-direction: column;
- 
+    grid-template-columns: repeat(100, calc(100vw - 300px));
+    transition: transform 0.5s ease-out;
+    height: 100vh;
+    background: $bordeux;
+}
+.project{
+    height: 100vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    
     hr{
         width: 100%;
     }
-
+    
     h2{
         margin-bottom: 0;
         font-size: 35px;
@@ -30,7 +30,7 @@
     .date{
         font-size: 14px;
         margin-top: 0.5rem;
-
+        
     }
 }
 .overflow-wrapper{
@@ -57,8 +57,8 @@
     display: flex;
     justify-content: space-between;
     width: 80%;
-
-  
+    
+    
 }
 
 .progress-bar{
@@ -78,11 +78,11 @@
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 0.5rem;
-
+    
     p{
         hyphens: auto;
     }
-
+    
     span{
         margin-left: 0.5rem;
     }
@@ -96,9 +96,9 @@ section {
     background: $bordeux;
 }
 @media (max-width: $medium) { 
-   .wrapper {
-    grid-template-columns: repeat(100,100vw);
-   }
+    .wrapper {
+        grid-template-columns: repeat(100,100vw);
+    }
 }
 .showelement {
     font-size: 2rem;
@@ -116,7 +116,7 @@ section {
 .open__content {
     max-height: 100vh;
     transition: all 0.5s;
-
+    
 }
 .showelement.closed {
     transform: rotate(-180deg);
