@@ -29,7 +29,8 @@ import { DateFormatPipe } from './pipes/format-date.pipe';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
+
 import { OrderModule } from 'ngx-order-pipe';
 import {MatButtonModule} from '@angular/material/button';
 import { ChartsModule } from 'ng2-charts';
@@ -47,6 +48,7 @@ import { ServerService } from './server.service';
 import { SideBarService } from './todo/todo-detail/todo-detail.service';
 
 import { AuthGuard } from './_guards';
+import { ProjectService } from './project/project.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +108,7 @@ import { AuthGuard } from './_guards';
     ChartsModule,
     MatSnackBarModule,
     MatRadioModule,
-    HttpModule,
+    HttpClientModule,
     OrderModule,
     MatButtonModule,
     RouterModule.forRoot([
@@ -164,7 +166,7 @@ import { AuthGuard } from './_guards';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, UpdateProjectService],
+  providers: [SideBarService, AddResourceComponent, ServerService, UpdateProjectService, ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

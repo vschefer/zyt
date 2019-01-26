@@ -42,7 +42,7 @@ export class AddProjectComponent  implements OnInit {
   getUsers(){
     this.serverService.getAll('http://localhost:9000/api/users').subscribe(
     (response)=> {
-      this.users = response.json();
+      this.users = response;
     },
     (error) => console.log(error)
   ) 
@@ -50,14 +50,14 @@ export class AddProjectComponent  implements OnInit {
 getManager(id) {
   this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
   let proj = [];
-  this.u = response.json();
+  this.u = response;
 },(error) => console.log(error)) 
 }
 getUser(id) {
   let userList = [];
   this.select.forEach((user)=>{
     this.serverService.getAll('http://localhost:9000/api/users/' + user).subscribe((response) => { 
-    this.us = response.json();
+    this.us = response;
     userList.push(this.us);
   },
   (error) => console.log(error))

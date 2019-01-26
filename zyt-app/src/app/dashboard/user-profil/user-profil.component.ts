@@ -23,7 +23,7 @@ export class UserProfilComponent implements OnInit {
     });
     inter = setInterval(() => {
       this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
-      this.me = response.json();
+      this.me = response;
       this.avatar = this.me.avatar.url;
     },
     (error) => console.log(error)
@@ -38,7 +38,7 @@ dialogRef.afterClosed().subscribe(result => {
 
 getAvatar() {
   this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
-  this.me = response.json();
+  this.me = response;
   this.avatar = this.me.avatar.url;
 },
 (error) => console.log(error)
@@ -47,7 +47,7 @@ getAvatar() {
 
 getUserName() {
   this.serverService.getAll('//localhost:9000/api/users/me').subscribe((response) => {
-  this.me = response.json();
+  this.me = response;
   this.first_name = this.me.first_name;
   this.surname = this.me.surname;
 },

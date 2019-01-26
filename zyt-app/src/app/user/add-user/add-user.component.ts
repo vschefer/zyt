@@ -58,7 +58,7 @@ export class AddUserComponent implements OnInit {
 getAvatars(){
   this.serverService.getAll('http://localhost:9000/api/avatars').subscribe(
   (response)=> {
-    this.avatars = response.json();
+    this.avatars = response;
     console.log(this.avatars)
   },
   (error) => console.log(error)

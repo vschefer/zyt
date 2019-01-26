@@ -28,7 +28,7 @@ export class TodoDetailComponent extends UpdateButtonTodoComponent implements On
     
     bleh() {
       this.serverService.getAll('http://localhost:9000/api/todos/' + this.data.id).subscribe((response) => {
-      this.todo = response.json();
+      this.todo = response;
       
     },
     (error) => console.log(error)

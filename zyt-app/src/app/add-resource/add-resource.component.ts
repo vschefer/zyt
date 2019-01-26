@@ -33,7 +33,7 @@ export class AddResourceComponent  implements OnInit {
   }
   getProjects() {
     this.serverService.getAll('http://localhost:9000/api/projects').subscribe((response) => {
-    this.data = response.json();
+    this.data = response;
   },
   (error) => console.log(error)
 )
@@ -42,8 +42,7 @@ getProject(id) {
   this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
   let users = [];
   
-  let project = response.json();
-  
+  let project = response;
   project.assigned_users.forEach((user) => {
     users.push({
       "first_name": user.first_name,

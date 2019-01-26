@@ -26,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
   
   getUser() {
     this.serverService.getAll('http://localhost:9000/api/users/' + this.id).subscribe((response) => {
-    let user = response.json();
+    let user = response;
     this.user = user;
   }, (error) => console.log(error)  );
 }

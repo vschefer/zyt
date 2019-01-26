@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   getUsers(){
     this.serverService.getAll('http://localhost:9000/api/users').subscribe(
     (response)=> {
-      this.data = response.json();
+      this.data = response;
     },
     (error) => console.log(error)
   )

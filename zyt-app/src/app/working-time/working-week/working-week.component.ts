@@ -23,7 +23,7 @@ export class WorkingWeekComponent implements OnInit {
     this.toWork = 30;
     ServerService.getAllStatic('//localhost:9000/api/expenses/week').subscribe(
       (response)=> {
-        const result = response.json();
+        const result = response;
         let totalWorkTime = 0;
         result.then(res => {
           res.forEach(expense => {

@@ -21,7 +21,7 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   updatedProject: Object
   briefingTitle: string
   briefingDescription: string
-  toAssigned:Array<String>;
+  toAssigned:any
   assignedUser:Array<String>;
   constructor(private serverService: ServerService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
     super(dialog)
@@ -31,7 +31,7 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
     
     console.log(this.id)
     this.serverService.getAll('http://localhost:9000/api/projects/' + this.id).subscribe((response) => {
-    let project = response.json();
+    let project = response;
     console.log(this.project)
     this.project = project
     let  toAssigned = []
@@ -65,7 +65,7 @@ assigned(id){
 getUsers(){
   this.serverService.getAll('http://localhost:9000/api/users').subscribe(
   (response)=> {
-    this.users = response.json();
+    this.users = response;
   },
   (error) => console.log(error)
 )

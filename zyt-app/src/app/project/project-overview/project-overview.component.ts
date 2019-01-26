@@ -34,7 +34,7 @@ export class ProjectOverviewComponent implements OnInit {
   getProject(){
     this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
     (response)=> {
-      this.data = response.json();
+      this.data = response;
       let msgTotal
       this.data.forEach(element => {
         element.positions.forEach(e => {

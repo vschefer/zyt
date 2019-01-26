@@ -39,7 +39,7 @@ export class AddTodoComponent  implements OnInit {
         this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
         (response)=> {
             
-            this.data = response.json();
+            this.data = response;
         },
         (error) => console.log(error) 
     )
@@ -50,7 +50,7 @@ bleh(id) {
     this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
     let proj = [];
     
-    let project = response.json();
+    let project = response;
     project.assigned_users.forEach((user) => {
         proj.push({
             "archived": user.archived,
@@ -73,7 +73,7 @@ getUser(id) {
     this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
     let proj = [];
     
-    this.u = response.json();
+    this.u = response;
     this.id = this.u._id
 },
 (error) => console.log(error)

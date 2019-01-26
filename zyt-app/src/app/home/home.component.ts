@@ -54,7 +54,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
     this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
     (response)=> {
       let weekRes = []
-      this.ressource = response.json();
+      this.ressource = response;
       this.ressource.forEach(element => { 
         
         if(moment(element.start).isBetween(this.mo.toISOString().slice(0, 10), this.fr.toISOString().slice(0, 10)) 
