@@ -15,6 +15,10 @@
 .all__ressource-wrapper{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+
+    @media (max-width: $medium) { 
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .all__ressource{
