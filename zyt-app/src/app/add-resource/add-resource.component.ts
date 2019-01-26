@@ -43,7 +43,8 @@ getProject(id) {
   let users = [];
   
   let project = response;
-  project.assigned_users.forEach((user) => {
+  console.log(project)
+  project['assigned_users'].forEach((user) => {
     users.push({
       "first_name": user.first_name,
       "surname": user.surname,

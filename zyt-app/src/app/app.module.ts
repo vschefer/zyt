@@ -50,7 +50,6 @@ import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
 import { TodoAddService } from './todo/add-todo/add-todo.service'
 
 import { AuthGuard } from './_guards';
-import { ProjectService } from './project/project.service';
 import { ProjectUpdateService } from './project/update-project/update-project.service';
 import { UsersService } from './user/user.service';
 import { UsersUpdateService } from './user/update-user/update-user.service';
@@ -174,7 +173,7 @@ import { UserProfilService } from './dashboard/user-profil/user-profil.service';
 
   ],
   providers: [TodoDetailService, AddResourceComponent, 
-    ServerService, ProjectOverviewService, ProjectService, 
+    ServerService, ProjectOverviewService,
     ProjectAddService, ProjectUpdateService, UsersService, 
     UsersUpdateService, UsersAddService, TodoAddService,
     UserProfilService],
