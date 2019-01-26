@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material';
 import { UpdateButtonComponent } from '../project-overview/update-button/update-button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { User } from '../../_models';
+import { ProjectUpdateService } from './update-project.service';
+import { ProjectOverviewService } from '../project-overview/project-overview.service';
 @Component({
   selector: 'app-update-project',
   templateUrl: './update-project.component.html',
@@ -23,22 +25,21 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   briefingDescription: string
   toAssigned:any
   assignedUser:Array<String>;
-  constructor(private serverService: ServerService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
+  constructor(private serverService: ServerService, private projectUpdateService: ProjectUpdateService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
     super(dialog)
     
   }
   getProject() {
     
     console.log(this.id)
-    this.serverService.getAll('http://localhost:9000/api/projects/' + this.id).subscribe((response) => {
+    this.projectUpdateService.getProject(this.id).subscribe((response) => {
     let project = response;
-    console.log(this.project)
     this.project = project
     let  toAssigned = []
-    // project.assigned_users.forEach(u => {
-    //   let id = u._id
-    //   toAssigned.push(id)
-    // });
+    project['assigned_users'].forEach(u => {
+      let id = u._id
+      toAssigned.push(id)
+    });
     this.toAssigned = toAssigned
     
   },
@@ -82,9 +83,7 @@ updateProject(){
     assigned_users: this.toAssigned || this.project.assigned_users.map(usr => usr._id)
   }
   
-  this.serverService.put('http://localhost:9000/api/projects/' + this.id, this.updatedProject).subscribe(
-  (response)=> console.log(response),
-)
+  this.projectUpdateService.updateProject(this.updatedProject, this.id).subscribe()
 }
 
 toArray(answers: object) {
@@ -92,10 +91,7 @@ toArray(answers: object) {
 }
 
 ngOnInit() {
-  console.log("init")
-  
   this.id = this.data.id;
-  console.log(this.id)
   this.getProject()
   this.getUsers()
   
