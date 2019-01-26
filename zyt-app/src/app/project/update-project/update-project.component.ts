@@ -76,7 +76,6 @@ updateProject(){
   this.updatedProject = {
     name: this.name || this.project.name,
     briefing: {
-      title: this.title || this.project.briefing.title,
       description: this.description || this.project.briefing.description
     },
     assigned_users: this.toAssigned || this.project.assigned_users.map(usr => usr._id)
