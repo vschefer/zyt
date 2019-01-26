@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
+import { UsersAddService } from './add-user.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -20,7 +21,7 @@ export class AddUserComponent implements OnInit {
   password
   
   
-  constructor(private serverService: ServerService, public snackBar: MatSnackBar) { }
+  constructor(private serverService: ServerService, private usersAddService: UsersAddService, public snackBar: MatSnackBar) { }
   
   message = this.first_name + this.surname + 'wurde hinzugefügt';
   action = 'Ok';
@@ -49,9 +50,7 @@ export class AddUserComponent implements OnInit {
       avatar:this.avatarId,
       password: this.password,
     }
-    this.serverService.add(this.user, 'http://localhost:9000/api/users').subscribe(
-    (response)=> console.log(response),
-  )
+    this.usersAddService.addUser(this.user).subscribe()
   this.openSnackBar()
 } 
 

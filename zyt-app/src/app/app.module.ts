@@ -53,6 +53,7 @@ import { ProjectService } from './project/project.service';
 import { ProjectUpdateService } from './project/update-project/update-project.service';
 import { UsersService } from './user/user.service';
 import { UsersUpdateService } from './user/update-user/update-user.service';
+import { UsersAddService } from './user/add-user/add-user.service';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,7 @@ import { UsersUpdateService } from './user/update-user/update-user.service';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService, UsersUpdateService],
+  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService, UsersUpdateService, UsersAddService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
