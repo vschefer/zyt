@@ -48,7 +48,7 @@
     <div class="project-form__page offer">
       <h2>füge Positionen hinzu</h2>
       <div  [formGroup]="myForm" >
-        <button (click)="addPosition()" class="add-position"><span>+</span></button>
+        <button type="button" (click)="addPosition()" class="add-position"><span>+</span></button>
         <div formArrayName="positions" class="positions__wrapper">
           
           <div *ngFor="let pos of postitionForm.controls; let i=index" [formGroupName]="i" class="position">
@@ -59,7 +59,7 @@
             <mat-form-field> 
               <input matInput type="number" placeholder="Buget in Stunden" formControlName="total_time_offered" required (change)="checkFormForButton()">
             </mat-form-field>
-            <button (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
+            <button type="button" (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
           </div>
         </div>
         

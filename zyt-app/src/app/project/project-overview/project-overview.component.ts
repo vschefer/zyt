@@ -50,49 +50,49 @@ export class ProjectOverviewComponent implements OnInit {
   this.checkProgressbar()
 }
 
-getNextProject(){
-  let nextButton = document.querySelector('.next')
-  let prevButton = document.querySelector('.prev')
-  let wrapper = document.querySelector('.wrapper')
-  let projectCount = Object.keys(this.data).length
-  let windowWidth = window.outerWidth
-  let project = document.querySelector('.project').clientWidth
-  this.left += project;
-  this.count += 1;
+// getNextProject(){
+//   let nextButton = document.querySelector('.next')
+//   let prevButton = document.querySelector('.prev')
+//   let wrapper = document.querySelector('.wrapper')
+//   let projectCount = Object.keys(this.data).length
+//   let windowWidth = window.outerWidth
+//   let project = document.querySelector('.project').clientWidth
+//   this.left += project;
+//   this.count += 1;
   
-  if(this.count <= (projectCount -1)){
-    wrapper.setAttribute("style","transform: translate("+ -(this.left) + "px)" );
-    if(this.count == (projectCount -1)){
-      nextButton.classList.add('hidden')
-    }else if(nextButton.classList.contains('.hidden')){
-      nextButton.classList.remove('hidden')
-    }
-  }
-  if(prevButton.classList.contains('hidden')){
-    prevButton.classList.remove('hidden')
-  }
-}
+//   if(this.count <= (projectCount -1)){
+//     wrapper.setAttribute("style","transform: translate("+ -(this.left) + "px)" );
+//     if(this.count == (projectCount -1)){
+//       nextButton.classList.add('hidden')
+//     }else if(nextButton.classList.contains('.hidden')){
+//       nextButton.classList.remove('hidden')
+//     }
+//   }
+//   if(prevButton.classList.contains('hidden')){
+//     prevButton.classList.remove('hidden')
+//   }
+// }
 
-getPreviosPage(){
+// getPreviosPage(){
   
-  let prevButton = document.querySelector('.prev')
-  let nextButton = document.querySelector('.next')
-  let project = document.querySelector('.project').clientWidth
-  let wrapper = document.querySelector('.wrapper')
-  this.left = this.left - project
-  this.count -= 1;
-  let projectCount = Object.keys(this.data).length
+//   let prevButton = document.querySelector('.prev')
+//   let nextButton = document.querySelector('.next')
+//   let project = document.querySelector('.project').clientWidth
+//   let wrapper = document.querySelector('.wrapper')
+//   this.left = this.left - project
+//   this.count -= 1;
+//   let projectCount = Object.keys(this.data).length
   
-  if(this.count <= 0){
-    prevButton.classList.add('hidden')
-  }
-  if(this.count <= (projectCount -1)){
-    wrapper.setAttribute("style", "transform: translate("+ -(this.left) + "px)" );
-  }
-  if(nextButton.classList.contains('hidden')){
-    nextButton.classList.remove('hidden')
-  }
-}
+//   if(this.count <= 0){
+//     prevButton.classList.add('hidden')
+//   }
+//   if(this.count <= (projectCount -1)){
+//     wrapper.setAttribute("style", "transform: translate("+ -(this.left) + "px)" );
+//   }
+//   if(nextButton.classList.contains('hidden')){
+//     nextButton.classList.remove('hidden')
+//   }
+// }
 checkProgressbar(){
   
   setTimeout(function () {
@@ -117,27 +117,31 @@ checkProgressbar(){
 
 toggleAccordion (e){
   let toggleButton = e.target
+  let showElement = toggleButton.parentElement.children[1]
   let thisProjectContent = e.target.nextSibling
-  let projectContents = document.querySelectorAll('.project__content');
-  
+
+  let projectContents = document.querySelectorAll('.' + thisProjectContent.className);
+  let thisSection = e.target.parentElement
   for(let i = 0; i < projectContents.length; i++){
-    if(projectContents[i].classList.contains('open__content')){
-      if(!thisProjectContent){
-        projectContents[i].classList.remove('open__content');
-        projectContents[i].classList.add('close__content');
+    let sections = projectContents[i].parentElement
+
+    if(sections.classList.contains('open__content')){
+      if(!thisSection){
+        sections.classList.remove('open__content');
+       sections.classList.add('close__content');
       }
     }
-    if(thisProjectContent == projectContents[i]){
-      if(thisProjectContent.classList.contains('open__content')){
-        thisProjectContent.classList.remove('open__content');
-        thisProjectContent.classList.add('close__content');
-        toggleButton.classList.add('closed')
-        toggleButton.classList.remove('open')
+    if(thisSection ==sections){
+      if(thisSection.classList.contains('open__content')){
+        thisSection.classList.remove('open__content');
+        thisSection.classList.add('close__content');
+        showElement.classList.add('closed')
+        showElement.classList.remove('open')
       }else {
-        thisProjectContent.classList.add('open__content');
-        thisProjectContent.classList.remove('close__content'); 
-        toggleButton.classList.add('open')
-        toggleButton.classList.remove('closed')
+        thisSection.classList.add('open__content');
+        thisSection.classList.remove('close__content'); 
+        showElement.classList.add('open')
+        showElement.classList.remove('closed')
       }
     }
   } 

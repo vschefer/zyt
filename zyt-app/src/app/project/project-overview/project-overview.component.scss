@@ -2,26 +2,34 @@
 @import '../../styles/variable.scss';
 .wrapper{
     position: absolute;
-    grid-template-columns: repeat(100, calc(100vw - 300px));
-    transition: transform 0.5s ease-out;
-    height: 100vh;
-    background: $bordeux;
-}
-.project{
-    height: 100vh;
-    flex: 2;
-    padding: 0 1rem 0 1rem;
-    max-width: 100%;
+    width: calc(100vw - 300px);
     display: flex;
     flex-direction: column;
+    // grid-template-columns: repeat(100, calc(100vw - 300px));
+    // transition: transform 0.5s ease-out;
+    // height: 100vh;
+    background: $bordeux;
+    overflow-x: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+
+}
+.project{
+    height: auto;
+    padding: 0 1rem 0 1rem;
+    max-width: 100%;
+    // display: flex;
+    flex-direction: column;
+    position: relative;
+    border-bottom: 3px solid;
     
     hr{
         width: 100%;
     }
     
     h2{
-        margin-bottom: 0;
-        font-size: 35px;
+        font-size: 25px;
+        cursor: pointer;
     }
     h3{
         font-size: 22px;
@@ -32,14 +40,6 @@
         margin-top: 0.5rem;
         
     }
-}
-.overflow-wrapper{
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 90%;
-    margin: auto;
-    padding-right: 1rem;
 }
 
 .users__content,
@@ -103,20 +103,25 @@ section {
 .showelement {
     font-size: 2rem;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 1rem;
+    top: 1rem;
     cursor: pointer;
 }
 
 .close__content {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s;
+    .project__content-wrapper {
+       max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+    }
 }
 .open__content {
-    max-height: 100vh;
-    transition: all 0.5s;
-    
+    background:  darken($bordeux,20);
+    .project__content-wrapper {
+        max-height: 500rem;
+        transition: all 0.5s;
+    }
+
 }
 .showelement.closed {
     transform: rotate(-180deg);
