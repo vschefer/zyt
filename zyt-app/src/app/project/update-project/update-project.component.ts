@@ -35,10 +35,10 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
     console.log(this.project)
     this.project = project
     let  toAssigned = []
-    project.assigned_users.forEach(u => {
-      let id = u._id
-      toAssigned.push(id)
-    });
+    // project.assigned_users.forEach(u => {
+    //   let id = u._id
+    //   toAssigned.push(id)
+    // });
     this.toAssigned = toAssigned
     
   },

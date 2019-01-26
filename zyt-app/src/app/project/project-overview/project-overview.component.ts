@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
-import {UpdateProjectService } from './project-overview.service'
+import { ProjectOverviewService } from './project-overview.service'
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
 @Component({
@@ -25,16 +25,17 @@ export class ProjectOverviewComponent implements OnInit {
   count:number = 0
   id
   
-  constructor(private serverService: ServerService, public dialog: MatDialog) { }
+  constructor(private serverService: ServerService, public dialog: MatDialog, private projectService: ProjectOverviewService) { }
   
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])
   }
   
   getProject(){
-    this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
+    this.projectService.getProjects().subscribe(
     (response)=> {
       this.data = response;
+      console.log(this.data)
       let msgTotal
       this.data.forEach(element => {
         element.positions.forEach(e => {
