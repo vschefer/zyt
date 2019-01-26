@@ -43,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
-import { UpdateProjectService } from './project/project-overview/project-overview.service';
+import { ProjectOverviewService } from './project/project-overview/project-overview.service';
+import { ProjectAddService } from './project/add-project/add-project.service';
 import { ServerService } from './server.service';
 import { SideBarService } from './todo/todo-detail/todo-detail.service';
 
@@ -166,7 +167,7 @@ import { ProjectService } from './project/project.service';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, UpdateProjectService, ProjectService],
+  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
