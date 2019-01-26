@@ -50,6 +50,7 @@ export class ProjectOverviewComponent implements OnInit {
   this.checkProgressbar()
 }
 
+<<<<<<< Updated upstream
 // getNextProject(){
 //   let nextButton = document.querySelector('.next')
 //   let prevButton = document.querySelector('.prev')
@@ -93,6 +94,8 @@ export class ProjectOverviewComponent implements OnInit {
 //     nextButton.classList.remove('hidden')
 //   }
 // }
+=======
+>>>>>>> Stashed changes
 checkProgressbar(){
   
   setTimeout(function () {
