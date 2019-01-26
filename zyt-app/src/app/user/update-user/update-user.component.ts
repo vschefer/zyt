@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { ServerService } from '../../server.service';
+// import { ServerService } from '../../server.service';
 import { MatDialog } from '@angular/material';
 import { MatDialogRef, MAT_DIALOG_DATA, MatInputModule } from "@angular/material";
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UsersUpdateService } from './update-user.service';
 
 @Component({
   selector: 'app-update-user',
@@ -17,7 +18,8 @@ export class UpdateUserComponent implements OnInit {
   updatedUser: Object;
   
   constructor(
-    private serverService: ServerService,
+    // private serverService: ServerService,
+    private userUpdateService: UsersUpdateService,
     private matCheckboxModule: MatCheckboxModule,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: { id: Object },
@@ -25,7 +27,7 @@ export class UpdateUserComponent implements OnInit {
   ) {}
   
   getUser() {
-    this.serverService.getAll('http://localhost:9000/api/users/' + this.id).subscribe((response) => {
+    this.userUpdateService.getUser(this.id).subscribe((response) => {
     let user = response;
     this.user = user;
   }, (error) => console.log(error)  );
@@ -39,7 +41,7 @@ onSubmit(f: NgForm) {
     this.updatedUser[key].value === undefined ? delete this.updatedUser[key] : this.updatedUser[key] = this.updatedUser[key].value;
   });
   
-  this.serverService.put('http://localhost:9000/api/users/' + this.id, this.updatedUser).subscribe((response)=> console.log(response));
+  this.userUpdateService.updateUser(this.updatedUser, this.id).subscribe((response)=> console.log(response));
 }
 
 ngOnInit() {

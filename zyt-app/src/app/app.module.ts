@@ -52,6 +52,7 @@ import { AuthGuard } from './_guards';
 import { ProjectService } from './project/project.service';
 import { ProjectUpdateService } from './project/update-project/update-project.service';
 import { UsersService } from './user/user.service';
+import { UsersUpdateService } from './user/update-user/update-user.service';
 
 @NgModule({
   declarations: [
@@ -169,7 +170,7 @@ import { UsersService } from './user/user.service';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService],
+  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService, UsersUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
