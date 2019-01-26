@@ -51,6 +51,7 @@ import { SideBarService } from './todo/todo-detail/todo-detail.service';
 import { AuthGuard } from './_guards';
 import { ProjectService } from './project/project.service';
 import { ProjectUpdateService } from './project/update-project/update-project.service';
+import { UsersService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,7 @@ import { ProjectUpdateService } from './project/update-project/update-project.se
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService],
+  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
