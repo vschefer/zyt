@@ -51,7 +51,7 @@ bleh(id) {
     let proj = [];
     
     let project = response;
-    project.assigned_users.forEach((user) => {
+    project['assigned_users'].forEach((user) => {
         proj.push({
             "archived": user.archived,
             "_id": user._id,

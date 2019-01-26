@@ -46,7 +46,7 @@ import { CommonModule } from '@angular/common';
 import { ProjectOverviewService } from './project/project-overview/project-overview.service';
 import { ProjectAddService } from './project/add-project/add-project.service';
 import { ServerService } from './server.service';
-import { SideBarService } from './todo/todo-detail/todo-detail.service';
+import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
 
 import { AuthGuard } from './_guards';
 import { ProjectService } from './project/project.service';
@@ -171,7 +171,10 @@ import { UsersAddService } from './user/add-user/add-user.service';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, ProjectOverviewService, ProjectService, ProjectAddService, ProjectUpdateService, UsersService, UsersUpdateService, UsersAddService],
+  providers: [TodoDetailService, AddResourceComponent, 
+    ServerService, ProjectOverviewService, ProjectService, 
+    ProjectAddService, ProjectUpdateService, UsersService, 
+    UsersUpdateService, UsersAddService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

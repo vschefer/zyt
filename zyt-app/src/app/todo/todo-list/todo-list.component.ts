@@ -1,8 +1,8 @@
 import { Directive,Component, OnInit, Input, Output,ElementRef, EventEmitter, HostListener } from '@angular/core';
-import {SideBarService} from '../todo-detail/todo-detail.service'
 import {MatDialog} from '@angular/material';
 import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
-import { ServerService } from '../../server.service';
+import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
+import { ProjectUpdateService } from '../../project/update-project/update-project.service';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -21,13 +21,14 @@ export class TodoListComponent implements OnInit {
   todos : Object
   public id
   public projId
-  constructor(private sideBarService: SideBarService, public dialog: MatDialog, private serverService: ServerService) {
+  constructor(public dialog: MatDialog, 
+    private projectService: ProjectUpdateService, private projectOverviewService: ProjectOverviewService) {
     
   }
   proj:Array<String>;
   todo:Array<String>;
   getProject(){
-    this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
+    this.projectOverviewService.getProjects().subscribe(
     (response)=> {
       
       this.data = response;
@@ -40,11 +41,11 @@ toArray(answers: object) {
 }
 
 bleh(id) {
-  this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
+  this.projectService.getProject(id).subscribe((response) => {
   let proj = [];
   
   let project = response;
-  project.todos.forEach((user) => {
+  project['todos'].forEach((user) => {
     proj.push({
       "status": user.status,
       "_id": user._id,
@@ -88,20 +89,6 @@ showDay(event){
   for(let i = 0; i < weekDays.length; i++){
     weekDays[i].classList.add('shrink')
   } 
-}
-
-tog(){
-  this.sideBarService.toggle();
-  let wrapper = document.querySelector('.wrapper') as HTMLElement;
-  let body = document.querySelector('body')
-  wrapper.classList.toggle('open')
-  body.classList.toggle('open')
-  if(document.querySelector('.open')){
-    wrapper.style.overflowX = 'scroll';
-  }else{
-    document.body.style.width = '100vw'
-    document.body.style.overflowX = 'hidden'
-  }
 }
 
 ngOnInit() {
