@@ -47,6 +47,8 @@ import { ServerService } from './server.service';
 import { SideBarService } from './todo/todo-detail/todo-detail.service';
 
 import { AuthGuard } from './_guards';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { AuthGuard } from './_guards';
     AddTodoComponent,
     UpdateUserComponent,
     MobileNavComponent,
+    ExpensesComponent,
+    AddExpensesComponent,
 
   ],
   entryComponents: [
@@ -153,6 +157,11 @@ import { AuthGuard } from './_guards';
       {
         path: 'todo/add',
         component: AddTodoComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'expenses/add',
+        component: AddExpensesComponent,
         canActivate: [AuthGuard]
       },
       {

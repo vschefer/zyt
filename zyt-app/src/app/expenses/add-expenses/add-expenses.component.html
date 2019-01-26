@@ -1,0 +1,50 @@
+<main class="add-expense">
+  <form class="wrapper add-expense__form">
+    <div class="add-expense__content-wrap">
+      <h1>Arbeitszeit erfassen</h1>
+      <h2>Informationen zum Zeitaufwand</h2>
+      
+      <label for="project">Projekt</label>
+      <mat-form-field floatLabel="never">
+        <mat-select id="project" name="project" [(placeholder)]="Projekt" [(value)]="Projekt" (selectionChange)="getSpecificProject(Projekt)">
+          <mat-option value="{{project._id}}" *ngFor="let project of projects">{{project.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <ng-template [ngIf]="project">
+        <label for="position">Position</label>
+        <mat-form-field floatLabel="never">
+          <mat-select id="position" name="position" [(placeholder)]="Position" [(value)]="Position" (selectionChange)="getPositionName(Position)">
+            <mat-option value="{{position._id}}" *ngFor="let position of project.positions">{{position.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+      
+      <label for="affected_date">Datum des Zeitaufwandes</label>
+      <mat-form-field>
+        <input matInput id="date" name="affected_date" [(value)]="Datum" [matDatepicker]="picker" [(placeholder)]="Datum" [(ngModel)]="today">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <ng-template [ngIf]="affected_date">
+        <mat-form-field>
+          <!-- <mat-form-field>
+            <input matInput type="number" placeholder="Zeitaufwand" (input)="onTimeChange($event.target.value)" [(ngModel)]="time">
+          </mat-form-field> -->
+        </mat-form-field>
+      </ng-template>
+      
+      <ng-template [ngIf]="recorded_time">
+        <mat-form-field>
+          <!-- <mat-form-field>
+            <input matInput type="text" placeholder="Kommentar" [(ngModel)]="activity">
+          </mat-form-field> -->
+        </mat-form-field>
+      </ng-template>
+      
+      <button class="button" type="submit" (click)="saveExpense()">Speichern</button>
+    </div>
+  </form>
+</main>
+<app-dashboard></app-dashboard>
