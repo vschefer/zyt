@@ -1,7 +1,7 @@
 <div class="time-form">
   <h1>Arbeitszeit erfassen</h1>
   <mat-form-field>
-    <mat-select placeholder="Job" [(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
+    <mat-select placeholder="{{selectedJob}}"[(ngModel)]="selectedJob"  [(value)]="selectedJob" (selectionChange)="getThisProject(selectedJob)">
       <mat-option value="{{p._id}}" *ngFor="let p of projects">{{p.name}}</mat-option>
     </mat-select>
   </mat-form-field>
