@@ -3,6 +3,9 @@ import {MatSnackBar} from '@angular/material';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../server.service';
 import { Router } from '@angular/router';
+import { ProjectOverviewService } from '../project/project-overview/project-overview.service';
+import { ProjectUpdateService } from '../project/update-project/update-project.service';
+import { RessouceAddService } from './add-ressource.service';
 @Component({
   selector: 'app-add-resouce',
   templateUrl: './add-resource.component.html',
@@ -20,7 +23,8 @@ export class AddResourceComponent  implements OnInit {
   proj
   startDate
   endDate
-  constructor(private router: Router, public snackBar: MatSnackBar, private serverService: ServerService) { }
+  constructor(private router: Router, public snackBar: MatSnackBar, private ressourceAddServer: RessouceAddService,
+    private projectsService: ProjectOverviewService, private projectService: ProjectUpdateService) { }
   message = "Resource wurde hinzugefügt";
   action = "Ok";
   data:Object;
@@ -32,14 +36,14 @@ export class AddResourceComponent  implements OnInit {
     });
   }
   getProjects() {
-    this.serverService.getAll('http://localhost:9000/api/projects').subscribe((response) => {
+    this.projectsService.getProjects().subscribe((response) => {
     this.data = response;
   },
   (error) => console.log(error)
 )
 }
 getProject(id) {
-  this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
+  this.projectService.getProject(id).subscribe((response) => {
   let users = [];
   
   let project = response;
@@ -77,7 +81,7 @@ onSave(){
     
   }
   
-  this.serverService.add(this.ressource, 'http://localhost:9000/api/ressources').subscribe(
+  this.ressourceAddServer.addRessource(this.ressource).subscribe(
   (response)=> console.log(response),
 )
 this.openSnackBar();
