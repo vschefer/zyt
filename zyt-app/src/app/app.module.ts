@@ -47,6 +47,7 @@ import { ProjectOverviewService } from './project/project-overview/project-overv
 import { ProjectAddService } from './project/add-project/add-project.service';
 import { ServerService } from './server.service';
 import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
+import { TodoAddService } from './todo/add-todo/add-todo.service'
 
 import { AuthGuard } from './_guards';
 import { ProjectService } from './project/project.service';
@@ -174,7 +175,7 @@ import { UsersAddService } from './user/add-user/add-user.service';
   providers: [TodoDetailService, AddResourceComponent, 
     ServerService, ProjectOverviewService, ProjectService, 
     ProjectAddService, ProjectUpdateService, UsersService, 
-    UsersUpdateService, UsersAddService],
+    UsersUpdateService, UsersAddService, TodoAddService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
