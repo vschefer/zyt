@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
 import { ProjectOverviewService } from './project-overview.service'
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
@@ -25,7 +24,7 @@ export class ProjectOverviewComponent implements OnInit {
   count:number = 0
   id
   
-  constructor(private serverService: ServerService, public dialog: MatDialog, private projectService: ProjectOverviewService) { }
+  constructor(public dialog: MatDialog, private projectService: ProjectOverviewService) { }
   
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])

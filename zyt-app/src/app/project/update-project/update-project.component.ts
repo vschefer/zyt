@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, HostBinding, Inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
 import {MatDialog} from '@angular/material';
 import { UpdateButtonComponent } from '../project-overview/update-button/update-button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { User } from '../../_models';
 import { ProjectUpdateService } from './update-project.service';
 import { ProjectOverviewService } from '../project-overview/project-overview.service';
+import { UsersService } from '../../user/user.service';
 @Component({
   selector: 'app-update-project',
   templateUrl: './update-project.component.html',
@@ -25,7 +25,7 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   briefingDescription: string
   toAssigned:any
   assignedUser:Array<String>;
-  constructor(private serverService: ServerService, private projectUpdateService: ProjectUpdateService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
+  constructor(private usersService: UsersService, private projectUpdateService: ProjectUpdateService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
     super(dialog)
     
   }
@@ -64,7 +64,7 @@ assigned(id){
   console.log(this.assignedUser)
 }
 getUsers(){
-  this.serverService.getAll('http://localhost:9000/api/users').subscribe(
+  this.usersService.getUsers().subscribe(
   (response)=> {
     this.users = response;
   },
