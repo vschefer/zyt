@@ -55,6 +55,7 @@ import { ProjectUpdateService } from './project/update-project/update-project.se
 import { UsersService } from './user/user.service';
 import { UsersUpdateService } from './user/update-user/update-user.service';
 import { UsersAddService } from './user/add-user/add-user.service';
+import { UserProfilService } from './dashboard/user-profil/user-profil.service';
 
 @NgModule({
   declarations: [
@@ -175,7 +176,8 @@ import { UsersAddService } from './user/add-user/add-user.service';
   providers: [TodoDetailService, AddResourceComponent, 
     ServerService, ProjectOverviewService, ProjectService, 
     ProjectAddService, ProjectUpdateService, UsersService, 
-    UsersUpdateService, UsersAddService, TodoAddService],
+    UsersUpdateService, UsersAddService, TodoAddService,
+    UserProfilService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
