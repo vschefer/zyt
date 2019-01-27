@@ -1,0 +1,25 @@
+@import '../../styles/colors.scss';
+.todayExpenses__expense {
+    padding:1rem;
+    background: $violett;
+    margin-top: 1rem;
+    width: 80%;
+
+    p {
+        margin: 0.5rem 0 0.5rem;
+        font-size: 14px;
+    }
+
+    &:hover {
+        background: darken($violett, 5);
+    }
+}
+.expense__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    strong {
+        max-width: 80%;
+    }
+}

@@ -3,7 +3,12 @@
 <div class="todayExpenses__container">
 
     <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
-        <strong>{{exp.project.name}}</strong>
-        <p>{{exp.recorded_time}}</p>
+        <div class="expense__info">
+                <strong>{{exp.project.name}}</strong>
+                <span>{{exp.recorded_time}} h</span> 
+        </div>
+        <p>{{ exp.comment }}</p>
+      
+        
     </div>
 </div>
