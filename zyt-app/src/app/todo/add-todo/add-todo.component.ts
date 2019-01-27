@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
+import { TodoAddService } from './add-todo.service';
+import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
+import { ProjectUpdateService } from '../../project/update-project/update-project.service';
+import { UsersUpdateService } from '../../user/update-user/update-user.service';
 
 
 @Component({
@@ -24,9 +28,9 @@ export class AddTodoComponent  implements OnInit {
     
     
     
-    constructor(private serverService: ServerService, public snackBar: MatSnackBar) { 
-        
-    }
+    constructor(private usersService: UsersUpdateService, private projectAll: ProjectOverviewService, 
+        private project: ProjectUpdateService, private addTodoService: TodoAddService, public snackBar: MatSnackBar) {}
+
     message = this.name + 'wurde hinzugefügt';
     action = 'Ok';
     openSnackBar() {
@@ -36,93 +40,84 @@ export class AddTodoComponent  implements OnInit {
     }
     
     getProject(){
-        this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
-        (response)=> {
-            
-            this.data = response.json();
-        },
-        (error) => console.log(error) 
-    )
-}
-
-bleh(id) {
-    this.projectID = id
-    this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
-    let proj = [];
-    
-    let project = response.json();
-    project.assigned_users.forEach((user) => {
-        proj.push({
-            "archived": user.archived,
-            "_id": user._id,
-            "first_name": user.first_name,
-            "surname": user.surname
-            
-        });
-    });
-    
-    
-    this.proj = proj;
-},
-(error) => console.log(error)
-)
-
-}
-
-getUser(id) {
-    this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
-    let proj = [];
-    
-    this.u = response.json();
-    this.id = this.u._id
-},
-(error) => console.log(error)
-)
-
-}
-
-onSave(){
-    let nextButton = document.querySelector('.next')
-    let prevButton = document.querySelector('.prev')
-    let wrapper = document.querySelector('.wrapper')
-    
-    this.todo={
-        status: 0,
-        project: this.projectID,
-        briefing:{
-            title: this.title,
-            description: this.description
-        },
-        assigned_users: [this.id]
+        this.projectAll.getProjects().subscribe(
+            (response)=> {
+                this.data = response;
+            },
+            (error) => console.log(error) 
+        )
     }
-    this.serverService.add(this.todo, 'http://localhost:9000/api/todos').subscribe(
-    (response)=> console.log(response),
-)
-this.openSnackBar()
-}  
-checkValid(){
-    let invalid: Boolean
-    let error = document.querySelector('.error-message')
-    let input = document.querySelectorAll('mat-form-field')
     
+    bleh(id) {
+        this.projectID = id
+        this.project.getProject(id).subscribe((response) => {
+            let proj = [];
+            
+            let project = response;
+            project['assigned_users'].forEach((user) => {
+                proj.push({
+                    "archived": user.archived,
+                    "_id": user._id,
+                    "first_name": user.first_name,
+                    "surname": user.surname
+                });
+            });
+            this.proj = proj;
+        },
+        (error) => console.log(error))  
+    }
     
-    for(let i = 0; i < input.length; i++){
-        if(input[i].classList.contains('ng-invalid')){
-            invalid = true;
+    getUser(id) {
+        this.usersService.getUser(id).subscribe((response) => {
+            let proj = [];
+            
+            this.u = response;
+            this.id = this.u._id
+        },
+        (error) => console.log(error)) 
+    }
+    
+    onSave(){
+        let nextButton = document.querySelector('.next')
+        let prevButton = document.querySelector('.prev')
+        let wrapper = document.querySelector('.wrapper')
+        
+        this.todo={
+            status: 0,
+            project: this.projectID,
+            briefing:{
+                title: this.title,
+                description: this.description
+            },
+            assigned_users: [this.id]
+        }
+        this.addTodoService.addTodo(this.todo).subscribe(
+            (response)=> console.log(response),
+        )
+        this.openSnackBar()
+    }  
+    checkValid(){
+        let invalid: Boolean
+        let error = document.querySelector('.error-message')
+        let input = document.querySelectorAll('mat-form-field')
+        
+        
+        for(let i = 0; i < input.length; i++){
+            if(input[i].classList.contains('ng-invalid')){
+                invalid = true;
+            }
+        }
+        if(!invalid){
+            this.onSave()
+        }else{
+            error.classList.remove('hidden')
+            
         }
     }
-    if(!invalid){
-        this.onSave()
-    }else{
-        error.classList.remove('hidden')
+    
+    ngOnInit() {
+        this.getProject()
         
     }
-}
-
-
-ngOnInit() {
-    this.getProject()
     
-}
-
 }

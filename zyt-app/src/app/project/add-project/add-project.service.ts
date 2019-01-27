@@ -4,8 +4,7 @@ import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
-export class ProjectOverviewService {
-    id
+export class ProjectAddService {
     headers: HttpHeaders;
     avatars: Object
     constructor(public dialog: MatDialog, private httpClient: HttpClient){}
@@ -25,10 +24,10 @@ export class ProjectOverviewService {
             'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
           })
     }
-    getProjects(){
-        let url = 'http://localhost:9000/api/projects';
-        this.headers = new HttpHeaders();
-        this.auth();
-        return  this.httpClient.get(url,{headers: this.headers});
+    addProject(servers: any){
+        let url = 'http://localhost:9000/api/projects'
+        this.auth()
+        return  this.httpClient.post(url, servers,{headers: this.headers});
     }
+
 }

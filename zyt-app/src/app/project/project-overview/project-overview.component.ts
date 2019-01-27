@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
-import {UpdateProjectService } from './project-overview.service'
+import { ProjectOverviewService } from './project-overview.service'
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
 import * as moment from 'moment';
@@ -29,16 +28,16 @@ export class ProjectOverviewComponent implements OnInit {
   unactive: Array<String>;
   showOldElement: Boolean = false
   
-  constructor(private serverService: ServerService, public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private projectService: ProjectOverviewService) { }
   
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])
   }
   
   getProject(){
-    this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
+    this.projectService.getProjects().subscribe(
     (response)=> {
-      this.data = response.json();
+      this.data = response;
       let msgTotal
       let active = []
       let unactive = []

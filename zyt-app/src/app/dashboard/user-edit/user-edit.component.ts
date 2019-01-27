@@ -12,14 +12,14 @@ export class UserEditComponent implements OnInit {
   constructor(private serverService: ServerService, public snackBar: MatSnackBar) {
   }
   
-  avatars:Array<Object>;
+  avatars:any;
   password
   passwordRepeat
   message = "Dein Passwort wurde geändert";
   action = "OK"
   getAvatars() {
     this.serverService.getAll('//localhost:9000/api/avatars').subscribe((response) => {
-    this.avatars = response.json();
+    this.avatars = response;
   },
   (error) => console.log(error)
 )

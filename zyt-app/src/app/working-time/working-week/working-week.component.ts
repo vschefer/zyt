@@ -25,29 +25,30 @@ export class WorkingWeekComponent implements OnInit {
     this.toWork = 30;
     ServerService.getAllStatic('//localhost:9000/api/expenses/week').subscribe(
       (response)=> {
-        const result = response.json();
+        const result = response;
+        console.log(result)
         let totalWorkTime = 0;
-        result.then(res => {
-          res.forEach(expense => {
-            totalWorkTime += expense.recorded_time;
-          });
-          this.worked = totalWorkTime;
+        // result.then(res => {
+        //   res.forEach(expense => {
+        //     totalWorkTime += expense.recorded_time;
+        //   });
+        //   this.worked = totalWorkTime;
           
-          if (this.toWork - this.worked <= 0) {
-            this.toWork = 0;
-          } else {
-            this.toWork = this.toWork - this.worked;
-          }
-          this.chartData = [
-            {
-              data: [
-                this.worked,
-                this.toWork,
-              ],
-              backgroundColor: ['#000', '#ff0'],
-            },
-          ];
-        });
+        //   if (this.toWork - this.worked <= 0) {
+        //     this.toWork = 0;
+        //   } else {
+        //     this.toWork = this.toWork - this.worked;
+        //   }
+        //   this.chartData = [
+        //     {
+        //       data: [
+        //         this.worked,
+        //         this.toWork,
+        //       ],
+        //       backgroundColor: ['#000', '#ff0'],
+        //     },
+        //   ];
+        // });
       },
       (error) => console.log(error) 
     )

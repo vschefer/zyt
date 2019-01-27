@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WorkingWeekComponent} from '../working-time/working-week/working-week.component'
-import { ServerService } from '../server.service';
 import * as moment from 'moment';
+import { RessourceAllService } from './all-ressource.service';
 @Component({
   selector: 'app-all-ressource',
   templateUrl: './all-resource.component.html',
@@ -17,8 +17,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   startDay
   weekRes:Array<String>;
   dates: Object
-  week
-  constructor(private serverService: ServerService) {
+  constructor(private ressourceService: RessourceAllService) {
     super()
     this.monday
     this.friday
@@ -43,10 +42,9 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     
   }
   getRessource(){
-    this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
-    (response)=> {
+    this.ressourceService.getRessource().subscribe((response)=> {
       let weekRes = []
-      this.ressource = response.json();
+      this.ressource = response;
       this.ressource.forEach(element => { 
         
         if(moment(element.start).isBetween(this.week[0].toISOString().slice(0, 10), this.week[6].toISOString().slice(0, 10)) 
@@ -72,54 +70,51 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
       });
       this.weekRes = weekRes
     },
-    (error) => console.log(error)
-  )
-}
-
-showDay(event){
-  let button = event.path[0]
-  let weekDays = document.querySelectorAll('.all__ressource')
-  let growDay = event.path[1]
-  let myArray = Array.from(weekDays)
-  for(let i = 0; i < weekDays.length; i++){
-    weekDays[i].classList.remove('grow')
-  }
-  if(growDay.classList.contains('grow')){
-    growDay.classList.remove('grow')
-  }else{
-    growDay.classList.add('grow')
+    (error) => console.log(error))
   }
   
+  showDay(event){
+    let button = event.path[0]
+    let weekDays = document.querySelectorAll('.all__ressource')
+    let growDay = event.path[1]
+    let myArray = Array.from(weekDays)
+    for(let i = 0; i < weekDays.length; i++){
+      weekDays[i].classList.remove('grow')
+    }
+    if(growDay.classList.contains('grow')){
+      growDay.classList.remove('grow')
+    }else{
+      growDay.classList.add('grow')
+    }
+    
+    
+    for(let i = 0; i < weekDays.length; i++){
+      weekDays[i].classList.add('shrink')
+    } 
+  }
   
-  for(let i = 0; i < weekDays.length; i++){
-    weekDays[i].classList.add('shrink')
-  } 
-}
-
-toDay(){
-  let date = new Date()
-  let today = date.getDay()
-  let weekDays = document.querySelectorAll('.all__ressource')
-  for(let i = 0; i < weekDays.length; i++){
-    if(today != 0 && today != 6){
-      if((today -1) == i){
+  toDay(){
+    let date = new Date()
+    let today = date.getDay()
+    let weekDays = document.querySelectorAll('.all__ressource')
+    for(let i = 0; i < weekDays.length; i++){
+      if(today != 0 && today != 6){
+        if((today -1) == i){
+          weekDays[i].classList.add('grow')
+        }else{
+          weekDays[i].classList.add('shrink')
+        }
+      }else if(i == 0){
         weekDays[i].classList.add('grow')
       }else{
         weekDays[i].classList.add('shrink')
       }
-    }else if(i == 0){
-      weekDays[i].classList.add('grow')
-    }else{
-      weekDays[i].classList.add('shrink')
     }
-    
   }
-}
-
-ngOnInit() {
-  // this.showDay()
-  this.toDay()
-  this.getRessource() 
-}
-
+  
+  ngOnInit() {
+    this.toDay()
+    this.getRessource() 
+  }
+  
 }

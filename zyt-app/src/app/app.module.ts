@@ -29,7 +29,8 @@ import { DateFormatPipe } from './pipes/format-date.pipe';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
+
 import { OrderModule } from 'ngx-order-pipe';
 import {MatButtonModule} from '@angular/material/button';
 import { ChartsModule } from 'ng2-charts';
@@ -42,11 +43,20 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
-import { UpdateProjectService } from './project/project-overview/project-overview.service';
+import { ProjectOverviewService } from './project/project-overview/project-overview.service';
+import { ProjectAddService } from './project/add-project/add-project.service';
 import { ServerService } from './server.service';
-import { SideBarService } from './todo/todo-detail/todo-detail.service';
+import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
+import { TodoAddService } from './todo/add-todo/add-todo.service'
 
 import { AuthGuard } from './_guards';
+import { ProjectUpdateService } from './project/update-project/update-project.service';
+import { UsersService } from './user/user.service';
+import { UsersUpdateService } from './user/update-user/update-user.service';
+import { UsersAddService } from './user/add-user/add-user.service';
+import { UserProfilService } from './dashboard/user-profil/user-profil.service';
+import { RessouceAddService } from './add-resource/add-ressource.service';
+import { RessourceAllService } from './all-ressource/all-ressource.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +116,7 @@ import { AuthGuard } from './_guards';
     ChartsModule,
     MatSnackBarModule,
     MatRadioModule,
-    HttpModule,
+    HttpClientModule,
     OrderModule,
     MatButtonModule,
     RouterModule.forRoot([
@@ -164,7 +174,11 @@ import { AuthGuard } from './_guards';
     HttpClientModule,
 
   ],
-  providers: [SideBarService, AddResourceComponent, ServerService, UpdateProjectService],
+  providers: [TodoDetailService, AddResourceComponent, 
+    ServerService, ProjectOverviewService,
+    ProjectAddService, ProjectUpdateService, UsersService, 
+    UsersUpdateService, UsersAddService, TodoAddService,
+    UserProfilService, RessouceAddService, RessourceAllService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

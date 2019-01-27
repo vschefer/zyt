@@ -1,23 +1,14 @@
 
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
-import { UpdateProjectComponent } from '../update-project/update-project.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
-export class ProjectOverviewService {
+export class UsersUpdateService {
     id
     headers: HttpHeaders;
     avatars: Object
     constructor(public dialog: MatDialog, private httpClient: HttpClient){}
     
-    openDialog(projectId): void {   
-        const dialogRef = this.dialog.open(UpdateProjectComponent, {
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            
-        });  
-    } 
 
     auth(){
         this.headers =  new HttpHeaders({
@@ -25,10 +16,18 @@ export class ProjectOverviewService {
             'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
           })
     }
-    getProjects(){
-        let url = 'http://localhost:9000/api/projects';
+    getUser(id){
+        let url = 'http://localhost:9000/api/users/';
         this.headers = new HttpHeaders();
         this.auth();
-        return  this.httpClient.get(url,{headers: this.headers});
+        return  this.httpClient.get(url + id,{headers: this.headers});
     }
+    updateUser(data:object, id:any) {
+        let url = 'http://localhost:9000/api/users/'
+        this.auth();
+        return  this.httpClient.put(url + id, data, {headers: this.headers});
+    }
+
+
+
 }

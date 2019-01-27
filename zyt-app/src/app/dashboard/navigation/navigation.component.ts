@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserProfilService } from '../user-profil/user-profil.service';
 
 @Component({
   selector: 'app-navigation',
@@ -7,17 +8,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  
+  me
   isAdmin: Boolean;
   
-  constructor() { }
+  constructor(private userProfilService: UserProfilService) { }
   
   admin() {
-    const helper = new JwtHelperService();
-    const token = JSON.parse(localStorage.getItem('currentUser')).token;
-    const decodedToken = helper.decodeToken(token);
-    
-    this.isAdmin = decodedToken.admin;
+    this.userProfilService.getMe().subscribe((response) => {
+      this.me = response; 
+      this.isAdmin = this.me.admin;
+      console.log(this.isAdmin)
+    },
+    (error) => console.log(error)) 
   }
   
   openSubNav(e){

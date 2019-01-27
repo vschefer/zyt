@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
+import { ProjectAddService } from './add-project.service';
 
 @Component({
   selector: 'app-add-project',
@@ -30,7 +31,7 @@ export class AddProjectComponent  implements OnInit {
   total = 0
   selectedUser
   myForm: FormGroup
-  constructor(private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) {}
+  constructor(private projectService: ProjectAddService,private serverService: ServerService, public snackBar: MatSnackBar, private fb: FormBuilder) {}
   
   openSnackBar() {
     let message = this.name + 'wurde hinzugefügt';
@@ -42,7 +43,7 @@ export class AddProjectComponent  implements OnInit {
   getUsers(){
     this.serverService.getAll('http://localhost:9000/api/users').subscribe(
     (response)=> {
-      this.users = response.json();
+      this.users = response;
     },
     (error) => console.log(error)
   ) 
@@ -50,14 +51,14 @@ export class AddProjectComponent  implements OnInit {
 getManager(id) {
   this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
   let proj = [];
-  this.u = response.json();
+  this.u = response;
 },(error) => console.log(error)) 
 }
 getUser(id) {
   let userList = [];
   this.select.forEach((user)=>{
     this.serverService.getAll('http://localhost:9000/api/users/' + user).subscribe((response) => { 
-    this.us = response.json();
+    this.us = response;
     userList.push(this.us);
   },
   (error) => console.log(error))
@@ -97,9 +98,7 @@ onSave(){
     deadline: this.endDate,
     total_time_offered: this.total
   }
-  this.serverService.add(this.servers, 'http://localhost:9000/api/projects').subscribe(
-  (response)=> console.log(response),
-)
+  this.projectService.addProject(this.servers).subscribe()
 this.openSnackBar()
 this.name = ''
 wrapper.setAttribute("style", "transform: translate( 0px)" );

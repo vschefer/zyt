@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, HostBinding, Inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
 import {MatDialog} from '@angular/material';
 import { UpdateButtonComponent } from '../project-overview/update-button/update-button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { User } from '../../_models';
+import { ProjectUpdateService } from './update-project.service';
+import { ProjectOverviewService } from '../project-overview/project-overview.service';
+import { UsersService } from '../../user/user.service';
 @Component({
   selector: 'app-update-project',
   templateUrl: './update-project.component.html',
@@ -21,21 +23,20 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   updatedProject: Object
   briefingTitle: string
   briefingDescription: string
-  toAssigned:Array<String>;
+  toAssigned:any
   assignedUser:Array<String>;
-  constructor(private serverService: ServerService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
+  constructor(private usersService: UsersService, private projectUpdateService: ProjectUpdateService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
     super(dialog)
     
   }
   getProject() {
     
     console.log(this.id)
-    this.serverService.getAll('http://localhost:9000/api/projects/' + this.id).subscribe((response) => {
-    let project = response.json();
-    console.log(this.project)
+    this.projectUpdateService.getProject(this.id).subscribe((response) => {
+    let project = response;
     this.project = project
     let  toAssigned = []
-    project.assigned_users.forEach(u => {
+    project['assigned_users'].forEach(u => {
       let id = u._id
       toAssigned.push(id)
     });
@@ -63,9 +64,9 @@ assigned(id){
   console.log(this.assignedUser)
 }
 getUsers(){
-  this.serverService.getAll('http://localhost:9000/api/users').subscribe(
+  this.usersService.getUsers().subscribe(
   (response)=> {
-    this.users = response.json();
+    this.users = response;
   },
   (error) => console.log(error)
 )
@@ -82,9 +83,7 @@ updateProject(){
     assigned_users: this.toAssigned || this.project.assigned_users.map(usr => usr._id)
   }
   
-  this.serverService.put('http://localhost:9000/api/projects/' + this.id, this.updatedProject).subscribe(
-  (response)=> console.log(response),
-)
+  this.projectUpdateService.updateProject(this.updatedProject, this.id).subscribe()
 }
 
 toArray(answers: object) {
@@ -92,10 +91,7 @@ toArray(answers: object) {
 }
 
 ngOnInit() {
-  console.log("init")
-  
   this.id = this.data.id;
-  console.log(this.id)
   this.getProject()
   this.getUsers()
   

@@ -33,7 +33,7 @@ export class TimeFormComponent implements OnInit {
   getProject(){
     this.serverService.getAll('http://localhost:9000/api/projects').subscribe(
     (response)=> {
-      this.projects = response.json();
+      this.projects = response;
     },
     (error) => console.log(error)
   ) 
@@ -48,7 +48,7 @@ openSnackBar() {
 getThisProject(id) {
   this.serverService.getAll('http://localhost:9000/api/projects/' + id).subscribe((response) => {
   
-  this.specificProject = response.json();
+  this.specificProject = response;
   this.selectedJob = this.specificProject.name;
 },
 (error) => console.log(error)

@@ -4,7 +4,7 @@ import {MatDialog} from '@angular/material';
 import { ServerService } from '../server.service';
 import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
-
+import { UsersService } from './user.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,13 +17,13 @@ export class UserComponent implements OnInit {
   count:number = 0
   currentUser:Array<Object>
   id:String
-  constructor(private serverService: ServerService, public dialog: MatDialog) { 
+  constructor(private serverService: ServerService, private userService: UsersService, public dialog: MatDialog) { 
   }
   
   getUsers(){
-    this.serverService.getAll('http://localhost:9000/api/users').subscribe(
+    this.userService.getUsers().subscribe(
     (response)=> {
-      this.data = response.json();
+      this.data = response;
     },
     (error) => console.log(error)
   )
@@ -81,7 +81,7 @@ pageUp(){
   
 }
 deactivateUser(userID) {
-  this.serverService.put('http://localhost:9000/api/users/' + userID, {archived: true}).subscribe(
+  this.userService.deactivateUser(userID).subscribe(
   (response)=> {
     this.getUsers();
   },
@@ -89,7 +89,7 @@ deactivateUser(userID) {
 )
 }
 activateUser(userID) {
-  this.serverService.put('http://localhost:9000/api/users/' + userID, {archived: false}).subscribe(
+  this.userService.activateUser(userID).subscribe(
   (response)=> {
     this.getUsers();
   },
