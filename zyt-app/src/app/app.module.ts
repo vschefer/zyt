@@ -57,6 +57,7 @@ import { UsersAddService } from './user/add-user/add-user.service';
 import { UserProfilService } from './dashboard/user-profil/user-profil.service';
 import { RessouceAddService } from './add-resource/add-ressource.service';
 import { RessourceAllService } from './all-ressource/all-ressource.service';
+import { UserEditService } from './dashboard/user-edit/user-edit.service';
 
 @NgModule({
   declarations: [
@@ -178,7 +179,7 @@ import { RessourceAllService } from './all-ressource/all-ressource.service';
     ServerService, ProjectOverviewService,
     ProjectAddService, ProjectUpdateService, UsersService, 
     UsersUpdateService, UsersAddService, TodoAddService,
-    UserProfilService, RessouceAddService, RessourceAllService],
+    UserProfilService, UserEditService, RessouceAddService, RessourceAllService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

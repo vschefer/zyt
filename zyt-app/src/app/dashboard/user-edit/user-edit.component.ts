@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerService } from '../../server.service';
 import {MatSnackBar, MatInputModule, MatSelectModule} from '@angular/material';
+import { UserProfilService } from '../user-profil/user-profil.service';
+import { UserEditService } from './user-edit.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -9,51 +10,58 @@ import {MatSnackBar, MatInputModule, MatSelectModule} from '@angular/material';
 })
 export class UserEditComponent implements OnInit {
   
-  constructor(private serverService: ServerService, public snackBar: MatSnackBar) {
+  constructor(private userProfil: UserProfilService, 
+    private userEdit: UserEditService,
+    public snackBar: MatSnackBar) {}
+    
+    avatars:any;
+    password
+    passwordRepeat
+    message = "Dein Passwort wurde geändert";
+    action = "OK"
+    userId;
+    
+    getMe() {
+      this.userProfil.getMe().subscribe((response) => {
+        let data = response;
+        this.userId = data['_id']
+      },
+      (error) => console.log(error))
+    }
+    
+    getAvatars() {
+      this.userEdit.getAvatars().subscribe((response) => {
+        this.avatars = response;
+      },
+      (error) => console.log(error)
+    )
+  }
+  openSnackBar() {
+    this.snackBar.open(this.message, this.action, {
+      duration: 5000,
+    });
   }
   
-  avatars:any;
-  password
-  passwordRepeat
-  message = "Dein Passwort wurde geändert";
-  action = "OK"
-  getAvatars() {
-    this.serverService.getAll('//localhost:9000/api/avatars').subscribe((response) => {
-    this.avatars = response;
-  },
-  (error) => console.log(error)
-)
-}
-openSnackBar() {
-  this.snackBar.open(this.message, this.action, {
-    duration: 5000,
-  });
-}
-changeAvatar(avatarID) {
-  const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
-  this.serverService.put('//localhost:9000/api/users/' + userID, {avatar: avatarID}).subscribe((response) => {
-  console.log(response);
-},
-(error) => console.log(error)
-)
-}
-changePassword(){
-  const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
-  if(this.password != undefined && this.passwordRepeat != undefined ){
-    if(this.password == this.passwordRepeat) {
-      this.serverService.put('//localhost:9000/api/users/' + userID, {password: this.password}).subscribe((response) => {
-      console.log(response);
-    },
-    (error) => console.log(error)
-  )
-  this.openSnackBar()
-}
-}
-
-}
-
-ngOnInit() {
-  this.getAvatars();
-}
-
+  changeAvatar(avatarID) {
+    this.userEdit.updateMe({avatar: avatarID}, this.userId).subscribe()
+  }
+  
+  changePassword(){
+    const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
+    if(this.password != undefined && this.passwordRepeat != undefined ){
+      if(this.password == this.passwordRepeat) {
+        this.userEdit.updateMe({password: this.password}, this.userId).subscribe((response) => {
+          console.log(response);
+        },
+        (error) => console.log(error))
+        this.openSnackBar()
+      }
+    }
+    
+  }
+  
+  ngOnInit() {
+    this.getMe()
+    this.getAvatars();
+  }
 }
