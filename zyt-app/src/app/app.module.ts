@@ -60,6 +60,8 @@ import { RessourceAllService } from './all-ressource/all-ressource.service';
 import { UserEditService } from './dashboard/user-edit/user-edit.service';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
+import { ExpensesService } from './expenses/today-expenses/today-expenses.service'
+import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.compo
     MobileNavComponent,
     ExpensesComponent,
     AddExpensesComponent,
+    TodayExpensesComponent
 
   ],
   entryComponents: [
@@ -188,7 +191,8 @@ import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.compo
     ServerService, ProjectOverviewService,
     ProjectAddService, ProjectUpdateService, UsersService, 
     UsersUpdateService, UsersAddService, TodoAddService,
-    UserProfilService, UserEditService, RessouceAddService, RessourceAllService],
+    UserProfilService, UserEditService, RessouceAddService, RessourceAllService,
+  ExpensesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
