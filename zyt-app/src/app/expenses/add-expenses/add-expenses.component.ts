@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../../server.service'
-import {MatSnackBar, MatInputModule, MatSelectModule} from '@angular/material';
+import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-expenses',
@@ -22,7 +23,8 @@ export class AddExpensesComponent implements OnInit {
 
   constructor(
     private serverService: ServerService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router,
   ) { }
   
   toArray(answers: object) {
@@ -43,32 +45,41 @@ export class AddExpensesComponent implements OnInit {
     });
   }
 
-  getSpecificProject(projectId: String) {
+  onProjectChange(projectId: String) {
     this.serverService.getAll('http://localhost:9000/api/projects/' + projectId).subscribe((response) => {
       this.project = response.json();
     }, (error) => {
       throw new Error(error._body);
     });
   }
-  
-  getPositionName(positionId: String): void {
-    // this.selectedPositionName = this.specificProject.positions.filter((pos) => {
-    //   return pos._id === id;
-    // })[0].name;
+
+  onRecordedTimeChange(time: number) {
+    this.recorded_time = time;
   }
   
-  postExpense(): void {
+  onPositionChange(pos: any) {
+    this.position = pos;
+  }
+  
+  saveExpense(): void {
+    debugger;
+    if (typeof this.project === "undefined") {
+      return this.openSnackBar(`Bitte wähle ein Projekt`, 'Ok');
+    };
+
     this.expense = {
       recorded_time: this.recorded_time,
     	comment: this.comment,
-    	project: this.project,
+    	project: this.project["_id"],
     	position: this.position,
     	affected_date: this.affected_date,
     };
-    
+
     this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe((response) => {
-      this.openSnackBar(`${this.recorded_time}h wurde(n) für das gewählte Projekt hinzugefügt.`, 'Ok');
+      this.openSnackBar(`${this.recorded_time}h wurde(n) für das Projekt "${this.project.name}" hinzugefügt.`, 'Ok');
+      this.router.navigate(['/']);
     }, (error) => {
+      this.openSnackBar(`Fehler: ${error._body}`, 'Ok');
       throw new Error(error._body);
     });
   }

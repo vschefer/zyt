@@ -28,3 +28,8 @@ mat-form-field {
 mat-form-field[floatlabel="never"] span {
   color: white;
 }
+
+.button--save-expense {
+  color: white;
+  background-color: darken($violett, 20);
+}
