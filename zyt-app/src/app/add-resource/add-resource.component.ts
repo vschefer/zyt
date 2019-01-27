@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../server.service';
 import { Router } from '@angular/router';
 import { ProjectOverviewService } from '../project/project-overview/project-overview.service';
 import { ProjectUpdateService } from '../project/update-project/update-project.service';
