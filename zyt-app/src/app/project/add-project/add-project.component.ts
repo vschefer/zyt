@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
 import { ProjectAddService } from './add-project.service';
@@ -33,7 +32,6 @@ export class AddProjectComponent  implements OnInit {
   selectedUser
   myForm: FormGroup
   constructor(private projectService: ProjectAddService,
-    private serverService: ServerService, 
     private usersService: UsersService,
     private userService: UsersUpdateService,
     public snackBar: MatSnackBar, private fb: FormBuilder) {}
@@ -54,7 +52,7 @@ export class AddProjectComponent  implements OnInit {
       ) 
     }
     getManager(id) {
-      this.serverService.getAll('http://localhost:9000/api/users/' + id).subscribe((response) => {
+      this.userService.getUser(id).subscribe((response) => {
       let proj = [];
       this.u = response;
     },(error) => console.log(error)) 

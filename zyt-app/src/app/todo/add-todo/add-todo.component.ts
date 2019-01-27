@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { ServerService } from '../../server.service';
 import {MatSnackBar} from '@angular/material';
 import { TodoAddService } from './add-todo.service';
 import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
