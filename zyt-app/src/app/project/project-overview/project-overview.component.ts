@@ -4,6 +4,7 @@ import { ServerService } from '../../server.service';
 import {UpdateProjectService } from './project-overview.service'
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
+import * as moment from 'moment';
 @Component({
   selector: 'app-project-overview',
   templateUrl: './project-overview.component.html',
@@ -23,7 +24,10 @@ export class ProjectOverviewComponent implements OnInit {
   left: number = 0
   right:number = 0
   count:number = 0
-  id
+  now = moment().format('YYYY-MM-DD');
+  active: Array<String>;
+  unactive: Array<String>;
+  showOldElement: Boolean = false
   
   constructor(private serverService: ServerService, public dialog: MatDialog) { }
   
@@ -36,7 +40,15 @@ export class ProjectOverviewComponent implements OnInit {
     (response)=> {
       this.data = response.json();
       let msgTotal
+      let active = []
+      let unactive = []
       this.data.forEach(element => {
+        element.isInFuture =  moment(element.deadline).isAfter(this.now);
+        if( moment(element.deadline).isAfter(this.now)){
+          active.push(element)
+        }else {
+          unactive.push(element)
+        }
         element.positions.forEach(e => {
           msgTotal = e.expenses.reduce(function(prev, cur) {
             return prev + cur.recorded_time;
@@ -44,58 +56,14 @@ export class ProjectOverviewComponent implements OnInit {
           e.total = msgTotal
         });
       });
+      this.active = active
+      this.unactive = unactive
     },
     (error) => console.log(error) 
   )
   this.checkProgressbar()
 }
 
-<<<<<<< Updated upstream
-// getNextProject(){
-//   let nextButton = document.querySelector('.next')
-//   let prevButton = document.querySelector('.prev')
-//   let wrapper = document.querySelector('.wrapper')
-//   let projectCount = Object.keys(this.data).length
-//   let windowWidth = window.outerWidth
-//   let project = document.querySelector('.project').clientWidth
-//   this.left += project;
-//   this.count += 1;
-  
-//   if(this.count <= (projectCount -1)){
-//     wrapper.setAttribute("style","transform: translate("+ -(this.left) + "px)" );
-//     if(this.count == (projectCount -1)){
-//       nextButton.classList.add('hidden')
-//     }else if(nextButton.classList.contains('.hidden')){
-//       nextButton.classList.remove('hidden')
-//     }
-//   }
-//   if(prevButton.classList.contains('hidden')){
-//     prevButton.classList.remove('hidden')
-//   }
-// }
-
-// getPreviosPage(){
-  
-//   let prevButton = document.querySelector('.prev')
-//   let nextButton = document.querySelector('.next')
-//   let project = document.querySelector('.project').clientWidth
-//   let wrapper = document.querySelector('.wrapper')
-//   this.left = this.left - project
-//   this.count -= 1;
-//   let projectCount = Object.keys(this.data).length
-  
-//   if(this.count <= 0){
-//     prevButton.classList.add('hidden')
-//   }
-//   if(this.count <= (projectCount -1)){
-//     wrapper.setAttribute("style", "transform: translate("+ -(this.left) + "px)" );
-//   }
-//   if(nextButton.classList.contains('hidden')){
-//     nextButton.classList.remove('hidden')
-//   }
-// }
-=======
->>>>>>> Stashed changes
 checkProgressbar(){
   
   setTimeout(function () {
@@ -122,16 +90,16 @@ toggleAccordion (e){
   let toggleButton = e.target
   let showElement = toggleButton.parentElement.children[1]
   let thisProjectContent = e.target.nextSibling
-
+  
   let projectContents = document.querySelectorAll('.' + thisProjectContent.className);
   let thisSection = e.target.parentElement
   for(let i = 0; i < projectContents.length; i++){
     let sections = projectContents[i].parentElement
-
+    
     if(sections.classList.contains('open__content')){
       if(!thisSection){
         sections.classList.remove('open__content');
-       sections.classList.add('close__content');
+        sections.classList.add('close__content');
       }
     }
     if(thisSection ==sections){
@@ -148,6 +116,16 @@ toggleAccordion (e){
       }
     }
   } 
+}
+
+showOldElements(e){
+  let element = e.target
+  this.showOldElement = !this.showOldElement
+  if(this.showOldElement == true) {
+    element.innerText = "Verberge vergangene Projekte";
+  }else {
+    element.innerText = "Zeige vergangene Projekte";
+  }
 }
 
 ngOnInit() {

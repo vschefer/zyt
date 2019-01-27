@@ -42,6 +42,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     this.monday = mon.toLocaleDateString('de-DE', options)
     this.sunday =sun.toLocaleDateString('de-DE', options)
     this.friday =fri.toLocaleDateString('de-DE', options)
+  console.log(this.friday)
   }
   getRessource(){
     this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
