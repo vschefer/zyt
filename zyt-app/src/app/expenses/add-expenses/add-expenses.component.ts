@@ -62,7 +62,6 @@ export class AddExpensesComponent implements OnInit {
   }
   
   saveExpense(): void {
-    debugger;
     if (typeof this.project === "undefined") {
       return this.openSnackBar(`Bitte wähle ein Projekt`, 'Ok');
     };
