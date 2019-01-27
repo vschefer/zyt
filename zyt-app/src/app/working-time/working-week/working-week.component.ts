@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Charts from 'chart.js';
 import { ServerService } from '../../server.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-working-week',
@@ -15,6 +16,7 @@ export class WorkingWeekComponent implements OnInit {
   worked: number;
   chartData: any;
   toWork: number;
+  week
   constructor() {
     this.getWeek()
   }
@@ -72,26 +74,21 @@ export class WorkingWeekComponent implements OnInit {
   }
   
   getWeek(){
-    let curr = new Date;
-    let first = curr.getDate() - curr.getDay();
-    first = first + 1
-    let last = first + 6;
-    let end = first + 4;
-    
-    let mon = new Date(curr.setDate(first))
-    let sun = new Date(curr.setDate(last))
-    let fri = new Date(curr.setDate(end))
-    
-    const currentYear = new Date();
-
-    if (mon.getFullYear() < currentYear.getFullYear()) {
-        sun.setFullYear(currentYear.getFullYear());
-    }
-    
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    this.monday = mon.toLocaleDateString('de-DE', options)
-    this.sunday =sun.toLocaleDateString('de-DE', options)
-    this.friday =fri.toLocaleDateString('de-DE', options)
+    let startOfWeek = moment().startOf('isoWeek');
+    let endOfWeek = moment().endOf('isoWeek');
+    let days = [];
+    let day = startOfWeek;
+    
+    while (day <= endOfWeek) {
+      days.push(day.toDate());
+      day = day.clone().add(1, 'd');
+    }
+
+    this.monday = days[0].toLocaleDateString('de-DE', options)
+    this.sunday = days[6].toLocaleDateString('de-DE', options)
+    this.friday = days[4].toLocaleDateString('de-DE', options)
+    this.week = days
   }
   ngOnInit() {
     this.loadExpenses();

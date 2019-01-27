@@ -18,10 +18,11 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
   startDay
   weekRes:Array<String>;
   dates: Object
+  week
+  monday
+  friday
   constructor(private serverService: ServerService) { 
     super()
-    this.monday
-    this.friday
     this.getWeek()
   }
   
@@ -30,24 +31,21 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
     this.getRessource()
   }
   getWeek(){
-    let curr = new Date;
-    let first = curr.getDate() - curr.getDay();
-    first = first + 1
-    let last = first + 6;
-    let end = first + 4;
-    this.firstDay = first
-    let mon = new Date(curr.setDate(first))
-    let sun = new Date(curr.setDate(last))
-    let fri = new Date(curr.setDate(end))
-    this.mo = mon
-    this.lastDay = end
-    this.fr = fri
-    this.startDay = this.mo.toISOString().slice(0, 10)
-    
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    this.monday = mon.toLocaleDateString('de-DE', options)
-    this.sunday =sun.toLocaleDateString('de-DE', options)
-    this.friday =fri.toLocaleDateString('de-DE', options)
+    let startOfWeek = moment().startOf('isoWeek');
+    let endOfWeek = moment().endOf('isoWeek');
+    let days = [];
+    let day = startOfWeek;
+    
+    while (day <= endOfWeek) {
+      days.push(day.toDate());
+      day = day.clone().add(1, 'd');
+    }
+
+    this.monday = days[0].toLocaleDateString('de-DE', options)
+    this.sunday = days[6].toLocaleDateString('de-DE', options)
+    this.friday = days[4].toLocaleDateString('de-DE', options)
+    this.week = days
   }
   
   getRessource(){
@@ -57,10 +55,10 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
       this.ressource = response.json();
       this.ressource.forEach(element => { 
         
-        if(moment(element.start).isBetween(this.mo.toISOString().slice(0, 10), this.fr.toISOString().slice(0, 10)) 
-        ||element.stop >= this.fr.toISOString().slice(0, 10) || element.stop <= this.fr.toISOString().slice(0, 10)){
-          let  startDate = moment(element.start);
-          let    endDate = moment(element.stop);
+        if(moment(element.start).isBetween(this.week[0].toISOString().slice(0, 10), this.week[6].toISOString().slice(0, 10)) 
+        ||element.stop >= this.week[6].toISOString().slice(0, 10) || element.stop <= this.week[6].toISOString().slice(0, 10)){
+          let startDate = moment(element.start);
+          let endDate = moment(element.stop);
           let s = []
           let now = startDate, dates = [];
           
