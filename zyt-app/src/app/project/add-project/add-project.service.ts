@@ -17,17 +17,16 @@ export class ProjectAddService {
             
         });  
     } 
-
+    
     auth(){
         this.headers =  new HttpHeaders({
             'Content-Type':  'application/json',
             'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
-          })
+        })
     }
-    addProject(servers: any){
-        let url = 'http://localhost:9000/api/projects'
+    addProject(servers){
+        let url = 'http://localhost:9000/api/projects/'
         this.auth()
         return  this.httpClient.post(url, servers,{headers: this.headers});
     }
-
 }

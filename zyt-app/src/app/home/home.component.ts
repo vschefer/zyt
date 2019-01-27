@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerService } from '../server.service';
 import * as moment from 'moment';
 import {WorkingWeekComponent} from '../working-time/working-week/working-week.component'
+import { RessourceAllService } from '../all-ressource/all-ressource.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,7 +21,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
   week
   monday
   friday
-  constructor(private serverService: ServerService) { 
+  constructor(private ressourceService : RessourceAllService) { 
     super()
     this.getWeek()
   }
@@ -49,7 +49,7 @@ export class HomeComponent extends WorkingWeekComponent implements OnInit {
   }
   
   getRessource(){
-    this.serverService.getAll('http://localhost:9000/api/ressources').subscribe(
+    this.ressourceService.getRessource().subscribe(
     (response)=> {
       let weekRes = []
       this.ressource = response;

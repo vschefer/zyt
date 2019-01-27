@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-// import { ServerService } from '../../server.service';
 import { MatDialog } from '@angular/material';
 import { MatDialogRef, MAT_DIALOG_DATA, MatInputModule } from "@angular/material";
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -18,7 +17,6 @@ export class UpdateUserComponent implements OnInit {
   updatedUser: Object;
   
   constructor(
-    // private serverService: ServerService,
     private userUpdateService: UsersUpdateService,
     private matCheckboxModule: MatCheckboxModule,
     public dialog: MatDialog,

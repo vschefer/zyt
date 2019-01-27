@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material';
-import { ServerService } from '../server.service';
 import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UsersService } from './user.service';
@@ -17,7 +16,7 @@ export class UserComponent implements OnInit {
   count:number = 0
   currentUser:Array<Object>
   id:String
-  constructor(private serverService: ServerService, private userService: UsersService, public dialog: MatDialog) { 
+  constructor(private userService: UsersService, public dialog: MatDialog) { 
   }
   
   getUsers(){
