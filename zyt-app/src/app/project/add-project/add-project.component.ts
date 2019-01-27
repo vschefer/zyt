@@ -12,7 +12,6 @@ import { ProjectAddService } from './add-project.service';
 })
 export class AddProjectComponent  implements OnInit {
   name:string = ''
-  title:string
   description:string
   capitain:string
   startDate:any
@@ -91,7 +90,6 @@ onSave(){
     assigned_users: this.select,
     name: this.name,
     briefing: {
-      title: this.title,
       description: this.description
     },
     start: this.startDate,
@@ -213,4 +211,3 @@ checkFormForButton(){
   nextButton.classList.add('readyForClick');
 }
 }
-

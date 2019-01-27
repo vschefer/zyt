@@ -9,12 +9,11 @@
             <div class="project__content-wrapper">
                 <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
             
-                <div class="project__briefing">
-                    <h3>Briefing</h3>
-                    <div class="project__content briefing__content close__content">
-                        <strong>{{project?.briefing.title}}</strong>
-                        <p>{{project.briefing.description}}</p>
-                    </div>
+            <div class="project__briefing">
+                <h3>Briefing</h3>
+                <div class="showelement" (click)="toggleAccordion($event)">+</div>
+                <div class="project__content briefing__content close__content">
+                    <p>{{project.briefing.description}}</p>
                 </div>
                 
                 <hr *ngIf="project.positions != ''">
