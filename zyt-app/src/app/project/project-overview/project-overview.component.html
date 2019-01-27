@@ -1,13 +1,13 @@
 <h1 class="sr-only">Projektübersicht</h1>
 <main *ngIf="data" class="wrapper" id="wrapper" #wrapper>
-        
+    
     <section class="project close__content" *ngFor="let project of active">
-
-            <h2 (click)="toggleAccordion($event)">{{project.name}}</h2>
-            <div class="showelement" (click)="toggleAccordion($event)">+</div>
-      
-            <div class="project__content-wrapper">
-                <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
+        
+        <h2 (click)="toggleAccordion($event)">{{project.name}}</h2>
+        <div class="showelement" (click)="toggleAccordion($event)">+</div>
+        
+        <div class="project__content-wrapper">
+            <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
             
             <div class="project__briefing">
                 <h3>Briefing</h3>
@@ -58,73 +58,75 @@
                 
                 <app-update-button [parentData]="project._id" ></app-update-button>
             </div>
-    </section>
-    <button (click)="showOldElements($event)" *ngIf="unactive.length != 0" class="button button__unactiveToggle">Zeige vergangene Projekte</button>
-    <ng-container *ngIf="showOldElement">
+            </div>
+        </section>
+        <button (click)="showOldElements($event)" *ngIf="unactive.length != 0" class="button button__unactiveToggle">Zeige vergangene Projekte</button>
+        <ng-container *ngIf="showOldElement">
             <section class="project close__content project__unactive" *ngFor="let project of unactive">
-
-                    <h2 (click)="toggleAccordion($event)">{{project.name}}</h2>
-                    <div class="showelement" (click)="toggleAccordion($event)">+</div>
-              
-                    <div class="project__content-wrapper">
-                        <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
+                
+                <h2 (click)="toggleAccordion($event)">{{project.name}}</h2>
+                <div class="showelement" (click)="toggleAccordion($event)">+</div>
+                
+                <div class="project__content-wrapper">
+                    <p class="date">{{project.start | dateFormat}} - {{project.deadline | dateFormat}}</p>
                     
-                        <div class="project__briefing">
-                            <h3>Briefing</h3>
-                            <div class="project__content briefing__content close__content">
-                                <strong>{{project?.briefing.title}}</strong>
-                                <p>{{project.briefing.description}}</p>
-                            </div>
+                    <div class="project__briefing">
+                        <h3>Briefing</h3>
+                        <div class="project__content briefing__content close__content">
+                            <strong>{{project?.briefing.title}}</strong>
+                            <p>{{project.briefing.description}}</p>
                         </div>
-                        
-                        <hr *ngIf="project.positions != ''">
-                        <div class="project__positions">
-                            <h3 *ngIf="project.positions != ''">Positionen</h3>
-                            <div class="project__content positions__content close__content">
-                                <div *ngFor="let u of toArray(project.positions)" class="positions">
-                                    <div class="progress-bar__wrapper">
-                                        <p>  {{u.name}} </p>
-                                        <div class="progress-bar" style="width: 100%">
-                                            <div class="progress-bar__progressing"  
-                                            [ngStyle]="{width: u.total*100/u.total_time_offered + '%'}"></div>
-                                        </div>
-                                        <span>{{u.total*100/u.total_time_offered | number : '1.2-2'}}%</span>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <hr>
-                        <div class="project__users">
-                            <h3>Am Projekt beteiligt</h3>
-                            <div class="project__content users__content close__content">
-                                <div class="users__wrapper">
-                                    <div class="manager">
-                                        <h4>Kapitään</h4>
-                                        <div *ngFor="let m of toArray(project.project_managers)">
-                                            {{m.first_name}} {{m.surname}}
-                                        </div>
-                                    </div>
-                                    <div class="users">
-                                        <h4>Users</h4>
-                                        <p *ngFor="let u of toArray(project.assigned_users)">
-                                            {{u.first_name}} {{u.surname}}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <app-update-button [parentData]="project._id" ></app-update-button>
                     </div>
+                    
+                    <hr *ngIf="project.positions != ''">
+                    <div class="project__positions">
+                        <h3 *ngIf="project.positions != ''">Positionen</h3>
+                        <div class="project__content positions__content close__content">
+                            <div *ngFor="let u of toArray(project.positions)" class="positions">
+                                <div class="progress-bar__wrapper">
+                                    <p>  {{u.name}} </p>
+                                    <div class="progress-bar" style="width: 100%">
+                                        <div class="progress-bar__progressing"  
+                                        [ngStyle]="{width: u.total*100/u.total_time_offered + '%'}"></div>
+                                    </div>
+                                    <span>{{u.total*100/u.total_time_offered | number : '1.2-2'}}%</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <hr>
+                    <div class="project__users">
+                        <h3>Am Projekt beteiligt</h3>
+                        <div class="project__content users__content close__content">
+                            <div class="users__wrapper">
+                                <div class="manager">
+                                    <h4>Kapitään</h4>
+                                    <div *ngFor="let m of toArray(project.project_managers)">
+                                        {{m.first_name}} {{m.surname}}
+                                    </div>
+                                </div>
+                                <div class="users">
+                                    <h4>Users</h4>
+                                    <p *ngFor="let u of toArray(project.assigned_users)">
+                                        {{u.first_name}} {{u.surname}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <app-update-button [parentData]="project._id" ></app-update-button>
+                </div>
             </section>
-    </ng-container>
- 
-</main>
-
-<!-- <div class="control">
-    <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>
-    <button class="next" (click)="getNextProject()"><div class="arrow"></div></button>
-</div> -->
+        </ng-container>
+        
+    </main>
+    
+    <!-- <div class="control">
+        <button class="prev hidden" (click)="getPreviosPage()"><div class="arrow --prev"></div></button>
+        <button class="next" (click)="getNextProject()"><div class="arrow"></div></button>
+    </div> -->
+    
