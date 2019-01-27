@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddExpensesComponent implements OnInit {
   recorded_time: number;
   comment: string;
-  projects: string;
+  projects: any;
   project: any;
   position: string;
   affected_date: Date;
@@ -46,11 +46,9 @@ export class AddExpensesComponent implements OnInit {
   }
 
   onProjectChange(projectId: String) {
-    this.serverService.getAll('http://localhost:9000/api/projects/' + projectId).subscribe((response) => {
-      this.project = response;
-    }, (error) => {
-      throw new Error(error._body);
-    });
+    this.project = this.projects.filter((project) => {
+      return project._id === projectId;
+    })[0];
   }
 
   onRecordedTimeChange(time: number) {
