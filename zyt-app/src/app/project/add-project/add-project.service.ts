@@ -5,7 +5,6 @@ import { UpdateProjectComponent } from '../update-project/update-project.compone
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ProjectAddService {
-    id
     headers: HttpHeaders;
     avatars: Object
     constructor(public dialog: MatDialog, private httpClient: HttpClient){}

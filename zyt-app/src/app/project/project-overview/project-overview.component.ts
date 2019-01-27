@@ -22,7 +22,6 @@ export class ProjectOverviewComponent implements OnInit {
   left: number = 0
   right:number = 0
   count:number = 0
-  id
   
   constructor(public dialog: MatDialog, private projectService: ProjectOverviewService) { }
   
