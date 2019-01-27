@@ -58,6 +58,8 @@ import { UserProfilService } from './dashboard/user-profil/user-profil.service';
 import { RessouceAddService } from './add-resource/add-ressource.service';
 import { RessourceAllService } from './all-ressource/all-ressource.service';
 import { UserEditService } from './dashboard/user-edit/user-edit.service';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { UserEditService } from './dashboard/user-edit/user-edit.service';
     AddTodoComponent,
     UpdateUserComponent,
     MobileNavComponent,
+    ExpensesComponent,
+    AddExpensesComponent,
 
   ],
   entryComponents: [
@@ -164,6 +168,11 @@ import { UserEditService } from './dashboard/user-edit/user-edit.service';
       {
         path: 'todo/add',
         component: AddTodoComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'expenses/add',
+        component: AddExpensesComponent,
         canActivate: [AuthGuard]
       },
       {
