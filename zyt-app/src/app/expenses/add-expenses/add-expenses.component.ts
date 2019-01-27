@@ -85,6 +85,5 @@ export class AddExpensesComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
-    //this.getSpecificProject('5c44ce218a346c3c51fd78f1');
   }
 }
