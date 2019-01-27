@@ -13,7 +13,7 @@ export class AddExpensesComponent implements OnInit {
   recorded_time: number;
   comment: string;
   projects: string;
-  project: string;
+  project: any;
   position: string;
   affected_date: Date;
   snackBarMessage: string;
