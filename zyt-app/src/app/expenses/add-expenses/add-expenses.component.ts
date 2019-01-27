@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddExpensesComponent implements OnInit {
   recorded_time: number;
   comment: string;
-  projects: string;
+  projects: any;
   project: any;
   position: string;
   affected_date: Date;

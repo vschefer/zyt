@@ -1,0 +1,10 @@
+<h1>Hallo Expenses</h1>
+
+
+<div class="todayExpenses__container">
+
+    <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
+        <strong>{{exp.project.name}}</strong>
+        <p>{{exp.recorded_time}}</p>
+    </div>
+</div>

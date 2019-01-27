@@ -37,7 +37,11 @@ h1,h2,h3{
 app-working-time{
     flex: 2;
     padding: 0 1rem 0 1rem;
+    grid-area: time;
     
+}
+app-today-expenses {
+    grid-area: exp;
 }
 app-plan{
     background-color: #A8B7AB;
