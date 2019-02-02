@@ -46,6 +46,12 @@ import { CommonModule } from '@angular/common';
 import { ServerService } from './server.service';
 
 import { AuthGuard } from './_guards';
+
+import { ExpensesComponent } from './expenses/expenses.component';
+import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
+import { ExpensesService } from './expenses/today-expenses/today-expenses.service'
+import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
+
 import { ProjectService } from './_services/project.service';
 import { RessourceService } from './_services/ressource.service';
 import { TodoService } from './_services/todo.service';
@@ -178,18 +184,9 @@ import { ExpenseService } from './_services/expenses.service';
     HttpClientModule,
 
   ],
-<<<<<<< HEAD
-  providers: [TodoDetailService, AddResourceComponent, 
-    ServerService, ProjectOverviewService,
-    ProjectAddService, ProjectUpdateService, UsersService, 
-    UsersUpdateService, UsersAddService, TodoAddService,
-    UserProfilService, UserEditService, RessouceAddService, RessourceAllService,
-  ExpensesService],
-=======
   providers: [AddResourceComponent, 
     ServerService, ProjectService, UserService, RessourceService,
     AvatarService, TodoService, ProjectOverviewService, ExpenseService],
->>>>>>> feature/Client-Architektur-fixes
   bootstrap: [AppComponent]
 })
 export class AppModule { }

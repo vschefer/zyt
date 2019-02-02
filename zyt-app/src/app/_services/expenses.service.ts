@@ -22,4 +22,9 @@ export class ExpenseService {
         this.auth()
         return  this.httpClient.post(url, servers,{headers: this.headers});
     }
+    getExpenses(){
+        let url = 'http://localhost:9000/api/expenses/'
+        this.auth()
+        return  this.httpClient.get(url,{headers: this.headers});
+    }
 }
