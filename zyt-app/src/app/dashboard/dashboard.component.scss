@@ -1,2 +1,19 @@
 @import '../styles/colors.scss';
 @import '../styles/variable.scss';
+
+
+
+.time{
+    background-image: url('../../assets/images/triangle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button--capture-time {
+    background-color: darken(#707070, 20%);
+    color: white;
+  }

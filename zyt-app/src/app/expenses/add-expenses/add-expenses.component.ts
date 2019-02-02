@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerService } from '../../server.service'
 import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
 import { Router } from '@angular/router';
+import { ProjectService } from '../../_services/project.service';
+import { ExpenseService } from '../../_services/expenses.service';
 
 @Component({
   selector: 'app-add-expenses',
@@ -22,8 +23,9 @@ export class AddExpensesComponent implements OnInit {
   expense: object;
 
   constructor(
-    private serverService: ServerService,
     public snackBar: MatSnackBar,
+    private projectService: ProjectService,
+    private expenseService: ExpenseService,
     private router: Router,
   ) { }
   
@@ -38,7 +40,7 @@ export class AddExpensesComponent implements OnInit {
   }
 
   getProjects(): void {
-    this.serverService.getAll('http://localhost:9000/api/projects').subscribe((response) => {
+    this.projectService.getProjects().subscribe((response) => {
       this.projects = response;
     }, (error) => {
       throw new Error(error._body);
@@ -72,7 +74,7 @@ export class AddExpensesComponent implements OnInit {
     	affected_date: this.affected_date,
     };
 
-    this.serverService.add(this.expense, 'http://localhost:9000/api/expenses').subscribe((response) => {
+    this.expenseService.addExpense(this.expense).subscribe((response) => {
       this.openSnackBar(`${this.recorded_time}h wurde(n) für das Projekt "${this.project.name}" hinzugefügt.`, 'Ok');
       this.router.navigate(['/']);
     }, (error) => {

@@ -2,11 +2,9 @@ import { AppComponent } from './app.component';
 import { WorkingTimeComponent } from './working-time/working-time.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
-import { TimeComponent } from './dashboard/time/time.component';
 import { UserProfilComponent } from './dashboard/user-profil/user-profil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavigationComponent } from './dashboard/navigation/navigation.component';
-import { TimeFormComponent } from '../app/dashboard/time/time-form/time-form.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { WorkingWeekComponent } from '../app/working-time/working-week/working-week.component';
@@ -67,10 +65,8 @@ import { ExpenseService } from './_services/expenses.service';
     TodoListComponent,
     TodoDetailComponent,
     UserProfilComponent,
-    TimeComponent,
     DashboardComponent,
     NavigationComponent,
-    TimeFormComponent,
     LoginComponent,
     HomeComponent,
     WorkingWeekComponent,
@@ -96,7 +92,6 @@ import { ExpenseService } from './_services/expenses.service';
 
   ],
   entryComponents: [
-    TimeFormComponent,
     UserEditComponent,
     UpdateProjectComponent,
     TodoDetailComponent,
