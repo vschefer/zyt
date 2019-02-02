@@ -49,27 +49,9 @@
     color: white;
 }
 .add-position{
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    transform: translate(-50%);
-    border-radius: 90px;
-    width: 3.5rem;
-    height: 3.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: transparent;
-    background-color: #EDBF85;
-    span{
-        font-size: 24px;
-        font-weight: 900;
-        color: white;
-    }
-    
-    &:hover, &:focus{
-        border: 1px solid gray;
-    }
+   width: 100%;
+   background-color: darken($bordeux, 20);
+   color: white;
 }
 .delete-postition{
     background-color: #EB9486;
@@ -85,6 +67,7 @@
     display: flex;
     align-items: center;
     padding: 1rem 0 1rem 0;
+    justify-content: space-around;
 }
 .formfield__binding{
     display: flex;

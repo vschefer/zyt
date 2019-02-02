@@ -48,7 +48,6 @@
     <div class="project-form__page offer">
       <h2>füge Positionen hinzu</h2>
       <div  [formGroup]="myForm" >
-        <button type="button" (click)="addPosition()" class="add-position"><span>+</span></button>
         <div formArrayName="positions" class="positions__wrapper">
           
           <div *ngFor="let pos of postitionForm.controls; let i=index" [formGroupName]="i" class="position">
@@ -61,6 +60,7 @@
             </mat-form-field>
             <button type="button" (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
           </div>
+          <button type="button" (click)="addPosition()" class="add-position"><span>Weitere Position hinzufügen</span></button>
         </div>
         
       </div>
@@ -74,9 +74,9 @@
         <textarea matInput type="textarea" matTextareaAutosize placeholder="Briefing" name="briefing" ngDefaultControl [(ngModel)]="description" required>
         </textarea>
       </mat-form-field>
-      
-      <button  class="button button--save" (click)="onSave()" routerLink="/">Speichern</button>
-      
+      <ng-container *ngIf="description">
+        <button  class="button button--save" (click)="onSave()" routerLink="/">Speichern</button>
+      </ng-container>
     </div>
     
   </form>

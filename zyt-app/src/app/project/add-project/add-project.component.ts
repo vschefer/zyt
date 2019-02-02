@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material';
-import { FormBuilder, FormGroup, FormArray} from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { ProjectService } from '../../_services/project.service';
 import { UserService } from '../../_services/user.service';
 
@@ -150,10 +150,6 @@ export class AddProjectComponent  implements OnInit {
           nextButton.classList.remove('hidden')
         }
       }
-      if(this.count == sliderLength-1){ 
-        save.removeAttribute("disabled");
-        save.setAttribute("enabled", "");
-      }
       if(prevButton.classList.contains('hidden')){
         prevButton.classList.remove('hidden')
       }
@@ -187,7 +183,7 @@ export class AddProjectComponent  implements OnInit {
   
   ngOnInit() {
     this.getUsers()
-    
+
     this.myForm = this.fb.group({
       positions: this.fb.array([this.fb.group({
         name: '',
