@@ -1,13 +1,20 @@
 @import '../../styles/colors.scss';
+
+.todayExpenses__container {
+    overflow: auto;
+    height: 80vh;
+    padding-bottom: 2rem;
+}
 .todayExpenses__expense {
-    padding:1rem;
+    padding: 0.5rem 1rem;
     background: $violett;
     margin-top: 1rem;
     width: 80%;
+    font-size: 14px;
 
     p {
         margin: 0.5rem 0 0.5rem;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     &:hover {
