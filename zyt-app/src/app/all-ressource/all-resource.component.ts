@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WorkingWeekComponent} from '../working-time/working-week/working-week.component'
 import * as moment from 'moment';
-import { RessourceAllService } from './all-ressource.service';
+import { RessourceService } from '../_services/ressource.service';
 @Component({
   selector: 'app-all-ressource',
   templateUrl: './all-resource.component.html',
@@ -17,7 +17,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   startDay
   weekRes:Array<String>;
   dates: Object
-  constructor(private ressourceService: RessourceAllService) {
+  constructor(private ressourceService: RessourceService) {
     super()
     this.monday
     this.friday
@@ -29,7 +29,9 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     let endOfWeek = moment().endOf('isoWeek');
     let days = [];
     let day = startOfWeek;
-    
+    this.firstDay =new Date(this.monday) 
+    this.firstDay = this.firstDay.getDate()
+
     while (day <= endOfWeek) {
       days.push(day.toDate());
       day = day.clone().add(1, 'd');
@@ -65,7 +67,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
           
           element.days = s
           weekRes.push(element)
-          
+
         }
       });
       this.weekRes = weekRes

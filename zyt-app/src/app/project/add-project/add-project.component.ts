@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {MatSnackBar} from '@angular/material';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
-import { ProjectAddService } from './add-project.service';
 import { UsersService } from '../../user/user.service';
 import { UsersUpdateService } from '../../user/update-user/update-user.service';
+import { ProjectService } from '../../_services/project.service';
 
 @Component({
   selector: 'app-add-project',
@@ -31,7 +31,7 @@ export class AddProjectComponent  implements OnInit {
   total = 0
   selectedUser
   myForm: FormGroup
-  constructor(private projectService: ProjectAddService,
+  constructor(private projectService: ProjectService,
     private usersService: UsersService,
     private userService: UsersUpdateService,
     public snackBar: MatSnackBar, private fb: FormBuilder) {}
@@ -100,7 +100,6 @@ export class AddProjectComponent  implements OnInit {
       deadline: this.endDate,
       total_time_offered: this.total
     }
-    console.log(this.servers)
     this.projectService.addProject(this.servers).subscribe()
     this.openSnackBar()
     this.name = ''

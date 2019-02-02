@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {MatSnackBar} from '@angular/material';
 import { TodoAddService } from './add-todo.service';
-import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
-import { ProjectUpdateService } from '../../project/update-project/update-project.service';
 import { UsersUpdateService } from '../../user/update-user/update-user.service';
+import { ProjectService } from '../../_services/project.service';
 
 
 @Component({
@@ -27,8 +26,12 @@ export class AddTodoComponent  implements OnInit {
     
     
     
-    constructor(private usersService: UsersUpdateService, private projectAll: ProjectOverviewService, 
-        private project: ProjectUpdateService, private addTodoService: TodoAddService, public snackBar: MatSnackBar) {}
+    constructor(
+        private usersService: UsersUpdateService, 
+        private projectService: ProjectService,
+        private addTodoService: TodoAddService, 
+        public snackBar: MatSnackBar
+    ) {}
 
     message = this.name + 'wurde hinzugefügt';
     action = 'Ok';
@@ -39,7 +42,7 @@ export class AddTodoComponent  implements OnInit {
     }
     
     getProject(){
-        this.projectAll.getProjects().subscribe(
+        this.projectService.getProjects().subscribe(
             (response)=> {
                 this.data = response;
             },
@@ -49,7 +52,7 @@ export class AddTodoComponent  implements OnInit {
     
     bleh(id) {
         this.projectID = id
-        this.project.getProject(id).subscribe((response) => {
+        this.projectService.getProject(id).subscribe((response) => {
             let proj = [];
             
             let project = response;

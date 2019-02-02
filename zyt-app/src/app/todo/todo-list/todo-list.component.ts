@@ -2,7 +2,7 @@ import { Directive,Component, OnInit, Input, Output,ElementRef, EventEmitter, Ho
 import {MatDialog} from '@angular/material';
 import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
 import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
-import { ProjectUpdateService } from '../../project/update-project/update-project.service';
+import { ProjectService } from '../../_services/project.service';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -21,14 +21,15 @@ export class TodoListComponent implements OnInit {
   todos : Object
   public id
   public projId
-  constructor(public dialog: MatDialog, 
-    private projectService: ProjectUpdateService, private projectOverviewService: ProjectOverviewService) {
-    
-  }
+  constructor(
+    public dialog: MatDialog, 
+    private projectService: ProjectService,
+    private projectOverviewService: ProjectOverviewService
+  ) {}
   proj:Array<String>;
   todo:Array<String>;
   getProject(){
-    this.projectOverviewService.getProjects().subscribe(
+    this.projectService.getProjects().subscribe(
     (response)=> {
       
       this.data = response;
