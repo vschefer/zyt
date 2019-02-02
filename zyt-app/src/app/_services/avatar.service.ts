@@ -2,7 +2,7 @@ import { User } from '../_models';
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { backendUrls } from '../constant/backendurls';
 @Injectable({ providedIn: 'root' })
 export class AvatarService {
   headers: HttpHeaders;
@@ -16,10 +16,9 @@ export class AvatarService {
     })
   }
 getAvatars(){
-  let url = 'http://localhost:9000/api/avatars/';
   this.headers = new HttpHeaders();
   this.auth()
-  return  this.httpClient.get(url , {headers: this.headers});
+  return  this.httpClient.get(backendUrls.avatar , {headers: this.headers});
 }
   
 }

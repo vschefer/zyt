@@ -2,6 +2,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { backendUrls } from '../constant/backendurls';
 @Injectable()
 export class TodoService {
     headers: HttpHeaders;
@@ -16,22 +17,19 @@ export class TodoService {
     }
 
     getTodo(id){
-        let url = 'http://localhost:9000/api/todos/';
         this.headers = new HttpHeaders();
         this.auth()
-        return  this.httpClient.get(url + id,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.todo + id,{headers: this.headers});
     } 
 
     updateTodo(data:object, id:any) {
-      let url = 'http://localhost:9000/api/todos/'
       this.auth();
-      return  this.httpClient.put(url + id, data, {headers: this.headers});
+      return  this.httpClient.put(backendUrls.todo + id, data, {headers: this.headers});
   }
 
   addTodo(servers: any){
-    let url = 'http://localhost:9000/api/todos/'
     this.auth()
-    return  this.httpClient.post(url, servers,{headers: this.headers});
+    return  this.httpClient.post(backendUrls.todo, servers,{headers: this.headers});
 }
 
 

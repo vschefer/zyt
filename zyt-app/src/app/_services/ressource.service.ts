@@ -1,6 +1,7 @@
 
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { backendUrls } from '../constant/backendurls';
 @Injectable()
 export class RessourceService {
     headers: HttpHeaders;
@@ -15,21 +16,18 @@ export class RessourceService {
           })
     }
     getRessource(){
-        let url = 'http://localhost:9000/api/ressources';
         this.headers = new HttpHeaders();
         this.auth();
-        return  this.httpClient.get(url,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.ressource,{headers: this.headers});
     }
 
     addRessource(servers: any){
-        let url = 'http://localhost:9000/api/ressources'
         this.auth()
-        return  this.httpClient.post(url, servers,{headers: this.headers});
+        return  this.httpClient.post(backendUrls.ressource, servers,{headers: this.headers});
     }
 
     updateRessource(servers: any, id){
-        let url = 'http://localhost:9000/api/ressources/'
         this.auth()
-        return  this.httpClient.post(url + id, servers,{headers: this.headers});
+        return  this.httpClient.post(backendUrls.ressource + id, servers,{headers: this.headers});
     }
 }

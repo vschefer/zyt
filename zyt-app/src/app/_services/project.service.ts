@@ -3,6 +3,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../project/update-project/update-project.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { backendUrls } from '../constant/backendurls';
+
 @Injectable()
 export class ProjectService {
     id
@@ -27,28 +29,24 @@ export class ProjectService {
     }
     //GET all Projects
     getProjects(){
-        let url = 'http://localhost:9000/api/projects';
         this.headers = new HttpHeaders();
         this.auth();
-        return  this.httpClient.get(url,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.project,{headers: this.headers});
     }
     //GET specific Project
     getProject(id){
-        let url = 'http://localhost:9000/api/projects/';
         this.headers = new HttpHeaders();
         this.auth();
-        return  this.httpClient.get(url + id,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.project + id,{headers: this.headers});
     }
     // PUT Project
     updateProject(data:object, id:any) {
-        let url = 'http://localhost:9000/api/projects/'
         this.auth();
-        return  this.httpClient.put(url + id, data, {headers: this.headers});
+        return  this.httpClient.put(backendUrls.project + id, data, {headers: this.headers});
     }
     // POST Project
     addProject(servers){
-        let url = 'http://localhost:9000/api/projects/'
         this.auth()
-        return  this.httpClient.post(url, servers,{headers: this.headers});
+        return  this.httpClient.post(backendUrls.project, servers,{headers: this.headers});
     }
 }

@@ -2,6 +2,8 @@
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { backendUrls } from '../constant/backendurls';
+
 @Injectable()
 export class ExpenseService {
     id
@@ -18,13 +20,11 @@ export class ExpenseService {
     }
 
     addExpense(servers){
-        let url = 'http://localhost:9000/api/expenses/'
         this.auth()
-        return  this.httpClient.post(url, servers,{headers: this.headers});
+        return  this.httpClient.post(backendUrls.expenses, servers,{headers: this.headers});
     }
     getExpenses(){
-        let url = 'http://localhost:9000/api/expenses/'
         this.auth()
-        return  this.httpClient.get(url,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.expenses,{headers: this.headers});
     }
 }

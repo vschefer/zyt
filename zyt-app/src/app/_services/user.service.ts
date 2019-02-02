@@ -2,6 +2,7 @@ import { User } from '../_models';
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import {MatDialog} from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { backendUrls } from '../constant/backendurls';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -17,50 +18,42 @@ export class UserService {
   }
   
   updateMe(data, id){
-    let url = 'http://localhost:9000/api/users/';
     this.headers = new HttpHeaders();
     this.auth()
-    return  this.httpClient.put(url + id, data, {headers: this.headers});
+    return  this.httpClient.put(backendUrls.user + id, data, {headers: this.headers});
   } 
   getMe(){
-    let url = 'http://localhost:9000/api/users/me';
     this.headers = new HttpHeaders();
     this.auth()
-    return  this.httpClient.get(url,{headers: this.headers});
+    return  this.httpClient.get(backendUrls.me,{headers: this.headers});
   } 
   deactivateUser(id){
-    let url = 'http://localhost:9000/api/users/';
     this.headers = new HttpHeaders();
     this.auth();
-    return  this.httpClient.put(url + id, {archived: true}, {headers: this.headers});
+    return  this.httpClient.put(backendUrls.user + id, {archived: true}, {headers: this.headers});
   }
   activateUser(id:any) {
-    let url = 'http://localhost:9000/api/users/';
     this.auth();
-    return  this.httpClient.put(url + id, {archived: false}, {headers: this.headers});
+    return  this.httpClient.put(backendUrls.user + id, {archived: false}, {headers: this.headers});
   }
   
   getUsers(){
-    let url = 'http://localhost:9000/api/users/';
     this.headers = new HttpHeaders();
     this.auth();
-    return  this.httpClient.get(url,{headers: this.headers});
+    return  this.httpClient.get(backendUrls.user,{headers: this.headers});
   }
   getUser(id){
-    let url = 'http://localhost:9000/api/users/';
     this.headers = new HttpHeaders();
     this.auth();
-    return  this.httpClient.get(url + id,{headers: this.headers});
+    return  this.httpClient.get(backendUrls.user + id,{headers: this.headers});
 }
 updateUser(data:object, id:any) {
-    let url = 'http://localhost:9000/api/users/'
     this.auth();
-    return  this.httpClient.put(url + id, data, {headers: this.headers});
+    return  this.httpClient.put(backendUrls.user + id, data, {headers: this.headers});
 }
 addUser(servers: any){
-  let url = 'http://localhost:9000/api/users'
   this.auth()
-  return  this.httpClient.post(url, servers,{headers: this.headers});
+  return  this.httpClient.post(backendUrls.user, servers,{headers: this.headers});
 }
   
 }

@@ -23,6 +23,7 @@ import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { MobileNavComponent } from './toggleMobileNav/toggle-nav.component';
 
+import { backendUrls } from './constant/backendurls';
 import { DateFormatPipe } from './pipes/format-date.pipe';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,7 +48,6 @@ import { AuthGuard } from './_guards';
 
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
-import { ExpensesService } from './expenses/today-expenses/today-expenses.service'
 import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
 
 import { ProjectService } from './_services/project.service';
@@ -88,7 +88,7 @@ import { ExpenseService } from './_services/expenses.service';
     MobileNavComponent,
     ExpensesComponent,
     AddExpensesComponent,
-    TodayExpensesComponent
+    TodayExpensesComponent,
 
   ],
   entryComponents: [
