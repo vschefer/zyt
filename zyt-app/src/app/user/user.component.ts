@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material';
 import { ProjectOverviewComponent } from '../project/project-overview/project-overview.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
-import { UsersService } from './user.service';
+import { UserService } from '../_services';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   count:number = 0
   currentUser:Array<Object>
   id:String
-  constructor(private userService: UsersService, public dialog: MatDialog) { 
+  constructor(private userService: UserService, public dialog: MatDialog) { 
   }
   
   getUsers(){

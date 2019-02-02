@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar, MatInputModule, MatSelectModule} from '@angular/material';
-import { UserProfilService } from '../user-profil/user-profil.service';
-import { UserEditService } from './user-edit.service';
+import { UserService } from '../../_services';
+import { AvatarService } from '../../_services/avatar.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -10,8 +10,8 @@ import { UserEditService } from './user-edit.service';
 })
 export class UserEditComponent implements OnInit {
   
-  constructor(private userProfil: UserProfilService, 
-    private userEdit: UserEditService,
+  constructor(private userService: UserService, 
+    private avatarService: AvatarService,
     public snackBar: MatSnackBar) {}
     
     avatars:any;
@@ -22,7 +22,7 @@ export class UserEditComponent implements OnInit {
     userId;
     
     getMe() {
-      this.userProfil.getMe().subscribe((response) => {
+      this.userService.getMe().subscribe((response) => {
         let data = response;
         this.userId = data['_id']
       },
@@ -30,7 +30,7 @@ export class UserEditComponent implements OnInit {
     }
     
     getAvatars() {
-      this.userEdit.getAvatars().subscribe((response) => {
+      this.avatarService.getAvatars().subscribe((response) => {
         this.avatars = response;
       },
       (error) => console.log(error)
@@ -43,14 +43,14 @@ export class UserEditComponent implements OnInit {
   }
   
   changeAvatar(avatarID) {
-    this.userEdit.updateMe({avatar: avatarID}, this.userId).subscribe()
+    this.userService.updateMe({avatar: avatarID}, this.userId).subscribe()
   }
   
   changePassword(){
     const userID = JSON.parse(localStorage.getItem('currentUser'))._id;
     if(this.password != undefined && this.passwordRepeat != undefined ){
       if(this.password == this.passwordRepeat) {
-        this.userEdit.updateMe({password: this.password}, this.userId).subscribe((response) => {
+        this.userService.updateMe({password: this.password}, this.userId).subscribe((response) => {
           console.log(response);
         },
         (error) => console.log(error))

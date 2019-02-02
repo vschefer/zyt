@@ -34,6 +34,17 @@ export class UsersService {
         this.auth();
         return  this.httpClient.get(url,{headers: this.headers});
     }
+    getUser(id){
+        let url = 'http://localhost:9000/api/users/';
+        this.headers = new HttpHeaders();
+        this.auth();
+        return  this.httpClient.get(url + id,{headers: this.headers});
+    }
+    updateUser(data:object, id:any) {
+        let url = 'http://localhost:9000/api/users/'
+        this.auth();
+        return  this.httpClient.put(url + id, data, {headers: this.headers});
+    }
 
 
 

@@ -4,7 +4,8 @@ import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { MatDialogRef, MAT_DIALOG_DATA, MatInputModule } from "@angular/material";
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { UsersUpdateService } from './update-user.service';
+// import { UsersUpdateService } from './update-user.service';
+import { UserService } from '../../_services';
 
 @Component({
   selector: 'app-update-user',
@@ -17,7 +18,7 @@ export class UpdateUserComponent implements OnInit {
   updatedUser: Object;
   
   constructor(
-    private userUpdateService: UsersUpdateService,
+    private userService: UserService,
     private matCheckboxModule: MatCheckboxModule,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: { id: Object },
@@ -25,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
   ) {}
   
   getUser() {
-    this.userUpdateService.getUser(this.id).subscribe((response) => {
+    this.userService.getUser(this.id).subscribe((response) => {
     let user = response;
     this.user = user;
   }, (error) => console.log(error)  );
@@ -39,7 +40,7 @@ onSubmit(f: NgForm) {
     this.updatedUser[key].value === undefined ? delete this.updatedUser[key] : this.updatedUser[key] = this.updatedUser[key].value;
   });
   
-  this.userUpdateService.updateUser(this.updatedUser, this.id).subscribe((response)=> console.log(response));
+  this.userService.updateUser(this.updatedUser, this.id).subscribe((response)=> console.log(response));
 }
 
 ngOnInit() {

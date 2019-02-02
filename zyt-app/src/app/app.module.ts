@@ -44,18 +44,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
 import { ServerService } from './server.service';
-import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
-import { TodoAddService } from './todo/add-todo/add-todo.service'
 
 import { AuthGuard } from './_guards';
-import { UsersService } from './user/user.service';
-import { UsersUpdateService } from './user/update-user/update-user.service';
-import { UsersAddService } from './user/add-user/add-user.service';
-import { UserProfilService } from './dashboard/user-profil/user-profil.service';
-import { RessourceAllService } from './all-ressource/all-ressource.service';
-import { UserEditService } from './dashboard/user-edit/user-edit.service';
 import { ProjectService } from './_services/project.service';
 import { RessourceService } from './_services/ressource.service';
+import { TodoService } from './_services/todo.service';
+import { ProjectOverviewService } from './project/project-overview/project-overview.service';
+import { UserService } from './_services/user.service';
+import { AvatarService } from './_services/avatar.service';
+import { ExpenseService } from './_services/expenses.service';
 
 @NgModule({
   declarations: [
@@ -173,10 +170,9 @@ import { RessourceService } from './_services/ressource.service';
     HttpClientModule,
 
   ],
-  providers: [TodoDetailService, AddResourceComponent, 
-    ServerService, ProjectService, UsersService, RessourceService,
-    UsersUpdateService, UsersAddService, TodoAddService,
-    UserProfilService, UserEditService, RessourceAllService],
+  providers: [AddResourceComponent, 
+    ServerService, ProjectService, UserService, RessourceService,
+    AvatarService, TodoService, ProjectOverviewService, ExpenseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
 import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
 import { ProjectService } from '../../_services/project.service';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',

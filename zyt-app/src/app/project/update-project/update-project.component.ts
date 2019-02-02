@@ -4,8 +4,8 @@ import {MatDialog} from '@angular/material';
 import { UpdateButtonComponent } from '../project-overview/update-button/update-button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { User } from '../../_models';
-import { UsersService } from '../../user/user.service';
 import { ProjectService } from '../../_services/project.service';
+import { UserService } from '../../_services';
 @Component({
   selector: 'app-update-project',
   templateUrl: './update-project.component.html',
@@ -24,7 +24,7 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   briefingDescription: string
   toAssigned:any
   assignedUser:Array<String>;
-  constructor(private usersService: UsersService,
+  constructor(private userService: UserService,
     private projectService: ProjectService, 
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: { id: Object }, 
@@ -33,8 +33,6 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
     
   }
   getProject() {
-    
-    console.log(this.id)
     this.projectService.getProject(this.id).subscribe((response) => {
     let project = response;
     this.project = project
@@ -53,7 +51,6 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
 
 assigned(id){
   let assignedUser = []
-  console.log(id)
   this.users.forEach(element => {
     
     for(let i = 0; i < id.length; i++){
@@ -62,12 +59,10 @@ assigned(id){
       }
     }
   });
-  
   this.assignedUser = assignedUser
-  console.log(this.assignedUser)
 }
 getUsers(){
-  this.usersService.getUsers().subscribe(
+  this.userService.getUsers().subscribe(
   (response)=> {
     this.users = response;
   },
@@ -75,8 +70,6 @@ getUsers(){
 )
 }
 updateProject(){
-  console.log(0, this.toAssigned);
-  
   this.updatedProject = {
     name: this.name || this.project.name,
     briefing: {

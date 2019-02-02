@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserProfilService } from '../user-profil/user-profil.service';
+import { UserService } from '../../_services';
 
 @Component({
   selector: 'app-navigation',
@@ -11,10 +11,10 @@ export class NavigationComponent implements OnInit {
   me
   isAdmin: Boolean;
   
-  constructor(private userProfilService: UserProfilService) { }
+  constructor(private userService: UserService) { }
   
   admin() {
-    this.userProfilService.getMe().subscribe((response) => {
+    this.userService.getMe().subscribe((response) => {
       this.me = response; 
       this.isAdmin = this.me.admin;
       console.log(this.isAdmin)
