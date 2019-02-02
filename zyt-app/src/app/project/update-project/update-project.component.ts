@@ -4,9 +4,8 @@ import {MatDialog} from '@angular/material';
 import { UpdateButtonComponent } from '../project-overview/update-button/update-button.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { User } from '../../_models';
-import { ProjectUpdateService } from './update-project.service';
-import { ProjectOverviewService } from '../project-overview/project-overview.service';
-import { UsersService } from '../../user/user.service';
+import { ProjectService } from '../../_services/project.service';
+import { UserService } from '../../_services';
 @Component({
   selector: 'app-update-project',
   templateUrl: './update-project.component.html',
@@ -25,14 +24,16 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
   briefingDescription: string
   toAssigned:any
   assignedUser:Array<String>;
-  constructor(private usersService: UsersService, private projectUpdateService: ProjectUpdateService, public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
+  constructor(private userService: UserService,
+    private projectService: ProjectService, 
+    public dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) private data: { id: Object }, 
+    private mdDialogRef: MatDialogRef<UpdateProjectComponent>) {
     super(dialog)
     
   }
   getProject() {
-    
-    console.log(this.id)
-    this.projectUpdateService.getProject(this.id).subscribe((response) => {
+    this.projectService.getProject(this.id).subscribe((response) => {
     let project = response;
     this.project = project
     let  toAssigned = []
@@ -50,7 +51,6 @@ export class UpdateProjectComponent extends UpdateButtonComponent implements OnI
 
 assigned(id){
   let assignedUser = []
-  console.log(id)
   this.users.forEach(element => {
     
     for(let i = 0; i < id.length; i++){
@@ -59,12 +59,10 @@ assigned(id){
       }
     }
   });
-  
   this.assignedUser = assignedUser
-  console.log(this.assignedUser)
 }
 getUsers(){
-  this.usersService.getUsers().subscribe(
+  this.userService.getUsers().subscribe(
   (response)=> {
     this.users = response;
   },
@@ -72,8 +70,6 @@ getUsers(){
 )
 }
 updateProject(){
-  console.log(0, this.toAssigned);
-  
   this.updatedProject = {
     name: this.name || this.project.name,
     briefing: {
@@ -82,7 +78,7 @@ updateProject(){
     assigned_users: this.toAssigned || this.project.assigned_users.map(usr => usr._id)
   }
   
-  this.projectUpdateService.updateProject(this.updatedProject, this.id).subscribe()
+  this.projectService.updateProject(this.updatedProject, this.id).subscribe()
 }
 
 toArray(answers: object) {

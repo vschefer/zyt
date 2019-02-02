@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
-import { UsersAddService } from './add-user.service';
-import { UserEditService } from '../../dashboard/user-edit/user-edit.service';
+import { UserService } from '../../_services';
+import { AvatarService } from '../../_services/avatar.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -21,7 +21,11 @@ export class AddUserComponent implements OnInit {
   password
   
   
-  constructor(private avatarService: UserEditService, private usersAddService: UsersAddService, public snackBar: MatSnackBar) { }
+  constructor(
+    private userService: UserService, 
+    private avatarService: AvatarService, 
+    public snackBar: MatSnackBar
+  ) { }
   
   message = this.first_name + this.surname + 'wurde hinzugefügt';
   action = 'Ok';
@@ -50,7 +54,7 @@ export class AddUserComponent implements OnInit {
       avatar:this.avatarId,
       password: this.password,
     }
-    this.usersAddService.addUser(this.user).subscribe()
+    this.userService.addUser(this.user).subscribe()
   this.openSnackBar()
 } 
 

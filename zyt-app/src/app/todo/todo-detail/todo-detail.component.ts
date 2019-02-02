@@ -2,7 +2,7 @@ import { Component, OnInit, Input, HostBinding, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import {UpdateButtonTodoComponent} from '../todo-list/update-button/update-button.component'
 import {MatDialog} from '@angular/material';
-import { TodoDetailService } from './todo-detail.service';
+import { TodoService } from '../../_services/todo.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -20,14 +20,14 @@ export class TodoDetailComponent extends UpdateButtonTodoComponent implements On
   update
   state
   constructor(
-    private todoDetailService: TodoDetailService,
+    private todoService: TodoService,
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: { id: Object }, 
     private mdDialogRef: MatDialogRef<TodoDetailComponent>) { 
       super(dialog)
     }
     
     bleh() {
-      this.todoDetailService.getTodo(this.data.id).subscribe((response) => {
+      this.todoService.getTodo(this.data.id).subscribe((response) => {
         this.todo = response; 
       },
       (error) => console.log(error)
@@ -42,7 +42,7 @@ export class TodoDetailComponent extends UpdateButtonTodoComponent implements On
     this.update={
       status: this.selectStatus,
     }
-    this.todoDetailService.updateTodo(this.update, this.data.id).subscribe()
+    this.todoService.updateTodo(this.update, this.data.id).subscribe()
   }
   ngOnInit() {
     this.bleh()

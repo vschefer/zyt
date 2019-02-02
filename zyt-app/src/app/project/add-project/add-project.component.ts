@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material';
-import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
-import { ProjectAddService } from './add-project.service';
-import { UsersService } from '../../user/user.service';
-import { UsersUpdateService } from '../../user/update-user/update-user.service';
+import { FormBuilder, FormGroup, FormArray} from '@angular/forms';
+import { ProjectService } from '../../_services/project.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-add-project',
@@ -31,9 +30,8 @@ export class AddProjectComponent  implements OnInit {
   total = 0
   selectedUser
   myForm: FormGroup
-  constructor(private projectService: ProjectAddService,
-    private usersService: UsersService,
-    private userService: UsersUpdateService,
+  constructor(private projectService: ProjectService,
+    private UserService: UserService,
     public snackBar: MatSnackBar, private fb: FormBuilder) {}
     
     openSnackBar() {
@@ -44,7 +42,7 @@ export class AddProjectComponent  implements OnInit {
       });
     }
     getUsers(){
-      this.usersService.getUsers().subscribe(
+      this.UserService.getUsers().subscribe(
         (response)=> {
           this.users = response;
         },
@@ -52,7 +50,7 @@ export class AddProjectComponent  implements OnInit {
       ) 
     }
     getManager(id) {
-      this.userService.getUser(id).subscribe((response) => {
+      this.UserService.getUser(id).subscribe((response) => {
       let proj = [];
       this.u = response;
     },(error) => console.log(error)) 
@@ -60,7 +58,7 @@ export class AddProjectComponent  implements OnInit {
   getUser(id) {
     let userList = [];
     this.select.forEach((user)=>{
-      this.userService.getUser(user).subscribe((response) => { 
+      this.UserService.getUser(user).subscribe((response) => { 
         this.us = response;
         userList.push(this.us);
       },
@@ -100,7 +98,6 @@ export class AddProjectComponent  implements OnInit {
       deadline: this.endDate,
       total_time_offered: this.total
     }
-    console.log(this.servers)
     this.projectService.addProject(this.servers).subscribe()
     this.openSnackBar()
     this.name = ''

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import {MatDialog} from '@angular/material';
-import { AuthenticationService } from '../../_services';
+import { AuthenticationService, UserService } from '../../_services';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserProfilService } from './user-profil.service';
+
 @Component({
   selector: 'app-user-profil',
   templateUrl: './user-profil.component.html',
   styleUrls: ['./user-profil.component.scss']
 })
 export class UserProfilComponent implements OnInit {
-  constructor(public dialog: MatDialog, private userProfilService: UserProfilService,
+  constructor(public dialog: MatDialog, private userService: UserService,
     private router: Router, private authenticationService: AuthenticationService) { }
   me:any;
   avatar:string;
@@ -23,7 +23,7 @@ export class UserProfilComponent implements OnInit {
       
     });
     inter = setInterval(() => {
-      this.userProfilService.getMe().subscribe((response) => {
+      this.userService.getMe().subscribe((response) => {
       this.me = response;
       this.avatar = this.me.avatar.url;
     },
@@ -38,7 +38,7 @@ dialogRef.afterClosed().subscribe(result => {
 }
 
 getAvatar() {
-  this.userProfilService.getMe().subscribe((response) => {
+  this.userService.getMe().subscribe((response) => {
   this.me = response;
   this.avatar = this.me.avatar.url;
 },
@@ -47,7 +47,7 @@ getAvatar() {
 }
 
 getUserName() {
-  this.userProfilService.getMe().subscribe((response) => {
+  this.userService.getMe().subscribe((response) => {
   this.me = response;
   this.first_name = this.me.first_name;
   this.surname = this.me.surname;

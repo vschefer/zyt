@@ -43,25 +43,16 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
-import { ProjectOverviewService } from './project/project-overview/project-overview.service';
-import { ProjectAddService } from './project/add-project/add-project.service';
 import { ServerService } from './server.service';
-import { TodoDetailService } from './todo/todo-detail/todo-detail.service';
-import { TodoAddService } from './todo/add-todo/add-todo.service'
 
 import { AuthGuard } from './_guards';
-import { ProjectUpdateService } from './project/update-project/update-project.service';
-import { UsersService } from './user/user.service';
-import { UsersUpdateService } from './user/update-user/update-user.service';
-import { UsersAddService } from './user/add-user/add-user.service';
-import { UserProfilService } from './dashboard/user-profil/user-profil.service';
-import { RessouceAddService } from './add-resource/add-ressource.service';
-import { RessourceAllService } from './all-ressource/all-ressource.service';
-import { UserEditService } from './dashboard/user-edit/user-edit.service';
-import { ExpensesComponent } from './expenses/expenses.component';
-import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
-import { ExpensesService } from './expenses/today-expenses/today-expenses.service'
-import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
+import { ProjectService } from './_services/project.service';
+import { RessourceService } from './_services/ressource.service';
+import { TodoService } from './_services/todo.service';
+import { ProjectOverviewService } from './project/project-overview/project-overview.service';
+import { UserService } from './_services/user.service';
+import { AvatarService } from './_services/avatar.service';
+import { ExpenseService } from './_services/expenses.service';
 
 @NgModule({
   declarations: [
@@ -187,12 +178,18 @@ import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses
     HttpClientModule,
 
   ],
+<<<<<<< HEAD
   providers: [TodoDetailService, AddResourceComponent, 
     ServerService, ProjectOverviewService,
     ProjectAddService, ProjectUpdateService, UsersService, 
     UsersUpdateService, UsersAddService, TodoAddService,
     UserProfilService, UserEditService, RessouceAddService, RessourceAllService,
   ExpensesService],
+=======
+  providers: [AddResourceComponent, 
+    ServerService, ProjectService, UserService, RessourceService,
+    AvatarService, TodoService, ProjectOverviewService, ExpenseService],
+>>>>>>> feature/Client-Architektur-fixes
   bootstrap: [AppComponent]
 })
 export class AppModule { }

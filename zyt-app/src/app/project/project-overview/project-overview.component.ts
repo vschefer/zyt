@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
-import { ProjectOverviewService } from './project-overview.service'
+import {HttpClient} from '@angular/common/http';
+import { ProjectService } from '../../_services/project.service';
 import {MatDialog} from '@angular/material';
 import { UpdateProjectComponent } from '../update-project/update-project.component';
 import * as moment from 'moment';
@@ -28,7 +28,7 @@ export class ProjectOverviewComponent implements OnInit {
   unactive: Array<String>;
   showOldElement: Boolean = false
   
-  constructor(public dialog: MatDialog, private projectService: ProjectOverviewService) { }
+  constructor(public dialog: MatDialog, private projectService: ProjectService) { }
   
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key])

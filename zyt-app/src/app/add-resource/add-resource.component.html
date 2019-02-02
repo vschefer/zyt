@@ -13,7 +13,7 @@
     <div *ngIf="selectedProjectID">
       
       <mat-form-field class="white">
-        <mat-select placeholder="Users" [(value)]="selectedUser" [(ngModel)]="selectedUser" name="selected-User" multiple>
+        <mat-select placeholder="Users" [(value)]="selectedUser" [(ngModel)]="selectedUser" name="selected-User">
           <mat-option *ngFor="let user of users" [value]="user._id">{{ user.first_name }} {{user.surname}}</mat-option>
         </mat-select>
       </mat-form-field>
