@@ -62,6 +62,7 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 import { ExpensesService } from './expenses/today-expenses/today-expenses.service'
 import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
+import { WeeksComponent } from './working-time/weeks/weeks.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses
     MobileNavComponent,
     ExpensesComponent,
     AddExpensesComponent,
-    TodayExpensesComponent
+    TodayExpensesComponent,
+    WeeksComponent
 
   ],
   entryComponents: [

@@ -1,0 +1,61 @@
+<h3 class="heading">Erfasste Arbeitszeiten in den Wochen zuvor</h3>
+<!-- {{weekDetails['0'].week}}, {{weekDetails['0'].weekStart}}, {{weekDetails['0'].weekEnd}} -->
+<div class="chart-weeks">
+  <section class="chart-weeks-past__chart-wrap" *ngIf="chartData3">
+    <h4 class="heading">drei Wochen zuvor</h4>
+    <canvas
+      class="chart-weeks-past__chart"
+      baseChart
+      [chartType]="'pie'"
+      [colors]="colors"
+      [datasets]="chartData3"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="false">
+    </canvas>
+  </section>
+
+  <section class="chart-weeks-past__chart-wrap" *ngIf="chartData2">
+    <h4 class="heading">vorletzte Wochen</h4>
+    <canvas
+      class="chart-weeks-past__chart"
+      baseChart
+      [chartType]="'pie'"
+      [colors]="colors"
+      [datasets]="chartData2"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="false">
+    </canvas>
+  </section>
+
+  <section class="chart-weeks-past__chart-wrap" *ngIf="chartData1">
+    <h4 class="heading">letzte Woche</h4>
+    <canvas
+      class="chart-weeks-past__chart"
+      baseChart
+      [chartType]="'pie'"
+      [colors]="colors"
+      [datasets]="chartData1"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="false">
+    </canvas>
+  </section>
+</div>
+
+<div class="chart-weeks chart-weeks--current">
+  <section class="chart-week-current" *ngIf="chartData0">
+    <h3 class="heading">Erfasste Arbeitszeiten dieser Woche</h3>
+    <canvas
+      class="chart-weeks-past__chart"
+      baseChart
+      [chartType]="'pie'"
+      [colors]="colors"
+      [datasets]="chartData0"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="false">
+    </canvas>
+  </section>
+</div>
