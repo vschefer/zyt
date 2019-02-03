@@ -1,0 +1,22 @@
+.chart-weeks {
+  display: flex;
+  width: 100%;
+  text-align: center;
+
+  &__container {
+    width: 33.333333333333333333333333%;
+
+    &--current {
+      margin-top: 1.5em;
+      width: 100%;
+    }
+  }
+  
+  &__info-text {
+    margin-bottom: 1.5em;
+  }
+}
+
+.heading {
+  text-align: center;
+}

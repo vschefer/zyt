@@ -49,6 +49,7 @@ import { AuthGuard } from './_guards';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 import { TodayExpensesComponent } from './expenses/today-expenses/today-expenses.component';
+import { WeeksComponent } from './working-time/weeks/weeks.component';
 
 import { ProjectService } from './_services/project.service';
 import { RessourceService } from './_services/ressource.service';
@@ -89,6 +90,7 @@ import { ExpenseService } from './_services/expenses.service';
     ExpensesComponent,
     AddExpensesComponent,
     TodayExpensesComponent,
+    WeeksComponent
 
   ],
   entryComponents: [
