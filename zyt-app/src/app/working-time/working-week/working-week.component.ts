@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as Charts from 'chart.js';
-import { ServerService } from '../../server.service';
 import * as moment from 'moment';
 
 @Component({
@@ -21,59 +19,6 @@ export class WorkingWeekComponent implements OnInit {
     this.getWeek()
   }
   
-  loadExpenses() {
-    this.toWork = 30;
-    ServerService.getAllStatic('//localhost:9000/api/expenses/week').subscribe(
-      (response)=> {
-        const result = response;
-        // console.log(result)
-        let totalWorkTime = 0;
-        // result.then(res => {
-        //   res.forEach(expense => {
-        //     totalWorkTime += expense.recorded_time;
-        //   });
-        //   this.worked = totalWorkTime;
-          
-        //   if (this.toWork - this.worked <= 0) {
-        //     this.toWork = 0;
-        //   } else {
-        //     this.toWork = this.toWork - this.worked;
-        //   }
-        //   this.chartData = [
-        //     {
-        //       data: [
-        //         this.worked,
-        //         this.toWork,
-        //       ],
-        //       backgroundColor: ['#000', '#ff0'],
-        //     },
-        //   ];
-        // });
-      },
-      (error) => console.log(error) 
-    )
-  }
-  colors = [
-    {
-      backgroundColor: [
-        '#455C7B',
-        '#FFBC67',
-      ]
-    }
-  ]
-  chartOptions = {
-    responsive: true
-  };
-  
-  chartLabels = [
-    'worked',
-    'left',
-  ];
-  
-  onChartClick(event) {
-    console.log(event);
-  }
-  
   getWeek(){
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let startOfWeek = moment().startOf('isoWeek');
@@ -91,8 +36,6 @@ export class WorkingWeekComponent implements OnInit {
     this.friday = days[4].toLocaleDateString('de-DE', options)
     this.week = days
   }
-  ngOnInit() {
-    this.loadExpenses();
-  }
+  ngOnInit() {}
   
 }
