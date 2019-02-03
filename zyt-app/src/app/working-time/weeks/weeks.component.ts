@@ -55,8 +55,8 @@ export class WeeksComponent implements OnInit {
     for (let i = 0; i >= -3; i--) {
       weekDetails[String(i)] = {
         week: moment().isoWeek() + i,
-        weekStart: moment().startOf('isoWeek').isoWeek(moment().isoWeek() + i),
-        weekEnd: moment().endOf('isoWeek').isoWeek(moment().isoWeek() + i)
+        weekStart: moment().startOf('isoWeek').isoWeek(moment().isoWeek() + i).format('D.MM.YYYY'),
+        weekEnd: moment().endOf('isoWeek').isoWeek(moment().isoWeek() + i).format('D.MM.YYYY')
       };
     };
 

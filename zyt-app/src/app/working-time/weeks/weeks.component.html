@@ -24,6 +24,7 @@
   <div class="chart-weeks__container chart-weeks__container--current">
     <section class="chart-weeks__chart-wrap chart-weeks__chart-wrap--current" *ngIf="chartData['0']">
       <h3 class="heading">Erfasste Arbeitszeiten dieser Woche</h3>
+      <p class="chart-weeks__info-text"><b>Kalenderwoche {{weekDetails['0'].week}}</b><br>Montag {{weekDetails['0'].weekStart}} - Sonntag {{weekDetails['0'].weekEnd}}</p>
       <canvas
         class="chart-weeks__chart"
         baseChart
