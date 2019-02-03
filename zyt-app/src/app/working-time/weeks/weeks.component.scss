@@ -2,17 +2,17 @@
   display: flex;
   width: 100%;
   text-align: center;
-  
-  &--current {
-    margin-top: 1.5em;
+
+  &__container {
+    width: 33.333333333333333333333333%;
+
+    &--current {
+      margin-top: 1.5em;
+      width: 100%;
+    }
   }
 }
-.chart-weeks-past__chart-wrap {
-  width: 33.333333333333333333333333%;
-}
-.chart-week-current {
-  width: 100%;
-}
+
 .heading {
   text-align: center;
 }

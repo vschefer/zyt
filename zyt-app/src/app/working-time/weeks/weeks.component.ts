@@ -10,10 +10,7 @@ import * as moment from 'moment';
 })
 export class WeeksComponent implements OnInit {
   minWorktime: number = 40;
-  chartData0: any;
-  chartData1: any;
-  chartData2: any;
-  chartData3: any;
+  chartData: Object;
   chartLabels: any;
   chartOptions: any;
   data: any = {};
@@ -33,7 +30,7 @@ export class WeeksComponent implements OnInit {
       responsive: true
     };
 
-    let chartAllData;
+    let chartData = {};
     for (let i = 0; i >= -3; i--) {
       this.serverService.getAll('//localhost:9000/api/expenses/week/' + i).subscribe((response: Array<Object>) => {
         let total = 0;
@@ -45,10 +42,8 @@ export class WeeksComponent implements OnInit {
         const left = this.minWorktime - total <= 0 ? 0 : this.minWorktime - total;
         const data = [{data: [ total, left], backgroundColor: ['#000', '#ff0']}];
       
-        if (i === 0) this.chartData0 = data;
-        if (i === -1) this.chartData1 = data;
-        if (i === -2) this.chartData2 = data;
-        if (i === -3) this.chartData3 = data;
+        chartData[String(i)] = data;
+        this.chartData = chartData;
       });
     }
   }
@@ -64,10 +59,6 @@ export class WeeksComponent implements OnInit {
         weekEnd: moment().endOf('isoWeek').isoWeek(moment().isoWeek() + i)
       };
     };
-
-    // console.log(0, weekDetails['0'].week);
-    // console.log(1, weekDetails['0'].weekStart);
-    // console.log(2, weekDetails['0'].weekEnd);
 
     this.weekDetails = weekDetails;
   }
