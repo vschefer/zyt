@@ -8,7 +8,8 @@ export const backendUrls: {
   ressource: string;
   todo: string; 
   positions: string;
-  expenses: string
+  expenses: string;
+  expensesWeek: string;
   avatar: string; 
   auth: string;
 } = {
@@ -20,6 +21,7 @@ export const backendUrls: {
   todo: 'http://localhost:9000/api/todos/',
   positions: 'http://localhost:9000/api/positions/',
   expenses: 'http://localhost:9000/api/expenses/',
+  expensesWeek: 'http://localhost:9000/api/expenses/week/',
   avatar: 'http://localhost:9000/api/avatars/',
   auth: 'http://localhost:9000/api/auth/',
 };

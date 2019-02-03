@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Charts from 'chart.js';
-import { ServerService } from '../../server.service';
+import { ExpenseService } from '../../_services/expenses.service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +17,7 @@ export class WeeksComponent implements OnInit {
   weekDetails: Object;
 
   constructor(
-    private serverService: ServerService
+    private expensesService: ExpenseService,
   ) { }
 
   loadExpenses(): void {
@@ -32,7 +32,7 @@ export class WeeksComponent implements OnInit {
 
     let chartData = {};
     for (let i = 0; i >= -3; i--) {
-      this.serverService.getAll('//localhost:9000/api/expenses/week/' + i).subscribe((response: Array<Object>) => {
+      this.expensesService.getExpensesFromWeek(i).subscribe((response: Array<Object>) => {
         let total = 0;
         response.forEach(exp => {
           total += exp['recorded_time'];

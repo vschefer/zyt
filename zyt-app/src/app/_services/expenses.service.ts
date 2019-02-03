@@ -27,4 +27,8 @@ export class ExpenseService {
         this.auth()
         return  this.httpClient.get(backendUrls.expenses,{headers: this.headers});
     }
+    getExpensesFromWeek(week) {
+        this.auth();
+        return this.httpClient.get(backendUrls.expensesWeek + week,{headers: this.headers});
+    }
 }
