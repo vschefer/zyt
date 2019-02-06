@@ -11,19 +11,20 @@
 .ressource{
     padding: 0 2.5rem 2.5rem;
     grid-area: res;
-    .ressource__item{
+    
+    .ressource__item {
         background: darken($fuchsia, 20);
         max-width: 20rem;
         padding: 1rem;
         margin: 0.5rem 0;
         
-        p{
+        p {
             margin: 0;
             margin-top: 0.1rem;
         }
     }
 }
-.ressource__wrapper{
+.ressource__wrapper {
     display: flex;
     flex-direction: column;
 }
