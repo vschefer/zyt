@@ -10,26 +10,30 @@ import * as moment from 'moment';
 })
 export class WeeksComponent implements OnInit {
   minWorktime: number = 40;
-  chartData: Object;
-  chartLabels: any;
-  chartOptions: any;
   data: any = {};
   weekDetails: Object;
+  chartData: Object;
+  chartLabels: Array<String> = [
+    'erfasst',
+    'offen',
+  ];
+  chartOptions: Object = {
+    responsive: true,
+  };
+  chartColors: Array<Object> = [
+    {
+      backgroundColor: [
+        '#455C7B',
+        '#FFBC67',
+      ],
+    },
+  ];
 
   constructor(
     private expensesService: ExpenseService,
   ) { }
 
   loadExpenses(): void {
-    this.chartLabels = [
-      'erfasst',
-      'offen',
-    ];
-
-    this.chartOptions = {
-      responsive: true
-    };
-
     let chartData = {};
     for (let i = 0; i >= -3; i--) {
       this.expensesService.getExpensesFromWeek(i).subscribe((response: Array<Object>) => {

@@ -1,13 +1,12 @@
 @import '../styles/colors.scss';
-.wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0 1fr auto;
-    // width: calc(100vw - 300px);
+.wrapper {
     background: $fuchsia;
-    grid-gap: 2rem;
+    grid-gap: 1rem 2rem;
     height: 100vh;
     grid-template-areas: "time exp" "res exp";
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: scroll;
+    grid-template-rows: 1fr auto;
 }
 .ressource{
     padding: 0 2.5rem 2.5rem;
@@ -30,4 +29,5 @@
 }
 app-working-time {
     padding: 1rem 2.5rem;
+    display: block;
 }
