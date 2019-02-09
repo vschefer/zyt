@@ -8,20 +8,45 @@
     overflow-y: scroll;
     grid-template-rows: 0fr auto 0;
 }
-.ressource{
+.ressource {
     padding: 0 2.5rem 2.5rem;
     grid-area: res;
     
-    .ressource__item {
+    &__item {
         background: darken($fuchsia, 20);
-        max-width: 20rem;
+        max-width: 30rem;
         padding: 1rem;
         margin: 0.5rem 0;
+        padding-right: 3.5rem;
+        position: relative;
+        box-sizing: border-box;
+        line-height: 1.5em;
         
         p {
             margin: 0;
             margin-top: 0.1rem;
         }
+    }
+    
+    &__edit-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 2.5rem;
+      overflow: hidden;
+      color: transparent;
+      background-color: rgba(0, 0, 0, 0.25);
+      padding: 0;
+      background-image: url(/assets/icons/icon-edit--white.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: .75;
+      
+      &:hover,
+      &:focus:not(:hover) {
+        opacity: 1;
+      }
     }
 }
 .ressource__wrapper {

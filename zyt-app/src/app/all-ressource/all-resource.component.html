@@ -16,6 +16,7 @@
                     <div  class="res" *ngIf="firstDay === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
                         <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>                             
+                        <button class="button res__edit-button" routerLink="/ressource/edit/{{res._id}}" title="Ressource bearbeiten">Ressource bearbeiten</button>
                     </div>
                 </div>
             </div> 
@@ -31,6 +32,7 @@
                     <div  class="res" *ngIf="firstDay + 1 === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
                         <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>
+                        <button class="button res__edit-button" routerLink="/ressource/edit/{{res._id}}" title="Ressource bearbeiten">Ressource bearbeiten</button>
                     </div>
                 </div>
             </div> 
@@ -46,6 +48,7 @@
                     <div  class="res" *ngIf="firstDay + 2 === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
                         <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>
+                        <button class="button res__edit-button" routerLink="/ressource/edit/{{res._id}}" title="Ressource bearbeiten">Ressource bearbeiten</button>
                     </div>
                 </div>
             </div> 
@@ -61,6 +64,7 @@
                     <div  class="res" *ngIf="firstDay + 3 === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
                         <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>
+                        <button class="button res__edit-button" routerLink="/ressource/edit/{{res._id}}" title="Ressource bearbeiten">Ressource bearbeiten</button>
                     </div>
                 </div>
             </div> 
@@ -75,6 +79,7 @@
                     <div  class="res" *ngIf="firstDay + 4 === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
                         <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>
+                        <button class="button res__edit-button" routerLink="/ressource/edit/{{res._id}}" title="Ressource bearbeiten">Ressource bearbeiten</button>
                     </div>
                 </div>
             </div> 
