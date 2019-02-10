@@ -13,7 +13,6 @@ export class TodayExpensesComponent implements OnInit {
   constructor(private expensesService: ExpenseService) {}
   
   getExpenses(){
-    // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     this.expensesService.getExpenses().subscribe(
       (response)=> {
         this.expenses = response;
@@ -23,13 +22,12 @@ export class TodayExpensesComponent implements OnInit {
           let affected_date = element.affected_date
           let  expenseDate = moment(affected_date).format('YYYY-MM-DD');
           
-          
           if(this.now === expenseDate){
             todayExpenses.push(element)
           }
         });
+  
         this.todayExpenses = todayExpenses;
-        console.log(this.todayExpenses)
       },
       (error) => console.log(error)
     )
