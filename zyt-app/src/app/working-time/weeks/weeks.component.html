@@ -9,7 +9,7 @@
         class="chart-weeks__chart"
         baseChart
         [chartType]="'pie'"
-        [colors]="colors"
+        [colors]="chartColors"
         [datasets]="chartData[-i]"
         [labels]="chartLabels"
         [options]="chartOptions"
@@ -24,16 +24,18 @@
     <section class="chart-weeks__chart-wrap chart-weeks__chart-wrap--current" *ngIf="chartData['0']">
       <h3 class="heading">Erfasste Arbeitszeiten dieser Woche</h3>
       <p class="chart-weeks__info-text"><b>Kalenderwoche {{weekDetails['0'].week}}</b><br>Montag {{weekDetails['0'].weekStart}} - Sonntag {{weekDetails['0'].weekEnd}}</p>
-      <canvas
-        class="chart-weeks__chart"
-        baseChart
-        [chartType]="'pie'"
-        [colors]="colors"
-        [datasets]="chartData[0]"
-        [labels]="chartLabels"
-        [options]="chartOptions"
-        [legend]="false">
-      </canvas>
+      <div class="chart-weeks__current">
+        <canvas
+          class="chart-weeks__chart"
+          baseChart
+          [chartType]="'pie'"
+          [colors]="chartColors"
+          [datasets]="chartData[0]"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [legend]="false">
+        </canvas>
+      </div>
     </section>
   </div>
 </div>
