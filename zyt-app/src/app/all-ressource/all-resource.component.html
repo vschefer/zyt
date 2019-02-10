@@ -15,7 +15,8 @@
                 <div *ngFor="let d of res.days; let i = index">
                     <div  class="res" *ngIf="firstDay === res.days[i]">
                         <strong>{{res.project.name}}</strong><br>
-                        <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br>                             
+                        <span>{{res.total_time_expected}}h eingeplant für {{res.assigned_user.first_name}} {{res.assigned_user.surname}}</span><br> 
+                        <span>{{ res.start | dateFormat }} - {{ res.stop | dateFormat }} </span>                            
                     </div>
                 </div>
             </div> 

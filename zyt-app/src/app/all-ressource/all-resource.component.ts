@@ -31,6 +31,8 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
     let day = startOfWeek;
     this.firstDay =new Date(this.monday) 
     this.firstDay = this.firstDay.getDate()
+    this.lastDay =new Date(this.friday) 
+    this.lastDay = this.lastDay.getDate()
 
     while (day <= endOfWeek) {
       days.push(day.toDate());
