@@ -15,10 +15,10 @@ export class RessourceService {
             'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
           })
     }
-    getRessource(){
+    getRessource(id: string = ''){
         this.headers = new HttpHeaders();
         this.auth();
-        return  this.httpClient.get(backendUrls.ressource,{headers: this.headers});
+        return  this.httpClient.get(backendUrls.ressource + id,{headers: this.headers});
     }
 
     addRessource(servers: any){
@@ -26,8 +26,9 @@ export class RessourceService {
         return  this.httpClient.post(backendUrls.ressource, servers,{headers: this.headers});
     }
 
-    updateRessource(servers: any, id){
-        this.auth()
-        return  this.httpClient.post(backendUrls.ressource + id, servers,{headers: this.headers});
+    // PUT Ressource
+    updateRessource(data:object, id:any) {
+        this.auth();
+        return  this.httpClient.put(backendUrls.ressource + id, data, {headers: this.headers});
     }
 }
