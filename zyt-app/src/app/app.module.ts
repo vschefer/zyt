@@ -58,6 +58,7 @@ import { ProjectOverviewService } from './project/project-overview/project-overv
 import { UserService } from './_services/user.service';
 import { AvatarService } from './_services/avatar.service';
 import { ExpenseService } from './_services/expenses.service';
+import { EditRessourceComponent } from './edit-ressource/edit-ressource.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { ExpenseService } from './_services/expenses.service';
     ExpensesComponent,
     AddExpensesComponent,
     TodayExpensesComponent,
-    WeeksComponent
+    WeeksComponent,
+    EditRessourceComponent,
 
   ],
   entryComponents: [
@@ -155,6 +157,11 @@ import { ExpenseService } from './_services/expenses.service';
       {
         path: 'ressource/all',
         component: AllRessourceComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'ressource/edit/:id',
+        component: EditRessourceComponent,
         canActivate: [AuthGuard]
       },
       {

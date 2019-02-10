@@ -1,0 +1,44 @@
+<div class="edit-ressource">
+
+  <h1>
+    Ressource bearbeiten
+  </h1>
+
+  <div class="ressource-form">
+    <mat-form-field class="white">
+      <label for="project">Projekt</label>
+      <mat-select (selectionChange)="onProjectChange($event.value)" ngDefaultControl [(ngModel)]="ressource?.project._id" name="project">
+        <mat-option *ngFor="let project of projects" [value]="project?._id">{{project.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="white">
+      <label for="assigned_user">Zugewiesene(r) Mitarbeiter(in)</label>
+      <mat-select (selectionChange)="onAssignedUserChange($event.value)" ngDefaultControl [(ngModel)]="ressource?.assigned_user._id" name="assigned_user">
+        <mat-option *ngFor="let user of project?.assigned_users" [value]="user?._id">{{user.first_name}} {{user.surname}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="white" *ngIf="ressource">
+      <label for="start">Startdatum</label>
+      <input matInput [matDatepicker]="start" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="ressource.start" name="start">
+      <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+      <mat-datepicker #start></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="white" *ngIf="ressource">
+      <label for="stop">Deadline</label>
+      <input matInput [matDatepicker]="stop" (dateChange)="onStopChange($event.value)" ngDefaultControl [(ngModel)]="ressource.stop" name="stop">
+      <mat-datepicker-toggle matSuffix [for]="stop"></mat-datepicker-toggle>
+      <mat-datepicker #stop></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="white" *ngIf="ressource">
+      <label for="total_time_expected">Erwartete Arbeitsstunden pro Tag</label>
+      <input matInput type="number" (input)="onExpectedTimeChange($event.target.value)" min="0" ngDefaultControl [(ngModel)]="ressource.total_time_expected" name="total_time_expected">
+    </mat-form-field>
+    
+    <button class="colored-button" type="submit" (click)="onSave()">Speichern</button>
+  </div>
+</div>
+<app-dashboard></app-dashboard>

@@ -171,7 +171,8 @@ app-user {
     grid-template-columns: repeat(3, 1fr);
     position: relative;
 }
-app-add-resouce {
+app-add-resouce,
+app-edit-ressource {
     display: grid;
     // grid-template-columns: repeat(3, 1fr);
     background-color: $bordeux;
