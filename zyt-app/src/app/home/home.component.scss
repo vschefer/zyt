@@ -7,14 +7,29 @@
     grid-template-columns: repeat(2, 1fr);
     overflow-y: scroll;
     grid-template-rows: 0fr auto 0;
+    
+    @media (max-width: 1500px) {
+      grid-template-areas: "time" "res" "exp";
+      grid-template-rows: auto auto 1fr;
+      grid-template-columns: 1fr;
+    }
 }
 .ressource {
     padding: 0 2.5rem 2.5rem;
     grid-area: res;
     
+    @media (max-width: 1500px) {
+      padding-bottom: 0;
+    }
+    
     &__item {
         background: darken($fuchsia, 20);
         max-width: 30rem;
+        
+        @media (max-width: 1500px) {
+          max-width: 100%;
+        }
+        
         padding: 1rem;
         margin: 0.5rem 0;
         padding-right: 3.5rem;
