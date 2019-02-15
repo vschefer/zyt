@@ -58,7 +58,9 @@ import { ProjectOverviewService } from './project/project-overview/project-overv
 import { UserService } from './_services/user.service';
 import { AvatarService } from './_services/avatar.service';
 import { ExpenseService } from './_services/expenses.service';
+import { PositionService } from './_services/position.service';
 import { EditRessourceComponent } from './edit-ressource/edit-ressource.component';
+import { EditProjectComponent } from './project/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import { EditRessourceComponent } from './edit-ressource/edit-ressource.componen
     TodayExpensesComponent,
     WeeksComponent,
     EditRessourceComponent,
+    EditProjectComponent,
 
   ],
   entryComponents: [
@@ -137,6 +140,11 @@ import { EditRessourceComponent } from './edit-ressource/edit-ressource.componen
       {
         path: 'project/add',
         component: AddProjectComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'project/edit/:id',
+        component: EditProjectComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -190,7 +198,7 @@ import { EditRessourceComponent } from './edit-ressource/edit-ressource.componen
   ],
   providers: [AddResourceComponent, 
     ServerService, ProjectService, UserService, RessourceService,
-    AvatarService, TodoService, ProjectOverviewService, ExpenseService],
+    AvatarService, TodoService, ProjectOverviewService, ExpenseService, PositionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
