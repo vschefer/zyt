@@ -1,0 +1,103 @@
+<div class="edit-project">
+  <h1>
+    <span class="text-thin">Projekt</span> {{project?.name}} <span class="text-thin">editieren</span>
+  </h1>
+  <div class="edit-project__form" *ngIf="project">
+    <fieldset class="edit-project__fieldset">
+      <legend class="edit-project__legend">Projekteigenschaften</legend>
+      <mat-form-field class="edit-project__form-field white">
+        <label class="edit-project__label" for="name">Titel</label>
+        <input class="edit-project__text" matInput (input)="onNameChange($event.target.value)" ngDefaultControl [(ngModel)]="project.name" name="name">
+      </mat-form-field>
+      
+      <mat-form-field class="edit-project__form-field white">
+        <label class="edit-project__label" for="briefing.description">Beschreibung</label>
+        <textarea class="edit-project__text" matInput cdkTextareaAutosize (input)="onDescriptionChange($event.target.value)" ngDefaultControl [(ngModel)]="project.briefing.description" name="briefing.description"></textarea>
+      </mat-form-field>
+      
+      <div class="edit-project__dates">
+        <div class="edit-project__date">
+          <mat-form-field class="white edit-project__form-field">
+            <label class="edit-project__label" for="start">Start</label>
+            <input class="edit-project__text" matInput [matDatepicker]="start" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="project.start" name="start">
+            <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
+          </mat-form-field>
+        </div>
+        
+        <div class="edit-project__date">
+          <mat-form-field class="white edit-project__form-field">
+            <label class="edit-project__label" for="deadline">Deadline</label>
+            <input class="edit-project__text" matInput [matDatepicker]="deadline" (dateChange)="onDeadlineChange($event.value)" ngDefaultControl [(ngModel)]="project.deadline" name="deadline">
+            <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
+            <mat-datepicker #deadline></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <mat-form-field class="edit-project__form-field white">
+        <label class="edit-project__label" for="deadline">Zugewiesene Mitarbeiter</label>
+        <mat-select [formControl]="assigned_users" multiple [(ngModel)]="selected_employees">
+          <mat-option *ngFor="let employee of employees" [value]="employee._id">{{employee.first_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <div class="edit-project__actions">
+        <button class="button button--save" (click)="onProjectPropertiesSave()">Projekteigenschaften speichern</button>
+      </div>
+    </fieldset>
+    
+    <fieldset class="edit-project__fieldset">
+      <legend class="edit-project__legend">Positionen</legend>
+      
+      <ul class="edit-project__position-list" *ngIf="positions">
+        <li class="edit-project__position {{position.archived ? 'edit-project__position--archived' : ''}}" *ngFor="let position of positions | orderBy: 'archived' : false" id="{{position._id}}">
+          <mat-form-field class="white edit-project__position-field">
+            <label for="{{position._id}}-name" class="edit-project__label">Bezeichnung</label>
+            <input id="{{position._id}}-name" autocomplete="off" name="{{position._id}}-name" class="edit-project__text js-position-name" matInput ngDefaultControl value="{{position.name}}">
+          </mat-form-field>
+          
+          <mat-form-field class="white edit-project__position-field">
+            <label for="{{position._id}}-total-time-offered" class="edit-project__label">Budget in Stunden</label>
+            <input id="{{position._id}}-total-time-offered" autocomplete="off" name="{{position._id}}-total-time-offered" class="edit-project__text js-position-total-time" matInput ngDefaultControl value="{{position.total_time_offered}}">
+          </mat-form-field>
+          
+          <nav class="edit-project__position-editings">
+            <ul class="edit-project__position-editings-list">
+              <li class="edit-project__position-editings-save">
+                <button type="button" class="button button--save" (click)="onSaveExistingPosition(position._id)">Speichern</button>
+              </li>
+              <li class="edit-project__position-editings-deactive">
+                <button class="button button--deactivate {{position.archived ? 'button--safe' : 'button--danger'}}" (click)="onActivateDeactivePosition(position._id, position.archived)">{{ position.archived ? "Aktivieren" : "Deaktivieren" }}</button>
+              </li>
+            </ul>
+          </nav>
+        </li>
+        
+        <li class="edit-project__position edit-project__position--new">
+          <mat-form-field class="white edit-project__position-field">
+            <label for="nameNew" class="edit-project__label">Bezeichnung</label>
+            <input id="nameNew" autocomplete="off" name="nameNew" class="edit-project__text js-position-name" matInput ngDefaultControl>
+          </mat-form-field>
+          
+          <mat-form-field class="white edit-project__position-field">
+            <label for="totalTimeOfferedNew" class="edit-project__label">Budget in Stunden</label>
+            <input id="totalTimeOfferedNew" autocomplete="off" name="totalTimeOfferedNew" class="edit-project__text js-position-total-time" matInput ngDefaultControl>
+          </mat-form-field>
+          
+          <nav class="edit-project__position-editings edit-project__position-editings--new">
+            <ul class="edit-project__position-editings-list">
+              <li class="edit-project__position-editings-save">
+                <button type="button" class="button button--save" (click)="onAddPosition(project._id)"><span class="bigger">+</span> Position Hinzufügen</button>
+              </li>
+            </ul>
+          </nav>
+        </li>
+      </ul>
+    </fieldset>
+  </div>
+  <footer class="edit-project__footer">
+    <button class="button button--back" (click)="onBackClick()">Zurückkehren</button>
+  </footer>
+</div>
+<app-dashboard></app-dashboard>
