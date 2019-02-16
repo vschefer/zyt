@@ -1,42 +1,33 @@
-
-import { Injectable, Output, EventEmitter } from '@angular/core'
-import {MatDialog} from '@angular/material';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http';
 import { backendUrls } from '../constant/backendurls';
+import { LocalStorageService } from './localStorage.service';
 
 @Injectable()
-export class ExpenseService {
-    id
-    headers: HttpHeaders;
-    avatars: Object
-    constructor(private httpClient: HttpClient){}
-    
+export class ExpenseService extends LocalStorageService {
+  id: string;
+  
+  constructor( private httpClient: HttpClient ) {
+    super();
+  }
 
-    auth(){
-        this.headers =  new HttpHeaders({
-            'Content-Type':  'application/json',
-            'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
-          })
-    }
-
-    addExpense(servers){
-        this.auth()
-        return  this.httpClient.post(backendUrls.expenses, servers,{headers: this.headers});
-    }
-    getExpenses(){
-        this.auth()
-        return  this.httpClient.get(backendUrls.expenses,{headers: this.headers});
-    }
-    getExpense(id){
-        this.auth()
-        return  this.httpClient.get(backendUrls.expenses + id,{headers: this.headers});
-    }
-    getExpensesFromWeek(week) {
-        this.auth();
-        return this.httpClient.get(backendUrls.expensesWeek + week,{headers: this.headers});
-    }
-    updateExpense(data:object, id:any) {
-        this.auth();
-        return  this.httpClient.put(backendUrls.expenses + id, data, {headers: this.headers});
-    }
+  addExpense(servers) {
+    return this.httpClient.post(backendUrls.expenses, servers, { headers: this.headers } );
+  }
+  
+  getExpenses() {
+    return this.httpClient.get(backendUrls.expenses, { headers: this.headers } );
+  }
+  
+  getExpense(id) {
+    return this.httpClient.get(backendUrls.expenses + id, { headers: this.headers } );
+  }
+  
+  getExpensesFromWeek(week) {
+    return this.httpClient.get(backendUrls.expensesWeek + week, { headers: this.headers } );
+  }
+  
+  updateExpense(data:object, id:any) {
+    return this.httpClient.put(backendUrls.expenses + id, data, { headers: this.headers } );
+  }
 }

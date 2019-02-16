@@ -59,6 +59,7 @@ import { PositionService } from './_services/position.service';
 import { EditRessourceComponent } from './components/ressource/edit-ressource/edit-ressource.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { EditExpenseComponent } from './components/expenses/edit-expenses/edit-expenses.component';
+import { LocalStorageService } from './_services/localStorage.service';
 
 @NgModule({
   declarations: [
@@ -206,7 +207,7 @@ import { EditExpenseComponent } from './components/expenses/edit-expenses/edit-e
   ],
   providers: [AddResourceComponent, 
     ProjectService, UserService, RessourceService,
-    AvatarService, TodoService, ExpenseService, PositionService],
+    AvatarService, TodoService, ExpenseService, PositionService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

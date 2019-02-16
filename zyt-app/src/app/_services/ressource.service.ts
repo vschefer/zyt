@@ -1,34 +1,25 @@
 
-import { Injectable, Output, EventEmitter } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http';
 import { backendUrls } from '../constant/backendurls';
+import { LocalStorageService } from './localStorage.service';
+
 @Injectable()
-export class RessourceService {
-    headers: HttpHeaders;
-    avatars: Object
-    constructor(private httpClient: HttpClient){}
-    
+export class RessourceService extends LocalStorageService {
 
-    auth(){
-        this.headers =  new HttpHeaders({
-            'Content-Type':  'application/json',
-            'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
-          })
-    }
-    getRessource(id: string = ''){
-        this.headers = new HttpHeaders();
-        this.auth();
-        return  this.httpClient.get(backendUrls.ressource + id,{headers: this.headers});
-    }
+  constructor( private httpClient: HttpClient ) {
+    super();
+  }
 
-    addRessource(servers: any){
-        this.auth()
-        return  this.httpClient.post(backendUrls.ressource, servers,{headers: this.headers});
-    }
+  getRessource(id: string = '') {
+    return this.httpClient.get(backendUrls.ressource + id, { headers: this.headers } );
+  }
 
-    // PUT Ressource
-    updateRessource(data:object, id:any) {
-        this.auth();
-        return  this.httpClient.put(backendUrls.ressource + id, data, {headers: this.headers});
-    }
+  addRessource(servers: any) {
+    return this.httpClient.post(backendUrls.ressource, servers, { headers: this.headers } );
+  }
+
+  updateRessource(data:object, id:any) {
+    return this.httpClient.put(backendUrls.ressource + id, data, { headers: this.headers } );
+  }
 }
