@@ -49,6 +49,10 @@ export class AddExpensesComponent implements OnInit {
 
   onProjectChange(projectId: String) {
     this.project = this.projects.filter((project) => {
+      project['positions'] = project['positions'].filter(pos => {
+        return !pos.archived;
+      });
+      console.log(1, project['positions']);
       return project._id === projectId;
     })[0];
   }
