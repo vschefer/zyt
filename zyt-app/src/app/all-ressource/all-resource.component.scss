@@ -15,6 +15,11 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
         align-items: center;
     }
 }
+
+.all__ressource-header-back {
+  background-color: darken($blue, 40);
+}
+
 .all__ressource-header-add {
     cursor: pointer;
 }
@@ -143,14 +148,12 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
 }
 
 .button--back {
-    color: inherit;
-    background-color: darken(#202b3a, 20);
-    padding: 0rem;
-    text-decoration: none;
-    height: 100%;
-    padding: 0 1rem;
-    line-height: 46px;
-    width: 100%;
+  color: inherit;
+  padding: 0rem;
+  text-decoration: none;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 .all__ressource-header-time {
