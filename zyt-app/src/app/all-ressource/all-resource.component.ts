@@ -73,6 +73,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
         }
       });
       this.weekRes = weekRes
+      console.log(weekRes)
     },
     (error) => console.log(error))
   }
