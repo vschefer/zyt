@@ -43,6 +43,7 @@ export class TodoDetailComponent extends UpdateButtonTodoComponent implements On
       status: this.selectStatus,
     }
     this.todoService.updateTodo(this.update, this.data.id).subscribe()
+    window.location.reload()
   }
   ngOnInit() {
     this.bleh()

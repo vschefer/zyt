@@ -34,10 +34,10 @@ export class AddTodoComponent  implements OnInit {
         public snackBar: MatSnackBar
     ) {}
 
-    message = this.name + 'wurde hinzugefügt';
+    message = this.title + 'wurde hinzugefügt';
     action = 'Ok';
-    openSnackBar() {
-        this.snackBar.open(this.message, this.action, {
+    openSnackBar(message, action) {
+        this.snackBar.open(message, action, {
             duration: 5000,
         });
     }
@@ -100,10 +100,11 @@ export class AddTodoComponent  implements OnInit {
             },
             assigned_users: [this.id]
         }
-        this.todoService.addTodo(this.todo).subscribe(
-            (response)=> console.log(response),
+        this.todoService.addTodo(this.todo).subscribe((response) => {
+
+        this.openSnackBar(`Das Todo ${this.title} wurde hinzugefügt.`, 'Ok');
+        }
         )
-        this.openSnackBar()
     }  
     checkValid(){
         let invalid: Boolean
