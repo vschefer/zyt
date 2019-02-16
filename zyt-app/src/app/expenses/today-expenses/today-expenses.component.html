@@ -1,45 +1,14 @@
-<main class="add-expense">
-        <form class="wrapper add-expense__form">
-          <div class="add-expense__content-wrap">
-            <h1>Arbeitszeit erfassen</h1>
-            <h2>Informationen zum Zeitaufwand</h2>
-            
-            <mat-form-field floatLabel="never">
-              <label for="project">Projekt</label>
-              <mat-select required id="project" name="project" [(placeholder)]="Projekt" [(value)]="Projekt" (selectionChange)="onProjectChange(Projekt)">
-                <mat-option value="{{project._id}}" *ngFor="let project of projects">{{project.name}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <ng-template [ngIf]="project">
-              <mat-form-field floatLabel="never">
-                <label for="position">Position</label>
-                <mat-select required id="position" name="position" [(placeholder)]="Position" [(value)]="Position" (selectionChange)="onPositionChange(Position)" [(ngModel)]="position">
-                  <mat-option value="{{position._id}}" *ngFor="let position of project.positions">{{position.name}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </ng-template>
-            
-            <mat-form-field floatLabel="never">
-              <label for="affected_date">Datum des Zeitaufwandes</label>
-              <input autocomplete="off" required matInput id="affected_date" name="affected_date" [(value)]="AffectedDate" [matDatepicker]="picker" (selectionChange)="onAffectedDateChange(AffectedDate)" [(placeholder)]="AffectedDate" [(ngModel)]="affected_date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            
-            <mat-form-field floatLabel="never">
-              <label for="recorded_time">Zeitaufwand in Stunden</label>
-              <input autocomplete="off" required id="recorded_time" name="recorded_time" matInput type="number" [(placeholder)]="RecordedTime" (selectionChange)="onRecordedTimeChange(RecordedTime)" [(ngModel)]="recorded_time">
-            </mat-form-field>
-            
-            <mat-form-field floatLabel="never">
-                <label for="comment">Kommentar</label>
-                <input autocomplete="off" required id="comment" name="comment" matInput type="text" placeholder="Kommentar" [(ngModel)]="comment">
-            </mat-form-field>
-            
-            <button class="button button--save-expense" type="submit" (click)="saveExpense()">Speichern</button>
-          </div>
-        </form>
-      </main>
-      <app-dashboard></app-dashboard>
+<h2>Deine Arbeitsberichte von Heute</h2>
+
+<div class="todayExpenses__container">
+
+    <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
+        <div class="expense__info">
+                <strong>{{exp.project.name}}</strong>
+                <span>{{exp.recorded_time}} h</span> 
+        </div>
+        <p>{{ exp.comment }}</p>
       
+        
+    </div>
+</div>
