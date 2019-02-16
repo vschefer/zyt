@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import {MatDialog} from '@angular/material';
 import {UpdateProjectComponent} from '../../update-project/update-project.component'
 @Component({
   selector: 'app-update-button',
@@ -11,20 +10,7 @@ export class UpdateButtonComponent implements OnInit{
   public id
   @Input() parentData
   
-  constructor(public dialog: MatDialog) {  }
-  
-  openDialog(id): void {
-    this.id = id
-    const dialogRef = this.dialog.open(UpdateProjectComponent, {
-      data: {
-        id: this.id
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      
-    });
-  }
+  constructor() {}
   
   ngOnInit() {} 
 }

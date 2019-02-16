@@ -15,8 +15,7 @@ import { UserComponent } from './user/user.component'
 import { AddResourceComponent } from './add-resource/add-resource.component'
 import { AllRessourceComponent } from './all-ressource/all-resource.component'
 import { AddProjectComponent } from './project/add-project/add-project.component';
-import { AddUserComponent } from './user/add-user/add-user.component'
-import { UpdateProjectComponent } from './project/update-project/update-project.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 import { UpdateButtonComponent } from './project/project-overview/update-button/update-button.component';
 import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
@@ -83,7 +82,6 @@ import { EditProjectComponent } from './project/edit-project/edit-project.compon
     AddProjectComponent,
     AddUserComponent,
     DateFormatPipe,
-    UpdateProjectComponent,
     UpdateButtonComponent,
     TodoDetailComponent,
     UpdateButtonTodoComponent,
@@ -100,7 +98,6 @@ import { EditProjectComponent } from './project/edit-project/edit-project.compon
   ],
   entryComponents: [
     UserEditComponent,
-    UpdateProjectComponent,
     TodoDetailComponent,
     UpdateUserComponent
   ],
