@@ -14,8 +14,11 @@ h2 {
     margin-top: 1rem;
     width: 80%;
     font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    p {
+    span {
         margin: 0.5rem 0 0.5rem;
         font-size: 12px;
     }
@@ -26,8 +29,7 @@ h2 {
 }
 .expense__info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 
     strong {
         max-width: 80%;

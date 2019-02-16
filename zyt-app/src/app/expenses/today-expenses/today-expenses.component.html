@@ -5,9 +5,10 @@
     <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
         <div class="expense__info">
                 <strong>{{exp.project.name}}</strong>
-                <span>{{exp.recorded_time}} h</span> 
+                <span>{{ exp.comment }}</span> 
         </div>
-        <p>{{ exp.comment }}</p>
+      
+        <span>{{exp.recorded_time}} h</span> 
       
         
     </div>
