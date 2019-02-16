@@ -4,7 +4,7 @@ import {MatSnackBar} from '@angular/material';
 import { ProjectService } from '../../_services/project.service';
 import { TodoService } from '../../_services/todo.service';
 import { UserService } from '../../_services';
-
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-add-todo',
@@ -12,8 +12,9 @@ import { UserService } from '../../_services';
     styleUrls: ['./add-todo.component.scss']
 })
 export class AddTodoComponent  implements OnInit {
+    now = moment().format('YYYY-MM-DD');
     name:string
-    data: Object
+    data
     todo:Object
     proj:Array<String>;
     title: string
@@ -24,7 +25,7 @@ export class AddTodoComponent  implements OnInit {
     projectID
     id
     
-    
+    activeProj
     
     constructor(
         private userService: UserService, 
@@ -41,13 +42,19 @@ export class AddTodoComponent  implements OnInit {
         });
     }
     
-    getProject(){
-        this.projectService.getProjects().subscribe(
-            (response)=> {
-                this.data = response;
-            },
-            (error) => console.log(error) 
-        )
+    getProjects() {
+        this.projectService.getProjects().subscribe((response) => {
+        this.data = response;
+        let activeProj =[]
+        this.data.forEach(element => {
+          if(element.deadline >= this.now){
+            activeProj.push(element)
+          }
+        });
+        this.activeProj = activeProj
+      },
+      (error) => console.log(error)
+    )
     }
     
     bleh(id) {
@@ -118,7 +125,7 @@ export class AddTodoComponent  implements OnInit {
     }
     
     ngOnInit() {
-        this.getProject()
+        this.getProjects()
         
     }
     

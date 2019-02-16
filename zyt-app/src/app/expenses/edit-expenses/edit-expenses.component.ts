@@ -58,7 +58,6 @@ export class EditExpenseComponent implements OnInit {
   
   onPositionChange(pos: any) {
     this.position = pos;
-    console.log(this.position)
   }
   getExpense(id){
     this.expenseService.getExpense(id).subscribe((response) => {
@@ -86,7 +85,6 @@ export class EditExpenseComponent implements OnInit {
     	affected_date: this.affected_date,
     };
     this.expenseService.updateExpense(this.saveExp, this.expenseID).subscribe((response) => {
-        console.log(this.expense)
       this.openSnackBar(`Arbeitsbericht für das Projekt "${this.project.name}" wurde bearbeitet.`, 'Ok');
       this.router.navigate(['/expenses/overview']);
     }, (error) => {

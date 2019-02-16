@@ -17,7 +17,6 @@ export class WeekExpensesComponent implements OnInit {
   constructor(private expensesService: ExpenseService) {}
   
   getExpenses(){
-    console.log(this.startOfWeek)
       let days = []
       let day = this.startOfWeek
       while (day <= this.endOfWeek) {
@@ -25,11 +24,9 @@ export class WeekExpensesComponent implements OnInit {
         day = day.clone().add(1, 'd');
       }
       this.week = days;
-      console.log(this.week)
     this.expensesService.getExpensesFromWeek(0).subscribe(
       (response)=> {
         this.expenses = response;
-        console.log(this.expenses)
 
         this.expenses.forEach(element => {
           this.total += element.recorded_time

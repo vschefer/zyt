@@ -38,7 +38,6 @@ export class ServerService {
               'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
             }
           }));
-        // result.subscribe(x => console.log(x), e => console.error(e));
         
         return response;
     }

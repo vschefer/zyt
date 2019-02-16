@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
 import { ProjectOverviewService } from '../../project/project-overview/project-overview.service';
 import { ProjectService } from '../../_services/project.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,12 +15,14 @@ import { ProjectService } from '../../_services/project.service';
   selector: '[toggleDetail]',
 })
 export class TodoListComponent implements OnInit {
+  now = moment().format('YYYY-MM-DD');
   windowWidth = document.body.clientWidth;
   spalte = this.windowWidth
-  data: Object
+  data
   positions:Array<String>;
   project: Object
   todos : Object
+  activeProj
   public id
   public projId
   constructor(
@@ -29,14 +32,19 @@ export class TodoListComponent implements OnInit {
   ) {}
   proj:Array<String>;
   todo:Array<String>;
-  getProject(){
-    this.projectService.getProjects().subscribe(
-    (response)=> {
-      
-      this.data = response;
-    },
-    (error) => console.log(error) 
-  )
+  getProjects() {
+    this.projectService.getProjects().subscribe((response) => {
+    this.data = response;
+    let activeProj =[]
+    this.data.forEach(element => {
+      if(element.deadline >= this.now){
+        activeProj.push(element)
+      }
+    });
+    this.activeProj = activeProj
+  },
+  (error) => console.log(error)
+)
 }
 toArray(answers: object) {
   return Object.keys(answers).map(key => answers[key])
@@ -94,7 +102,7 @@ showDay(event){
 }
 
 ngOnInit() {
-  this.getProject()
+  this.getProjects()
 }
 
 }

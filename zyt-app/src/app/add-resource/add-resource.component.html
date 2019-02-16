@@ -6,7 +6,7 @@
   <div class="ressouce-form">
     <mat-form-field class="white">
       <mat-select placeholder="Job" (selectionChange)="getProject(selectedProjectID)" [(value)]="selectedProjectID" [(ngModel)]="proj" name="select-job">
-        <mat-option *ngFor="let project of data" value="{{project._id}}">{{project.name}}</mat-option>
+        <mat-option *ngFor="let project of activeProj" value="{{project._id}}">{{project.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     

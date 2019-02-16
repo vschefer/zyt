@@ -66,7 +66,6 @@ export class EditProjectComponent implements OnInit {
   }
   
   onSaveExistingPosition(id): void {
-    console.log(id);
     const positionName = document.getElementById(id).querySelector('.js-position-name')['value'];
     const positionExpectedTime = document.getElementById(id).querySelector('.js-position-total-time')['value'];
     const data = {
@@ -83,7 +82,6 @@ export class EditProjectComponent implements OnInit {
   
   onActivateDeactivePosition(id, archived): void {
     archived = !archived;
-    console.log(0, archived);
     this.positionService.activateDeactivatePosition(id, archived).subscribe((response) => {
       this.positions = this.positions.map(elem => {
       	if (elem._id === id) {
