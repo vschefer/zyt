@@ -5,9 +5,11 @@
     height: 80vh;
     padding-bottom: 2rem;
 }
+
 h2 {
     margin-top: 2rem;
 }
+
 .todayExpenses__expense {
     padding: 0.5rem 1rem;
     background: $violett;
@@ -28,6 +30,7 @@ h2 {
         background: darken($violett, 5);
     }
 }
+
 .expense__info {
     display: flex;
     flex-direction: column;

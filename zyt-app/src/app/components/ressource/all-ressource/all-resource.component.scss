@@ -3,7 +3,7 @@
 
 $day-colors: $yellow $fuchsia $bordeux $violett $blue;
 
-.all__ressource-header{
+.all__ressource-header {
     width: 100vw;
     height: 7vh;
     background-color: darken($blue, 20);
@@ -17,28 +17,29 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
 }
 
 .all__ressource-header-back {
-  background-color: darken($blue, 40);
+    background-color: darken($blue, 40);
 }
 
 .all__ressource-header-add {
     cursor: pointer;
 }
-.all__ressource-wrapper{
+.all__ressource-wrapper {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
 
-.all__ressource{
+.all__ressource {
     height: 93vh;
     transition: all 0.5s;
     position: relative;
     display: flex;
-
+    
     @each $current-color in $day-colors {
-      $i: index($day-colors, $current-color) - 1;
-      &--day-nr-#{$i} {
-        background-color: $current-color;
-      }
+        $i: index($day-colors, $current-color) - 1;
+        
+        &--day-nr-#{$i} {
+            background-color: $current-color;
+        }
     }
     
     &-header-back {
@@ -63,6 +64,7 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
     height: 95vh;
     overflow: scroll;
 }
+
 .res {
     padding: 1rem;
     margin: 1rem 0.5rem;
@@ -95,6 +97,7 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
 
 @each $current-color in $day-colors {
     $i: index($day-colors, $current-color) - 1;
+    
     .all__ressource--day-nr-#{$i} .res {
         background-color: darken($current-color, 20);
     }
@@ -112,12 +115,14 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
     bottom: 0;
     margin: 0.5rem;
 }
-.shrink{
+
+.shrink {
     width: 5vw;
     
-    .res{
+    .res {
         opacity: 0;
     }
+    
     .add {
         background: transparent;
         background-image: url('../../../../assets/images/plus.svg');
@@ -129,10 +134,10 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
     }
 }
 
-.grow{
+.grow {
     transition: all 0.5s;
     width: 80vw;
-    .res{
+    .res {
         opacity: 1;
     }
     
@@ -148,12 +153,12 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
 }
 
 .button--back {
-  color: inherit;
-  padding: 0rem;
-  text-decoration: none;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  width: 100%;
+    color: inherit;
+    padding: 0rem;
+    text-decoration: none;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    width: 100%;
 }
 
 .all__ressource-header-time {
@@ -166,20 +171,24 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
     .all__ressource-header-back{
         display: none;
     }
+    
     .all__ressource-header {
         display: flex;
         height: 3.5rem;
     }
+    
     .all__ressource-header-time {
         margin-left: 4rem;
     }
-    .all__ressource-wrapper[_ngcontent-c2] {
-        
+    
+    .all__ressource-wrapper[_ngcontent-c2] { 
         display: block;
     }
+    
     .button--back{
         display: none;
     }
+    
     .all__ressource{
         width: 100vw;
         
@@ -189,9 +198,11 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
             height: 2rem;
         }
     }
+    
     .shrink {
         height: 10vh;
     }
+    
     .grow {
         height: 60vh;
     }

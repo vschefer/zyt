@@ -1,9 +1,10 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/variable.scss';
-.add-ressource{
+.add-ressource {
     grid-column: 1 / span 2;  
     width: calc(100vw - 300px);
-    .ressouce-form{
+
+    .ressouce-form {
         display: flex;
         flex-direction: column;
         margin: 1rem;
@@ -11,10 +12,11 @@
 
     button,
     .button-all {
-        color: white;
+        color: $white;
         background:  darken($yellow,20);
         cursor: pointer;
     }
+
     .button-all {
       color: inherit;
       text-decoration: none;
@@ -30,6 +32,7 @@
       transition: all .2s;
     }
 }
+
 h1 {
   padding-left: 1rem;
 }

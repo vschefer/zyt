@@ -6,19 +6,19 @@
     width: calc(100vw - 300px);
     height: 100vh;
 }
+
 .week-expenses__list {
     margin:0 auto;
     padding-top:2rem;
     height: 95vh;
     overflow-y: scroll;
 
-
     h2 {
         padding-left: 2rem;
         width: 80%;
-
     }
 }
+
 .week-exp {
     display: flex;
     align-items: center;
@@ -27,9 +27,9 @@
     background: darken($bordeux, 10);
     margin-bottom: 1rem;
     position: relative;
-    margin-left: 0.5rem;
-    
+    margin-left: 0.5rem; 
 }
+
 .week-expense__detail {
     padding-right: 2rem;
     border-left: 2px solid;
@@ -37,6 +37,7 @@
     padding-bottom: 1rem;
     flex: 2;
 }
+
 .week-expense__recordedtime {
     flex: 0.5;
 }
@@ -44,6 +45,7 @@
 .week-expense__project {
     font-weight: 600;
 }
+
 .total-expenses {
     padding: 1rem;
     padding-bottom: 3rem;
@@ -60,7 +62,6 @@
 }
 
 .total-expenses__total {
-    // border-bottom: 2px double white;
     text-decoration: underline;
     flex: 0.5;
 }

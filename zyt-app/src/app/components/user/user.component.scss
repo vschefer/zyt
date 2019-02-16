@@ -1,13 +1,14 @@
 @import '../../styles/colors.scss';
-.wrapper{
+.wrapper {
     position: absolute;
     grid-template-columns: 50% 50%;
     transition: transform 0.5s ease-out;
     background: $bordeux;
 }
-.user{
+
+.user {
     height: 50vh;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid $white;
     
     p {
         word-break: break-all;
@@ -17,10 +18,11 @@
     }
 }
 
-.user:nth-child(odd){
-    border-right: 3px solid white;
+.user:nth-child(odd) {
+    border-right: 3px solid $white;
 }
-.user__container{
+
+.user__container {
     padding: 0.75rem;
     display: flex;
     flex-direction: column;
@@ -29,15 +31,16 @@
     box-sizing: border-box;
     justify-content: center;
     
-    h2{
+    h2 {
         width: auto;
         text-align: center;
     }
-    p{
+    
+    p {
         font-size: 14px;
     }
 }
-.control{
+.control {
     position: absolute;
     bottom: 0;
 }
@@ -56,22 +59,11 @@
     margin-left: 40px;
 }
 
-// .button {
-    //   color: white;
-    //   background-color: $fuchsia;
-    //   font-size: 14px;
-    //   transition: all .2s;
-    //   letter-spacing: .05em;
-    // }
-    // .button:hover,
-    // .button:focus {
-        //   background-color: darken($fuchsia, 3%);
-        // }
-        .button--edit {
-            background-color: darken($bordeux, 20);
-            color: white;
-        }
-        .user--admin .button--edit {
-            background-color: $bordeux;
-        }
-        
+.button--edit {
+    background-color: darken($bordeux, 20);
+    color: $white;
+}
+
+.user--admin .button--edit {
+    background-color: $bordeux;
+}

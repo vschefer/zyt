@@ -10,7 +10,8 @@
     overflow-x: hidden;
     height: 100vh;
 }
-.project{
+
+.project {
     height: auto;
     padding: 0 1rem 0 1rem;
     max-width: 100%;
@@ -26,15 +27,15 @@
         font-size: 25px;
         cursor: pointer;
     }
-
+    
     h3 {
         font-size: 22px;
         margin: 2rem 0 2rem 0;
     }
+    
     .date {
         font-size: 14px;
         margin-top: 0.5rem;
-        
     }
 }
 
@@ -43,6 +44,7 @@
 .briefing__content {
     display: block;
 }
+
 .project__briefing,
 .project__users,
 .project__positions {
@@ -52,9 +54,7 @@
 .users__wrapper {
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    
-    
+    width: 80%; 
 }
 
 .progress-bar {
@@ -63,6 +63,7 @@
     width: 90%;
     margin: 0 auto;
 }
+
 .progress-bar__progressing {
     height: 1rem;
     background: $yellow;
@@ -84,19 +85,23 @@
         margin-left: 0.5rem;
     }
 }
+
 app-update-button {
     display: block;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
 section {
     background: $violett;
 }
+
 @media (max-width: $medium) { 
     .wrapper {
         grid-template-columns: repeat(100,100vw);
     }
 }
+
 .showelement {
     font-size: 2rem;
     position: absolute;
@@ -112,39 +117,42 @@ section {
             opacity: 0.5;
             font-weight: 900;
         }
+        
         .showelement {
             animation: openMe 2s infinite;
         }
     }
-
+    
     .project__content-wrapper {
-       max-height: 0;
+        max-height: 0;
         overflow: hidden;
         transition: all 0.5s;
     }
 }
 .open__content {
     background:  darken($violett,5);
+    
     .project__content-wrapper {
         max-height: 500rem;
         transition: all 0.5s;
     }
-
 }
 .showelement.closed {
     transform: rotate(-180deg);
     transition: all 0.5s;
 }
+
 .showelement.open {
     transform: rotate(-45deg);
     transition: all 0.5s;
 }
+
 .button__unactiveToggle {
     min-height: 3rem;
-    color: white;
+    color: $white;
     background: $blue;
-    border-bottom: 3px solid white;
-
+    border-bottom: 3px solid $white;
+    
     &:hover {
         background: lighten($blue, 5);
     }

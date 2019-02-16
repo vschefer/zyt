@@ -13,10 +13,11 @@
 
   button,
   .button-all {
-    color: white;
+    color: $white;
     background:  darken($yellow,20);
     cursor: pointer;
   }
+
   .button-all {
     color: inherit;
     text-decoration: none;

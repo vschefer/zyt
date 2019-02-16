@@ -1,6 +1,6 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/variable.scss';
-.user{
+.user {
   display: flex;
   padding: 0 30px;
   align-items: center;
@@ -9,10 +9,12 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.user-avatar-wrapper{
+
+.user-avatar-wrapper {
   padding: 0;
 }
-.user-avatar{
+
+.user-avatar {
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
@@ -25,7 +27,7 @@
   &::before {
     content: attr(data-title);
     background-color: #2b3c51;
-    color: white;
+    color: $white;
     border-radius: 0;
     padding: 0.25em .5em .75em .5em;
     font-size: .85em;
@@ -44,6 +46,7 @@
     transition: all .5s;
     z-index: 2;
   }
+
   &::after {
     content: "";
     width: 15px;
@@ -60,6 +63,7 @@
     opacity: 1;
   }
 }
+
 .user-avatar:hover::after {
   opacity: 0;
 }
@@ -67,7 +71,8 @@
   transform: translateY(0%);
   opacity: 1;
 }
-.user-name{
+
+.user-name {
   padding: 0 0 0 30px;
   font-size: 1rem;
   line-height: 1.5em;
@@ -75,7 +80,7 @@
 
 .button-logout {
   background-color: #707070;
-  color: white;
+  color: $white;
   width: 100%;
   background-image: url(/assets/icons/logout.svg);
   background-size: auto 60%;

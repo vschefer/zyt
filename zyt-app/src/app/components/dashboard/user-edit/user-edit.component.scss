@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   max-width: 25rem;
 }
+
 .avatar-edit__img {
   cursor: pointer;
   transition: transform .2s;
@@ -18,10 +19,12 @@
   width: 4rem;
   height: 4rem;
 }
+
 .avatar-edit__img:hover,
 .avatar-edit__img:focus {
   transform: scale(1.3);
 }
+
 .avatar-edit__button {
   width: 100%;
 }
@@ -45,10 +48,11 @@
   }
 }
 
-.error__message{
+.error__message {
   color: $fuchsia;
 }
+
 .avatar-edit__button {
   background: $yellow;
-  color: white;
+  color: $white;
 }

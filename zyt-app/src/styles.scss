@@ -16,7 +16,7 @@ $rubik: 'Allerta', sans-serif;
 
 body {
     margin:0;
-    color: white;
+    color: $white;
     font-family: $questrial;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -46,18 +46,21 @@ app-today-expenses {
     padding: 1rem 2.5rem 2.5rem;
     
     @media (max-width: 1500px) {
-      padding-top: 0;
+        padding-top: 0;
     }
 }
+
 app-plan {
     background-color: #A8B7AB;
     height: 100vh;
     flex: 2;
     padding: 0 1rem 0 1rem;
 }
+
 app-todo-list {
     height: 100vh;
 }
+
 app-user {
     grid-row: 1 / 3;
     grid-column: 1 / span 2;
@@ -65,6 +68,7 @@ app-user {
     width: calc(100vw - 300px);
     background-color: $bordeux;
 }
+
 app-dashboard {
     aside {
         background-color: $blue;
@@ -83,6 +87,7 @@ app-dashboard {
             transform: translateX(0vw);
             transition: transform 1s;
         }
+        
         .mobilenav__close & {
             transform: translateX(100vw);
             transition: transform 1s;
@@ -106,7 +111,7 @@ button + button {
     margin-left: .25em;
 }
 mat-form-field[floatlabel="never"] span {
-    color: white;
+    color: $white;
 }
 
 button {
@@ -117,7 +122,7 @@ button {
     // text-transform: uppercase;
     cursor: pointer;
     display: inline-block;
-
+    
     &.button {
         &__edit-button {
             position: absolute;
@@ -136,14 +141,14 @@ button {
             
             &:hover,
             &:focus:not(:hover) {
-              opacity: 1;
+                opacity: 1;
             }
-          }
+        }
     }
 }
 
 .colored-button {
-    color: white;
+    color: $white;
     background-color: $fuchsia;
     font-size: 14px;
     letter-spacing: .05em;
@@ -157,8 +162,6 @@ button {
     fill: #000;
 }
 
-
-
 .cdk-global-overlay-wrapper {
     position: absolute;
     top:0;
@@ -171,17 +174,20 @@ button {
     align-items: center;
     justify-content: center;
 }
+
 mat-dialog-container.mat-dialog-container {
     background-color: $violett;
     padding: 2rem;
     min-width: 25rem;
     max-height: 80vh;
-    color: white;
+    color: $white;
 }
+
 app-login {
     width: 100%;
     height: 100vh;
 }
+
 app-project {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -202,7 +208,6 @@ app-user {
 app-add-ressource,
 app-edit-ressource {
     display: grid;
-    // grid-template-columns: repeat(3, 1fr);
     background-color: $yellow;
     height: 100vh;
 }
@@ -227,8 +232,7 @@ input.ng-touched:invalid + .input-error-message {
     display: block;
     position: absolute;
     bottom: 0.5rem;
-    color: $warning;
-    
+    color: $warning; 
 }
 
 input.ng-untouched + .input-error-message {
@@ -238,6 +242,7 @@ input.ng-untouched + .input-error-message {
 input.ng-touched:invalid:focus + .input-error-message {
     display: none;
 }
+
 input:valid + .input-error-message {
     display: none;
 }
@@ -250,16 +255,17 @@ input:valid + .input-error-message {
         width: 100vw;
     }
 }
-.prev,.next, .upside, .down {
+
+.prev,
+.next,
+.upside,
+.down {
     position: fixed;
-    
     background: none;
     padding: 0.2rem;
     outline: none;
     cursor: pointer;
     opacity: 1;
-    
-    
     
     .arrow {
         background-image: url('./assets/images/back.svg');
@@ -267,18 +273,17 @@ input:valid + .input-error-message {
         width: 2rem;
         height: 2rem;
         transform: scale(1);
-        
         transition: transform 0.2s;
         
         &:hover {
             transform: scale(1.3);
             transition: transform 0.2s;
         }
+        
         @media (max-width: $medium) { 
             width: 1rem;
             height: 1rem;
-        }
-        
+        } 
     }
     
     &.hidden {
@@ -286,15 +291,17 @@ input:valid + .input-error-message {
             display: none;
         }    
     }
+    
     &.transparent {
         opacity: 0.5;
     }
 }
+
 .prev {
     left:0;
-    top: 50%;
-    
+    top: 50%; 
 }
+
 .next {
     right: 300px;
     transform: rotate(180deg);
@@ -303,6 +310,7 @@ input:valid + .input-error-message {
         right: 0;
     }
 }
+
 .upside {
     position: absolute;
     bottom:0;
@@ -314,6 +322,7 @@ input:valid + .input-error-message {
     left: 55%;
     transform: rotate(-90deg);
 }
+
 .upside {
     bottom: 0;
     left:45%;
@@ -330,21 +339,22 @@ app-detail-todo-button {
     right: 0;
     height: 100%;
     width: 50%;
+    
     button{
         height: 100%;
         cursor: pointer;
         background: transparent;
-        color: white;
+        color: $white;
         word-wrap: break-word;
     }
-    
 }
 
 mat-form-field {
     span{
-        color: white;
+        color: $white;
     }
 }
+
 app-update-project{
     display: flex;
     flex-direction: column;
@@ -361,8 +371,7 @@ app-mobile-nav {
     display: none;
     @media (max-width: $medium) { 
         display: block;
-    }
-    
+    } 
 }
 
 .sr-only {
@@ -377,26 +386,32 @@ app-mobile-nav {
 .overflow-wrapper::-webkit-scrollbar-button { height: 13px; border-radius: 0px; background-color:transparent; } ::-webkit-scrollbar-button:hover{ background-color: #AAA; } ::-webkit-scrollbar-thumb{ background-color: #CCC; } ::-webkit-scrollbar-thumb:hover{ background-color: #CCC; } ::-webkit-scrollbar-track{ background-color: transparent;  } ::-webkit-scrollbar-track:hover{ background-color: #A8B7AB; } ::-webkit-scrollbar{ width: 10px; }
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
-    color: white;
+    color: $white;
 }
+
 .mat-datepicker-toggle-default-icon {
-    fill: white;
+    fill: $white;
 }
+
 .mat-form-field.mat-focused .mat-form-field-label {
     color: $yellow;
 }
+
 .mat-form-field.mat-focused {
     .mat-form-field-appearance-legacy .mat-form-field-underline{
         background-color: $yellow;
     }
 }
+
 .mat-focused .mat-form-field-underline .mat-form-field-ripple{ background: $yellow; }
 .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
     color: $yellow;
 }
+
 .mat-datepicker-content {
     background-color: $blue;
 }
+
 .mat-calendar-body-cell-content,
 .mat-calendar-body-label,
 .mat-datepicker-content .mat-calendar-next-button, 
@@ -406,47 +421,60 @@ app-mobile-nav {
 .mat-select-value,
 .mat-select-placeholder,
 .mat-select-arrow  {
-    color: white;
+    color: $white;
 }
+
 .mat-calendar-arrow {
-    border-top-color: white;
+    border-top-color: $white;
 }
+
 .mat-select-content {
     background: $blue;
-    color: white;
-    .mat-option{
-        color:white;
+    color: $white;
+    
+    .mat-option {
+        color:$white;
     }
+    
     .mat-option.mat-active {
-        color:white;
+        color:$white;
     }
 }
+
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     color: $fuchsia;
     font-weight: 600;
 }
+
 .mat-calendar-table-header {
     color: $fuchsia;
 }
+
 .mat-calendar-table-header-divider::after {
     color: $fuchsia;
 }
+
 .mat-calendar-body-selected {
     background-color: $yellow;
 }
+
 .mat-pseudo-checkbox {
-    color: white;
+    color: $white;
 }
+
 .mat-primary .mat-pseudo-checkbox-checked {
     background: $fuchsia;
 }
 
-mat-select{
+mat-select {
     margin-top: 0.5rem;
 }
-mat-form-field{
+
+mat-form-field {
     width: 100%;
-    input, mat-select{
+    
+    input,
+    mat-select{
         padding: 0.8rem 0 0;
         
     }

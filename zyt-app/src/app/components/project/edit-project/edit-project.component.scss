@@ -9,11 +9,11 @@
   grid-template-rows: auto 1fr;
 
   .mat-input-element {
-    caret-color: white;
+    caret-color: $white;
   }
 
   .button {
-    color: white;
+    color: $white;
     background: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     
@@ -69,9 +69,8 @@
     padding: 0;
   }
   
-  
-  
   &__position-editings {
+
     &--new {
       display: flex;
       align-items: center;
@@ -100,6 +99,7 @@
       @media (max-width: $xlarge) { 
         margin: 0 0 1rem 0;
       }
+
       &--deactivate {
         background-color: $warning;
       }
@@ -136,6 +136,7 @@
     @media (max-width: $xlarge) { 
       grid-template-columns: 1fr; 
     }
+
     &--archived {
       background-color: rgba(0, 0, 0, 0.075);
       
@@ -164,7 +165,6 @@
       margin-bottom: 0;
     }
   }
-  
 }
 
 .text-thin {
@@ -199,8 +199,4 @@ h1 {
 }
 .button--save-project {
   flex-grow: 1;
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-underline {
-  
 }

@@ -3,6 +3,7 @@
 .wrapper {
   grid-template-columns: 1fr;
 }
+
 .add-expense {
   height: 100vh;
   width: calc(100vw - 300px);
@@ -14,22 +15,22 @@
     padding: 1rem 2.5rem;
     padding-right: 5rem;
   }
-  &__content-wrap {}
 }
 
 mat-form-field {
   width: 100%;
+
   input,
-  mat-select{
+  mat-select {
     padding: 0.8rem 0 0;
   }
 }
 
 mat-form-field[floatlabel="never"] span {
-  color: white;
+  color: $white;
 }
 
 .button--save-expense {
-  color: white;
+  color: $white;
   background-color: darken($violett, 20);
 }
