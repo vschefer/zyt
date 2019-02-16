@@ -12,10 +12,12 @@ export class WeekExpensesComponent implements OnInit {
   startOfWeek = moment().startOf('isoWeek');
   endOfWeek = moment().endOf('isoWeek');
   weekExpenses:Array<String>;
+  total = 0;
   week
   constructor(private expensesService: ExpenseService) {}
   
   getExpenses(){
+    console.log(this.startOfWeek)
       let days = []
       let day = this.startOfWeek
       while (day <= this.endOfWeek) {
@@ -24,23 +26,14 @@ export class WeekExpensesComponent implements OnInit {
       }
       this.week = days;
       console.log(this.week)
-    this.expensesService.getExpenses().subscribe(
+    this.expensesService.getExpensesFromWeek(0).subscribe(
       (response)=> {
         this.expenses = response;
-        let weekExpenses = [];
+        console.log(this.expenses)
+
         this.expenses.forEach(element => {
-          
-          let affected_date = element.affected_date
-          let  expenseDate = moment(affected_date).format('YYYY-MM-DD');
-          
-          if(moment(element.start).isBetween(this.week[0].toISOString().slice(0, 10), this.week[6].toISOString().slice(0, 10)) 
-          ||element.stop >= this.week[6].toISOString().slice(0, 10) || element.stop <= this.week[6].toISOString().slice(0, 10)){
-            let  startDate = moment(element.start);
-            let    endDate = moment(element.stop);
-          }
+          this.total += element.recorded_time
         });
-  
-        this.weekExpenses = weekExpenses;
       },
       (error) => console.log(error)
     )

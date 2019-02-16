@@ -60,6 +60,7 @@ import { UserService } from './_services/user.service';
 import { AvatarService } from './_services/avatar.service';
 import { ExpenseService } from './_services/expenses.service';
 import { EditRessourceComponent } from './edit-ressource/edit-ressource.component';
+import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { EditRessourceComponent } from './edit-ressource/edit-ressource.componen
     WeeksComponent,
     WeekExpensesComponent,
     EditRessourceComponent,
+    EditExpenseComponent
 
   ],
   entryComponents: [
@@ -179,6 +181,16 @@ import { EditRessourceComponent } from './edit-ressource/edit-ressource.componen
       {
         path: 'expenses/add',
         component: AddExpensesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'expenses/overview',
+        component: WeekExpensesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'expenses/edit/:id',
+        component: EditExpenseComponent,
         canActivate: [AuthGuard]
       },
       {

@@ -1,21 +1,20 @@
-<main class="add-expense">
-        <form class="wrapper add-expense__form">
-          <div class="add-expense__content-wrap">
-            <h1>Arbeitszeit erfassen</h1>
-            <h2>Informationen zum Zeitaufwand</h2>
-            
+<main class="edit-expense">
+        <form class="edit-expense__form">
+
+    <h1>Arbeitszeit bearbeiten</h1>
+          <div class="edit-expense__content-wrap">
             <mat-form-field floatLabel="never">
               <label for="project">Projekt</label>
-              <mat-select required id="project" name="project" [(placeholder)]="Projekt" [(value)]="Projekt" (selectionChange)="onProjectChange(Projekt)">
-                <mat-option value="{{project._id}}" *ngFor="let project of projects">{{project.name}}</mat-option>
+              <mat-select required id="project" name="project" [(placeholder)]="expense?.project._id" [(ngModel)]="expense?.project._id"  [(value)]="Projekt" (selectionChange)="onProjectChange(Projekt)">
+                <mat-option [value]="project?._id" *ngFor="let project of projects">{{project.name}}</mat-option>
               </mat-select>
             </mat-form-field>
             
             <ng-template [ngIf]="project">
               <mat-form-field floatLabel="never">
                 <label for="position">Position</label>
-                <mat-select required id="position" name="position" [(placeholder)]="Position" [(value)]="Position" (selectionChange)="onPositionChange(Position)" [(ngModel)]="position">
-                  <mat-option value="{{position._id}}" *ngFor="let position of project.positions">{{position.name}}</mat-option>
+                <mat-select required id="position" name="position" [(placeholder)]="Position" (selectionChange)="onPositionChange(position)" [value]="expense?.position.name" [(ngModel)]="expense?.position.name">
+                  <mat-option [value]="expense?.position.name" *ngFor="let position of project.positions">{{position.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
             </ng-template>
@@ -37,7 +36,7 @@
                 <input autocomplete="off" required id="comment" name="comment" matInput type="text" placeholder="Kommentar" [(ngModel)]="comment">
             </mat-form-field>
             
-            <button class="button button--save-expense" type="submit" (click)="saveExpense()">Speichern</button>
+            <button class="button button--save-expense" type="submit" (click)="saveExpense(expense._id)">Speichern</button>
           </div>
         </form>
       </main>

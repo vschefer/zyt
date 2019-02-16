@@ -112,6 +112,29 @@ button {
     // text-transform: uppercase;
     cursor: pointer;
     display: inline-block;
+
+    &.button {
+        &__edit-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 2.5rem;
+            overflow: hidden;
+            color: transparent;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 0;
+            background-image: url(/assets/icons/icon-edit--white.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: .75;
+            
+            &:hover,
+            &:focus:not(:hover) {
+              opacity: 1;
+            }
+          }
+    }
 }
 
 .colored-button {

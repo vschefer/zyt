@@ -1,5 +1,47 @@
 <div class="week-expenses">
-    
+    <div class="week-expenses__list">
+        <h2>Erfasste Zeiten von dieser Woche</h2>
+        
+            <div class="week-expense" *ngFor="let exp of expenses | orderBy: -affected_date">
+                    <div *ngIf="!exp.message; else noexpense">
+                        <div class="week-exp">
+                <div class="week-expense__detail">
+                    <p>
+                        {{exp.affected_date | dateFormat}}
+                    </p>
+                    <span class="week-expense__project">
+                        {{exp.project.name}}
+                    </span><br>
+                    <span>
+                        {{exp.comment}}
+                    </span>
+                    
+                </div>
+                <div class="week-expense__recordedtime">
+                    <p>
+                        {{exp.recorded_time}} h
+                    </p>
+                </div>
+                <button class="button__edit-button" routerLink="/expenses/edit/{{exp._id}}" title="Arbeitsbericht bearbeiten">Arbeitsbericht bearbeiten</button>
+</div>
+                <div class="total-expenses">
+                        <div class="total-expenses__label">
+                            Total:
+                        </div>
+                        <div class="total-expenses__total">
+                            {{total}} h
+                        </div>
+                    </div> 
+            </div>
+         
+            <ng-template #noexpense>
+                    Du hast noch keine Arbeitsberichte erfasst
+                </ng-template>
+            </div>
+       
+     
 
+    </div>
+    
 </div>
 <app-dashboard></app-dashboard>
