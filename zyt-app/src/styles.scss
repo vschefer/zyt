@@ -43,6 +43,11 @@ app-working-time {
 }
 app-today-expenses {
     grid-area: exp;
+    padding: 1rem 2.5rem 2.5rem;
+    
+    @media (max-width: 1500px) {
+      padding-top: 0;
+    }
 }
 app-plan {
     background-color: #A8B7AB;
