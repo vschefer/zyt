@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { ProjectService } from '../../_services/project.service';
 import {MatDialog} from '@angular/material';
-import { UpdateProjectComponent } from '../update-project/update-project.component';
 import * as moment from 'moment';
 @Component({
   selector: 'app-project-overview',

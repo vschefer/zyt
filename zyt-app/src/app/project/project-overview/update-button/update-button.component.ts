@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import {UpdateProjectComponent} from '../../update-project/update-project.component'
 @Component({
   selector: 'app-update-button',
   templateUrl: './update-button.component.html',
