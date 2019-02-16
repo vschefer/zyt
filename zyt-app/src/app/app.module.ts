@@ -59,6 +59,7 @@ import { UserService } from './_services/user.service';
 import { AvatarService } from './_services/avatar.service';
 import { ExpenseService } from './_services/expenses.service';
 import { PositionService } from './_services/position.service';
+import { LocalStorageService } from './_services/localStorage.service';
 import { EditRessourceComponent } from './edit-ressource/edit-ressource.component';
 import { EditProjectComponent } from './project/edit-project/edit-project.component';
 import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.component';
@@ -209,7 +210,7 @@ import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.com
   ],
   providers: [AddResourceComponent, 
     ServerService, ProjectService, UserService, RessourceService,
-    AvatarService, TodoService, ProjectOverviewService, ExpenseService, PositionService],
+    AvatarService, TodoService, ProjectOverviewService, ExpenseService, PositionService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

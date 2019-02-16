@@ -1,36 +1,25 @@
 
-import { Injectable, Output, EventEmitter } from '@angular/core'
-import {MatDialog} from '@angular/material';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http';
 import { backendUrls } from '../constant/backendurls';
+import { LocalStorageService } from './localStorage.service';
+
 @Injectable()
-export class TodoService {
-    headers: HttpHeaders;
-    avatars: Object
-    constructor(public dialog: MatDialog, private httpClient: HttpClient){}
-    
-    auth(){
-        this.headers =  new HttpHeaders({
-            'Content-Type':  'application/json',
-            'x-auth-token': JSON.parse(localStorage.getItem('currentUser')).token,
-          })
-    }
+export class TodoService extends LocalStorageService {
 
-    getTodo(id){
-        this.headers = new HttpHeaders();
-        this.auth()
-        return  this.httpClient.get(backendUrls.todo + id,{headers: this.headers});
-    } 
-
-    updateTodo(data:object, id:any) {
-      this.auth();
-      return  this.httpClient.put(backendUrls.todo + id, data, {headers: this.headers});
+  constructor( private httpClient: HttpClient ) {
+    super();
   }
 
-  addTodo(servers: any){
-    this.auth()
-    return  this.httpClient.post(backendUrls.todo, servers,{headers: this.headers});
-}
+  getTodo(id) {
+    return this.httpClient.get(backendUrls.todo + id, { headers: this.headers } );
+  } 
 
+  updateTodo(data:object, id:any) {
+    return this.httpClient.put(backendUrls.todo + id, data, { headers: this.headers } );
+  }
 
+  addTodo(servers: any) {
+    return this.httpClient.post(backendUrls.todo, servers, { headers: this.headers } );
+  }
 }
