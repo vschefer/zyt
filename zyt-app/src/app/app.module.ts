@@ -15,8 +15,7 @@ import { UserComponent } from './user/user.component'
 import { AddResourceComponent } from './add-resource/add-resource.component'
 import { AllRessourceComponent } from './all-ressource/all-resource.component'
 import { AddProjectComponent } from './project/add-project/add-project.component';
-import { AddUserComponent } from './user/add-user/add-user.component'
-import { UpdateProjectComponent } from './project/update-project/update-project.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 import { UpdateButtonComponent } from './project/project-overview/update-button/update-button.component';
 import { UpdateButtonTodoComponent } from './todo/todo-list/update-button/update-button.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
@@ -59,7 +58,9 @@ import { ProjectOverviewService } from './project/project-overview/project-overv
 import { UserService } from './_services/user.service';
 import { AvatarService } from './_services/avatar.service';
 import { ExpenseService } from './_services/expenses.service';
+import { PositionService } from './_services/position.service';
 import { EditRessourceComponent } from './edit-ressource/edit-ressource.component';
+import { EditProjectComponent } from './project/edit-project/edit-project.component';
 import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.component';
 
 @NgModule({
@@ -83,7 +84,6 @@ import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.com
     AddProjectComponent,
     AddUserComponent,
     DateFormatPipe,
-    UpdateProjectComponent,
     UpdateButtonComponent,
     TodoDetailComponent,
     UpdateButtonTodoComponent,
@@ -96,12 +96,12 @@ import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.com
     WeeksComponent,
     WeekExpensesComponent,
     EditRessourceComponent,
+    EditProjectComponent,
     EditExpenseComponent
 
   ],
   entryComponents: [
     UserEditComponent,
-    UpdateProjectComponent,
     TodoDetailComponent,
     UpdateUserComponent
   ],
@@ -141,6 +141,11 @@ import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.com
       {
         path: 'project/add',
         component: AddProjectComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'project/edit/:id',
+        component: EditProjectComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -204,7 +209,7 @@ import { EditExpenseComponent } from './expenses/edit-expenses/edit-expenses.com
   ],
   providers: [AddResourceComponent, 
     ServerService, ProjectService, UserService, RessourceService,
-    AvatarService, TodoService, ProjectOverviewService, ExpenseService],
+    AvatarService, TodoService, ProjectOverviewService, ExpenseService, PositionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

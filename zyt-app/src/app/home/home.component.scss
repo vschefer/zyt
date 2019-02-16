@@ -8,7 +8,7 @@
     overflow-y: scroll;
     grid-template-rows: 0fr auto 0;
     
-    @media (max-width: 1500px) {
+    @media (max-width: 1000px) {
       grid-template-areas: "time" "res" "exp";
       grid-template-rows: auto auto 1fr;
       grid-template-columns: 1fr;
@@ -18,7 +18,7 @@
     padding: 0 2.5rem 2.5rem;
     grid-area: res;
     
-    @media (max-width: 1500px) {
+    @media (max-width: 1000px) {
       padding-bottom: 0;
     }
     
@@ -26,7 +26,7 @@
         background: darken($fuchsia, 20);
         max-width: 30rem;
         
-        @media (max-width: 1500px) {
+        @media (max-width: 1000px) {
           max-width: 100%;
         }
         
