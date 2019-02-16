@@ -1,41 +1,37 @@
 @import '../../styles/colors.scss';
 @import '../../styles/variable.scss';
-.wrapper{
+.wrapper {
     position: absolute;
     width: calc(100vw - 300px);
     display: flex;
     flex-direction: column;
-    // grid-template-columns: repeat(100, calc(100vw - 300px));
-    // transition: transform 0.5s ease-out;
-    // height: 100vh;
     background: $bordeux;
     overflow-x: scroll;
     overflow-x: hidden;
     height: 100vh;
-
 }
 .project{
     height: auto;
     padding: 0 1rem 0 1rem;
     max-width: 100%;
-    // display: flex;
     flex-direction: column;
     position: relative;
     border-bottom: 3px solid;
     
-    hr{
+    hr {
         width: 100%;
     }
     
-    h2{
+    h2 {
         font-size: 25px;
         cursor: pointer;
     }
-    h3{
+
+    h3 {
         font-size: 22px;
         margin: 2rem 0 2rem 0;
     }
-    .date{
+    .date {
         font-size: 14px;
         margin-top: 0.5rem;
         
@@ -61,29 +57,30 @@
     
 }
 
-.progress-bar{
+.progress-bar {
     height: 1rem;
     background: seashell;
     width: 90%;
     margin: 0 auto;
 }
-.progress-bar__progressing{
+.progress-bar__progressing {
     height: 1rem;
     background: $violett;
+    max-width: 100%;
 }
 
-.progress-bar__wrapper{
+.progress-bar__wrapper {
     width: 100%;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-gap: 0.5rem;
     
-    p{
+    p {
         hyphens: auto;
     }
     
-    span{
+    span {
         margin-left: 0.5rem;
     }
 }
@@ -110,7 +107,8 @@ section {
 
 .close__content {
     &:hover {
-        h2, .showelement {
+        h2, 
+        .showelement {
             opacity: 0.5;
             font-weight: 900;
         }
@@ -118,7 +116,7 @@ section {
             animation: openMe 2s infinite;
         }
     }
-  
+
     .project__content-wrapper {
        max-height: 0;
         overflow: hidden;
@@ -147,7 +145,7 @@ section {
     background: $blue;
     border-bottom: 3px solid white;
 
-    &:hover{
+    &:hover {
         background: lighten($blue, 5);
     }
 }
