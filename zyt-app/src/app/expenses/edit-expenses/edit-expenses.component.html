@@ -1,44 +1,34 @@
 <main class="edit-expense">
-        <form class="edit-expense__form">
-
-    <h1>Arbeitszeit bearbeiten</h1>
-          <div class="edit-expense__content-wrap">
-            <mat-form-field floatLabel="never">
-              <label for="project">Projekt</label>
-              <mat-select required id="project" name="project" [(placeholder)]="expense?.project._id" [(ngModel)]="expense?.project._id"  [(value)]="Projekt" (selectionChange)="onProjectChange(Projekt)">
-                <mat-option [value]="project?._id" *ngFor="let project of projects">{{project.name}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <ng-template [ngIf]="project">
-              <mat-form-field floatLabel="never">
-                <label for="position">Position</label>
-                <mat-select required id="position" name="position" [(placeholder)]="Position" (selectionChange)="onPositionChange(position)" [value]="expense?.position.name" [(ngModel)]="expense?.position.name">
-                  <mat-option [value]="expense?.position.name" *ngFor="let position of project.positions">{{position.name}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </ng-template>
-            
-            <mat-form-field floatLabel="never">
-              <label for="affected_date">Datum des Zeitaufwandes</label>
-              <input autocomplete="off" required matInput id="affected_date" name="affected_date" [(value)]="AffectedDate" [matDatepicker]="picker" (selectionChange)="onAffectedDateChange(AffectedDate)" [(placeholder)]="AffectedDate" [(ngModel)]="affected_date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            
-            <mat-form-field floatLabel="never">
-              <label for="recorded_time">Zeitaufwand in Stunden</label>
-              <input autocomplete="off" required id="recorded_time" name="recorded_time" matInput type="number" [(placeholder)]="RecordedTime" (selectionChange)="onRecordedTimeChange(RecordedTime)" [(ngModel)]="recorded_time">
-            </mat-form-field>
-            
-            <mat-form-field floatLabel="never">
-                <label for="comment">Kommentar</label>
-                <input autocomplete="off" required id="comment" name="comment" matInput type="text" placeholder="Kommentar" [(ngModel)]="comment">
-            </mat-form-field>
-            
-            <button class="button button--save-expense" type="submit" (click)="saveExpense(expense._id)">Speichern</button>
-          </div>
-        </form>
-      </main>
-      <app-dashboard></app-dashboard>
+  <form class="edit-expense__form">
+    
+    <h1>Arbeitszeit für das Projekt <label class="underline">{{project?.name}}</label> bearbeiten</h1>
+    <div class="edit-expense__content-wrap">
+      <mat-form-field floatLabel="never">
+        <label for="position">Position</label>
+        <mat-select id="position" name="position" [(placeholder)]="Position" (selectionChange)="onPositionChange(position)" [value]="position" [(ngModel)]="position">
+          <mat-option [(value)]="pos._id"  *ngFor="let pos of project?.positions">{{pos.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       
+      
+      <mat-form-field floatLabel="never">
+        <label for="affected_date">Datum des Zeitaufwandes</label>
+        <input autocomplete="off" matInput id="affected_date" name="affected_date" [(value)]="AffectedDate" [matDatepicker]="picker" (selectionChange)="onAffectedDateChange(AffectedDate)" [(placeholder)]="AffectedDate" [(ngModel)]="affected_date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field floatLabel="never">
+        <label for="recorded_time">Zeitaufwand in Stunden</label>
+        <input autocomplete="off" id="recorded_time" name="recorded_time" matInput type="number" [(placeholder)]="RecordedTime" (selectionChange)="onRecordedTimeChange(RecordedTime)" [(ngModel)]="recorded_time">
+      </mat-form-field>
+      
+      <mat-form-field >
+        <input matInput type="text" name="comment" ngDefaultControl [(ngModel)]="comment" placeholder="Kommentar">
+        <span id="nameError" class="input-error-message" aria-live="polite">Briefing description invalid</span>
+      </mat-form-field>
+      <button class="button button--save-expense" type="submit" (click)="saveExpense()">Speichern</button>
+    </div>
+  </form>
+</main>
+<app-dashboard></app-dashboard>

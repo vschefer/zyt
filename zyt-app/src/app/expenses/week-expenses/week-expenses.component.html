@@ -23,22 +23,21 @@
                     </p>
                 </div>
                 <button class="button__edit-button" routerLink="/expenses/edit/{{exp._id}}" title="Arbeitsbericht bearbeiten">Arbeitsbericht bearbeiten</button>
-</div>
-                <div class="total-expenses">
-                        <div class="total-expenses__label">
-                            Total:
-                        </div>
-                        <div class="total-expenses__total">
-                            {{total}} h
-                        </div>
-                    </div> 
+        </div>
             </div>
-         
+  
             <ng-template #noexpense>
                     Du hast noch keine Arbeitsberichte erfasst
                 </ng-template>
             </div>
-       
+            <div *ngIf="!expenses[0].message" class="total-expenses">
+                    <div class="total-expenses__label">
+                        Total:
+                    </div>
+                    <div class="total-expenses__total">
+                        {{total}} h
+                    </div>
+                </div> 
      
 
     </div>

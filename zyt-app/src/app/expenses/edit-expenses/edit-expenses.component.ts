@@ -15,13 +15,18 @@ export class EditExpenseComponent implements OnInit {
   recorded_time: number;
   comment: string;
   projects: any;
-  project: any;
+  project
+  proj: any;
   position: string;
   affected_date: Date;
   snackBarMessage: string;
   snackBarButtonText: string;
   today: Date = new Date();
+  assignedProj
+  saveExp
   expense
+  projId
+  expenseID
     positions
   constructor(
     public snackBar: MatSnackBar,
@@ -41,27 +46,10 @@ export class EditExpenseComponent implements OnInit {
     });
   }
 
-  getProjects(): void {
-    this.projectService.getProjects().subscribe((response) => {
-      this.projects = response;
-    }, (error) => {
-      throw new Error(error._body);
-    });
-  }
-  getProject(id) {
-    this.projectService.getProject(id).subscribe((response) => {
-        this.project = response;
-        this.onProjectChange(this.project._id)
-      }, (error) => {
-        throw new Error(error._body);
-      });  
-  }
-
   onProjectChange(projectId: String) {
-    this.project = this.projects.filter((project) => {
+    this.proj = this.projects.filter((project) => {
       return project._id === projectId;
     })[0];
-    console.log(this.project._id)
   }
 
   onRecordedTimeChange(time: number) {
@@ -75,35 +63,32 @@ export class EditExpenseComponent implements OnInit {
   getExpense(id){
     this.expenseService.getExpense(id).subscribe((response) => {
         this.expense = response;
-        console.log(this.expense)
         
-        this.getProject(this.expense.project._id)
-        this.position = this.expense.position.name
+        
+        this.projId = this.expense.project._id
+        this.project = this.expense.project
+        this.position = this.expense.position._id
         this.affected_date = this.expense.affected_date
         this.recorded_time = this.expense.recorded_time
         this.comment = this.expense.comment
-
       }, (error) => {
         throw new Error(error._body);
       });
   }
-  saveExpense(id): void {
-    if (typeof this.project === "undefined") {
-      return this.openSnackBar(`Bitte wähle ein Projekt`, 'Ok');
-    };
+  saveExpense(): void {
 
-    this.expense = {
+
+    this.saveExp = {
       recorded_time: this.recorded_time,
     	comment: this.comment,
-    	project: this.project["_id"],
+    	project: this.project._id,
     	position: this.position,
     	affected_date: this.affected_date,
     };
-
-    this.expenseService.updateExpense(this.expense, id).subscribe((response) => {
+    this.expenseService.updateExpense(this.saveExp, this.expenseID).subscribe((response) => {
         console.log(this.expense)
-      this.openSnackBar(`${this.recorded_time}h wurde(n) für das Projekt "${this.project.name}" hinzugefügt.`, 'Ok');
-      this.router.navigate(['/']);
+      this.openSnackBar(`Arbeitsbericht für das Projekt "${this.project.name}" wurde bearbeitet.`, 'Ok');
+      this.router.navigate(['/expenses/overview']);
     }, (error) => {
       this.openSnackBar(`Fehler: ${error._body}`, 'Ok');
       throw new Error(error._body);
@@ -112,10 +97,12 @@ export class EditExpenseComponent implements OnInit {
 
   ngOnInit() {
     const expenseID = this.route.snapshot.paramMap.get('id');
-    
-    this.getProjects();
-    this.getExpense(expenseID)
+    this.expenseID = expenseID;
     // const poj = this.expense.project._id
-    // this.getProject(poj)
+    // 
+    // this.getProjects();
+    this.getExpense(expenseID)
+
+    
   }
 }

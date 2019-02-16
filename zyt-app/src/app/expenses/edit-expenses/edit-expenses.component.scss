@@ -8,6 +8,7 @@
     h1{
         margin: 0;
         margin-bottom: 1rem;
+        font-size: 1.5rem;
     }
 }
 .edit-expense__form {
@@ -20,4 +21,7 @@
 .button--save-expense {
     background-color: darken($fuchsia, 20);
     color: white;
+}
+.underline {
+    text-decoration: underline;
 }
