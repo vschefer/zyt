@@ -77,7 +77,7 @@
           </nav>
         </li>
         
-        <li class="edit-project__position edit-project__position--archived-toggle">
+        <li *ngIf="positions.length" class="edit-project__position edit-project__position--archived-toggle">
           <button class="button button--show-toggle-archived" (click)="toggleShowArchivedPositions()">Deaktivierte Positionen {{showArchivedPositions ? 'verbergen' : 'anzeigen'}}</button>
         </li>
         
