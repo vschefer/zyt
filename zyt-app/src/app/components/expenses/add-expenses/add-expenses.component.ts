@@ -3,6 +3,7 @@ import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material'
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../_services/project.service';
 import { ExpenseService } from '../../../_services/expenses.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-expenses',
@@ -11,6 +12,7 @@ import { ExpenseService } from '../../../_services/expenses.service';
 })
 
 export class AddExpensesComponent implements OnInit {
+  now = moment().format('YYYY-MM-DD');
   recorded_time: number;
   comment: string;
   projects: any;
@@ -21,7 +23,8 @@ export class AddExpensesComponent implements OnInit {
   snackBarButtonText: string;
   today: Date = new Date();
   expense: object;
-
+  data
+  activeProj
   constructor(
     public snackBar: MatSnackBar,
     private projectService: ProjectService,
@@ -39,13 +42,20 @@ export class AddExpensesComponent implements OnInit {
     });
   }
 
-  getProjects(): void {
+  getProjects() {
     this.projectService.getProjects().subscribe((response) => {
-      this.projects = response;
-    }, (error) => {
-      throw new Error(error._body);
+    this.data = response;
+    let activeProj =[]
+    this.data.forEach(element => {
+      if(element.deadline >= this.now){
+        activeProj.push(element)
+      }
     });
-  }
+    this.activeProj = activeProj
+  },
+  (error) => console.log(error)
+)
+}
 
   onProjectChange(projectId: String) {
     this.project = this.projects.filter((project) => {

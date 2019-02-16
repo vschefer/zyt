@@ -7,7 +7,7 @@
       <mat-form-field floatLabel="never">
         <label for="project">Projekt</label>
         <mat-select required id="project" name="project" [(placeholder)]="Projekt" [(value)]="Projekt" (selectionChange)="onProjectChange(Projekt)">
-          <mat-option value="{{project._id}}" *ngFor="let project of projects">{{project.name}}</mat-option>
+          <mat-option value="{{project._id}}" *ngFor="let project of activeProj">{{project.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       

@@ -38,7 +38,7 @@
       <mat-form-field class="edit-project__form-field white">
         <label class="edit-project__label" for="deadline">Zugewiesene Mitarbeiter</label>
         <mat-select [formControl]="assigned_users" multiple [(ngModel)]="selected_employees">
-          <mat-option *ngFor="let employee of employees" [value]="employee._id">{{employee.first_name}}</mat-option>
+          <mat-option *ngFor="let employee of employees" [value]="employee._id">{{employee.first_name}} {{employee.surname}}</mat-option>
         </mat-select>
       </mat-form-field>
       
