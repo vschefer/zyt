@@ -30,6 +30,8 @@ export class EditProjectComponent implements OnInit {
   startDate: Date;
   deadlineDate: Date;
   total: Number = 0;
+  
+  showArchivedPositions: Boolean = false;
 
   constructor(
     public snackBar: MatSnackBar,
@@ -164,8 +166,8 @@ export class EditProjectComponent implements OnInit {
     });
   }
   
-  onBackClick() {
-    this.location.back();
+  toggleShowArchivedPositions() {
+    this.showArchivedPositions = !this.showArchivedPositions;
   }
 
   ngOnInit() {

@@ -50,8 +50,11 @@
     <fieldset class="edit-project__fieldset">
       <legend class="edit-project__legend">Positionen</legend>
       
-      <ul class="edit-project__position-list" *ngIf="positions">
-        <li class="edit-project__position {{position.archived ? 'edit-project__position--archived' : ''}}" *ngFor="let position of positions | orderBy: 'archived' : false" id="{{position._id}}">
+      <ul class="edit-project__position-list {{showArchivedPositions ? 'edit-project__position-list--show-archived': ''}}" *ngIf="positions">
+        
+        <li *ngIf="!positions.length">Keine Positionen vorhanden</li>
+        
+        <li class="edit-project__position edit-project__position--item {{!showArchivedPositions && position.archived ? 'edit-project__position--hidden' : ''}} {{position.archived ? 'edit-project__position--archived' : ''}}" *ngFor="let position of positions | orderBy: 'archived' : false" id="{{position._id}}">
           <mat-form-field class="white edit-project__position-field">
             <label for="{{position._id}}-name" class="edit-project__label">Bezeichnung</label>
             <input id="{{position._id}}-name" autocomplete="off" name="{{position._id}}-name" class="edit-project__text js-position-name" matInput ngDefaultControl value="{{position.name}}">
@@ -72,6 +75,10 @@
               </li>
             </ul>
           </nav>
+        </li>
+        
+        <li class="edit-project__position edit-project__position--archived-toggle">
+          <button class="button button--show-toggle-archived" (click)="toggleShowArchivedPositions()">Deaktivierte Positionen {{showArchivedPositions ? 'verbergen' : 'anzeigen'}}</button>
         </li>
         
         <li class="edit-project__position edit-project__position--new">
@@ -96,8 +103,5 @@
       </ul>
     </fieldset>
   </div>
-  <footer class="edit-project__footer">
-    <button class="button button--back" (click)="onBackClick()">Zurückkehren</button>
-  </footer>
 </div>
 <app-dashboard></app-dashboard>
