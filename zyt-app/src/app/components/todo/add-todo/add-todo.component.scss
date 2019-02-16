@@ -1,0 +1,28 @@
+@import '../../../styles/colors.scss';
+.wrapper{
+    background: lighten($blue , $amount: 10);
+    height: 100vh;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    width: calc(100vw - 300px);
+}
+.add-todo {
+    width: 60%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+mat-form-field{
+    width: 100%;
+}
+
+.error-message.hidden{
+    display: none;
+}
+
+.button--add-todo {
+  background-color: $blue;
+  color: white;
+}

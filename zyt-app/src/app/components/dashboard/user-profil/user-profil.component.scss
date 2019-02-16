@@ -1,0 +1,97 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+.user{
+  display: flex;
+  padding: 0 30px;
+  align-items: center;
+  /* margin-top: 1rem; */
+  background-color: rgba(0, 0, 0, 0.13);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.user-avatar-wrapper{
+  padding: 0;
+}
+.user-avatar{
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  background-size: contain;
+  flex: 2;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+  
+  &::before {
+    content: attr(data-title);
+    background-color: #2b3c51;
+    color: white;
+    border-radius: 0;
+    padding: 0.25em .5em .75em .5em;
+    font-size: .85em;
+    width: 5em;
+    display: block;
+    text-align: center;
+    left: 50%;
+    position: absolute;
+    margin-left: -2.5em;
+    box-sizing: border-box;
+    bottom: 50%;
+    margin-bottom: 0.5em;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 65% 75%, 50% 100%, 35% 75%, 0 75%);
+    transform: translateY(5%);
+    opacity: 0;
+    transition: all .5s;
+    z-index: 2;
+  }
+  &::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    display: block;
+    background-image: url(/assets/icons/icon-edit.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    z-index: 1;
+    transition: all .5s;
+    opacity: 1;
+  }
+}
+.user-avatar:hover::after {
+  opacity: 0;
+}
+.user-avatar:hover::before {
+  transform: translateY(0%);
+  opacity: 1;
+}
+.user-name{
+  padding: 0 0 0 30px;
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+.button-logout {
+  background-color: #707070;
+  color: white;
+  width: 100%;
+  background-image: url(/assets/icons/logout.svg);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  font-size: 1rem;
+  background-position: right 30px center;
+  padding: 1rem;
+  height: auto;
+}
+
+.button-logout__text {
+  opacity: 0;
+  transition: all .25s;
+}
+
+.button-logout:hover .button-logout__text,
+.button-logout:focus .button-logout__text {
+  opacity: 1;
+}

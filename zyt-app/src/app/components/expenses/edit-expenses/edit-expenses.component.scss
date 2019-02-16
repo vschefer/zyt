@@ -1,0 +1,27 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+.edit-expense {
+    width: calc(100vw - 300px);
+    background: $fuchsia;
+    height: 100vh;
+
+    h1{
+        margin: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+}
+.edit-expense__form {
+    padding:2rem;
+}
+.edit-expense__content-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.button--save-expense {
+    background-color: darken($fuchsia, 20);
+    color: white;
+}
+.underline {
+    text-decoration: underline;
+}

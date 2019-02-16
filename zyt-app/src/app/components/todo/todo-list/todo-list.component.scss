@@ -1,0 +1,204 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+.todo-list{
+    padding:0;
+}
+.todo{
+    list-style: none;
+    display: grid;
+    grid-template-columns:0.5fr 4fr 1fr;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+}
+.visit-todo{
+    background-image: url('../../../../assets/images/search.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1rem;
+    height: 1rem;;
+}
+
+.wrapper{
+    background: #F3DE8A;
+    height: 100vh;
+}
+
+
+
+
+.all__todo-wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  
+    
+}
+
+.all__todo{
+    height: 100vh;
+    transition: all 0.5s;
+    position: relative;
+    display: flex;
+    &.proj{
+        background-color: $yellow;
+    }
+    &.start{
+      
+        background-color: $fuchsia;
+
+        .res{
+            background: darken($fuchsia, 20);
+            app-detail-todo-button{
+                background: darken($fuchsia, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
+    }
+    &.work{
+  
+        background-color: $bordeux;
+        .res{
+            background: darken($bordeux, 20);
+            app-detail-todo-button{
+                background: darken($bordeux, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
+    }
+    &.test{
+        background-color: darken($bordeux,8);
+           .res{
+            background: darken($bordeux, 22);
+            app-detail-todo-button{
+                background: darken($bordeux, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
+    }
+    &.done{
+        display: flex;
+        background-color: $violett;
+        .res{
+            background: darken($violett, 20);
+            app-detail-todo-button{
+                background: darken($violett, 35)
+            }
+            p {
+                width: 50%;
+                margin: 0;
+            }
+        }
+    }
+    
+    h2{
+        writing-mode: vertical-rl;
+        margin: 0.3rem;
+        width: auto;
+    }
+}
+.todo__container {
+    margin-left: 1rem;
+    margin-right: 3rem;
+    width: 100%;
+}
+.proj .todo__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.proj .mat-form-field {
+    width: 80%;
+}
+.res {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    position: relative;
+}
+.add {
+    background: transparent;
+    background-image: url('../../../../assets/images/plus.svg');
+    width: 1.5rem;
+    height: 100vh;
+    transform: rotate(-180deg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    margin: 0.5rem;
+}
+.shrink{
+    width: 5vw;
+    
+    .res{
+        opacity: 0;
+        display: none;
+    }
+    .add {
+        background: transparent;
+        background-image: url('../../../../assets/images/plus.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
+
+.grow{
+    transition: all 0.5s;
+    width: calc(80vw - 300px);
+    .res{
+        opacity: 1;
+        display: flex;
+    }
+    
+    .add {
+        background: transparent;
+        background-image: url('../../../../assets/images/minus.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: $medium) { 
+    .all__todo-wrapper {
+        display: block;
+    }
+   .all__todo {
+    justify-content: start;
+    text-align: center;
+    flex-direction: column;
+    height: 20vh;
+    width: 100vw;
+    h2 {
+        writing-mode: horizontal-tb;
+       }
+   }
+   .add {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 1.5rem;
+   }
+   .todo__container{
+       margin: 0;
+       margin-top: 3rem;
+       height: 90vh;
+       overflow-x: auto;
+   }
+
+   .shrink {
+       width: 100vw;
+       height: 10vh;
+   }
+   .grow {
+       height: 60vh;
+   }
+}

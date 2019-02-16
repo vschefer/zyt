@@ -1,0 +1,112 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+.wrapper{
+    position: absolute;
+    grid-template-columns: repeat(100, calc(100vw - 300px));
+    transition: transform 0.5s ease-out;
+    @media (max-width: $medium) { 
+        grid-template-columns: repeat(100, 100vw);
+    }
+}
+.project-form__page{
+    height: 98vh;
+    flex: 2;
+    padding: 0 1rem 0 1rem;
+    max-width: 100%;
+}
+
+.add-project{
+    
+    height: 100vh;
+    width: calc(100vw - 300px);
+}
+.project-form__page{
+    height: 100vh;
+    background-color: $violett;
+    padding: 1rem 2.5rem;
+    padding-right: 5rem;
+    
+    
+    mat-form-field{
+        width: 100%;
+        input, mat-select{
+            padding: 0.8rem 0 0;
+            
+        }
+    }
+}
+.offer{
+    
+    position: relative;
+    mat-form-field{
+        width: 30%;
+        margin: 0 2.5% 0 2.5%;
+    }
+}
+
+.button--delete-pos {
+    background-color: $warning;
+    color: white;
+}
+.add-position{
+   width: 100%;
+   background-color: darken($violett, 20);
+   color: white;
+}
+.delete-postition{
+    background-color: #EB9486;
+}
+.positions__wrapper{
+    flex-direction: column;
+    height: 75vh;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.positions__wrapper::-webkit-scrollbar-button{ display: block; height: 13px; border-radius: 0px; background-color:transparent; } ::-webkit-scrollbar-button:hover{ background-color: #AAA; } ::-webkit-scrollbar-thumb{ background-color: #CCC; } ::-webkit-scrollbar-thumb:hover{ background-color: #CCC; } ::-webkit-scrollbar-track{ background-color: transparent;  } ::-webkit-scrollbar-track:hover{ background-color: #A8B7AB; } ::-webkit-scrollbar{ width: 15px; }
+.position{
+    display: flex;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    justify-content: space-around;
+}
+.formfield__binding{
+    display: flex;
+}
+.project{
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button--save{
+    color: white;
+    width: 100%;
+    background-color: darken($violett, 20);
+}
+.next {
+    right: 320px;
+    transform: scale(1.4) rotate(180deg);
+}
+.prev {
+    transform: scale(1.4);
+}
+@keyframes arrow {
+    0% {
+        transform: translateX(0)  scale(1.4) rotate(180deg);
+    }
+    50% {
+        transform: translateX(20px)  scale(1.4) rotate(180deg);
+    }
+    100% {
+        transform: translateX(0px)  scale(1.4) rotate(180deg);
+    }
+}
+.next.readyForClick{
+    animation: arrow 2s infinite;
+    
+    &:hover{
+        animation-play-state: paused;
+    }
+}
+

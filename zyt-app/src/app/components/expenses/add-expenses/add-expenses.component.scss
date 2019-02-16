@@ -1,0 +1,35 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+.wrapper {
+  grid-template-columns: 1fr;
+}
+.add-expense {
+  height: 100vh;
+  width: calc(100vw - 300px);
+  background: $violett;
+  display: flex;
+  
+  &__form {
+    width: 100%;
+    padding: 1rem 2.5rem;
+    padding-right: 5rem;
+  }
+  &__content-wrap {}
+}
+
+mat-form-field {
+  width: 100%;
+  input,
+  mat-select{
+    padding: 0.8rem 0 0;
+  }
+}
+
+mat-form-field[floatlabel="never"] span {
+  color: white;
+}
+
+.button--save-expense {
+  color: white;
+  background-color: darken($violett, 20);
+}

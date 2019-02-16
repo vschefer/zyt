@@ -1,0 +1,68 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
+
+.add-user__wrapper{
+    grid-row: 1 / 3;
+    grid-column: 1 / span 2;
+    height: 100vh;
+    width: calc(100vw - 300px);
+    background-color: #EDBF85;
+    @media (max-width: $medium) { 
+        width: 100vw;
+        padding-top: 2rem;
+    }
+    @media (max-width: $small) { 
+        height: auto;
+        overflow: auto;
+    }
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    
+    mat-form-field {
+        max-width: 20rem;
+    }
+}
+
+.avatarList{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+}
+.avatar{
+    margin: 0.5rem;
+    cursor: pointer;
+    img{
+        width: 4rem;
+        height: 4rem;
+        &:hover,
+        &:focus,
+        &:active {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.button--add-user {
+    background-color: darken($yellow, 20);
+    color: white;
+}
+
+.add-user__wrapper {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.form-bindings {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    
+    mat-form-field {
+        min-width: 15rem;
+        margin-right: 2rem;
+    }
+}

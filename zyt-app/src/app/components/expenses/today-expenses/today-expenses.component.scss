@@ -1,0 +1,40 @@
+@import '../../../styles/colors.scss';
+
+.todayExpenses__container {
+    overflow: auto;
+    height: 80vh;
+    padding-bottom: 2rem;
+}
+h2 {
+    margin-top: 2rem;
+}
+.todayExpenses__expense {
+    padding: 0.5rem 1rem;
+    background: $violett;
+    margin-top: 1rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    span {
+        margin: 0.5rem 0 0.5rem;
+        font-size: 12px;
+        margin-right: 4rem;
+    }
+
+    &:hover {
+        background: darken($violett, 5);
+    }
+}
+.expense__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 2;
+
+    strong {
+        max-width: 80%;
+    }
+}
