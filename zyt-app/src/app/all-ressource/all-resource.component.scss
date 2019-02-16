@@ -1,5 +1,8 @@
 @import '../styles/colors.scss';
 @import '../styles/variable.scss';
+
+$day-colors: $yellow $fuchsia $bordeux $violett $blue;
+
 .all__ressource-header{
     width: 100vw;
     height: 7vh;
@@ -25,20 +28,12 @@
     transition: all 0.5s;
     position: relative;
     display: flex;
-    &.mon{
-        background-color: $yellow;
-    }
-    &.di{
-        background-color: $fuchsia;
-    }
-    &.mi{
-        background-color: $bordeux;
-    }
-    &.do{
-        background-color: $violett;
-    }
-    &.fr{
-        background-color: $blue;
+
+    @each $current-color in $day-colors {
+      $i: index($day-colors, $current-color) - 1;
+      &--day-nr-#{$i} {
+        background-color: $current-color;
+      }
     }
     
     &-header-back {
@@ -92,21 +87,14 @@
         }
     }
 }
-.mon .res {
-    background-color: darken($yellow, 20);
+
+@each $current-color in $day-colors {
+    $i: index($day-colors, $current-color) - 1;
+    .all__ressource--day-nr-#{$i} .res {
+        background-color: darken($current-color, 20);
+    }
 }
-.di .res {
-    background-color: darken($fuchsia, 20);
-}
-.mi .res {
-    background-color: darken($bordeux, 20);
-}
-.do .res {
-    background-color: darken($violett, 20);
-}
-.fr .res {
-    background-color: darken($blue, 20);
-}
+
 .add {
     background: transparent;
     background-image: url('../../assets/images/plus.svg');

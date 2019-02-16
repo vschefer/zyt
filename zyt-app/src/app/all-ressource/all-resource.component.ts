@@ -16,7 +16,9 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   lastDay
   startDay
   weekRes:Array<String>;
-  dates: Object
+  dates: Object;
+  dayNames = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"];
+
   constructor(private ressourceService: RessourceService) {
     super()
     this.monday
@@ -72,8 +74,8 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
 
         }
       });
-      this.weekRes = weekRes
-      console.log(weekRes)
+      this.weekRes = weekRes;
+      this.toDay();
     },
     (error) => console.log(error))
   }
@@ -101,7 +103,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   toDay(){
     let date = new Date()
     let today = date.getDay()
-    let weekDays = document.querySelectorAll('.all__ressource')
+    let weekDays = document.querySelectorAll('.all__ressource');
     for(let i = 0; i < weekDays.length; i++){
       if(today != 0 && today != 6){
         if((today -1) == i){
@@ -118,8 +120,7 @@ export class AllRessourceComponent extends WorkingWeekComponent implements OnIni
   }
   
   ngOnInit() {
-    this.toDay()
-    this.getRessource() 
+    this.getRessource();
   }
   
 }
