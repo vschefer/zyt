@@ -2,6 +2,9 @@
 @import '../../../styles/variable.scss';
 
 $day-colors: $yellow $fuchsia $bordeux $violett $blue;
+h3 {
+    margin: 0;
+}
 
 .all__ressource-header {
     width: 100vw;
@@ -51,10 +54,6 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
         writing-mode: vertical-rl;
         margin: 0.3rem;
         width: auto;
-        
-        @media (max-width: $medium) { 
-            font-size: 1rem;
-        }
     }
 }
 .ressource__container {
@@ -185,12 +184,14 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
         display: block;
     }
     
-    .button--back{
+    .button--back {
         display: none;
     }
     
-    .all__ressource{
+    .all__ressource {
         width: 100vw;
+        display: flex;
+        flex-direction: column;
         
         h2 {
             writing-mode: horizontal-tb;
@@ -198,13 +199,24 @@ $day-colors: $yellow $fuchsia $bordeux $violett $blue;
             height: 2rem;
         }
     }
+    .ressource__container {
+        width: 90%;
+    }
     
     .shrink {
         height: 10vh;
+
+        .ressource__container {
+            opacity: 0;
+        }
     }
     
     .grow {
         height: 60vh;
+
+        .ressource__container {
+            opacity: 1;
+        }
     }
     
     .add {

@@ -2,7 +2,7 @@
 
   <div class="chart-weeks__container" *ngFor="let i of [3, 2, 1]">
     <section class="chart-weeks__chart-wrap" *ngIf="chartData[-i]">
-      <h4 class="heading">{{i}} Woche(n) zuvor</h4>
+      <h3 class="heading">{{i}} Woche(n) zuvor</h3>
       <canvas
         class="chart-weeks__chart"
         baseChart
@@ -20,7 +20,6 @@
 <div class="chart-weeks" *ngIf="chartData">
   <div class="chart-weeks__container chart-weeks__container--current">
     <section class="chart-weeks__chart-wrap chart-weeks__chart-wrap--current" *ngIf="chartData['0']">
-      <h3 class="heading">Erfasste Arbeitszeiten dieser Woche</h3>
       <p class="chart-weeks__info-text"><b>Kalenderwoche {{weekDetails['0'].week}}</b><br>Montag {{weekDetails['0'].weekStart}} - Sonntag {{weekDetails['0'].weekEnd}}</p>
       <div class="chart-weeks__current">
         <canvas

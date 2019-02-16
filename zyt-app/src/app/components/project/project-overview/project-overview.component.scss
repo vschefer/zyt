@@ -24,12 +24,10 @@
     }
     
     h2 {
-        font-size: 25px;
         cursor: pointer;
     }
     
     h3 {
-        font-size: 22px;
         margin: 2rem 0 2rem 0;
     }
     
@@ -43,6 +41,17 @@
 .positions__content,
 .briefing__content {
     display: block;
+}
+.users__wrapper {
+    flex-wrap: wrap;
+}
+
+.manager {
+    min-width: max-content;
+}
+
+.users {
+    min-width: max-content;
 }
 
 .project__briefing,
