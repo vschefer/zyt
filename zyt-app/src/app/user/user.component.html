@@ -1,5 +1,5 @@
 <main class="wrapper">
-    <div [class]="user.admin ? 'user user--admin' : 'user user--employee'" *ngFor="let user of data | orderBy: 'archived' : false"  [style.background]="user.admin ? '#FFBC67': 'transparent'" [style.opacity]="user.archived ? '0.5': '1'">
+    <div [class]="user.admin ? 'user user--admin' : 'user user--employee'" *ngFor="let user of data | orderBy: 'archived' : false"  [style.background]="user.admin ? '#724051': 'transparent'" [style.opacity]="user.archived ? '0.5': '1'">
         <div class="user__container">
             <h2>{{user.first_name}} {{user.surname}}</h2>
             <p>{{user.email}}</p>

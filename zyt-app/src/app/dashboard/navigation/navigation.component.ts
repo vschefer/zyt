@@ -17,7 +17,6 @@ export class NavigationComponent implements OnInit {
     this.userService.getMe().subscribe((response) => {
       this.me = response; 
       this.isAdmin = this.me.admin;
-      console.log(this.isAdmin)
     },
     (error) => console.log(error)) 
   }

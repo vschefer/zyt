@@ -51,7 +51,6 @@ export class UserEditComponent implements OnInit {
     if(this.password != undefined && this.passwordRepeat != undefined ){
       if(this.password == this.passwordRepeat) {
         this.userService.updateMe({password: this.password}, this.userId).subscribe((response) => {
-          console.log(response);
         },
         (error) => console.log(error))
         this.openSnackBar()

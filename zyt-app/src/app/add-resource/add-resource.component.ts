@@ -7,7 +7,7 @@ import { RessourceService } from '../_services/ressource.service';
 import { element } from 'protractor';
 import * as moment from 'moment';
 @Component({
-  selector: 'app-add-resouce',
+  selector: 'app-add-ressource',
   templateUrl: './add-resource.component.html',
   styleUrls: ['./add-resource.component.scss']
 })
@@ -43,11 +43,8 @@ export class AddResourceComponent  implements OnInit {
   getProjects() {
     this.projectsService.getProjects().subscribe((response) => {
     this.data = response;
-    console.log(this.data)
-    console.log(this.now)
     let activeProj =[]
     this.data.forEach(element => {
-      console.log(element.deadline)
       if(element.deadline >= this.now){
         activeProj.push(element)
       }
@@ -60,10 +57,7 @@ export class AddResourceComponent  implements OnInit {
 getProject(id) {
   this.projectsService.getProject(id).subscribe((response) => {
   let users = [];
-  
   let project = response;
-
-  console.log(project)
   project['assigned_users'].forEach((user) => {
     users.push({
       "first_name": user.first_name,

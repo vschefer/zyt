@@ -41,6 +41,7 @@ onSubmit(f: NgForm) {
   });
   
   this.userService.updateUser(this.updatedUser, this.id).subscribe((response)=> console.log(response));
+  window.location.reload();
 }
 
 ngOnInit() {

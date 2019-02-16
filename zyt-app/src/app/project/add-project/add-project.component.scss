@@ -22,7 +22,7 @@
 }
 .project-form__page{
     height: 100vh;
-    background-color: $bordeux;
+    background-color: $violett;
     padding: 1rem 2.5rem;
     padding-right: 5rem;
     
@@ -45,12 +45,12 @@
 }
 
 .button--delete-pos {
-    background-color: darken($bordeux, 20);
+    background-color: $warning;
     color: white;
 }
 .add-position{
    width: 100%;
-   background-color: darken($bordeux, 20);
+   background-color: darken($violett, 20);
    color: white;
 }
 .delete-postition{
@@ -81,7 +81,8 @@
 
 .button--save{
     color: white;
-    background-color: darken($bordeux, 20);
+    width: 100%;
+    background-color: darken($violett, 20);
 }
 .next {
     right: 320px;

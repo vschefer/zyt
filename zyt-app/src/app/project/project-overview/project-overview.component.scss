@@ -5,7 +5,7 @@
     width: calc(100vw - 300px);
     display: flex;
     flex-direction: column;
-    background: $bordeux;
+    background: $violett;
     overflow-x: scroll;
     overflow-x: hidden;
     height: 100vh;
@@ -65,7 +65,7 @@
 }
 .progress-bar__progressing {
     height: 1rem;
-    background: $violett;
+    background: $yellow;
     max-width: 100%;
 }
 
@@ -90,7 +90,7 @@ app-update-button {
     padding-bottom: 2rem;
 }
 section {
-    background: $bordeux;
+    background: $violett;
 }
 @media (max-width: $medium) { 
     .wrapper {
@@ -124,7 +124,7 @@ section {
     }
 }
 .open__content {
-    background:  darken($bordeux,5);
+    background:  darken($violett,5);
     .project__content-wrapper {
         max-height: 500rem;
         transition: all 0.5s;

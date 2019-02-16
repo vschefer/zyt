@@ -1,6 +1,6 @@
 @import '../../styles/colors.scss';
 .wrapper{
-    background: $bordeux;
+    background: lighten($blue , $amount: 10);
     height: 100vh;
     display: flex;
     width: 60%;

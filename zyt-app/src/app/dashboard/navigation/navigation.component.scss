@@ -44,17 +44,17 @@ a.after:after{
 .navigation__link--level5::after {
     background: lighten($blue,20);  
 }
-.navigation__link--level4::after {
+.navigation__link--level2::after {
     background: lighten($violett,20);  
 }
 .navigation__link--level3::after {
     background: $bordeux;  
 }
-.navigation__link--level2::after {
-    background: $fuchsia;  
+.navigation__link--level4::after {
+    background: $yellow;  
 }
 .navigation__link--level1::after {
-    background: $yellow;  
+    background: $fuchsia;  
 }
 a.navigation__link--active:before,
 a.navigation__link--active:after {

@@ -199,11 +199,11 @@ app-user {
     grid-template-columns: repeat(3, 1fr);
     position: relative;
 }
-app-add-resouce,
+app-add-ressource,
 app-edit-ressource {
     display: grid;
     // grid-template-columns: repeat(3, 1fr);
-    background-color: $bordeux;
+    background-color: $yellow;
     height: 100vh;
 }
 
@@ -439,4 +439,15 @@ app-mobile-nav {
 }
 .mat-primary .mat-pseudo-checkbox-checked {
     background: $fuchsia;
+}
+
+mat-select{
+    margin-top: 0.5rem;
+}
+mat-form-field{
+    width: 100%;
+    input, mat-select{
+        padding: 0.8rem 0 0;
+        
+    }
 }

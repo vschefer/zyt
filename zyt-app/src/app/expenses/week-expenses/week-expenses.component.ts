@@ -27,7 +27,7 @@ export class WeekExpensesComponent implements OnInit {
     this.expensesService.getExpensesFromWeek(0).subscribe(
       (response)=> {
         this.expenses = response;
-
+console.log(this.expenses)
         this.expenses.forEach(element => {
           this.total += element.recorded_time
         });

@@ -7,17 +7,12 @@
         display: flex;
         flex-direction: column;
         margin: 1rem;
-        // @media (max-width: $medium) { 
-        //         width: 100vw;
-        //         z-index: 10;
-            
-        // }
     }
 
     button,
     .button-all {
         color: white;
-        background:  darken($bordeux,20);
+        background:  darken($yellow,20);
         cursor: pointer;
     }
     .button-all {
