@@ -55,7 +55,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .total-expenses__label,
@@ -67,4 +66,8 @@
 .total-expenses__total {
     text-decoration: underline;
     flex: 0.5;
+}
+
+.no-expense-message {
+  padding-left: 2rem;
 }
