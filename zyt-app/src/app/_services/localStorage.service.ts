@@ -13,4 +13,16 @@ export class LocalStorageService {
       'x-auth-token': this.tokenString,
     });
   }
+  
+  static getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+  }
+  
+  static createLocalStorageItem(user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+  
+  static removeLocalStorageItem() {
+    localStorage.removeItem('currentUser');
+  }
 }
