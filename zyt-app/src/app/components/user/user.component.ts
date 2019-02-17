@@ -41,7 +41,6 @@ pageDown(){
   this.count += 1;
   if(this.count <= (userCount -1)){
     wrapper.setAttribute("style","transform: translateY(-"+this.down+"px)" );
-    
   }
   if(this.count == (userCount -1)){
     nextButton.classList.add('transparent');

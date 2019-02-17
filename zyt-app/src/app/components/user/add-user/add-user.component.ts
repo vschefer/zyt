@@ -27,10 +27,8 @@ export class AddUserComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
   
-  message = this.first_name + this.surname + 'wurde hinzugefügt';
-  action = 'Ok';
-  openSnackBar() {
-    this.snackBar.open(this.message, this.action, {
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action, {
       duration: 5000,
     });
   }
@@ -54,9 +52,11 @@ export class AddUserComponent implements OnInit {
       avatar:this.avatarId,
       password: this.password,
     }
-    this.userService.addUser(this.user).subscribe()
-  this.openSnackBar()
-} 
+    this.userService.addUser(this.user).subscribe((response) => {
+      this.openSnackBar(`${this.first_name} ${this.surname} wurde hinzugefügt.`, 'Ok');
+    });
+  }
+
 
 getAvatars(){
   this.avatarService.getAvatars().subscribe(

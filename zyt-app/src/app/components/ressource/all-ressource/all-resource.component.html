@@ -12,7 +12,7 @@
 </div>
 <main class="all__ressource-wrapper">
     <section class="all__ressource all__ressource--day-nr-{{dayNr}}" *ngFor="let dayNr of [0, 1, 2, 3, 4]">
-      <h2>{{dayNames[dayNr]}}</h2> <button class="add" (click)="showDay($event)"></button>
+      <h2 (click)="showDay($event)">{{dayNames[dayNr]}}</h2> <button class="add"></button>
       <div class="ressource__container">
           <div *ngFor="let res of weekRes">
               <div class="res__wrapper" *ngFor="let d of res.days; let i = index">

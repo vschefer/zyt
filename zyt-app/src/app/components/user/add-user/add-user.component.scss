@@ -6,7 +6,7 @@
     grid-column: 1 / span 2;
     height: 100vh;
     width: calc(100vw - 300px);
-    background-color: $yellow;
+    background-color: $violett;
 
     @media (max-width: $medium) { 
         width: 100vw;
@@ -50,7 +50,7 @@ form {
 }
 
 .button--add-user {
-    background-color: darken($yellow, 20);
+    background-color: darken($violett, 20);
     color: $white;
 }
 

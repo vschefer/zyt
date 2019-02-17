@@ -28,7 +28,8 @@
       <input matInput type="text" name="pasword" ngDefaultControl [(ngModel)]="password" required>
       <span id="nameError" class="input-error-message" aria-live="polite">password invalid</span>
     </mat-form-field>
-    
+
+    <p>Wähle einen Avatar für <span *ngIf="first_name && surname; else user">{{first_name}}</span> <ng-template #user>deinen User</ng-template></p>
     <div class="avatarList">
       <div class="avatar"  *ngFor="let avatar of avatars">
         <img src="{{avatar.url}}"  name="avatar._id" ngDefaultControl [(ngModel)]="avatar._id"  (click)="chooseAvatar(avatar._id)">
