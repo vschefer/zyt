@@ -1,15 +1,15 @@
-<div class="todayExpenses__container" *ngIf="expenseExist">
+<div class="todayExpenses__container">
     <h2>Deine Arbeitsberichte von Heute</h2>
-    <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
-        <div class="expense__info">
-                <strong>{{exp.project.name}}</strong>
-                <span>{{ exp.comment }}</span> 
-        </div>
-      
-        <span>{{exp.recorded_time}} h</span> 
-        <button class="button__edit-button" routerLink="/expenses/edit/{{exp._id}}" title="Arbeitsbericht bearbeiten">Arbeitsbericht bearbeiten</button>
-      
+    <p *ngIf="!todayExpenses">Noch keine erfasst.</p>
+    <div *ngIf="expenseExist">
+      <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
+          <div class="expense__info">
+              <strong>{{exp.project.name}}</strong>
+              <span>{{ exp.comment }}</span> 
+          </div>
         
+          <span>{{exp.recorded_time}} h</span> 
+          <button class="button__edit-button" routerLink="/expenses/edit/{{exp._id}}" title="Arbeitsbericht bearbeiten">Arbeitsbericht bearbeiten</button>
+      </div>
     </div>
 </div>
-
