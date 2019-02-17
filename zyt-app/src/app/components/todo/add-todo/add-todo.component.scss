@@ -1,4 +1,5 @@
 @import '../../../styles/colors.scss';
+@import '../../../styles/variable.scss';
 .wrapper {
     background: lighten($blue , $amount: 10);
     height: 100vh;
@@ -6,6 +7,10 @@
     width: 60%;
     justify-content: center;
     width: calc(100vw - 300px);
+
+    @media (max-width: $medium) { 
+        width: 100vw;  
+    }
 }
 
 .add-todo {

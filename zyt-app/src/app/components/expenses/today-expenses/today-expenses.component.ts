@@ -10,6 +10,7 @@ export class TodayExpensesComponent implements OnInit {
   now = moment().format('YYYY-MM-DD');
   expenses
   todayExpenses:Array<String>;
+  expenseExist: Boolean
   constructor(private expensesService: ExpenseService) {}
   
   getExpenses(){
@@ -26,8 +27,12 @@ export class TodayExpensesComponent implements OnInit {
             todayExpenses.push(element)
           }
         });
-  
-        this.todayExpenses = todayExpenses;
+        if(todayExpenses.length > 0){
+          this.todayExpenses = todayExpenses;
+          this.expenseExist = true;
+        } else {
+          this.expenseExist = false;
+        }
       },
       (error) => console.log(error)
     )

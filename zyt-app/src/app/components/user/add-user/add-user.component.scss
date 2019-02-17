@@ -6,7 +6,7 @@
     grid-column: 1 / span 2;
     height: 100vh;
     width: calc(100vw - 300px);
-    background-color: #EDBF85;
+    background-color: $yellow;
 
     @media (max-width: $medium) { 
         width: 100vw;
@@ -18,14 +18,12 @@
         overflow: auto;
     }
 }
-
+h1 {
+    margin-top: 2rem;
+}
 form {
     display: flex;
     flex-direction: column;
-    
-    mat-form-field {
-        max-width: 20rem;
-    }
 }
 
 .avatarList {
@@ -66,8 +64,4 @@ form {
     width: 100%;
     flex-wrap: wrap;
     
-    mat-form-field {
-        min-width: 15rem;
-        margin-right: 2rem;
-    }
 }

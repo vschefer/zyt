@@ -204,7 +204,7 @@ h3 {
     }
     
     .shrink {
-        height: 10vh;
+        height: 2.5rem;
 
         .ressource__container {
             opacity: 0;
@@ -212,7 +212,7 @@ h3 {
     }
     
     .grow {
-        height: 60vh;
+        height: calc(100vh - 13.5rem);
 
         .ressource__container {
             opacity: 1;
@@ -223,5 +223,11 @@ h3 {
         position: absolute;
         right: 0;
         top: 0;
+    }
+}
+app-dashboard {
+    display: none;
+    @media (max-width: $medium) { 
+        display: block;
     }
 }

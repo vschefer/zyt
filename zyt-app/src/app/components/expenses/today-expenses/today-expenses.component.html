@@ -1,7 +1,5 @@
-<h2>Deine Arbeitsberichte von Heute</h2>
-
-<div class="todayExpenses__container">
-
+<div class="todayExpenses__container" *ngIf="expenseExist">
+    <h2>Deine Arbeitsberichte von Heute</h2>
     <div class="todayExpenses__expense" *ngFor="let exp of todayExpenses">
         <div class="expense__info">
                 <strong>{{exp.project.name}}</strong>
@@ -14,3 +12,4 @@
         
     </div>
 </div>
+

@@ -97,6 +97,9 @@
 .next {
     right: 320px;
     transform: scale(1.4) rotate(180deg);
+    @media (max-width: $medium) { 
+     right: 1rem;
+    }
 }
 
 .prev {
