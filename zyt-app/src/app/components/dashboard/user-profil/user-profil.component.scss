@@ -21,31 +21,7 @@
   background-size: contain;
   flex: 2;
   background-repeat: no-repeat;
-  cursor: pointer;
   position: relative;
-  
-  &::before {
-    content: attr(data-title);
-    background-color: #2b3c51;
-    color: $white;
-    border-radius: 0;
-    padding: 0.25em .5em .75em .5em;
-    font-size: .85em;
-    width: 5em;
-    display: block;
-    text-align: center;
-    left: 50%;
-    position: absolute;
-    margin-left: -2.5em;
-    box-sizing: border-box;
-    bottom: 50%;
-    margin-bottom: 0.5em;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 65% 75%, 50% 100%, 35% 75%, 0 75%);
-    transform: translateY(5%);
-    opacity: 0;
-    transition: all .5s;
-    z-index: 2;
-  }
 }
 
 .user-avatar:hover::after {

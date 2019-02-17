@@ -13,7 +13,7 @@
     button,
     .button-all {
         color: $white;
-        background:  darken($yellow,20);
+        background:  $blue;
         cursor: pointer;
     }
 
@@ -34,6 +34,10 @@
     @media (max-width: $medium) { 
         width: 100vw;  
         margin-top: 2rem;
+    }
+
+    .mat-form-field.mat-focused .mat-form-field-label {
+        color: $blue;
     }
 }
 

@@ -389,7 +389,9 @@ app-mobile-nav {
     width: 0;
     margin: 0;
 }
-
+.mat-input-element {
+    padding-top: 0.5rem !important;
+}
 .overflow-wrapper::-webkit-scrollbar-button { height: 13px; border-radius: 0px; background-color:transparent; } ::-webkit-scrollbar-button:hover{ background-color: #AAA; } ::-webkit-scrollbar-thumb{ background-color: #CCC; } ::-webkit-scrollbar-thumb:hover{ background-color: #CCC; } ::-webkit-scrollbar-track{ background-color: transparent;  } ::-webkit-scrollbar-track:hover{ background-color: #A8B7AB; } ::-webkit-scrollbar{ width: 10px; }
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
@@ -400,9 +402,7 @@ app-mobile-nav {
     fill: $white;
 }
 
-.mat-form-field.mat-focused .mat-form-field-label {
-    color: $yellow;
-}
+
 
 .mat-form-field.mat-focused {
     .mat-form-field-appearance-legacy .mat-form-field-underline{
@@ -410,14 +410,20 @@ app-mobile-nav {
     }
 }
 
-.mat-focused .mat-form-field-underline .mat-form-field-ripple{ background: $yellow; }
+.mat-focused .mat-form-field-underline .mat-form-field-ripple{ background-color: $yellow; }
 .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
     color: $yellow;
 }
+.add-ressource,
+.edit-ressource {
+    .mat-focused .mat-form-field-underline .mat-form-field-ripple { 
+        background-color: $blue;
+    }
 
-.mat-datepicker-content {
-    background-color: $blue;
-}
+    .mat-datepicker-content {
+        background-color: $blue;
+    }
+} 
 
 .mat-calendar-body-cell-content,
 .mat-calendar-body-label,
