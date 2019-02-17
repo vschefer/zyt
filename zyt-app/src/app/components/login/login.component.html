@@ -6,11 +6,11 @@
         <h1>LOGIN</h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <mat-label for="email">E mail</mat-label>
+                <mat-label class="black" for="email">E mail</mat-label>
                 <input class="login-text" formControlName="email" matInput type="text">
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="password">Password</mat-label>
+                <mat-label class="black" for="password">Password</mat-label>
                 <input class="login-text" matInput type="password" formControlName="password">
             </mat-form-field>
             <button [disabled]="loading" class="button button--login">Login</button>
