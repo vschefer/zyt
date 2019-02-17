@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../../_services/project.service';
@@ -14,7 +14,7 @@ import * as moment from 'moment';
   styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
-
+  @ViewChild('picker') picker;
   project: Object;
   projectID: string;
   positions: any;
@@ -41,7 +41,9 @@ export class EditProjectComponent implements OnInit {
     private userService: UserService,
     private positionService: PositionService,
   ) { }
-
+  open() {
+    this.picker.open();
+  }
   getUsers(): void {
     this.userService.getUsers().subscribe((response) => {
       this.employees = response;

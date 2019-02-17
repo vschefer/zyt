@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../_services/project.service';
@@ -12,6 +12,7 @@ import * as moment from 'moment';
 })
 
 export class AddExpensesComponent implements OnInit {
+  @ViewChild('picker') picker;
   now = moment().format('YYYY-MM-DD');
   recorded_time: number;
   comment: string;
@@ -31,6 +32,9 @@ export class AddExpensesComponent implements OnInit {
     private expenseService: ExpenseService,
     private router: Router,
   ) { }
+  open() {
+    this.picker.open();
+  }
   
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key]);

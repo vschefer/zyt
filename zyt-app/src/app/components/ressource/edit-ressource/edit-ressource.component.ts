@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { RessourceService } from '../../../_services/ressource.service';
@@ -12,7 +12,7 @@ import * as moment from 'moment';
   styleUrls: ['./edit-ressource.component.scss']
 })
 export class EditRessourceComponent implements OnInit {
-
+  @ViewChild('picker') picker;
   ressource: any;
   projects: any;
   project: any;
@@ -29,7 +29,9 @@ export class EditRessourceComponent implements OnInit {
     private location: Location,
     private projectService: ProjectService,
   ) { }
-
+  open() {
+    this.picker.open();
+  }
   getRessource(id: string): void {
     this.ressourceService.getRessource(id).subscribe((response) => {
       response['start'] = moment(response['start']).utc()['_d'];

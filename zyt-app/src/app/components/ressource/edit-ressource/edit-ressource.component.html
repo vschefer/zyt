@@ -21,14 +21,14 @@
 
     <mat-form-field class="white" *ngIf="ressource">
       <label for="start">Startdatum</label>
-      <input matInput [matDatepicker]="start" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="ressource.start" name="start">
+      <input matInput [matDatepicker]="start" (focus)="start.open()" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="ressource.start" name="start">
       <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
       <mat-datepicker #start></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="white" *ngIf="ressource">
       <label for="stop">Deadline</label>
-      <input matInput [matDatepicker]="stop" (dateChange)="onStopChange($event.value)" ngDefaultControl [(ngModel)]="ressource.stop" name="stop">
+      <input matInput [matDatepicker]="stop" (focus)="stop.open()" (dateChange)="onStopChange($event.value)" ngDefaultControl [(ngModel)]="ressource.stop" name="stop">
       <mat-datepicker-toggle matSuffix [for]="stop"></mat-datepicker-toggle>
       <mat-datepicker #stop></mat-datepicker>
     </mat-form-field>

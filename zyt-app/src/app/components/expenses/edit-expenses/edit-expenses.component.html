@@ -13,7 +13,7 @@
       
       <mat-form-field floatLabel="never">
         <label for="affected_date">Datum des Zeitaufwandes</label>
-        <input autocomplete="off" matInput id="affected_date" name="affected_date" [(value)]="AffectedDate" [matDatepicker]="picker" (selectionChange)="onAffectedDateChange(AffectedDate)" [(placeholder)]="AffectedDate" [(ngModel)]="affected_date">
+        <input autocomplete="off" matInput id="affected_date" (focus)="picker.open()" name="affected_date" [(value)]="AffectedDate" [matDatepicker]="picker" (selectionChange)="onAffectedDateChange(AffectedDate)" [(placeholder)]="AffectedDate" [(ngModel)]="affected_date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

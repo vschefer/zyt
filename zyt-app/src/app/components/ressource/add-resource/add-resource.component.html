@@ -22,14 +22,14 @@
     
     <mat-form-field class="white">
         <label for="start">Startdatum</label>
-        <input matInput [matDatepicker]="start"  name="start" ngDefaultControl [(ngModel)]="startDate">
+        <input matInput [matDatepicker]="start" (focus)="start.open()"  name="start" ngDefaultControl [(ngModel)]="startDate">
         <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
         <mat-datepicker #start></mat-datepicker>
       </mat-form-field>
       
       <mat-form-field class="white">
         <label for="end">Deadline</label>
-        <input matInput [matDatepicker]="end"  name="end" ngDefaultControl [(ngModel)]="endDate">
+        <input matInput [matDatepicker]="end" (focus)="end.open()" name="end" ngDefaultControl [(ngModel)]="endDate">
         <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
         <mat-datepicker #end></mat-datepicker>
       </mat-form-field>

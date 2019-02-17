@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatInputModule, MatSelectModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../_services/project.service';
@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class EditExpenseComponent implements OnInit {
+  @ViewChild('picker') picker;
   recorded_time: number;
   comment: string;
   projects: any;
@@ -35,7 +36,11 @@ export class EditExpenseComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) { }
-  
+
+  open() {
+    this.picker.open();
+  }
+
   toArray(answers: object) {
     return Object.keys(answers).map(key => answers[key]);
   }

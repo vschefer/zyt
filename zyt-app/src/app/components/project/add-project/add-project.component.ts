@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material';
 import { FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
@@ -37,6 +37,9 @@ export class AddProjectComponent  implements OnInit {
     private UserService: UserService,
     public snackBar: MatSnackBar, private fb: FormBuilder) {}
     
+    open() {
+      this.picker.open();
+    }
     openSnackBar() {
       let message = this.name + 'wurde hinzugefügt';
       let action = 'Ok';

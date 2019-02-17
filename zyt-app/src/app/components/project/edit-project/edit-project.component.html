@@ -19,7 +19,7 @@
         <div class="edit-project__date">
           <mat-form-field class="white edit-project__form-field">
             <label class="edit-project__label" for="start">Start</label>
-            <input class="edit-project__text" matInput [matDatepicker]="start" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="project.start" name="start">
+            <input class="edit-project__text" (focus)="start.open()" matInput [matDatepicker]="start" (dateChange)="onStartChange($event.value)" ngDefaultControl [(ngModel)]="project.start" name="start">
             <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
             <mat-datepicker #start></mat-datepicker>
           </mat-form-field>
@@ -28,7 +28,7 @@
         <div class="edit-project__date">
           <mat-form-field class="white edit-project__form-field">
             <label class="edit-project__label" for="deadline">Deadline</label>
-            <input class="edit-project__text" matInput [matDatepicker]="deadline" (dateChange)="onDeadlineChange($event.value)" ngDefaultControl [(ngModel)]="project.deadline" name="deadline">
+            <input class="edit-project__text" (focus)="deadline.open()" matInput [matDatepicker]="deadline" (dateChange)="onDeadlineChange($event.value)" ngDefaultControl [(ngModel)]="project.deadline" name="deadline">
             <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
             <mat-datepicker #deadline></mat-datepicker>
           </mat-form-field>

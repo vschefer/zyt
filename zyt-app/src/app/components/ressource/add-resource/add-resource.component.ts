@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
 import {HttpClient} from '@angular/common/http'
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import * as moment from 'moment';
   styleUrls: ['./add-resource.component.scss']
 })
 export class AddResourceComponent  implements OnInit {
-
+  @ViewChild('picker') picker;
   now = moment().format('YYYY-MM-DD');
   projects:Object
   specificProject: any
@@ -39,6 +39,9 @@ export class AddResourceComponent  implements OnInit {
     this.snackBar.open(this.message, this.action, {
       duration: 2000,
     });
+  }
+  open() {
+    this.picker.open();
   }
   getProjects() {
     this.projectsService.getProjects().subscribe((response) => {
