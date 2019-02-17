@@ -392,6 +392,7 @@ app-mobile-nav {
 .mat-input-element {
     padding-top: 0.5rem !important;
 }
+
 .overflow-wrapper::-webkit-scrollbar-button { height: 13px; border-radius: 0px; background-color:transparent; } ::-webkit-scrollbar-button:hover{ background-color: #AAA; } ::-webkit-scrollbar-thumb{ background-color: #CCC; } ::-webkit-scrollbar-thumb:hover{ background-color: #CCC; } ::-webkit-scrollbar-track{ background-color: transparent;  } ::-webkit-scrollbar-track:hover{ background-color: #A8B7AB; } ::-webkit-scrollbar{ width: 10px; }
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
@@ -479,6 +480,9 @@ app-mobile-nav {
     background: $fuchsia;
 }
 
+.mat-input-element {
+    caret-color: $white;
+}
 mat-select {
     margin-top: 0.5rem;
 }

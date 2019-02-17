@@ -7,11 +7,13 @@
   
   <div class="user__password">
     <mat-form-field >
-      <input matInput type="text" name="password" ngDefaultControl [(ngModel)]="password" placeholder="Ändere dein Passwort">
+      <label for="password">Ändere dein Passwort</label>
+      <input matInput type="text" name="password" ngDefaultControl [(ngModel)]="password">
     </mat-form-field>
     <div *ngIf="password">
       <mat-form-field >
-        <input matInput type="text" name="passwordRepeat" ngDefaultControl [(ngModel)]="passwordRepeat" placeholder="Wiederhole dein Passwort">
+          <label for="passwordRepeat">Widerhole dein Passwort</label>
+        <input matInput type="text" name="passwordRepeat" ngDefaultControl [(ngModel)]="passwordRepeat">
       </mat-form-field>
       <span class="error__message" *ngIf="password != passwordRepeat">Passwörter stimmen nicht überrein</span>    
     </div>

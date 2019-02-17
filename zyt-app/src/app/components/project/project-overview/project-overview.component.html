@@ -11,7 +11,6 @@
             
             <div class="project__briefing">
                 <h3>Briefing</h3>
-                <div class="showelement" (click)="toggleAccordion($event)">+</div>
                 <div class="project__content briefing__content close__content">
                     <p>{{project.briefing.description}}</p>
                 </div>
@@ -21,7 +20,7 @@
                     <h3 *ngIf="project.positions != ''">Positionen</h3>
                     <div class="project__content positions__content close__content">
                         <div *ngFor="let u of toArray(project.positions)" class="positions">
-                            <div class="progress-bar__wrapper">
+                            <div class="progress-bar__wrapper" *ngIf="!u.archived">
                                 <p>  {{u.name}} </p>
                                 <div class="progress-bar" style="width: 100%">
                                     <div class="progress-bar__progressing"  
