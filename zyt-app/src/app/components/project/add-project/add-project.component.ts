@@ -30,6 +30,9 @@ export class AddProjectComponent  implements OnInit {
   total = 0
   selectedUser
   myForm: FormGroup
+  inputs = 0
+  invalid
+  @ViewChild('picker') picker;
   constructor(private projectService: ProjectService,
     private UserService: UserService,
     public snackBar: MatSnackBar, private fb: FormBuilder) {}
@@ -100,7 +103,6 @@ export class AddProjectComponent  implements OnInit {
     }
     this.projectService.addProject(this.servers).subscribe()
     this.openSnackBar()
-    this.name = ''
     wrapper.setAttribute("style", "transform: translate( 0px)" );
     
     prevButton.classList.add('hidden')
@@ -128,8 +130,10 @@ export class AddProjectComponent  implements OnInit {
           invalid = true;
         }
       }else if(this.count == 1){
-        if(input[i].classList.contains('ng-invalid') && i <= 6 ){
+        if(input[i].classList.contains('ng-invalid') && i <= 6+this.inputs ){
+          console.log(document.querySelectorAll('.position'))
           invalid = true;
+          this.invalid = invalid;
         }
       }else if(this.count == 2){
         if(input[i].classList.contains('ng-invalid') ){
@@ -193,6 +197,7 @@ export class AddProjectComponent  implements OnInit {
   }
   
   addPosition(){
+    this.inputs += 2;
     const pos = this.fb.group({
       name: '',
       total_time_offered: ''

@@ -60,6 +60,7 @@
             </mat-form-field>
             <button type="button" (click)="deletePostition(i)" class="button button--delete-pos">Löschen</button>
           </div>
+          <p class="warning" *ngIf="invalid">Bitte fülle jede Position aus oder Lösche jene die du nicht brauchst</p>
           <button type="button" (click)="addPosition()" class="add-position"><span>Weitere Position hinzufügen</span></button>
         </div>
         
