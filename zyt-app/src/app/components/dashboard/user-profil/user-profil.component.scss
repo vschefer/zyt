@@ -2,7 +2,7 @@
 @import '../../../styles/variable.scss';
 .user {
   display: flex;
-  padding: 0 30px;
+  padding: 0 1rem;
   align-items: center;
   /* margin-top: 1rem; */
   background-color: rgba(0, 0, 0, 0.13);
@@ -46,22 +46,6 @@
     transition: all .5s;
     z-index: 2;
   }
-
-  &::after {
-    content: "";
-    width: 15px;
-    height: 15px;
-    display: block;
-    background-image: url(/assets/icons/icon-edit.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    right: -3px;
-    top: -3px;
-    z-index: 1;
-    transition: all .5s;
-    opacity: 1;
-  }
 }
 
 .user-avatar:hover::after {
@@ -99,4 +83,13 @@
 .button-logout:hover .button-logout__text,
 .button-logout:focus .button-logout__text {
   opacity: 1;
+}
+.user__edit {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url('../../../../assets/icons/user.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
